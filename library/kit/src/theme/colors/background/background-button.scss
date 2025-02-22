@@ -1,0 +1,68 @@
+:root {
+  --background-button-primary: var(--colors-gray-13);
+  --background-button-primary--hover: var(--colors-gray-12);
+  --background-button-primary--disabled: var(--colors-gray-2);
+
+  --background-button-secondary: var(--colors-base-white);
+  --background-button-secondary--hover: var(--colors-gray-1);
+  --background-button-secondary--disabled: var(--colors-base-white);
+
+  --background-button-tetriary: var(--colors-gray-1a);
+  --background-button-tetriary--hover: var(--colors-gray-2a);
+  --background-button-tetriary--disabled: var(--colors-gray-1a);
+
+  --background-button-ghost: var(--colors-base-transparent);
+  --background-button-ghost--hover: var(--colors-gray-1a);
+  --background-button-ghost--disabled: var(--colors-base-transparent);
+
+  --background-button-destructive: var(--colors-red-8);
+  --background-button-destructive--hover: var(--colors-red-9);
+  --background-button-destructive--disabled: var(--colors-red-2);
+
+  --background-button-destructive-secondary: var(--colors-base-white);
+  --background-button-destructive-secondary--hover: var(--colors-red-1);
+  --background-button-destructive-secondary--disabled: var(--colors-base-white);
+
+  --background-button-destructive-tetriary: var(--colors-red-1a);
+  --background-button-destructive-tetriary--hover: var(--colors-red-2a);
+  --background-button-destructive-tetriary--disabled: var(--colors-red-1a);
+
+  --background-button-destructive-ghost: var(--colors-base-transparent);
+  --background-button-destructive-ghost--hover: var(--colors-red-1a);
+  --background-button-destructive-ghost--disabled: var(--colors-base-transparent);
+}
+
+:root[data-theme="dark"] {
+
+  --background-button-primary: var(--colors-base-white);
+  --background-button-primary--hover: var(--colors-gray-2);
+  --background-button-primary--disabled: var(--colors-white-2);
+
+  --background-button-secondary: var(--colors-gray-13);
+  --background-button-secondary--hover: var(--colors-gray-12);
+  --background-button-secondary--disabled: var(--colors-gray-13);
+
+  --background-button-tetriary: var(--colors-white-1);
+  --background-button-tetriary--hover: var(--colors-white-2);
+  --background-button-tetriary--disabled: var(--colors-white-1);
+
+  --background-button-ghost: var(--colors-base-transparent);
+  --background-button-ghost--hover: var(--colors-white-2);
+  --background-button-ghost--disabled: var(--colors-base-transparent);
+
+  --background-button-destructive: var(--colors-red-8);
+  --background-button-destructive--hover: var(--colors-red-9);
+  --background-button-destructive--disabled: var(--colors-red-2a);
+
+  --background-button-destructive-secondary: var(--colors-base-dark-1);
+  --background-button-destructive-secondary--hover: var(--colors-gray-13);
+  --background-button-destructive-secondary--disabled: var(--colors-base-dark-1);
+
+  --background-button-destructive-tetriary: var(--colors-white-1a);
+  --background-button-destructive-tetriary--hover: var(--colors-white-2a);
+  --background-button-destructive-tetriary--disabled: var(--colors-white-1a);
+
+  --background-button-destructive-ghost: var(--colors-base-transparent);
+  --background-button-destructive-ghost--hover: var(--colors-white-1);
+  --background-button-destructive-ghost--disabled: var(--colors-base-transparent);
+}

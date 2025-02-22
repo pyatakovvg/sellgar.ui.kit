@@ -1,0 +1,24 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "audit": "yarn npm audit --all --severity moderate",
+    "update": "yarn upgrade-interactive",
+    "format": "prettier --write \"**/src/**/*.js\""
+  },
+  "devDependencies": {
+    "@eslint/js": "9.21.0",
+    "eslint": "9.21.0",
+    "eslint-config-prettier": "10.0.1",
+    "eslint-plugin-prettier": "5.2.3",
+    "prettier": "3.5.2"
+  },
+  "workspaces": [
+    "clients/*",
+    "library/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "yarn@3.6.1"
+}

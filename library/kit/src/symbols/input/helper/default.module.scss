@@ -1,0 +1,36 @@
+@use "../../../scss.utils.scss" as utils;
+
+.wrapper {
+
+  display: flex;
+  flex-direction: row;
+  flex: 1 0;
+  align-items: center;
+}
+
+.icon {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+}
+
+.content {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  margin: 0 0 0 utils.pxToVW(4px);
+}
+
+.text-color {
+  color: var(--text-base-tertiary) !important;
+
+  &--success {
+    color: var(--text-status-success) !important;
+  }
+
+  &--destructive {
+    color: var(--text-status-destructive) !important;
+  }
+}

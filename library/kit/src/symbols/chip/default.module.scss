@@ -1,0 +1,33 @@
+@use "../../scss.utils.scss" as utils;
+
+.wrapper {
+
+  display: inline-flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  align-items: center;
+  border-radius: var(--measurements-radius-xl);
+  font-size: var(--typography-size-caption-l);
+  border: 1px solid var(--border-action-normal);
+  background: var(--background-chip-primary);
+  padding: utils.pxToVW(8px) utils.pxToVW(12px);
+  box-shadow: 0 utils.pxToVW(1px) utils.pxToVW(2px) 0 rgba(20, 21, 26, 0.05);
+}
+
+.lead-icon {
+
+  color: var(--icon-status-info-secondary);
+}
+
+.content {
+
+  color: var(--text-base-primary);
+  text-transform: uppercase;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+  line-height: var(--typography-line-height-caption-l);
+  letter-spacing: var(--typography-letter-spacing-caption-l);
+  margin: 0 0 0 utils.pxToVW(4px);
+  padding: 0 utils.pxToVW(4px);
+}

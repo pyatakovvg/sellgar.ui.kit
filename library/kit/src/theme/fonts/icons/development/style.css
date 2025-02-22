@@ -1,0 +1,165 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('./fonts/icomoon.eot?stnjwk');
+  src:  url('./fonts/icomoon.eot?stnjwk#iefix') format('embedded-opentype'),
+    url('./fonts/icomoon.ttf?stnjwk') format('truetype'),
+    url('./fonts/icomoon.woff?stnjwk') format('woff'),
+    url('./fonts/icomoon.svg?stnjwk#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-braces-fill:before {
+  content: "\e900";
+}
+.icon-braces-line:before {
+  content: "\e901";
+}
+.icon-brackets-fill:before {
+  content: "\e902";
+}
+.icon-brackets-line:before {
+  content: "\e903";
+}
+.icon-bug-2-fill:before {
+  content: "\e904";
+}
+.icon-bug-2-line:before {
+  content: "\e905";
+}
+.icon-bug-fill:before {
+  content: "\e906";
+}
+.icon-bug-line:before {
+  content: "\e907";
+}
+.icon-code-box-fill:before {
+  content: "\e908";
+}
+.icon-code-box-line:before {
+  content: "\e909";
+}
+.icon-code-fill:before {
+  content: "\e90a";
+}
+.icon-code-line:before {
+  content: "\e90b";
+}
+.icon-code-s-fill:before {
+  content: "\e90c";
+}
+.icon-code-s-line:before {
+  content: "\e90d";
+}
+.icon-code-s-slash-fill:before {
+  content: "\e90e";
+}
+.icon-code-s-slash-line:before {
+  content: "\e90f";
+}
+.icon-command-fill:before {
+  content: "\e910";
+}
+.icon-command-line:before {
+  content: "\e911";
+}
+.icon-css3-fill:before {
+  content: "\e912";
+}
+.icon-css3-line:before {
+  content: "\e913";
+}
+.icon-cursor-fill:before {
+  content: "\e914";
+}
+.icon-cursor-line:before {
+  content: "\e915";
+}
+.icon-git-branch-fill:before {
+  content: "\e916";
+}
+.icon-git-branch-line:before {
+  content: "\e917";
+}
+.icon-git-commit-fill:before {
+  content: "\e918";
+}
+.icon-git-commit-line:before {
+  content: "\e919";
+}
+.icon-git-merge-fill:before {
+  content: "\e91a";
+}
+.icon-git-merge-line:before {
+  content: "\e91b";
+}
+.icon-git-pull-request-fill:before {
+  content: "\e91c";
+}
+.icon-git-pull-request-line:before {
+  content: "\e91d";
+}
+.icon-git-repository-commits-fill:before {
+  content: "\e91e";
+}
+.icon-git-repository-commits-line:before {
+  content: "\e91f";
+}
+.icon-git-repository-fill:before {
+  content: "\e920";
+}
+.icon-git-repository-line:before {
+  content: "\e921";
+}
+.icon-git-repository-private-fill:before {
+  content: "\e922";
+}
+.icon-git-repository-private-line:before {
+  content: "\e923";
+}
+.icon-html5-fill:before {
+  content: "\e924";
+}
+.icon-html5-line:before {
+  content: "\e925";
+}
+.icon-parentheses-fill:before {
+  content: "\e926";
+}
+.icon-parentheses-line:before {
+  content: "\e927";
+}
+.icon-terminal-box-fill:before {
+  content: "\e928";
+}
+.icon-terminal-box-line:before {
+  content: "\e929";
+}
+.icon-terminal-fill:before {
+  content: "\e92a";
+}
+.icon-terminal-line:before {
+  content: "\e92b";
+}
+.icon-terminal-window-fill:before {
+  content: "\e92c";
+}
+.icon-terminal-window-line:before {
+  content: "\e92d";
+}

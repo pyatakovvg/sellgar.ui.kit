@@ -1,0 +1,12 @@
+@use "@library/kit/src/scss.utils.scss" as utils;
+
+.wrapper {
+
+  display: inline-flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: utils.pxToVW(32px);
+  height: utils.pxToVW(32px);
+  background: url("./logotype.svg") no-repeat;
+  background-size: contain;
+}

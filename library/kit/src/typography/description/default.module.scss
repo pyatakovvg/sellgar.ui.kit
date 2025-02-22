@@ -1,0 +1,22 @@
+.wrapper {
+
+  color: var(--text-base-secondary);
+  font-size: var(--typography-size-caption-m);
+  line-height: var(--typography-line-height-caption-m);
+  letter-spacing: var(--typography-letter-spacing-caption-m);
+  font-weight: 400;
+}
+
+.variant {
+  &--large {
+    font-size: var(--typography-size-caption-l);
+    line-height: var(--typography-line-height-caption-l);
+    letter-spacing: var(--typography-letter-spacing-caption-l);
+  }
+
+  &--compact {
+    font-size: var(--typography-size-caption-s);
+    line-height: var(--typography-line-height-caption-s);
+    letter-spacing: var(--typography-letter-spacing-caption-s);
+  }
+}

@@ -1,0 +1,53 @@
+@use "../../scss.utils.scss" as utils;
+
+.wrapper {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: utils.pxToVW(4px) utils.pxToVW(6px);
+  border-radius: var(--measurements-radius-md);
+  background: var(--background-badge-gray);
+}
+
+.icon {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  color: var(--text-base-secondary);
+}
+
+.content {
+
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 auto;
+  padding: 0 utils.pxToVW(4px);
+}
+
+.text {
+
+  color: var(--text-base-secondary) !important;
+}
+
+.size {
+  &--middle {
+    padding: utils.pxToVW(2px) utils.pxToVW(4px);
+  }
+
+  &--extra-small {
+    padding: 0 utils.pxToVW(2px);
+  }
+}
+
+.disabled {
+  .icon {
+    color: var(--text-base-quaternary);
+  }
+
+  .text {
+    color: var(--text-base-quaternary) !important;
+  }
+}

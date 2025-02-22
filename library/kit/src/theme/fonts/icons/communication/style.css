@@ -1,0 +1,207 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('./fonts/icomoon.eot?8002h2');
+  src:  url('./fonts/icomoon.eot?8002h2#iefix') format('embedded-opentype'),
+    url('./fonts/icomoon.ttf?8002h2') format('truetype'),
+    url('./fonts/icomoon.woff?8002h2') format('woff'),
+    url('./fonts/icomoon.svg?8002h2#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-chat-1-fill:before {
+  content: "\e900";
+}
+.icon-chat-1-line:before {
+  content: "\e901";
+}
+.icon-chat-2-fill:before {
+  content: "\e902";
+}
+.icon-chat-2-line:before {
+  content: "\e903";
+}
+.icon-chat-3-fill:before {
+  content: "\e904";
+}
+.icon-chat-3-line:before {
+  content: "\e905";
+}
+.icon-chat-4-fill:before {
+  content: "\e906";
+}
+.icon-chat-4-line:before {
+  content: "\e907";
+}
+.icon-chat-check-fill:before {
+  content: "\e908";
+}
+.icon-chat-check-line:before {
+  content: "\e909";
+}
+.icon-chat-delete-fill:before {
+  content: "\e90a";
+}
+.icon-chat-delete-line:before {
+  content: "\e90b";
+}
+.icon-chat-download-fill:before {
+  content: "\e90c";
+}
+.icon-chat-download-line:before {
+  content: "\e90d";
+}
+.icon-chat-follow-up-fill:before {
+  content: "\e90e";
+}
+.icon-chat-follow-up-line:before {
+  content: "\e90f";
+}
+.icon-chat-forward-fill:before {
+  content: "\e910";
+}
+.icon-chat-forward-line:before {
+  content: "\e911";
+}
+.icon-chat-heart-fill:before {
+  content: "\e912";
+}
+.icon-chat-heart-line:before {
+  content: "\e913";
+}
+.icon-chat-history-fill:before {
+  content: "\e914";
+}
+.icon-chat-history-line:before {
+  content: "\e915";
+}
+.icon-chat-new-fill:before {
+  content: "\e916";
+}
+.icon-chat-new-line:before {
+  content: "\e917";
+}
+.icon-chat-off-fill:before {
+  content: "\e918";
+}
+.icon-chat-off-line:before {
+  content: "\e919";
+}
+.icon-chat-poll-fill:before {
+  content: "\e91a";
+}
+.icon-chat-poll-line:before {
+  content: "\e91b";
+}
+.icon-chat-private-fill:before {
+  content: "\e91c";
+}
+.icon-chat-private-line:before {
+  content: "\e91d";
+}
+.icon-chat-quote-fill:before {
+  content: "\e91e";
+}
+.icon-chat-quote-line:before {
+  content: "\e91f";
+}
+.icon-chat-settings-fill:before {
+  content: "\e920";
+}
+.icon-chat-settings-line:before {
+  content: "\e921";
+}
+.icon-chat-smile-2-fill:before {
+  content: "\e922";
+}
+.icon-chat-smile-2-line:before {
+  content: "\e923";
+}
+.icon-chat-smile-3-fill:before {
+  content: "\e924";
+}
+.icon-chat-smile-3-line:before {
+  content: "\e925";
+}
+.icon-chat-smile-fill:before {
+  content: "\e926";
+}
+.icon-chat-smile-line:before {
+  content: "\e927";
+}
+.icon-chat-upload-fill:before {
+  content: "\e928";
+}
+.icon-chat-upload-line:before {
+  content: "\e929";
+}
+.icon-chat-voice-fill:before {
+  content: "\e92a";
+}
+.icon-chat-voice-line:before {
+  content: "\e92b";
+}
+.icon-discuss-fill:before {
+  content: "\e92c";
+}
+.icon-discuss-line:before {
+  content: "\e92d";
+}
+.icon-feedback-fill:before {
+  content: "\e92e";
+}
+.icon-feedback-line:before {
+  content: "\e92f";
+}
+.icon-message-2-fill:before {
+  content: "\e930";
+}
+.icon-message-2-line:before {
+  content: "\e931";
+}
+.icon-message-3-fill:before {
+  content: "\e932";
+}
+.icon-message-3-line:before {
+  content: "\e933";
+}
+.icon-message-fill:before {
+  content: "\e934";
+}
+.icon-message-line:before {
+  content: "\e935";
+}
+.icon-question-answer-fill:before {
+  content: "\e936";
+}
+.icon-question-answer-line:before {
+  content: "\e937";
+}
+.icon-questionnaire-fill:before {
+  content: "\e938";
+}
+.icon-questionnaire-line:before {
+  content: "\e939";
+}
+.icon-video-chat-fill:before {
+  content: "\e93a";
+}
+.icon-video-chat-line:before {
+  content: "\e93b";
+}

@@ -1,0 +1,13 @@
+@use "../../scss.utils.scss" as utils;
+
+:root {
+
+  --measurements-radius-xxs: #{utils.pxToVW(2px)};
+  --measurements-radius-xs: #{utils.pxToVW(4px)};
+  --measurements-radius-sm: #{utils.pxToVW(6px)};
+  --measurements-radius-md: #{utils.pxToVW(8px)};
+  --measurements-radius-lg: #{utils.pxToVW(10px)};
+  --measurements-radius-xl: #{utils.pxToVW(12px)};
+  --measurements-radius-xxl: #{utils.pxToVW(16px)};
+  --measurements-radius-xxxl: #{utils.pxToVW(24px)};
+}

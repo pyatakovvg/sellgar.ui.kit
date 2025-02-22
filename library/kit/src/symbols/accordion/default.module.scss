@@ -1,0 +1,31 @@
+@use "../../scss.utils.scss" as utils;
+
+.wrapper {
+
+  display: block;
+  border-radius: var(--measurements-radius-lg);
+  border: 1px solid var(--border-base-alpha);
+  background: var(--background-surface-default);
+  padding: utils.pxToVW(16px) utils.pxToVW(20px);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--background-surface-neutral);
+  }
+}
+
+.header {
+
+  display: block;
+}
+
+.content {
+
+  display: block;
+  margin: utils.pxToVW(4px) 0 0;
+}
+
+.toggled {
+
+  background-color: var(--background-surface-neutral);
+}

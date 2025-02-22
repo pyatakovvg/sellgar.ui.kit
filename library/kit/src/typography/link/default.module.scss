@@ -1,0 +1,16 @@
+.wrapper {
+
+  color: var(--text-accent-blue-accent);
+  font-size: var(--typography-size-body-l);
+  line-height: var(--typography-line-height-body-l);
+  letter-spacing: var(--typography-letter-spacing-body-l);
+  font-weight: 500;
+}
+
+.variant {
+  &--compact {
+    font-size: var(--typography-size-body-m);
+    line-height: var(--typography-line-height-body-m);
+    letter-spacing: var(--typography-letter-spacing-body-m);
+  }
+}

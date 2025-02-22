@@ -1,0 +1,19 @@
+@use "../../scss.utils.scss" as utils;
+
+:root {
+
+  --typography-size-h1: #{utils.pxToVW(72px)};
+  --typography-size-h2: #{utils.pxToVW(64px)};
+  --typography-size-h3: #{utils.pxToVW(48px)};
+  --typography-size-h4: #{utils.pxToVW(36px)};
+  --typography-size-h5: #{utils.pxToVW(30px)};
+  --typography-size-h6: #{utils.pxToVW(24px)};
+
+  --typography-size-body-l: #{utils.pxToVW(20px)};
+  --typography-size-body-m: #{utils.pxToVW(18px)};
+  --typography-size-body-s: #{utils.pxToVW(16px)};
+
+  --typography-size-caption-l: #{utils.pxToVW(14px)};
+  --typography-size-caption-m: #{utils.pxToVW(12px)};
+  --typography-size-caption-s: #{utils.pxToVW(10px)};
+}

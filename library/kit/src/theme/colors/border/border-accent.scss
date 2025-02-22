@@ -1,0 +1,34 @@
+:root {
+  --border-accent-blue: var(--colors-blue-5);
+  --border-accent-blue-accent: var(--colors-blue-8);
+
+  --border-accent-green: var(--colors-green-5);
+  --border-accent-green-accent: var(--colors-green-8);
+
+  --border-accent-orange: var(--colors-orange-5);
+  --border-accent-orange-accent: var(--colors-orange-8);
+
+  --border-accent-red: var(--colors-red-5);
+  --border-accent-red-accent: var(--colors-red-8);
+
+  --border-accent-purple: var(--colors-purple-5);
+  --border-accent-purple-accent: var(--colors-purple-8);
+}
+
+:root[data-theme="dark"] {
+
+  --border-accent-blue: var(--colors-blue-5a);
+  --border-accent-blue-accent: var(--colors-blue-8);
+
+  --border-accent-green: var(--colors-green-5a);
+  --border-accent-green-accent: var(--colors-green-8);
+
+  --border-accent-orange: var(--colors-orange-5a);
+  --border-accent-orange-accent: var(--colors-orange-8);
+
+  --border-accent-red: var(--colors-red-5a);
+  --border-accent-red-accent: var(--colors-red-8);
+
+  --border-accent-purple: var(--colors-purple-5a);
+  --border-accent-purple-accent: var(--colors-purple-8);
+}

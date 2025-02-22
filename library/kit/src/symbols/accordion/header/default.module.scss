@@ -1,0 +1,47 @@
+@use "../../../scss.utils.scss" as utils;
+
+.wrapper {
+
+  display: flex;
+  flex-direction: row;
+  flex: 1 0;
+}
+
+.label {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+}
+
+.text {
+
+  color: var(--text-base-primary);
+  font-size: var(--typography-size-body-m);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--typography-line-height-body-m);
+  letter-spacing: var(--typography-letter-spacing-body-m);
+}
+
+.control {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  align-items: center;
+  margin: 0 0 0 utils.pxToVW(20px);
+  cursor: pointer;
+}
+
+.icon {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: utils.pxToVW(20px);
+  height: utils.pxToVW(20px);
+  color: var(--icon-base-secondary);
+}

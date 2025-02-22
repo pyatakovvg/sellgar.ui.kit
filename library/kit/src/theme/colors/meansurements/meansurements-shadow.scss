@@ -1,0 +1,6 @@
+@use "../../scss.utils.scss" as utils;
+
+:root {
+
+  --measurements-shadows-xs:  0 #{utils.pxToVW(1px)} #{utils.pxToVW(2px)} 0 rgba(20, 21, 26, 0.05);
+}

@@ -1,0 +1,45 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+
+import * as ButtonStory from './button.stories.ts';
+
+<Meta of={ButtonStory} />
+
+# Компонент Button
+
+<Canvas>
+  <div style={{ display: 'inline-block' }}>
+    <Story of={ButtonStory.Default}/>
+  </div>
+</Canvas>
+
+<Controls />
+
+
+## Варианты
+
+### Primary
+<div style={{ display: 'inline-block' }}>
+  <Story of={ButtonStory.Primary}/>
+</div>
+
+```tsx
+<Button>Click me!</Button>
+```
+
+### Success
+<div style={{ display: 'inline-block' }}>
+  <Story of={ButtonStory.Success}/>
+</div>
+
+```tsx
+<Button mode={EMode.SUCCESS}>Click me!</Button>
+```
+
+### Danger
+<div style={{ display: 'inline-block' }}>
+  <Story of={ButtonStory.Danger}/>
+</div>
+
+```tsx
+<Button mode={EMode.DANGER}>Click me!</Button>
+```
