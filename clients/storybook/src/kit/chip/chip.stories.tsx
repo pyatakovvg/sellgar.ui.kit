@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Chip, iconName } from '@library/kit';
+import { Chip, Avatar, iconName } from '@library/kit';
 
 const meta: Meta<typeof Chip> = {
   title: 'Kit/Symbols/Chip',
@@ -10,18 +10,12 @@ const meta: Meta<typeof Chip> = {
   },
   tags: ['autodocs'],
   args: {
-    type: 'icon',
     disabled: false,
     isActive: false,
     label: 'Label',
     size: 'lg',
-    leadicon: 'checkbox-circle-fill',
   },
   argTypes: {
-    type: {
-      options: ['icon', 'slot'],
-      control: 'select',
-    },
     shape: {
       options: ['rounded', 'pill'],
       control: 'select',
@@ -45,4 +39,16 @@ export default meta;
 
 export const Default: Story = {
   args: {},
+  render: (args) => {
+    return (
+      <div>
+        <div>
+          <Chip {...args} type={'icon'} leadicon={'checkbox-circle-fill'} />
+        </div>
+        <div style={{ marginTop: '10px' }}>
+          <Chip {...args} type={'slot'} leadslot={<Avatar size={'xs'} color={'green'} />} />
+        </div>
+      </div>
+    );
+  },
 };

@@ -1,0 +1,80 @@
+.wrapper {
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.input {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.icon {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-action-normal);
+  background: var(--background-checkbox-default);
+  border-radius: var(--measurements-radius-full);
+  box-sizing: border-box;
+}
+
+.size {
+  &--md {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--sm {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.input:checked + .icon {
+
+  border: 2px solid var(--border-select-primary);
+}
+
+.input:checked + .icon:before {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  content: '';
+  border-radius: var(--measurements-radius-full);
+  background: var(--background-checkbox-checked);
+}
+
+.input:checked + .icon:before {
+
+  background: var(--background-checkbox-checked);
+}
+
+.input:disabled:is(:checked) + .icon {
+
+  border-color: var(--border-action-disabled);
+}
+
+.input:disabled:not(:checked) + .icon {
+
+  background: var(--background-checkbox-disabled);
+}
+
+.input:disabled:is(:checked) + .icon:before {
+
+  border-color: var(--border-action-disabled);
+  background: var(--background-checkbox-disabled);
+}

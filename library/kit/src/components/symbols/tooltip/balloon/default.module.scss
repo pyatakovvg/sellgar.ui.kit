@@ -1,0 +1,23 @@
+
+.wrapper {
+
+  display: inline-flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  max-width: 232px;
+  border-radius: var(--measurements-radius-sm);
+  border: 1px solid var(--border-action-normal);
+  background: var(--background-surface-default);
+  box-shadow: 0 10px 16px -3px rgba(20, 21, 26, 0.05),
+              0 3px 10px -2px rgba(20, 21, 26, 0.02);
+}
+
+.size {
+  &--sm {
+    padding: 4px 8px;
+  }
+
+  &--md {
+    padding: 8px 12px;
+  }
+}

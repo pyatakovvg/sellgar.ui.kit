@@ -53,7 +53,7 @@ export const WithIcon: React.FC<IProps> = ({
           <Icon icon={leadicon} />
         </div>
       )}
-      <div className={s.label}>{label}</div>
+      <span className={s.label}>{label}</span>
       {isActive && (
         <div className={s.close}>
           <Icon icon={'close-line'} />

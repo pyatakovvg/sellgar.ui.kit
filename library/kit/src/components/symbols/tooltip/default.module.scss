@@ -1,0 +1,55 @@
+
+.wrapper {
+
+  display: inline-flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.icon {
+
+  display: inline-flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: var(--typography-size-body-s);
+  color: var(--icon-base-quaternary);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--icon-base-secondary);
+  }
+}
+
+.active,
+.active:hover {
+  color: var(--icon-base-primary);
+}
+
+.arrow {
+
+  fill: var(--border-action-normal);
+  z-index: 10;
+}
+
+.arrow2 {
+
+  fill: var(--background-surface-default);
+  z-index: 20;
+}
+
+.label {
+
+  display: block;
+  color: var(--text-base-primary);
+}
+
+.caption {
+
+  display: block;
+  color: var(--text-base-secondary);
+  margin: 4px 0 0;
+}
