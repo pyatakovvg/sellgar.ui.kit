@@ -1,0 +1,48 @@
+.wrapper {
+
+  display: inline-flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.element {
+
+  display: block;
+}
+
+.content {
+
+  display: block;
+}
+
+.label {
+  color: var(--text-base-primary);
+}
+
+.caption {
+  color: var(--text-base-secondary);
+  margin: 4px 0 0;
+}
+
+.size {
+  &--medium {
+    &.with-label .element {
+      padding: 2px 0 0;
+    }
+
+    .content {
+      margin: 0 0 0 12px;
+    }
+  }
+
+  &--small {
+    &.with-label .element {
+      padding: 1px 0 0;
+    }
+
+    .content {
+      margin: 0 0 0 8px;
+    }
+  }
+}

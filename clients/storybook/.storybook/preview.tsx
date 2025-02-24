@@ -1,9 +1,6 @@
-import 'reflect-metadata';
-
-import { LngProvider } from '@library/lng';
 import type { Preview } from '@storybook/react';
 // @ts-ignore
-import('@library/kit/src/theme/themes.scss');
+import('@library/kit/src/theme/index.css');
 
 // @ts-ignore
 import React from 'react';
@@ -24,9 +21,7 @@ export default preview;
 export const decorators = [
   (Story) => {
     return (
-      <LngProvider>
         <Story />
-      </LngProvider>
     );
   },
 ];

@@ -1,3 +1,2 @@
-export * from './typography';
-
-export * from './symbols';
+export * from './components/symbols';
+export * from './components/wrappers';

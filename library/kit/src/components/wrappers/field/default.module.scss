@@ -1,0 +1,29 @@
+.wrapper {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+}
+
+.label {
+
+  display: inline-flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  margin: 0 0 8px;
+}
+
+.content {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+.caption {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  margin: 8px 0 0;
+}

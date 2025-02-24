@@ -1,0 +1,11 @@
+.wrapper {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  padding: 4px 0;
+  border-radius: var(--measurements-radius-xl);
+  border: 1px solid var(--border-action-normal);
+  background: var(--background-modal-default);
+  box-shadow: var(--measurements-shadows-lg);
+}

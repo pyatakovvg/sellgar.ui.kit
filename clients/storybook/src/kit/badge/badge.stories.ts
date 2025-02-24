@@ -1,39 +1,50 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, iconName } from '@library/kit';
+import { Badge, iconName } from '@library/kit';
 
-const meta: Meta<typeof Button> = {
-  title: 'Kit/Symbols/Button',
-  component: Button,
+const meta: Meta<typeof Badge> = {
+  title: 'Kit/Symbols/Badge',
+  component: Badge,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   args: {
-    style: 'primary',
-    children: 'Button',
-    size: 'lg',
+    stroke: false,
     disabled: false,
+    color: 'gray',
+    label: 'Badge',
+    size: 'lg',
+    leadicon: 'checkbox-circle-fill',
+    tailicon: 'hashtag',
   },
   argTypes: {
+    color: {
+      options: [
+        'gray',
+        'blue',
+        'green',
+        'red',
+        'orange',
+        'purple',
+        'white',
+        'surface',
+        'white-destructive',
+        'surface-destructive',
+      ],
+      control: 'select',
+    },
     shape: {
       options: ['rounded', 'pill'],
       control: 'select',
     },
-    target: {
-      options: [undefined, 'destructive'],
-      control: 'select',
-    },
+
     leadicon: {
       options: [undefined, ...iconName],
       control: 'select',
     },
     tailicon: {
       options: iconName,
-      control: 'select',
-    },
-    style: {
-      options: ['primary', 'secondary', 'tertiary', 'ghost'],
       control: 'select',
     },
     size: {

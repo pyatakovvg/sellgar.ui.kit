@@ -1,0 +1,12 @@
+:root {
+
+  --measurements-radius-xxs: 2px;
+  --measurements-radius-xs: 4px;
+  --measurements-radius-sm: 6px;
+  --measurements-radius-md: 8px;
+  --measurements-radius-lg: 10px;
+  --measurements-radius-xl: 12px;
+  --measurements-radius-xxl: 16px;
+  --measurements-radius-xxxl: 24px;
+  --measurements-radius-full: 999px;
+}

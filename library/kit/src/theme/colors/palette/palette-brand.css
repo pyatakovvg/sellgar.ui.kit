@@ -1,0 +1,28 @@
+:root {
+
+  --colors-purple-1: #F7F1FD;
+  --colors-purple-2: #ECDFFB;
+  --colors-purple-3: #E1CDF9;
+  --colors-purple-4: #D8C0F7;
+  --colors-purple-5: #CDAEF4;
+  --colors-purple-6: #B78AF0;
+  --colors-purple-7: #A265EB;
+  --colors-purple-8: #924FE8;
+  --colors-purple-9: #741DE2;
+  --colors-purple-10: #6619C7;
+  --colors-purple-11: #5314A3;
+  --colors-purple-12: #3A0F71;
+  --colors-purple-13: #1C0736;
+
+  --colors-purple-1a: rgba(135, 61, 230, .1);
+  --colors-purple-2a: rgba(135, 61, 230, .15);
+  --colors-purple-3a: rgba(135, 61, 230, .2);
+  --colors-purple-4a: rgba(135, 61, 230, .25);
+  --colors-purple-5a: rgba(135, 61, 230, .3);
+  --colors-purple-6a: rgba(135, 61, 230, .4);
+  --colors-purple-7a: rgba(135, 61, 230, .5);
+  --colors-purple-8a: rgba(135, 61, 230, .6);
+  --colors-purple-9a: rgba(135, 61, 230, .7);
+  --colors-purple-10a: rgba(135, 61, 230, .8);
+  --colors-purple-11a: rgba(135, 61, 230, .9);
+}

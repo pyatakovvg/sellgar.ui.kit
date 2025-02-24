@@ -1,0 +1,17 @@
+:root {
+
+  --typography-line-height-h1: 80px;
+  --typography-line-height-h2: 72px;
+  --typography-line-height-h3: 56px;
+  --typography-line-height-h4: 44px;
+  --typography-line-height-h5: 36px;
+  --typography-line-height-h6: 32px;
+
+  --typography-line-height-body-l: 28px;
+  --typography-line-height-body-m: 26px;
+  --typography-line-height-body-s: 24px;
+
+  --typography-line-height-caption-l: 20px;
+  --typography-line-height-caption-m: 16px;
+  --typography-line-height-caption-s: 14px;
+}

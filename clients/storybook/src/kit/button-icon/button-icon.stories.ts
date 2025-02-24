@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, iconName } from '@library/kit';
+import { ButtonIcon, iconName } from '@library/kit';
 
-const meta: Meta<typeof Button> = {
-  title: 'Kit/Symbols/Button',
-  component: Button,
+const meta: Meta<typeof ButtonIcon> = {
+  title: 'Kit/Symbols/ButtonIcon',
+  component: ButtonIcon,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   args: {
     style: 'primary',
-    children: 'Button',
     size: 'lg',
+    icon: 'delete-row',
     disabled: false,
   },
   argTypes: {
@@ -24,12 +24,8 @@ const meta: Meta<typeof Button> = {
       options: [undefined, 'destructive'],
       control: 'select',
     },
-    leadicon: {
+    icon: {
       options: [undefined, ...iconName],
-      control: 'select',
-    },
-    tailicon: {
-      options: iconName,
       control: 'select',
     },
     style: {
@@ -39,9 +35,6 @@ const meta: Meta<typeof Button> = {
     size: {
       options: ['lg', 'md', 'sm', 'xs'],
       control: 'select',
-    },
-    label: {
-      control: 'text',
     },
   },
 };

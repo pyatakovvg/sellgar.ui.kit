@@ -1,0 +1,27 @@
+.wrapper {
+
+  display: inline-flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.label {
+
+  display: block;
+  color: var(--text-base-primary);
+}
+
+.caption {
+
+  display: block;
+  color: var(--text-base-tertiary);
+  margin: 0 0 0 4px;
+}
+
+.required {
+
+  display: block;
+  color: var(--text-status-destructive);
+  margin: 0 0 0 4px;
+}

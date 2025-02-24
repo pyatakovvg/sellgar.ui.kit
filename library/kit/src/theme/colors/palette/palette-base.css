@@ -1,0 +1,9 @@
+:root {
+
+  --colors-base-white: #FFFFFF;
+
+  --colors-base-dark-0: #000000;
+  --colors-base-dark-1: #0B0C0E;
+
+  --colors-base-transparent: rgba(255, 255, 255, 0.0001);
+}

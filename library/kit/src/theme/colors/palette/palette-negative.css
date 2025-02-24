@@ -1,0 +1,28 @@
+:root {
+
+  --colors-red-1: #FDF2F1;
+  --colors-red-2: #FCE5E4;
+  --colors-red-3: #F9D4D2;
+  --colors-red-4: #F7C3C0;
+  --colors-red-5: #F5B2AD;
+  --colors-red-6: #F08B85;
+  --colors-red-7: #EB6960;
+  --colors-red-8: #E6483D;
+  --colors-red-9: #D9281C;
+  --colors-red-10: #BE2318;
+  --colors-red-11: #9A1C13;
+  --colors-red-12: #64120D;
+  --colors-red-13: #360A07;
+
+  --colors-red-1a: rgba(230, 72, 61, .1);
+  --colors-red-2a: rgba(230, 72, 61, .15);
+  --colors-red-3a: rgba(230, 72, 61, .2);
+  --colors-red-4a: rgba(230, 72, 61, .25);
+  --colors-red-5a: rgba(230, 72, 61, .3);
+  --colors-red-6a: rgba(230, 72, 61, .4);
+  --colors-red-7a: rgba(230, 72, 61, .5);
+  --colors-red-8a: rgba(230, 72, 61, .6);
+  --colors-red-9a: rgba(230, 72, 61, .7);
+  --colors-red-10a: rgba(230, 72, 61, .8);
+  --colors-red-11a: rgba(230, 72, 61, .9);
+}

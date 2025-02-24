@@ -1,0 +1,159 @@
+.wrapper {
+
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.notification {
+
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  z-index: 10;
+}
+
+.content {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--measurements-radius-full);
+  z-index: 0;
+}
+
+.icon {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.status {
+
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  z-index: 10;
+}
+
+.size {
+  &--2xl {
+    width: 64px;
+    height: 64px;
+
+    .icon {
+      font-size: var(--typography-size-h5);
+    }
+  }
+
+  &--xl {
+    width: 56px;
+    height: 56px;
+
+    .icon {
+      font-size: var(--typography-size-h6);
+    }
+  }
+
+  &--lg {
+    width: 48px;
+    height: 48px;
+
+    .icon {
+      font-size: var(--typography-size-body-l);
+    }
+  }
+
+  &--md {
+    width: 40px;
+    height: 40px;
+
+    .icon {
+      font-size: var(--typography-size-body-m);
+    }
+  }
+
+  &--sm {
+    width: 32px;
+    height: 32px;
+
+    .icon {
+      font-size: var(--typography-size-caption-l);
+    }
+  }
+
+  &--xs {
+    width: 20px;
+    height: 20px;
+
+    .icon {
+      font-size: var(--typography-size-caption-s);
+    }
+  }
+}
+
+.color {
+  &--gray {
+    .content {
+      background: var(--background-accent-gray-subtle);
+
+      .icon {
+        color: var(--icon-base-secondary);
+      }
+    }
+  }
+
+  &--green {
+    .content {
+      background: var(--background-accent-green-subtle);
+
+      .icon {
+        color: var(--icon-accent-green);
+      }
+    }
+  }
+
+  &--blue {
+    .content {
+      background: var(--background-accent-blue-subtle);
+
+      .icon {
+        color: var(--icon-accent-blue);
+      }
+    }
+  }
+
+  &--orange {
+    .content {
+      background: var(--background-accent-orange-subtle);
+
+      .icon {
+        color: var(--icon-accent-orange);
+      }
+    }
+  }
+
+  &--red {
+    .content {
+      background: var(--background-accent-red-subtle);
+
+      .icon {
+        color: var(--icon-accent-red);
+      }
+    }
+  }
+
+  &--purple {
+    .content {
+      background: var(--background-accent-purple-subtle);
+
+      .icon {
+        color: var(--icon-accent-purple);
+      }
+    }
+  }
+}

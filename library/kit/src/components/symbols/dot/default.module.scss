@@ -1,0 +1,69 @@
+.wrapper {
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  border-radius: var(--measurements-radius-full);
+  border: 2px solid var(--border-base-surface);
+  box-sizing: content-box;
+}
+
+.size {
+  &--2xl {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--xl {
+    width: 14px;
+    height: 14px;
+  }
+
+  &--lg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &--md {
+    width: 10px;
+    height: 10px;
+  }
+
+  &--sm {
+    width: 8px;
+    height: 8px;
+  }
+
+  &--xs {
+    width: 5px;
+    height: 5px;
+    border-width: 1.5px;
+  }
+}
+
+.color {
+  &--gray {
+    background: var(--background-accent-gray-accent);
+  }
+
+  &--green {
+    background: var(--background-accent-green-accent);
+  }
+
+  &--blue {
+    background: var(--background-accent-blue-accent);
+  }
+
+  &--orange {
+    background: var(--background-accent-orange-accent);
+  }
+
+  &--red {
+    background: var(--background-accent-red-accent);
+  }
+
+  &--purple {
+    background: var(--background-accent-purple-accent);
+  }
+}

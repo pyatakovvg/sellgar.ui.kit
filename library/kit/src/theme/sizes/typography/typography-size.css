@@ -1,0 +1,17 @@
+:root {
+
+  --typography-size-h1: 72px;
+  --typography-size-h2: 64px;
+  --typography-size-h3: 48px;
+  --typography-size-h4: 36px;
+  --typography-size-h5: 30px;
+  --typography-size-h6: 24px;
+
+  --typography-size-body-l: 20px;
+  --typography-size-body-m: 18px;
+  --typography-size-body-s: 16px;
+
+  --typography-size-caption-l: 14px;
+  --typography-size-caption-m: 12px;
+  --typography-size-caption-s: 10px;
+}

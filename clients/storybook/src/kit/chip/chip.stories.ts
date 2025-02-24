@@ -1,43 +1,37 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, iconName } from '@library/kit';
+import { Chip, iconName } from '@library/kit';
 
-const meta: Meta<typeof Button> = {
-  title: 'Kit/Symbols/Button',
-  component: Button,
+const meta: Meta<typeof Chip> = {
+  title: 'Kit/Symbols/Chip',
+  component: Chip,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   args: {
-    style: 'primary',
-    children: 'Button',
-    size: 'lg',
+    type: 'icon',
     disabled: false,
+    isActive: false,
+    label: 'Label',
+    size: 'lg',
+    leadicon: 'checkbox-circle-fill',
   },
   argTypes: {
-    shape: {
-      options: ['rounded', 'pill'],
+    type: {
+      options: ['icon', 'slot'],
       control: 'select',
     },
-    target: {
-      options: [undefined, 'destructive'],
+    shape: {
+      options: ['rounded', 'pill'],
       control: 'select',
     },
     leadicon: {
       options: [undefined, ...iconName],
       control: 'select',
     },
-    tailicon: {
-      options: iconName,
-      control: 'select',
-    },
-    style: {
-      options: ['primary', 'secondary', 'tertiary', 'ghost'],
-      control: 'select',
-    },
     size: {
-      options: ['lg', 'md', 'sm', 'xs'],
+      options: ['lg', 'md', 'sm'],
       control: 'select',
     },
     label: {

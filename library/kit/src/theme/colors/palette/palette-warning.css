@@ -1,0 +1,28 @@
+:root {
+
+  --colors-orange-1: #FEF4EC;
+  --colors-orange-2: #FDEAD8;
+  --colors-orange-3: #FCDDC0;
+  --colors-orange-4: #FAD0A9;
+  --colors-orange-5: #F9C594;
+  --colors-orange-6: #F8B577;
+  --colors-orange-7: #F6A355;
+  --colors-orange-8: #F48E2F;
+  --colors-orange-9: #E9760C;
+  --colors-orange-10: #D56C0B;
+  --colors-orange-11: #AE590A;
+  --colors-orange-12: #613105;
+  --colors-orange-13: #301903;
+
+  --colors-orange-1a: rgba(244, 142, 47, 10%);
+  --colors-orange-2a: rgba(244, 142, 47, 15%);
+  --colors-orange-3a: rgba(244, 142, 47, 20%);
+  --colors-orange-4a: rgba(244, 142, 47, 25%);
+  --colors-orange-5a: rgba(244, 142, 47, 30%);
+  --colors-orange-6a: rgba(244, 142, 47, 40%);
+  --colors-orange-7a: rgba(244, 142, 47, 50%);
+  --colors-orange-8a: rgba(244, 142, 47, 60%);
+  --colors-orange-9a: rgba(244, 142, 47, 70%);
+  --colors-orange-10a: rgba(244, 142, 47, 80%);
+  --colors-orange-11a: rgba(244, 142, 47, 90%);
+}
