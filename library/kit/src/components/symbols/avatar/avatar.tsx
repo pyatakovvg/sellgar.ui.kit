@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Icon } from '../icon';
-import { Dot } from '../dot';
+import { Dot } from '../../misc';
 
 import cn from 'classnames';
 import s from './default.module.scss';

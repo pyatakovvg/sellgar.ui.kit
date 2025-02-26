@@ -55,7 +55,7 @@ export const Typography: React.FC<React.PropsWithChildren<IProps>> = (props) => 
     if (React.isValidElement(child)) {
       const childElement = child as React.ReactHTMLElement<never>;
       return React.cloneElement(childElement, {
-        className,
+        className: cn(className, childElement.props.className),
       });
     }
     return child;
