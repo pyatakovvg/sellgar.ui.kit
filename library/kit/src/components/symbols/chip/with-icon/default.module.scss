@@ -4,7 +4,7 @@
   flex-direction: row;
   flex: 0 0 auto;
   align-items: center;
-  border: 1px solid var(--border-action-normal);
+  border: var(--numbers-1) solid var(--border-action-normal);
   background: var(--background-chip-primary);
   box-shadow: var(--measurements-shadows-xs);
   cursor: pointer;
@@ -21,9 +21,9 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  margin: 0 4px 0 0;
+  width: var(--numbers-20);
+  height: var(--numbers-20);
+  margin: 0 var(--numbers-4) 0 0;
   color: var(--icon-base-secondary);
 }
 
@@ -34,7 +34,7 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  margin: 0 0 0 4px;
+  margin: 0 0 0 var(--numbers-4);
   font-size: var(--typography-size-body-l);
   color: var(--text-accent-purple-tertiary);
 }
@@ -45,7 +45,7 @@
   flex-direction: column;
   flex: 0 0 auto;
   color: var(--text-base-primary);
-  padding: 0 4px;
+  padding: 0 var(--numbers-4);
 }
 
 .active {
@@ -90,12 +90,12 @@
       }
     }
 
-    height: 36px;
-    padding: 8px 12px;
+    height: var(--numbers-36);
+    padding: var(--numbers-8) var(--numbers-12);
 
     .lead-icon {
-      width: 20px;
-      height: 20px;
+      width: var(--numbers-20);
+      height: var(--numbers-20);
       font-size: var(--typography-size-body-m);
     }
 
@@ -107,8 +107,8 @@
     }
 
     .close {
-      width: 20px;
-      height: 20px;
+      width: var(--numbers-20);
+      height: var(--numbers-20);
       font-size: var(--typography-size-body-m);
     }
   }
@@ -120,12 +120,12 @@
       }
     }
 
-    height: 32px;
-    padding: 6px 10px;
+    height: var(--numbers-32);
+    padding: var(--numbers-6) var(--numbers-10);
 
     .lead-icon {
-      width: 16px;
-      height: 16px;
+      width: var(--numbers-16);
+      height: var(--numbers-16);
       font-size: var(--typography-size-body-s);
     }
 
@@ -137,8 +137,8 @@
     }
 
     .close {
-      width: 16px;
-      height: 16px;
+      width: var(--numbers-16);
+      height: var(--numbers-16);
       font-size: var(--typography-size-body-s);
     }
   }
@@ -150,12 +150,12 @@
       }
     }
 
-    height: 24px;
-    padding: 4px 8px;
+    height: var(--numbers-24);
+    padding: var(--numbers-4) var(--numbers-8);
 
     .lead-icon {
-      width: 16px;
-      height: 16px;
+      width: var(--numbers-16);
+      height: var(--numbers-16);
       font-size: var(--typography-size-body-s);
     }
 
@@ -167,8 +167,8 @@
     }
 
     .close {
-      width: 16px;
-      height: 16px;
+      width: var(--numbers-16);
+      height: var(--numbers-16);
       font-size: var(--typography-size-body-s);
     }
   }

@@ -23,7 +23,7 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border-action-normal);
+  border: var(--numbers-1) solid var(--border-action-normal);
   background: var(--background-checkbox-default);
   border-radius: var(--measurements-radius-full);
   box-sizing: border-box;
@@ -31,19 +31,19 @@
 
 .size {
   &--md {
-    width: 20px;
-    height: 20px;
+    width: var(--numbers-20);
+    height: var(--numbers-20);
   }
 
   &--sm {
-    width: 16px;
-    height: 16px;
+    width: var(--numbers-16);
+    height: var(--numbers-16);
   }
 }
 
 .input:checked + .icon {
 
-  border: 2px solid var(--border-select-primary);
+  border: var(--numbers-2) solid var(--border-select-primary);
 }
 
 .input:checked + .icon:before {
@@ -51,8 +51,8 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  width: 8px;
-  height: 8px;
+  width: var(--numbers-8);
+  height: var(--numbers-8);
   content: '';
   border-radius: var(--measurements-radius-full);
   background: var(--background-checkbox-checked);

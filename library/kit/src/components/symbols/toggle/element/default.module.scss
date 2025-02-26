@@ -44,7 +44,7 @@
 
 .input:checked + .icon {
 
-  padding: 2px 2px 2px 16px;
+  padding: var(--numbers-2) var(--numbers-2) var(--numbers-2) var(--numbers-16);
   background: var(--background-toggle-active);
 }
 
@@ -72,18 +72,18 @@
 
 .size {
   &--md:before {
-    width: 16px;
-    height: 16px;
+    width: var(--numbers-16);
+    height: var(--numbers-16);
   }
 
   &--sm:before {
-    width: 12px;
-    height: 12px;
+    width: var(--numbers-12);
+    height: var(--numbers-12);
   }
 }
 
-.input:not(:checked) + .icon.size--md {padding: 2px 16px 2px 2px;}
-.input:checked + .icon.size--md {padding: 2px 2px 2px 16px;}
+.input:not(:checked) + .icon.size--md { padding: var(--numbers-2) var(--numbers-16) var(--numbers-2) var(--numbers-2); }
+.input:checked + .icon.size--md { padding: var(--numbers-2) var(--numbers-2) var(--numbers-2) var(--numbers-16); }
 
-.input:not(:checked) + .icon.size--sm {padding: 2px 14px 2px 2px;}
-.input:checked + .icon.size--sm {padding: 2px 2px 2px 14px;}
+.input:not(:checked) + .icon.size--sm { padding: var(--numbers-2) var(--numbers-14) var(--numbers-2) var(--numbers-2); }
+.input:checked + .icon.size--sm { padding: var(--numbers-2) var(--numbers-2) var(--numbers-2) var(--numbers-14); }

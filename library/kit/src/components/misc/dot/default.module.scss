@@ -5,40 +5,40 @@
   flex-direction: column;
   flex: 0 0 auto;
   border-radius: var(--measurements-radius-full);
-  border: 2px solid var(--border-base-surface);
+  border: var(--numbers-2) solid var(--border-base-surface);
   box-sizing: content-box;
 }
 
 .size {
   &--2xl {
-    width: 16px;
-    height: 16px;
+    width: var(--numbers-16);
+    height: var(--numbers-16);
   }
 
   &--xl {
-    width: 14px;
-    height: 14px;
+    width: var(--numbers-14);
+    height: var(--numbers-14);
   }
 
   &--lg {
-    width: 12px;
-    height: 12px;
+    width: var(--numbers-12);
+    height: var(--numbers-12);
   }
 
   &--md {
-    width: 10px;
-    height: 10px;
+    width: var(--numbers-10);
+    height: var(--numbers-10);
   }
 
   &--sm {
-    width: 8px;
-    height: 8px;
+    width: var(--numbers-8);
+    height: var(--numbers-8);
   }
 
   &--xs {
-    width: 6px;
-    height: 6px;
-    border-width: 1.5px;
+    width: var(--numbers-6);
+    height: var(--numbers-6);
+    border-width: var(--numbers-1_5);
   }
 }
 

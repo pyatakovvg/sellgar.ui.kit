@@ -9,8 +9,8 @@
 .notification {
 
   position: absolute;
-  top: -1px;
-  right: -1px;
+  top: 0;
+  right: 0;
   z-index: 10;
 }
 
@@ -35,15 +35,15 @@
 .status {
 
   position: absolute;
-  right: -1px;
-  bottom: -1px;
+  right: 0;
+  bottom: 0;
   z-index: 10;
 }
 
 .size {
   &--2xl {
-    width: 64px;
-    height: 64px;
+    width: var(--numbers-64);
+    height: var(--numbers-64);
 
     .icon {
       font-size: var(--typography-size-h5);
@@ -51,8 +51,8 @@
   }
 
   &--xl {
-    width: 56px;
-    height: 56px;
+    width: var(--numbers-56);
+    height: var(--numbers-56);
 
     .icon {
       font-size: var(--typography-size-h6);
@@ -60,8 +60,8 @@
   }
 
   &--lg {
-    width: 48px;
-    height: 48px;
+    width: var(--numbers-48);
+    height: var(--numbers-48);
 
     .icon {
       font-size: var(--typography-size-body-l);
@@ -69,8 +69,8 @@
   }
 
   &--md {
-    width: 40px;
-    height: 40px;
+    width: var(--numbers-40);
+    height: var(--numbers-40);
 
     .icon {
       font-size: var(--typography-size-body-m);
@@ -78,8 +78,8 @@
   }
 
   &--sm {
-    width: 32px;
-    height: 32px;
+    width: var(--numbers-32);
+    height: var(--numbers-32);
 
     .icon {
       font-size: var(--typography-size-caption-l);
@@ -87,8 +87,8 @@
   }
 
   &--xs {
-    width: 20px;
-    height: 20px;
+    width: var(--numbers-20);
+    height: var(--numbers-20);
 
     .icon {
       font-size: var(--typography-size-caption-s);

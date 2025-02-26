@@ -14,7 +14,7 @@
 }
 
 .left-action {
-  padding: 10px;
+  padding: var(--numbers-10);
   color: var(--text-base-primary);
   cursor: pointer;
 
@@ -24,7 +24,7 @@
 }
 
 .right-action {
-  padding: 10px;
+  padding: var(--numbers-10);
   color: var(--text-base-primary);
   cursor: pointer;
 
@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  min-width: 28px;
+  min-width: var(--numbers-28);
   text-align: center;
   color: var(--text-base-primary);
   font-size: var(--typography-size-caption-l);
@@ -64,11 +64,11 @@
 
 .size {
   &--lg {
-    height: 40px;
+    height: var(--numbers-40);
 
     .icon {
-      width: 20px;
-      height: 20px;
+      width: var(--numbers-20);
+      height: var(--numbers-20);
       font-size: var(--typography-size-body-s);
     }
 
@@ -80,11 +80,11 @@
   }
 
   &--md {
-    height: 32px;
+    height: var(--numbers-32);
 
     .icon {
-      width: 12px;
-      height: 12px;
+      width: var(--numbers-12);
+      height: var(--numbers-12);
       font-size: var(--typography-size-caption-m);
     }
 
@@ -97,5 +97,5 @@
 }
 
 .outline {
-  border: 1px solid var(--border-action-normal);
+  border: var(--numbers-1) solid var(--border-action-normal);
 }

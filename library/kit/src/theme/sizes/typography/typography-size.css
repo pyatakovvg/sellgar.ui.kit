@@ -1,17 +1,17 @@
 :root {
 
-  --typography-size-h1: 72px;
-  --typography-size-h2: 64px;
-  --typography-size-h3: 48px;
-  --typography-size-h4: 36px;
-  --typography-size-h5: 30px;
-  --typography-size-h6: 24px;
+  --typography-size-h1: var(--numbers-72);
+  --typography-size-h2: var(--numbers-64);
+  --typography-size-h3: var(--numbers-48);
+  --typography-size-h4: var(--numbers-36);
+  --typography-size-h5: var(--numbers-30);
+  --typography-size-h6: var(--numbers-24);
 
-  --typography-size-body-l: 20px;
-  --typography-size-body-m: 18px;
-  --typography-size-body-s: 16px;
+  --typography-size-body-l: var(--numbers-20);
+  --typography-size-body-m: var(--numbers-18);
+  --typography-size-body-s: var(--numbers-16);
 
-  --typography-size-caption-l: 14px;
-  --typography-size-caption-m: 12px;
-  --typography-size-caption-s: 10px;
+  --typography-size-caption-l: var(--numbers-14);
+  --typography-size-caption-m: var(--numbers-12);
+  --typography-size-caption-s: var(--numbers-10);
 }

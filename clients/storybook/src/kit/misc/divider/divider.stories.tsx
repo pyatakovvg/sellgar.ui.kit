@@ -17,9 +17,7 @@ type Story = StoryObj<typeof meta>;
 export default meta;
 
 export const Default: Story = {
-  args: {
-    type: 'default',
-  },
+  args: {},
   render: () => {
     return (
       <div style={{ width: 200 }}>

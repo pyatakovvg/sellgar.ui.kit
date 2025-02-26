@@ -16,12 +16,12 @@
 
   display: block;
   color: var(--text-base-tertiary);
-  margin: 0 0 0 4px;
+  margin: 0 0 0 var(--numbers-4);
 }
 
 .required {
 
   display: block;
   color: var(--text-status-destructive);
-  margin: 0 0 0 4px;
+  margin: 0 0 0 var(--numbers-4);
 }

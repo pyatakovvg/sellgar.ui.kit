@@ -4,7 +4,7 @@
   flex-direction: row;
   flex: 0 0 auto;
   align-items: center;
-  padding: 2px 0;
+  padding: var(--numbers-2) 0;
 }
 
 .lead-icon {
@@ -14,12 +14,13 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
+  font-size: var(--typography-size-body-m);
 }
 
 .caption {
 
   display: block;
-  margin: 0 0 0 4px;
+  margin: 0 0 0 var(--numbers-4);
 }
 
 .state {

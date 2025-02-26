@@ -79,77 +79,77 @@
 .size {
   &--large {
 
-    height: 28px;
+    height: var(--numbers-28);
     font-weight: var(--typography-weight-semi-bold);
     font-size: var(--typography-size-caption-l);
     line-height: var(--typography-line-height-caption-l);
     letter-spacing: var(--typography-letter-spacing-caption-l);
-    padding: 4px 6px;
+    padding: var(--numbers-4) var(--numbers-6);
 
     .label {
-      padding: 0 4px;
+      padding: 0 var(--numbers-4);
     }
 
     .lead-icon,
     .tail-icon {
-      width: 16px;
-      height: 16px;
+      width: var(--numbers-16);
+      height: var(--numbers-16);
     }
   }
 
   &--medium {
 
-    height: 24px;
+    height: var(--numbers-24);
     font-weight: var(--typography-weight-semi-bold);
     font-size: var(--typography-size-caption-l);
     line-height: var(--typography-line-height-caption-l);
     letter-spacing: var(--typography-letter-spacing-caption-l);
-    padding: 2px 4px;
+    padding: var(--numbers-2) var(--numbers-4);
 
     .label {
-      padding: 0 4px;
+      padding: 0 var(--numbers-4);
     }
 
     .lead-icon,
     .tail-icon {
-      width: 16px;
-      height: 16px;
+      width: var(--numbers-16);
+      height: var(--numbers-16);
     }
   }
 
   &--small {
 
-    height: 20px;
+    height: var(--numbers-20);
     font-weight: var(--typography-weight-semi-bold);
     font-size: var(--typography-size-caption-m);
     line-height: var(--typography-line-height-caption-m);
     letter-spacing: var(--typography-letter-spacing-caption-m);
-    padding: 2px 3px;
+    padding: var(--numbers-2) var(--numbers-3);
 
     .label {
-      padding: 0 2px;
+      padding: 0 var(--numbers-2);
     }
 
     .lead-icon,
     .tail-icon {
-      width: 14px;
-      height: 14px;
+      width: var(--numbers-14);
+      height: var(--numbers-14);
     }
   }
 
   &--extra-small {
 
-    height: 16px;
+    height: var(--numbers-16);
     font-weight: var(--typography-weight-semi-bold);
     font-size: var(--typography-size-caption-m);
     line-height: var(--typography-line-height-caption-m);
     letter-spacing: var(--typography-letter-spacing-caption-m);
-    padding: 0 2px;
+    padding: 0 var(--numbers-2);
 
     .lead-icon,
     .tail-icon {
-      width: 12px;
-      height: 12px;
+      width: var(--numbers-12);
+      height: var(--numbers-12);
     }
   }
 }
@@ -182,7 +182,7 @@
 
 .stroke {
 
-  border: 1px solid var(--border-base-alpha);
+  border: var(--numbers-1) solid var(--border-base-alpha);
 }
 
 .disabled {

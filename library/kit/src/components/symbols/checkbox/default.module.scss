@@ -22,27 +22,27 @@
 
 .caption {
   color: var(--text-base-secondary);
-  margin: 4px 0 0;
+  margin: var(--numbers-4) 0 0;
 }
 
 .size {
   &--medium {
     &.with-label .element {
-      padding: 2px 0 0;
+      padding: var(--numbers-2) 0 0;
     }
 
     .content {
-      margin: 0 0 0 12px;
+      margin: 0 0 0 var(--numbers-12);
     }
   }
 
   &--small {
     &.with-label .element {
-      padding: 1px 0 0;
+      padding: var(--numbers-1) 0 0;
     }
 
     .content {
-      margin: 0 0 0 8px;
+      margin: 0 0 0 var(--numbers-8);
     }
   }
 }

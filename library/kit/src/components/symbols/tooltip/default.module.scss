@@ -13,8 +13,8 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: var(--numbers-24);
+  height: var(--numbers-24);
   font-size: var(--typography-size-body-s);
   color: var(--icon-base-quaternary);
   cursor: pointer;
@@ -51,5 +51,5 @@
 
   display: block;
   color: var(--text-base-secondary);
-  margin: 4px 0 0;
+  margin: var(--numbers-4) 0 0;
 }
