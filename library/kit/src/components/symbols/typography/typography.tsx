@@ -26,11 +26,11 @@ export const Typography: React.FC<React.PropsWithChildren<IProps>> = (props) => 
       cn(
         {
           [s['font-size__h1']]: props.size === 'h1',
-          [s['font-size__h2']]: props.size === 'h1',
-          [s['font-size__h3']]: props.size === 'h1',
-          [s['font-size__h4']]: props.size === 'h1',
-          [s['font-size__h5']]: props.size === 'h1',
-          [s['font-size__h6']]: props.size === 'h1',
+          [s['font-size__h2']]: props.size === 'h2',
+          [s['font-size__h3']]: props.size === 'h3',
+          [s['font-size__h4']]: props.size === 'h4',
+          [s['font-size__h5']]: props.size === 'h5',
+          [s['font-size__h6']]: props.size === 'h6',
           [s['font-size__body-l']]: props.size === 'body-l',
           [s['font-size__body-m']]: props.size === 'body-m',
           [s['font-size__body-s']]: props.size === 'body-s',

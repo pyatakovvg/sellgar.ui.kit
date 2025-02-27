@@ -44,7 +44,7 @@ const config: StorybookConfig = {
         outDir: './build',
         chunkSizeWarningLimit: 1000, // Увеличьте лимит до 1000 кБ
         rollupOptions: {
-          onwarn(warning, warn) {
+          onwarn(warning: any, warn: any) {
             if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
               return;
             }
@@ -60,9 +60,7 @@ const config: StorybookConfig = {
           },
         },
       },
-      plugins: [
-        react(),
-      ],
+      plugins: [react()],
     });
   },
 };

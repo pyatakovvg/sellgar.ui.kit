@@ -1,0 +1,195 @@
+.wrapper {
+
+  display: inline-flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  .lead-icon {
+
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0 var(--numbers-4) 0 0;
+    color: var(--text-base-secondary);
+  }
+
+  .text {
+    color: var(--text-base-primary);
+  }
+
+  .badge {
+
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border: var(--numbers-1) solid var(--border-base-alpha);
+    color: var(--text-base-secondary);
+    background: var(--background-badge-gray);
+    margin: 0 0 0 var(--numbers-4);
+    box-sizing: border-box;
+
+    .label {
+
+      font-weight: var(--typography-weight-medium);
+    }
+  }
+
+  .tail-icon {
+
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 var(--numbers-4);
+    color: var(--text-base-secondary);
+  }
+
+  &:hover {
+    .text {
+      color: var(--text-base-secondary);
+    }
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    .lead-icon,
+    .tail-icon {
+      color: var(--icon-base-quaternary);
+    }
+
+    .text,
+    .badge {
+      color: var(--text-base-quaternary);
+    }
+
+    .badge {
+      border-color: var(--background-badge-gray);;
+    }
+  }
+}
+
+.size {
+  &--md {
+
+    height: var(--numbers-24);
+    font-size: var(--typography-size-body-s);
+    line-height: var(--typography-line-height-body-s);
+    letter-spacing: var(--typography-letter-spacing-body-s);
+
+    .lead-icon {
+
+      width: var(--numbers-20);
+      height: var(--numbers-20);
+      font-size: var(--typography-size-body-l);
+    }
+
+    .badge {
+      padding: var(--numbers-2) var(--numbers-3);
+      border-radius: var(--measurements-radius-sm);
+
+      .label {
+        font-size: var(--typography-size-caption-m);
+        line-height: var(--typography-line-height-caption-m);
+        letter-spacing: var(--typography-letter-spacing-caption-m);
+        padding: 0 var(--numbers-3);
+      }
+    }
+
+
+    .tail-icon {
+
+      width: var(--numbers-20);
+      height: var(--numbers-20);
+      font-size: var(--typography-size-body-l);
+    }
+  }
+
+  &--sm {
+
+    height: var(--numbers-20);
+    font-size: var(--typography-size-caption-l);
+    line-height: var(--typography-line-height-caption-l);
+    letter-spacing: var(--typography-letter-spacing-caption-l);
+
+    .lead-icon {
+
+      width: var(--numbers-16);
+      height: var(--numbers-16);
+      font-size: var(--typography-size-body-m);
+    }
+
+    .badge {
+      padding: var(--numbers-2) var(--numbers-3);
+      border-radius: var(--measurements-radius-sm);
+
+      .label {
+        font-size: var(--typography-size-caption-m);
+        line-height: var(--typography-line-height-caption-m);
+        letter-spacing: var(--typography-letter-spacing-caption-m);
+        padding: 0 var(--numbers-3);
+      }
+    }
+
+    .tail-icon {
+
+      width: var(--numbers-16);
+      height: var(--numbers-16);
+      font-size: var(--typography-size-body-m);
+    }
+  }
+}
+
+.target {
+  &--destructive {
+
+    .tail-icon,
+    .lead-icon {
+      color: var(--text-status-destructive-secondary);
+    }
+
+    .text {
+      color: var(--text-status-destructive);
+    }
+
+    .badge {
+      border-color: var(--border-base-destructive);
+      background: var(--background-badge-red);
+      color: var(--text-accent-red-inverted);
+    }
+
+    &:hover {
+      .text {
+        color: var(--text-status-destructive-secondary);
+      }
+    }
+
+    &:disabled,
+    &:disabled:hover {
+      .tail-icon,
+      .lead-icon {
+        color: var(--icon-status-destructive-tertiary);
+      }
+
+      .text {
+        color: var(--text-status-destructive-tertiary);
+      }
+
+      .badge {
+        border-color: var(--background-badge-red-disabled);
+        background: var(--background-badge-red-disabled);
+        color: var(--text-accent-red-secondary);
+      }
+    }
+  }
+}

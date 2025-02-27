@@ -1,9 +1,7 @@
 import type { Preview } from '@storybook/react';
-// @ts-ignore
-import('@library/kit/src/theme/index.css');
 
 // @ts-ignore
-import React from 'react';
+import('@library/kit/src/theme/index.css');
 
 const preview: Preview = {
   parameters: {
