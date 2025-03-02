@@ -4,6 +4,7 @@
   flex-direction: row;
   flex: 0 0 auto;
   align-items: center;
+  justify-content: center;
   border: none;
   box-sizing: border-box;
   cursor: pointer;
@@ -16,6 +17,13 @@
     align-items: center;
     justify-content: center;
     margin: 0 var(--numbers-4) 0 0;
+  }
+
+  .text {
+
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
   }
 
   .badge {

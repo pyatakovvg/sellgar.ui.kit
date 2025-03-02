@@ -7,8 +7,8 @@ import s from './default.module.scss';
 
 interface IProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'style'> {
   form?: 'icon-only';
-  style: 'primary' | 'secondary' | 'tertiary' | 'ghost';
-  size: 'lg' | 'md' | 'sm' | 'xs';
+  style?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
+  size?: 'lg' | 'md' | 'sm' | 'xs';
   target?: 'destructive';
   shape?: 'rounded' | 'pill';
   leadicon?: TIconName;

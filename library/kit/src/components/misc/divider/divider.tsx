@@ -5,7 +5,7 @@ import { Button, Typography } from '../../symbols';
 import s from './default.module.scss';
 
 interface IEmptyProps {
-  type?: 'default';
+  type?: undefined;
 }
 
 interface ILabelProps {

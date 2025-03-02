@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { LabelField } from '@library/kit';
+import { LabelField } from '@sellgar/kit';
 
 const meta: Meta<typeof LabelField> = {
   title: 'Kit/Symbols/LabelField',

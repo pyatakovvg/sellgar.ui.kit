@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { FieldWrapper, LabelField, Input, CaptionField } from '@library/kit';
+import { FieldWrapper, LabelField, Input, CaptionField } from '@sellgar/kit';
 
 const meta: Meta = {
   title: 'Kit/Wrappers/FieldWrapper',

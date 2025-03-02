@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Accordion, iconName } from '@library/kit';
+import { Accordion, iconName } from '@sellgar/kit';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Kit/Symbols/Accordion',

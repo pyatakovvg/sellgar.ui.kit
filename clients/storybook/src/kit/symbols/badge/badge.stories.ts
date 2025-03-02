@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Badge, iconName } from '@library/kit';
+import { Badge, iconName } from '@sellgar/kit';
 
 const meta: Meta<typeof Badge> = {
   title: 'Kit/Symbols/Badge',

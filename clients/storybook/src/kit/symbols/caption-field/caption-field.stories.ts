@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CaptionField } from '@library/kit';
+import { CaptionField } from '@sellgar/kit';
 
 const meta: Meta<typeof CaptionField> = {
   title: 'Kit/Symbols/CaptionField',

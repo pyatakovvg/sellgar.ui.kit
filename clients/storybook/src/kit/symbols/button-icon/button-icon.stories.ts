@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ButtonIcon, iconName } from '@library/kit';
+import { ButtonIcon, iconName } from '@sellgar/kit';
 
 const meta: Meta<typeof ButtonIcon> = {
   title: 'Kit/Symbols/ButtonIcon',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Calendar } from '@library/kit';
+import { Calendar } from '@sellgar/kit';
 
 const meta: Meta<typeof Calendar> = {
   title: 'Kit/Symbols/Calendar',

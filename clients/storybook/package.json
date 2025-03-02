@@ -8,7 +8,7 @@
     "build": "storybook build --output-dir build"
   },
   "dependencies": {
-    "@library/kit": "0.0.1",
+    "@sellgar/kit": "*",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },

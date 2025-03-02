@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Radio } from '@library/kit';
+import { Radio } from '@sellgar/kit';
 
 const meta: Meta<typeof Radio> = {
   title: 'Kit/Symbols/Radio',

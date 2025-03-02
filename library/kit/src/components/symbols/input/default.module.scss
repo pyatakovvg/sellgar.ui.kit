@@ -52,12 +52,20 @@
   display: block;
   border: none;
   outline: none;
+  width: 100%;
   font-family: inherit;
   background: transparent;
+  color: var(--text-base-primary);
   font-size: var(--typography-size-caption-l);
   font-weight: var(--typography-weight-regular);
   line-height: var(--typography-line-height-caption-l);
   letter-spacing: var(--typography-letter-spacing-caption-l);
+}
+
+.input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--background-input-normal) inset;
+  box-shadow: 0 0 0 1000px var(--background-input-normal) inset;
+  -webkit-text-fill-color: var(--text-base-primary);
 }
 
 .badge {
@@ -71,10 +79,12 @@
 
 .size {
   &--medium {
+    max-height: var(--numbers-40);
     padding: var(--numbers-10) var(--numbers-12);
   }
 
   &--extra-small {
+    max-height: var(--numbers-32);
     padding: var(--numbers-6) var(--numbers-8);
   }
 }

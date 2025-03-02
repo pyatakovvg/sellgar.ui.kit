@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DropDownWrapper } from '@library/kit';
+import { DropDownWrapper } from '@sellgar/kit';
 
 const meta: Meta = {
   title: 'Kit/Wrappers/DropDownWrapper',

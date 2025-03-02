@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Divider } from '@library/kit';
+import { Divider } from '@sellgar/kit';
 
 const meta: Meta<typeof Divider> = {
   title: 'Kit/Misc/Divider',
@@ -9,7 +9,7 @@ const meta: Meta<typeof Divider> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  args: { type: 'default' },
+  args: {},
   argTypes: {},
 };
 
@@ -17,6 +17,7 @@ type Story = StoryObj<typeof meta>;
 export default meta;
 
 export const Default: Story = {
+  // @ts-ignore
   args: {},
   render: () => {
     return (

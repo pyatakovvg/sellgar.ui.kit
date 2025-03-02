@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Toggle } from '@library/kit';
+import { Toggle } from '@sellgar/kit';
 
 const meta: Meta<typeof Toggle> = {
   title: 'Kit/Symbols/Toggle',

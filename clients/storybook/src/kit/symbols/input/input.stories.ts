@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Input } from '@library/kit';
+import { Input } from '@sellgar/kit';
 
 const meta: Meta<typeof Input> = {
   title: 'Kit/Symbols/Input',

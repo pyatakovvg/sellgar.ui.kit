@@ -6,7 +6,7 @@ import { Icon, type TIconName } from '../icon';
 import cn from 'classnames';
 import s from './default.module.scss';
 
-export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'className'> {
   leadicon?: TIconName;
   tailicon?: TIconName;
   badge?: string | number;

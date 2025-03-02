@@ -45,15 +45,12 @@
 @import "./colors/icon/icon-base.css";
 @import "./colors/icon/icon-status.css";
 
-@import "https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap";
+/*@import "https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap";*/
 
 html,
 body {
 
-  width: 100vw;
-  height: 100vh;
   font-family: "Geologica", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  overflow: hidden;
 }

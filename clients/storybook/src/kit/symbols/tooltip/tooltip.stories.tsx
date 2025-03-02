@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ToolTip } from '@library/kit';
+import { ToolTip } from '@sellgar/kit';
 
 const meta: Meta<typeof ToolTip> = {
   title: 'Kit/Symbols/ToolTip',

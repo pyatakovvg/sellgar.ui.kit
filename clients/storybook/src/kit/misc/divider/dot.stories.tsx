@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Dot } from '@library/kit';
+import { Dot } from '@sellgar/kit';
 
 const meta: Meta<typeof Dot> = {
   title: 'Kit/Misc/Dot',

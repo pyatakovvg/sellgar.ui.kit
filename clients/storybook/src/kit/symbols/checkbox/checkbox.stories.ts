@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Checkbox } from '@library/kit';
+import { Checkbox } from '@sellgar/kit';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Kit/Symbols/Checkbox',

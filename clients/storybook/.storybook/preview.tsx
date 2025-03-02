@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react';
 
-// @ts-ignore
-import('@library/kit/src/theme/index.css');
+import '@sellgar/kit/font.css';
+import '@sellgar/kit/theme.css';
 
 const preview: Preview = {
   parameters: {
