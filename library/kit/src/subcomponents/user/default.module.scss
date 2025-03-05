@@ -1,0 +1,39 @@
+.wrapper {
+
+  display: flex;
+  flex-direction: row;
+  flex: 1 0;
+  align-items: center;
+  overflow: auto;
+}
+
+.avatar {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  padding: var(--numbers-2) 0;
+}
+
+.content {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  padding: 0 var(--numbers-4);
+  margin: 0 0 0 var(--numbers-4);
+  overflow: auto;
+}
+
+.name {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+}
+
+.caption {
+
+  display: block;
+  color: var(--text-base-secondary);
+}

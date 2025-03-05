@@ -10,7 +10,7 @@ export default defineConfig({
       entry: ['src/index.ts', 'src/theme/index.css', 'src/theme/index.scss'],
       name: 'index',
       fileName: 'index',
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
     rollupOptions: {
       output: {

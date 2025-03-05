@@ -18,7 +18,7 @@ export interface IProps {
     | 'white-destructive'
     | 'surface-destructive';
   state?: 'disabled';
-  size: 'lg' | 'md' | 'sm' | 'xs';
+  size?: 'lg' | 'md' | 'sm' | 'xs';
   shape?: 'rounded' | 'pill';
   stroke?: boolean;
   disabled?: boolean;

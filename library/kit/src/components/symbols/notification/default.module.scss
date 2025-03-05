@@ -1,0 +1,120 @@
+.wrapper {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  width: var(--numbers-360);
+  padding: var(--numbers-16);
+  border-radius: var(--measurements-radius-xl);
+  border: 1px solid var(--border-action-normal);
+  background: var(--background-surface-default);
+  box-shadow: 0 var(--numbers-10) var(--numbers-16) calc(var(--numbers-3) * -1) rgba(20, 21, 26, 0.05),
+              0 var(--numbers-3)  var(--numbers-10) calc(var(--numbers-2) * -1) rgba(20, 21, 26, 0.02);
+}
+
+.aside {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.icon {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: var(--numbers-20);
+  padding: var(--numbers-3) 0;
+  font-size: var(--typography-size-body-m);
+}
+
+.content {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  margin: 0 0 0 var(--numbers-12);
+}
+
+.container {
+
+  display: flex;
+  flex-direction: row;
+  flex: 1 0;
+  align-items: flex-start;
+}
+
+.title {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+
+  .text {
+
+    white-space: pre-line;
+    color: var(--text-base-primary);
+  }
+}
+
+.close {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: var(--numbers-3) 0;
+  width: 20px;
+  height: 20px;
+  color: var(--icon-base-secondary);
+  font-size: var(--typography-size-body-m);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--icon-base-primary);
+  }
+}
+
+.description {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  margin: var(--numbers-4) 0 0;
+
+  .text {
+
+    white-space: pre-line;
+    color: var(--text-base-secondary);
+  }
+}
+
+.control {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  margin: var(--numbers-12) 0 0;
+}
+
+.style {
+  &--info {
+    color: var(--icon-status-info);
+  }
+
+  &--warning {
+    color: var(--icon-status-warning);
+  }
+
+  &--success {
+    color: var(--icon-status-success);
+  }
+
+  &--destructive {
+    color: var(--icon-status-destructive);
+  }
+}

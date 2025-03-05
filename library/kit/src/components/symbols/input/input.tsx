@@ -10,7 +10,7 @@ export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
   leadicon?: TIconName;
   tailicon?: TIconName;
   badge?: string | number;
-  size: 'xs' | 'md';
+  size?: 'xs' | 'md';
   target?: 'destructive';
 }
 
@@ -37,12 +37,14 @@ export const Input: React.FC<IProps> = ({ size = 'md', target, leadicon, tailico
     [isFocused, size, target, props.disabled],
   );
 
-  const handleFocus = () => {
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     setFocused(true);
+    props.onFocus && props.onFocus(event);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     setFocused(false);
+    props.onBlur && props.onBlur(event);
   };
 
   return (

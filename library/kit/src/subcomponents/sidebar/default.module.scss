@@ -1,0 +1,56 @@
+.wrapper {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  padding: var(--numbers-8) 0;
+  background: var(--background-surface-neutral);
+  border-right: var(--numbers-1) solid var(--border-action-normal);
+}
+
+.top {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.middle {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  margin: var(--numbers-16) 0 0;
+}
+
+.bottom {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  margin: var(--numbers-16) 0 0;
+}
+
+.divider {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  padding: var(--numbers-4) 0;
+}
+
+.additional {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  padding: var(--numbers-6) var(--numbers-16);
+}
+
+.cell {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  padding: var(--numbers-2) var(--numbers-8);
+}
