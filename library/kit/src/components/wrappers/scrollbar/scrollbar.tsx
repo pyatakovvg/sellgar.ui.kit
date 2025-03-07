@@ -1,43 +1,25 @@
 import React from 'react';
-import SmoothScrollbar from 'smooth-scrollbar';
-import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
+import { OverlayScrollbars, SizeObserverPlugin } from 'overlayscrollbars';
 
-import s from './default.module.scss';
+import './default.css';
 
-interface IProps {
-  scrollTop?: number;
+interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+  ref?: React.RefCallback<HTMLDivElement>;
 }
 
-export const Scrollbar: React.FC<React.PropsWithChildren<IProps>> = (props) => {
-  const divRef = React.useRef(null);
-  const [scrollbar, setScrollbar] = React.useState<SmoothScrollbar | null>(null);
+export const Scrollbar: React.FC<React.PropsWithChildren<IProps>> = ({ ref, ...props }) => {
+  const divRef = React.useRef<HTMLDivElement>(null);
+  const [scrollbar, setScrollbar] = React.useState<OverlayScrollbars | null>(null);
 
-  React.useEffect(() => {
-    if (scrollbar) {
-      if (props.scrollTop !== undefined) {
-        scrollbar.scrollTop = props.scrollTop;
-      }
-    }
-  }, [scrollbar, props.scrollTop]);
+  React.useImperativeHandle(ref, () => divRef.current!);
 
   React.useEffect(() => {
     if (divRef.current) {
-      SmoothScrollbar.use(OverscrollPlugin);
+      OverlayScrollbars.plugin(SizeObserverPlugin);
 
-      setScrollbar(
-        SmoothScrollbar.init(divRef.current, {
-          renderByPixels: true,
-          alwaysShowTracks: true,
-          continuousScrolling: false,
-          plugins: {
-            overscroll: {
-              effect: 'bounce',
-            },
-          },
-        }),
-      );
+      const scrollbar = OverlayScrollbars(divRef.current, {});
 
-      SmoothScrollbar.detachStyle();
+      setScrollbar(scrollbar!);
     }
   }, [divRef]);
 
@@ -50,7 +32,7 @@ export const Scrollbar: React.FC<React.PropsWithChildren<IProps>> = (props) => {
   }, [scrollbar]);
 
   return (
-    <div ref={divRef} className={s.wrapper} data-scrollbar={''}>
+    <div ref={divRef} {...props}>
       {props.children}
     </div>
   );

@@ -4,6 +4,7 @@
   display: inline-flex;
   flex-direction: column;
   flex: 0 0 auto;
+  cursor: pointer;
 }
 
 .icon {
@@ -13,11 +14,7 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: var(--numbers-24);
-  height: var(--numbers-24);
-  font-size: var(--typography-size-body-s);
   color: var(--icon-base-quaternary);
-  cursor: pointer;
 
   &:hover {
     color: var(--icon-base-secondary);

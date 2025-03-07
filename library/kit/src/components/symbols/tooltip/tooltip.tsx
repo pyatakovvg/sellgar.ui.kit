@@ -13,6 +13,7 @@ import {
   useInteractions,
   useMergeRefs,
   FloatingPortal,
+  useTransitionStyles,
   FloatingArrow,
 } from '@floating-ui/react';
 import type { Placement } from '@floating-ui/react';
@@ -121,7 +122,13 @@ const Trigger = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(func
       data-state={context.open ? 'open' : 'closed'}
       {...context.getReferenceProps(props)}
     >
-      {children ?? (
+      {React.isValidElement(children) ? (
+        React.cloneElement(children as React.DetailedReactHTMLElement<React.HTMLAttributes<HTMLElement>, HTMLElement>, {
+          className: cn({
+            [s.active]: context.open,
+          }),
+        })
+      ) : (
         <div
           className={cn(s.icon, {
             [s.active]: context.open,
@@ -140,8 +147,9 @@ export const Content = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivE
 ) {
   const context = useTooltipContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
+  const { isMounted, styles } = useTransitionStyles(context.context);
 
-  if (!context.open) return null;
+  if (!context.open && !isMounted) return null;
 
   return (
     <FloatingPortal>
@@ -150,6 +158,7 @@ export const Content = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivE
         style={{
           ...context.floatingStyles,
           ...style,
+          ...styles,
         }}
         {...context.getFloatingProps(props)}
       >

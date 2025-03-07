@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { Icon, type TIconName } from '../icon';
-
-import cn from 'classnames';
-import s from './default.module.scss';
+import { type TIconName } from '../icon';
+import { Button } from '../button';
+import { Dropdown } from '../../helpers/dropdown';
 
 interface IProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'style'> {
   form?: 'icon-only';
@@ -16,61 +15,25 @@ interface IProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'st
   label?: string | number;
 }
 
-export const ButtonDropdown: React.FC<IProps> = ({
-  size = 'md',
-  style = 'primary',
-  shape = 'rounded',
-  target,
-  leadicon,
-  tailicon,
-  label,
-  ...props
-}) => {
-  const classNameButton = React.useMemo(
-    () =>
-      cn(
-        s.wrapper,
-        {
-          [s['size--large']]: size === 'lg',
-          [s['size--medium']]: size === 'md',
-          [s['size--small']]: size === 'sm',
-          [s['size--extra-small']]: size === 'xs',
-        },
-        {
-          [s['style--primary']]: style === 'primary',
-          [s['style--secondary']]: style === 'secondary',
-          [s['style--tertiary']]: style === 'tertiary',
-          [s['style--ghost']]: style === 'ghost',
-        },
-        {
-          [s['target--destructive']]: target === 'destructive',
-        },
-        {
-          [s['shape--rounded']]: shape === 'rounded',
-          [s['shape--pill']]: shape === 'pill',
-        },
-      ),
-    [size, style, target, shape],
-  );
+export const ButtonDropdown: React.FC<IProps> = ({}) => {
+  const [open, setOpen] = React.useState(false);
 
   return (
-    <button {...props} className={classNameButton}>
-      {leadicon && (
-        <div className={s['lead-icon']}>
-          <Icon icon={leadicon} />
-        </div>
-      )}
-      <div className={s.text}>{props.children}</div>
-      {label && (
-        <div className={s.badge}>
-          <span className={s.label}>{label}</span>
-        </div>
-      )}
-      {tailicon && (
-        <div className={s['tail-icon']}>
-          <Icon icon={tailicon} />
-        </div>
-      )}
-    </button>
+    <Dropdown open={open} setOpen={setOpen}>
+      <Dropdown.Reference
+        reference={() => {
+          return <Button onClick={() => setOpen(true)}>Нажми меня</Button>;
+        }}
+      />
+      <Dropdown.Options
+        empty={null}
+        options={() => {
+          return [
+            <Dropdown.Option index={0} option={() => <p>Первая ссылка</p>} />,
+            <Dropdown.Option index={1} option={() => <p>Вторая ссылка</p>} />,
+          ];
+        }}
+      />
+    </Dropdown>
   );
 };

@@ -1,30 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Icon, InputSelect, ToolTip } from '@sellgar/kit';
+import { Input, Icon, BaseOption, Dropdown } from '@sellgar/kit';
+import React from 'react';
 
-const meta: Meta<typeof InputSelect> = {
-  title: 'Kit/Symbols/InputSelect',
-  component: InputSelect,
+const meta: Meta<typeof Dropdown> = {
+  title: 'Kit/Symbols/Dropdown',
+  component: Dropdown,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   args: {
-    leadicon: <Icon icon={'earth-line'} />,
-    tailicon: (
-      <ToolTip>
-        <ToolTip.Trigger>
-          <Icon icon={'information-line'} />
-        </ToolTip.Trigger>
-        <ToolTip.Content>
-          <ToolTip.Content.Label>Tooltip headline</ToolTip.Content.Label>
-          <ToolTip.Content.Caption>
-            Tooltips display informative text when users hover over, focus on, or tap an element
-          </ToolTip.Content.Caption>
-        </ToolTip.Content>
-      </ToolTip>
-    ),
-    badge: '⌘K',
     optionKey: 'uuid',
     optionValue: 'name',
     options: [
@@ -48,19 +34,7 @@ const meta: Meta<typeof InputSelect> = {
       { uuid: 'b2d5c3f1-4e8e-4b1a-9c2e-7e5d3b1a2f5c', name: 'Григорьев Николай Васильевич', role: 'Польз.' },
     ],
   },
-  argTypes: {
-    size: {
-      options: ['xs', 'md'],
-      control: 'select',
-    },
-    disabled: {
-      control: 'boolean',
-    },
-    target: {
-      options: [undefined, 'destructive'],
-      control: 'select',
-    },
-  },
+  argTypes: {},
 };
 
 type Story = StoryObj<typeof meta>;
@@ -68,4 +42,53 @@ export default meta;
 
 export const Default: Story = {
   args: {},
+  render: (args) => {
+    const [open, setOpen] = React.useState(false);
+    const [inputValue, setInputValue] = React.useState('');
+
+    const options = React.useMemo(
+      () => args.options.filter((item) => item[args.optionValue].toLowerCase().startsWith(inputValue.toLowerCase())),
+      [inputValue, args.options],
+    );
+
+    return (
+      <Dropdown
+        {...args}
+        open={open}
+        options={options}
+        referenceElement={({ activeIndex, setActive }) => (
+          <Input
+            value={inputValue}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              const value = event.target.value;
+              setInputValue(value);
+
+              if (value) {
+                setOpen(true);
+                setActive(0);
+              } else {
+                setOpen(false);
+              }
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' && activeIndex != null && options[activeIndex]) {
+                setInputValue(options[activeIndex][args.optionValue]);
+                setActive(null);
+                setOpen(false);
+              }
+            }}
+          />
+        )}
+        optionElement={({ value, active, option }) => (
+          <BaseOption
+            active={active}
+            leadicon={<Icon icon={'windy-fill'} />}
+            label={value}
+            badge={option.role}
+            toggle={option.role === 'Адм.'}
+          />
+        )}
+      />
+    );
+  },
 };

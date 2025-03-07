@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Icon, InputSelect, ToolTip } from '@sellgar/kit';
+import { Select, Icon, ToolTip } from '@sellgar/kit';
 
-const meta: Meta<typeof InputSelect> = {
-  title: 'Kit/Symbols/InputSelect',
-  component: InputSelect,
+const meta: Meta<typeof Select> = {
+  title: 'Kit/Symbols/Select',
+  component: Select,
   parameters: {
     layout: 'centered',
   },
@@ -47,6 +47,7 @@ const meta: Meta<typeof InputSelect> = {
       { uuid: 'a9c4d2e3-6b1f-4c3e-8b7e-5c2f4a1b3d1e', name: 'Федорова Мария Викторовна', role: 'Польз.' },
       { uuid: 'b2d5c3f1-4e8e-4b1a-9c2e-7e5d3b1a2f5c', name: 'Григорьев Николай Васильевич', role: 'Польз.' },
     ],
+    value: 'b2d5c3f1-4e8e-4b1a-9c2e-7e5d3b1a2f5c',
   },
   argTypes: {
     size: {
