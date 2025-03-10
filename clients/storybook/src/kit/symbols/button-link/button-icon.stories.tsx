@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ButtonLink, iconName } from '@sellgar/kit';
+import { ButtonLink, Icon, TIconName, iconName } from '@sellgar/kit';
 
 const meta: Meta<typeof ButtonLink> = {
   title: 'Kit/Symbols/ButtonLink',
@@ -11,8 +11,6 @@ const meta: Meta<typeof ButtonLink> = {
   tags: ['autodocs'],
   args: {
     size: 'md',
-    leadicon: 'scan-line',
-    tailicon: 'arrow-right-line',
     label: '16',
     children: 'Button link',
     disabled: false,
@@ -22,11 +20,11 @@ const meta: Meta<typeof ButtonLink> = {
       options: [undefined, 'destructive'],
       control: 'select',
     },
-    leadicon: {
+    leadIcon: {
       options: [undefined, ...iconName],
       control: 'select',
     },
-    tailicon: {
+    tailIcon: {
       options: [undefined, ...iconName],
       control: 'select',
     },
@@ -42,4 +40,13 @@ export default meta;
 
 export const Default: Story = {
   args: {},
+  render(args) {
+    return (
+      <ButtonLink
+        {...args}
+        leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'scan-line'} />}
+        tailIcon={<Icon icon={(args.tailIcon as TIconName) ?? 'arrow-right-line'} />}
+      />
+    );
+  },
 };

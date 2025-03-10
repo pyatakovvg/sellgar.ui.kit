@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Icon, type TIconName } from '../icon';
-
 import cn from 'classnames';
 import s from './default.module.scss';
 
@@ -10,7 +8,7 @@ interface IProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'st
   size: 'lg' | 'md' | 'sm' | 'xs';
   target?: 'destructive';
   shape?: 'rounded' | 'pill';
-  icon: TIconName;
+  icon: React.ReactNode;
 }
 
 export const ButtonIcon: React.FC<IProps> = ({
@@ -50,9 +48,7 @@ export const ButtonIcon: React.FC<IProps> = ({
 
   return (
     <button {...props} className={classNameButton}>
-      <div className={s['lead-icon']}>
-        <Icon icon={icon} />
-      </div>
+      <div className={s['lead-icon']}>{icon}</div>
     </button>
   );
 };

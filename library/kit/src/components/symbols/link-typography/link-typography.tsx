@@ -3,7 +3,7 @@ import React from 'react';
 import cn from 'classnames';
 import s from './default.module.scss';
 
-export const Link: React.FC<React.PropsWithChildren> = (props) => {
+export const LinkTypography: React.FC<React.PropsWithChildren> = (props) => {
   return React.Children.map(props.children, (child) => {
     if (React.isValidElement(child)) {
       const childElement = child as React.ReactHTMLElement<never>;

@@ -2,17 +2,27 @@ import React from 'react';
 
 import { Typography } from '../../typography';
 
+import cn from 'classnames';
 import s from './default.module.scss';
 
 export interface IProps {
   title: string;
+  disabled?: boolean;
 }
 
 export const Option: React.FC<IProps> = (props) => {
+  const className = React.useMemo(
+    () =>
+      cn(s.wrapper, {
+        [s.disabled]: props.disabled,
+      }),
+    [props.disabled],
+  );
+
   return (
-    <div className={s.wrapper}>
+    <div className={className}>
       <Typography size={'caption-l'} weight={'medium'}>
-        <p>{props.title}</p>
+        <p className={s.text}>{props.title}</p>
       </Typography>
     </div>
   );

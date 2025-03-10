@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { Icon, type TIconName } from '../icon';
-
 import cn from 'classnames';
 import s from './default.module.scss';
 
@@ -22,8 +20,8 @@ export interface IProps {
   shape?: 'rounded' | 'pill';
   stroke?: boolean;
   disabled?: boolean;
-  leadicon?: TIconName;
-  tailicon?: TIconName;
+  leadIcon?: React.ReactNode;
+  tailIcon?: React.ReactNode;
   label: string | number;
 }
 
@@ -34,8 +32,8 @@ export const Badge: React.FC<IProps> = ({
   stroke,
   disabled,
   label,
-  leadicon,
-  tailicon,
+  leadIcon,
+  tailIcon,
 }) => {
   const classNameButton = React.useMemo(
     () =>
@@ -75,17 +73,9 @@ export const Badge: React.FC<IProps> = ({
 
   return (
     <div className={classNameButton}>
-      {leadicon && (
-        <span className={s['lead-icon']}>
-          <Icon icon={leadicon} />
-        </span>
-      )}
+      {leadIcon && <span className={s['lead-icon']}>{leadIcon}</span>}
       <span className={s.label}>{label}</span>
-      {tailicon && (
-        <span className={s['tail-icon']}>
-          <Icon icon={tailicon} />
-        </span>
-      )}
+      {tailIcon && <span className={s['tail-icon']}>{tailIcon}</span>}
     </div>
   );
 };

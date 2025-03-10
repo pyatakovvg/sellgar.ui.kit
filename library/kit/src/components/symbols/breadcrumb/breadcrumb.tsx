@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Icon, TIconName } from '../icon';
+import { Icon } from '../icon';
 import { Typography } from '../typography';
 
 import cn from 'classnames';
@@ -9,17 +9,17 @@ import s from './default.module.scss';
 interface IProps {
   size?: 'sm' | 'md';
   active?: boolean;
-  showdivider?: boolean;
+  showDivider?: boolean;
   divider?: '>' | '/';
-  leadicon?: TIconName;
-  tailicon?: TIconName;
+  leadIcon?: React.ReactNode;
+  tailIcon?: React.ReactNode;
   label: string;
 }
 
 export const Breadcrumb: React.FC<IProps> = ({
   active = false,
   size = 'sm',
-  showdivider = false,
+  showDivider = false,
   divider = '>',
   ...props
 }) => {
@@ -35,7 +35,7 @@ export const Breadcrumb: React.FC<IProps> = ({
           [s.active]: active,
         },
       ),
-    [props.leadicon, size, active],
+    [props.leadIcon, size, active],
   );
   const tailIconClassName = React.useMemo(
     () =>
@@ -49,7 +49,7 @@ export const Breadcrumb: React.FC<IProps> = ({
           [s.active]: active,
         },
       ),
-    [props.leadicon, size, active],
+    [props.leadIcon, size, active],
   );
   const dividerIconClassName = React.useMemo(
     () =>
@@ -63,23 +63,19 @@ export const Breadcrumb: React.FC<IProps> = ({
           [s.active]: active,
         },
       ),
-    [props.leadicon, size, active],
+    [props.leadIcon, size, active],
   );
   const labelClassName = React.useMemo(
     () =>
       cn(s['label'], {
         [s.active]: active,
       }),
-    [props.leadicon, size, active],
+    [props.leadIcon, size, active],
   );
 
   return (
     <div className={s.wrapper}>
-      {props.leadicon && (
-        <div className={leadIconClassName}>
-          <Icon icon={props.leadicon} />
-        </div>
-      )}
+      {props.leadIcon && <div className={leadIconClassName}>{props.leadIcon}</div>}
       <div className={s.label}>
         {size === 'sm' && (
           <Typography size={'caption-m'} weight={'semi-bold'}>
@@ -92,12 +88,8 @@ export const Breadcrumb: React.FC<IProps> = ({
           </Typography>
         )}
       </div>
-      {props.tailicon && (
-        <div className={tailIconClassName}>
-          <Icon icon={props.tailicon} />
-        </div>
-      )}
-      {showdivider && (
+      {props.tailIcon && <div className={tailIconClassName}>{props.tailIcon}</div>}
+      {showDivider && (
         <div className={dividerIconClassName}>
           <Icon icon={'arrow-right-s-line'} />
         </div>

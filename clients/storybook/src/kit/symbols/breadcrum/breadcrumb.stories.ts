@@ -12,9 +12,9 @@ const meta: Meta<typeof Breadcrumb> = {
   args: {
     label: 'Label',
     active: false,
-    showdivider: true,
+    showDivider: true,
     size: 'sm',
-    leadicon: 'folder-line',
+    leadIcon: 'folder-line',
   },
   argTypes: {
     size: {

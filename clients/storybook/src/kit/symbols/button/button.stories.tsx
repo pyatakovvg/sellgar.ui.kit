@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, iconName } from '@sellgar/kit';
+import { Button, Icon, TIconName, iconName } from '@sellgar/kit';
 
 const meta: Meta<typeof Button> = {
   title: 'Kit/Symbols/Button',
@@ -23,12 +23,13 @@ const meta: Meta<typeof Button> = {
     target: {
       options: [undefined, 'destructive'],
       control: 'select',
+      type: 'string',
     },
-    leadicon: {
+    leadIcon: {
       options: [undefined, ...iconName],
       control: 'select',
     },
-    tailicon: {
+    tailIcon: {
       options: iconName,
       control: 'select',
     },
@@ -51,4 +52,13 @@ export default meta;
 
 export const Default: Story = {
   args: {},
+  render(args) {
+    return (
+      <Button
+        {...args}
+        leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'scan-line'} />}
+        tailIcon={<Icon icon={(args.tailIcon as TIconName) ?? 'arrow-right-line'} />}
+      />
+    );
+  },
 };

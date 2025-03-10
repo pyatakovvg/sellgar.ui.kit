@@ -6,7 +6,7 @@ import cn from 'classnames';
 import s from './default.module.scss';
 
 interface IProps {
-  leadicon?: React.ReactNode;
+  leadIcon?: React.ReactNode;
   active?: boolean;
   label: string;
   badge?: string;
@@ -24,7 +24,7 @@ export const BaseOption: React.FC<IProps> = (props) => {
 
   return (
     <div className={className}>
-      {props.leadicon && <div className={s['lead-icon']}>{props.leadicon}</div>}
+      {props.leadIcon && <div className={s['lead-icon']}>{props.leadIcon}</div>}
       <div className={s.label}>
         <Typography size={'caption-l'} weight={'medium'}>
           <p className={s.text}>{props.label}</p>

@@ -10,11 +10,18 @@
   box-shadow: var(--measurements-shadows-xs);
 }
 
-.wrapper:hover,
-.focused {
+.wrapper:hover {
 
   border-color: var(--border-action-hover);
   background: var(--background-input-hover);
+}
+
+.focused,
+.focused:hover {
+
+  border: var(--numbers-1) solid var(--border-action-focus-light);
+  background: var(--background-input-focus);
+  box-shadow: 0 0 0 var(--numbers-2) rgba(200, 178, 255, 0.50);
 }
 
 .lead-icon,
@@ -60,6 +67,10 @@
   font-weight: var(--typography-weight-regular);
   line-height: var(--typography-line-height-caption-l);
   letter-spacing: var(--typography-letter-spacing-caption-l);
+}
+
+.input::placeholder {
+  color: var(--text-base-tertiary);
 }
 
 .input:-webkit-autofill {

@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Input } from './input';
 import { Option } from './option';
+import { Placeholder } from './placeholder';
 import { Select as SelectHelper } from '../../helpers/select';
 
-export interface IProps<T extends Record<string, any>, K extends keyof T>
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'className' | 'children'> {
-  leadicon?: React.ReactNode;
-  tailicon?: React.ReactNode;
+export interface IProps<T extends Record<string, any>, K extends keyof T> {
+  leadIcon?: React.ReactNode;
+  tailIcon?: React.ReactNode;
   badge?: string | number;
   size?: 'xs' | 'md';
   target?: 'destructive';
@@ -15,8 +15,15 @@ export interface IProps<T extends Record<string, any>, K extends keyof T>
   optionValue: K;
   options: T[];
   value?: T[K];
+  tabIndex?: number;
+  placeholder?: string;
+  disabled?: boolean;
+  isClearable?: boolean;
   templateValue?(option?: T): React.ReactNode;
   templateOption?(option: T): React.ReactNode;
+  onChange?: (value: T[K] | undefined) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 const findOption = <T extends Record<string, any>, K extends keyof T>(
@@ -29,34 +36,107 @@ const findOption = <T extends Record<string, any>, K extends keyof T>(
 
 export const Select = <T extends Record<string, any>, K extends keyof T>({
   value,
+  placeholder,
+  tabIndex,
   options,
   optionKey,
   optionValue,
   templateValue,
   templateOption,
+  onBlur,
+  onFocus,
+  onChange,
+  disabled,
+  isClearable,
   ...props
 }: IProps<T, K>) => {
+  const [initialize, setInitialize] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const [selectedIndex] = React.useState(() => (value ? findOption(options, optionKey, value) : -1));
-  const [optionSelected, setOption] = React.useState<T | undefined>(() =>
-    selectedIndex && selectedIndex > -1 ? options[selectedIndex] : undefined,
+  const [selectedIndex, setSelectedIndex] = React.useState<number | null>(
+    value ? (findOption(options, optionKey, value) ?? null) : null,
   );
+  const [optionSelected, setOption] = React.useState<T | undefined>(selectedIndex ? options[selectedIndex] : undefined);
+
+  React.useEffect(() => {
+    if (initialize) {
+      setSelectedIndex(value ? (findOption(options, optionKey, value) ?? null) : null);
+    }
+  }, [value]);
+
+  React.useEffect(() => {
+    if (initialize) {
+      setOption(selectedIndex ? options[selectedIndex] : undefined);
+    }
+  }, [selectedIndex]);
+
+  React.useEffect(() => {
+    if (disabled) {
+      return void 0;
+    }
+
+    if (initialize) {
+      if (open) {
+        onFocus && onFocus();
+      } else {
+        onBlur && onBlur();
+      }
+    }
+  }, [open]);
+
+  React.useEffect(() => {
+    if (disabled) {
+      return void 0;
+    }
+
+    if (initialize) {
+      onChange && onChange(optionSelected ? optionSelected[optionKey] : undefined);
+    }
+  }, [optionSelected]);
+
+  React.useEffect(() => {
+    if (disabled && open) {
+      setOpen(false);
+    }
+  }, [disabled]);
+
+  React.useEffect(() => {
+    setInitialize(true);
+  }, []);
 
   const filteredOptions = React.useMemo(() => options, [options]);
 
   return (
-    <SelectHelper open={open} setOpen={setOpen} initialSelectedIndex={selectedIndex}>
+    <SelectHelper
+      tabIndex={tabIndex}
+      open={open}
+      disabled={disabled}
+      initialSelectedIndex={selectedIndex}
+      setOpen={setOpen}
+      onSelect={setSelectedIndex}
+    >
       <SelectHelper.Reference
-        reference={() => (
-          <Input {...props} isFocused={open}>
+        reference={(select) => (
+          <Input
+            {...props}
+            disabled={disabled}
+            isFocused={open}
+            isClearable={!!selectedIndex && isClearable}
+            onClear={() => {
+              if (disabled) {
+                return void 0;
+              }
+              setSelectedIndex(null);
+              select.setSelectedIndex(null);
+            }}
+          >
             {optionSelected ? (
               templateValue ? (
                 templateValue(optionSelected)
               ) : (
-                <Option title={optionSelected[optionValue]} />
+                <Option title={optionSelected[optionValue]} disabled={disabled} />
               )
             ) : (
-              <Option title={'Select...'} />
+              <Placeholder title={placeholder ?? 'Select...'} />
             )}
           </Input>
         )}
@@ -64,21 +144,19 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
       <SelectHelper.Options
         empty={<Option title={'Нет данных'} />}
         options={(selectOptions) => {
-          return filteredOptions.map((option, index) => {
+          return filteredOptions.map((option, optionIndex) => {
             return (
               <SelectHelper.Option
                 key={option[optionKey]}
-                index={index}
+                index={optionIndex}
                 onClick={() => {
                   selectOptions.setOpen(false);
-                  setOption(options[index]);
                 }}
                 onChange={() => {
                   selectOptions.setOpen(false);
-                  setOption(options[index]);
                 }}
                 option={() => {
-                  return <Option title={option.name} />;
+                  return templateOption ? templateOption(option) : <Option title={option.name} />;
                 }}
               />
             );

@@ -1,13 +1,12 @@
 import React from 'react';
 
-import { Icon, type TIconName } from '../icon';
 import { Typography } from '../typography';
 
 import cn from 'classnames';
 import s from './default.module.scss';
 
 export interface IProps {
-  leadicon?: TIconName;
+  leadIcon?: React.ReactNode;
   caption: string;
   state?: 'default' | 'success' | 'destructive';
 }
@@ -25,11 +24,7 @@ export const CaptionField: React.FC<IProps> = ({ state = 'default', ...props }) 
 
   return (
     <div className={className}>
-      {props.leadicon && (
-        <div className={s['lead-icon']}>
-          <Icon icon={props.leadicon} />
-        </div>
-      )}
+      {props.leadIcon && <div className={s['lead-icon']}>{props.leadIcon}</div>}
       <div className={s.caption}>
         <Typography size={'caption-l'} weight={'regular'}>
           <p>{props.caption}</p>

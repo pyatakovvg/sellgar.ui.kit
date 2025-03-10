@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Select, Icon, ToolTip } from '@sellgar/kit';
 
+import React from 'react';
+
 const meta: Meta<typeof Select> = {
   title: 'Kit/Symbols/Select',
   component: Select,
@@ -10,8 +12,10 @@ const meta: Meta<typeof Select> = {
   },
   tags: ['autodocs'],
   args: {
-    leadicon: <Icon icon={'earth-line'} />,
-    tailicon: (
+    isClearable: false,
+    disabled: false,
+    leadIcon: <Icon icon={'user-3-line'} />,
+    tailIcon: (
       <ToolTip>
         <ToolTip.Trigger>
           <Icon icon={'information-line'} />
@@ -47,7 +51,6 @@ const meta: Meta<typeof Select> = {
       { uuid: 'a9c4d2e3-6b1f-4c3e-8b7e-5c2f4a1b3d1e', name: 'Федорова Мария Викторовна', role: 'Польз.' },
       { uuid: 'b2d5c3f1-4e8e-4b1a-9c2e-7e5d3b1a2f5c', name: 'Григорьев Николай Васильевич', role: 'Польз.' },
     ],
-    value: 'b2d5c3f1-4e8e-4b1a-9c2e-7e5d3b1a2f5c',
   },
   argTypes: {
     size: {
@@ -55,6 +58,9 @@ const meta: Meta<typeof Select> = {
       control: 'select',
     },
     disabled: {
+      control: 'boolean',
+    },
+    isClearable: {
       control: 'boolean',
     },
     target: {
@@ -69,4 +75,46 @@ export default meta;
 
 export const Default: Story = {
   args: {},
+  render(args) {
+    const [value, setValue] = React.useState('b2d5c3f1-4e8e-4b1a-9c2e-7e5d3b1a2f5c');
+
+    return (
+      <div
+        style={{
+          display: 'block',
+          width: '300px',
+        }}
+      >
+        <div
+          style={{
+            display: 'block',
+            width: '300px',
+          }}
+        >
+          <Select {...args} value={value} tabIndex={0} />
+        </div>
+        <div
+          style={{
+            display: 'block',
+            width: '300px',
+            marginTop: '24px',
+          }}
+        >
+          <Select
+            tabIndex={1}
+            optionKey={args.optionKey}
+            optionValue={args.optionValue}
+            options={args.options}
+            value={value}
+            onFocus={() => console.log('focus')}
+            onBlur={() => console.log('blur')}
+            onChange={(value) => {
+              setValue(value);
+              console.log('change', value);
+            }}
+          />
+        </div>
+      </div>
+    );
+  },
 };

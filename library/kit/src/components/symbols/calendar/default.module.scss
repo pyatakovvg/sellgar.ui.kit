@@ -3,19 +3,37 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  width: var(--numbers-288);
-  padding: var(--numbers-12);
-  border-radius: var(--measurements-radius-xl);
-  border: var(--numbers-1) solid var(--border-action-normal);
-  background: var(--background-surface-default);
-  box-shadow: var(--measurements-shadows-lg);
-  box-sizing: border-box;
+  width: var(--numbers-360);
 }
 
-.calendar {
-  display: block;
+.header {
 
-  .react-calendar__viewContainer {
-    margin: var(--numbers-12) 0 0;
-  }
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+}
+
+.weeks {
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  margin: var(--numbers-12) 0 0;
+}
+
+.days {
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  grid-column: 7;
+  margin: var(--numbers-4) 0 0;
+}
+
+.control {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  margin: var(--numbers-12) 0 0;
 }

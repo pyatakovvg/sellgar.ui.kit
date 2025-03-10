@@ -7,14 +7,14 @@ import s from './default.module.scss';
 
 export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'className'> {
   ref?: React.RefCallback<HTMLInputElement>;
-  leadicon?: React.ReactNode;
-  tailicon?: React.ReactNode;
+  leadIcon?: React.ReactNode;
+  tailIcon?: React.ReactNode;
   badge?: string | number;
   size?: 'xs' | 'md';
   target?: 'destructive';
 }
 
-export const Input: React.FC<IProps> = ({ ref, size = 'md', target, leadicon, tailicon, badge, ...props }) => {
+export const Input: React.FC<IProps> = ({ ref, size = 'md', target, leadIcon, tailIcon, badge, ...props }) => {
   const [isFocused, setFocused] = React.useState(false);
   const classNameButton = React.useMemo(
     () =>
@@ -49,7 +49,7 @@ export const Input: React.FC<IProps> = ({ ref, size = 'md', target, leadicon, ta
 
   return (
     <div className={classNameButton}>
-      {leadicon && <div className={s['lead-icon']}>{leadicon}</div>}
+      {leadIcon && <div className={s['lead-icon']}>{leadIcon}</div>}
       <div className={s.content}>
         <input ref={ref} {...props} className={s.input} onFocus={handleFocus} onBlur={handleBlur} />
       </div>
@@ -58,7 +58,7 @@ export const Input: React.FC<IProps> = ({ ref, size = 'md', target, leadicon, ta
           <Badge size={'sm'} color={'gray'} label={badge} disabled={props.disabled} />
         </div>
       )}
-      {tailicon && <div className={s['tail-icon']}>{tailicon}</div>}
+      {tailIcon && <div className={s['tail-icon']}>{tailIcon}</div>}
     </div>
   );
 };

@@ -10,8 +10,8 @@ const meta: Meta<typeof Input> = {
   },
   tags: ['autodocs'],
   args: {
-    leadicon: <Icon icon={'earth-line'} />,
-    tailicon: (
+    leadIcon: <Icon icon={'earth-line'} />,
+    tailIcon: (
       <ToolTip>
         <ToolTip.Trigger>
           <Icon icon={'information-line'} />
@@ -25,6 +25,7 @@ const meta: Meta<typeof Input> = {
       </ToolTip>
     ),
     badge: '⌘K',
+    placeholder: 'Напиши что-нибудь...',
   },
   argTypes: {
     size: {

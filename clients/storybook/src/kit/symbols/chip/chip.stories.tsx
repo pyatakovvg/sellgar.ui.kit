@@ -20,7 +20,7 @@ const meta: Meta<typeof Chip> = {
       options: ['rounded', 'pill'],
       control: 'select',
     },
-    leadicon: {
+    leadIcon: {
       options: [undefined, ...iconName],
       control: 'select',
     },
@@ -43,7 +43,7 @@ export const Default: Story = {
     return (
       <div>
         <div>
-          <Chip {...args} type={'icon'} leadicon={'checkbox-circle-fill'} />
+          <Chip {...args} type={'icon'} leadIcon={'checkbox-circle-fill'} />
         </div>
         <div style={{ marginTop: '10px' }}>
           <Chip {...args} type={'slot'} leadslot={<Avatar size={'xs'} color={'green'} />} />

@@ -23,10 +23,13 @@ import { Icon } from '../../symbols';
 import cn from 'classnames';
 
 interface IOptions {
+  tabIndex?: number;
   initialOpen?: boolean;
-  initialSelectedIndex?: number;
+  initialSelectedIndex?: number | null;
   open?: boolean;
+  disabled?: boolean;
   setOpen?(open: boolean): void;
+  onSelect?(selectedIndex: number | null): void;
 }
 
 const useSelect = (options: IOptions) => {
@@ -40,7 +43,12 @@ const useSelect = (options: IOptions) => {
 
   const floating = useFloating<ReferenceType>({
     open,
-    onOpenChange: setOpen,
+    onOpenChange: (open: boolean) => {
+      if (options.disabled) {
+        return void 0;
+      }
+      setOpen(open);
+    },
     whileElementsMounted: autoUpdate,
     middleware: [
       flip({ padding: 10 }),
@@ -69,6 +77,7 @@ const useSelect = (options: IOptions) => {
     onNavigate: setActiveIndex,
     loop: true,
     nested: true,
+    virtual: true,
     allowEscape: true,
   });
   const interactions = useInteractions([role, dismiss, listNav, click]);
@@ -86,6 +95,9 @@ const useSelect = (options: IOptions) => {
       setSelectedIndex,
       floating,
       interactions,
+      tabIndex: options.tabIndex,
+      disabled: options.disabled,
+      onSelect: options.onSelect,
     };
   }, [
     open,
@@ -98,6 +110,9 @@ const useSelect = (options: IOptions) => {
     setSelectedIndex,
     floating,
     interactions,
+    options.tabIndex,
+    options.disabled,
+    options.onSelect,
   ]);
 };
 
@@ -114,10 +129,13 @@ export const useSelectContext = () => {
 };
 
 interface IProps {
+  tabIndex?: number;
   initialOpen?: boolean;
-  initialSelectedIndex?: number;
+  initialSelectedIndex?: number | null;
   open?: boolean;
+  disabled?: boolean;
   setOpen?(open: boolean): void;
+  onSelect?(selectedIndex: number | null): void;
 }
 
 const SelectWrapper: React.FC<React.PropsWithChildren<IProps>> = ({ children, ...options }) => {
@@ -134,7 +152,12 @@ const Reference = React.memo((props: IReferenceProps) => {
   const select = useSelectContext();
 
   return (
-    <div className={s.wrapper} {...select.interactions.getReferenceProps()} ref={select.floating.refs.setReference}>
+    <div
+      className={s.wrapper}
+      tabIndex={select.tabIndex}
+      {...select.interactions.getReferenceProps()}
+      ref={select.floating.refs.setReference}
+    >
       {props.reference(select)}
     </div>
   );
@@ -164,9 +187,11 @@ const Options = React.memo((props: IOptionsProps) => {
           style={{
             ...transitionStyles,
             ...select.floating.floatingStyles,
+            outline: 'none',
+            zIndex: 999,
           }}
         >
-          {props.empty}
+          <div className={s.option}>{props.empty}</div>
         </DropDownWrapper>
       </FloatingPortal>
     );
@@ -179,9 +204,10 @@ const Options = React.memo((props: IOptionsProps) => {
           {...select.interactions.getFloatingProps()}
           ref={select.floating.refs.setFloating}
           style={{
-            outline: 'none',
             ...transitionStyles,
             ...select.floating.floatingStyles,
+            outline: 'none',
+            zIndex: 999,
           }}
         >
           {options}
@@ -225,19 +251,27 @@ const Option = React.memo((props: IOptionProps) => {
           select.listRef.current[props.index] = node;
         },
         onClick(event: React.MouseEvent<HTMLElement>) {
-          select.setSelectedIndex(props.index);
+          select.setSelectedIndex(select.activeIndex);
+          select.onSelect && select.onSelect(select.activeIndex);
+
           props.onClick && props.onClick(event);
         },
         onKeyDown(event) {
           if (event.key === 'Enter') {
             event.preventDefault();
-            select.setSelectedIndex(props.index);
+
+            select.setSelectedIndex(select.activeIndex);
+            select.onSelect && select.onSelect(select.activeIndex);
+
             props.onChange && props.onChange(event);
           }
 
           if (event.key === ' ') {
             event.preventDefault();
-            select.setSelectedIndex(props.index);
+
+            select.setSelectedIndex(select.activeIndex);
+            select.onSelect && select.onSelect(select.activeIndex);
+
             props.onChange && props.onChange(event);
           }
         },

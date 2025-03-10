@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Badge, iconName } from '@sellgar/kit';
+import { Badge, Icon, TIconName, iconName } from '@sellgar/kit';
 
 const meta: Meta<typeof Badge> = {
   title: 'Kit/Symbols/Badge',
@@ -15,8 +15,6 @@ const meta: Meta<typeof Badge> = {
     color: 'gray',
     label: 'Badge',
     size: 'lg',
-    leadicon: 'checkbox-circle-fill',
-    tailicon: 'hashtag',
   },
   argTypes: {
     color: {
@@ -39,11 +37,11 @@ const meta: Meta<typeof Badge> = {
       control: 'select',
     },
 
-    leadicon: {
+    leadIcon: {
       options: [undefined, ...iconName],
       control: 'select',
     },
-    tailicon: {
+    tailIcon: {
       options: iconName,
       control: 'select',
     },
@@ -62,4 +60,13 @@ export default meta;
 
 export const Default: Story = {
   args: {},
+  render(args) {
+    return (
+      <Badge
+        {...args}
+        leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'checkbox-circle-fill'} />}
+        tailIcon={<Icon icon={(args.tailIcon as TIconName) ?? 'hashtag'} />}
+      />
+    );
+  },
 };

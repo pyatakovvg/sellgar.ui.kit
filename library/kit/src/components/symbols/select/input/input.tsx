@@ -8,26 +8,29 @@ import { Icon } from '../../icon';
 
 export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'className'> {
   ref?: React.RefCallback<HTMLInputElement>;
-  leadicon?: React.ReactNode;
-  tailicon?: React.ReactNode;
+  leadIcon?: React.ReactNode;
+  tailIcon?: React.ReactNode;
   badge?: string | number;
   size?: 'xs' | 'md';
   target?: 'destructive';
   isFocused?: boolean;
+  isClearable?: boolean;
+  onClear?(): void;
 }
 
 export const Input: React.FC<React.PropsWithChildren<IProps>> = ({
-  ref,
   children,
   size = 'md',
   target,
-  leadicon,
-  tailicon,
+  leadIcon,
+  tailIcon,
   badge,
   isFocused,
-  ...props
+  isClearable,
+  disabled,
+  onClear,
 }) => {
-  const classNameButton = React.useMemo(
+  const className = React.useMemo(
     () =>
       cn(
         s.wrapper,
@@ -39,35 +42,37 @@ export const Input: React.FC<React.PropsWithChildren<IProps>> = ({
           [s['size--extra-small']]: size === 'xs',
         },
         {
-          [s['disabled']]: props.disabled,
+          [s['disabled']]: disabled,
         },
         {
           [s['destructive']]: target === 'destructive',
         },
       ),
-    [isFocused, size, target, props.disabled],
+    [isFocused, size, target, disabled],
   );
 
-  // const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
-  //   setFocused(true);
-  //   props.onFocus && props.onFocus(event);
-  // };
-  //
-  // const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-  //   setFocused(false);
-  //   props.onBlur && props.onBlur(event);
-  // };
+  const handleClearable = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    onClear && onClear();
+  };
 
   return (
-    <div className={classNameButton}>
-      {leadicon && <div className={s['lead-icon']}>{leadicon}</div>}
+    <div className={className}>
+      {leadIcon && <div className={s['lead-icon']}>{leadIcon}</div>}
       <div className={s.content}>{children}</div>
       {badge && (
         <div className={s.badge}>
-          <Badge size={'sm'} color={'gray'} label={badge} disabled={props.disabled} />
+          <Badge size={'sm'} color={'gray'} label={badge} disabled={disabled} />
         </div>
       )}
-      {tailicon && <div className={s['tail-icon']}>{tailicon}</div>}
+      {tailIcon && <div className={s['tail-icon']}>{tailIcon}</div>}
+      {isClearable && (
+        <div className={s.clearable} onClick={handleClearable}>
+          <Icon icon={'close-line'} />
+        </div>
+      )}
       <div className={s.arrow}>
         <Icon icon={isFocused ? 'arrow-drop-up-line' : 'arrow-drop-down-line'} />
       </div>

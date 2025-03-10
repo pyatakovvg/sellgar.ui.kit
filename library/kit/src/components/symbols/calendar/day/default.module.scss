@@ -1,0 +1,44 @@
+.wrapper {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  padding: var(--numbers-2);
+  box-sizing: border-box;
+}
+
+.container {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  height: var(--numbers-32);
+  color: var(--text-base-secondary);
+  border-radius: var(--measurements-radius-md);
+  background: var(--background-button-ghost);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--background-button-ghost--hover);
+  }
+}
+
+.is-active {
+
+  border: var(--numbers-1) solid var(--border-action-focus);
+}
+
+.is-today {
+  color: var(--text-accent-purple-accent);
+}
+
+.is-weekday {
+  color: var(--text-base-primary);
+}
+
+.is-prev-week-day,
+.is-next-week-day {
+  color: var(--text-base-quaternary);
+}

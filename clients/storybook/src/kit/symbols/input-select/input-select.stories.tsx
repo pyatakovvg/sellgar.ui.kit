@@ -10,8 +10,8 @@ const meta: Meta<typeof InputSelect> = {
   },
   tags: ['autodocs'],
   args: {
-    leadicon: <Icon icon={'earth-line'} />,
-    tailicon: (
+    leadIcon: <Icon icon={'earth-line'} />,
+    tailIcon: (
       <ToolTip>
         <ToolTip.Trigger>
           <Icon icon={'information-line'} />

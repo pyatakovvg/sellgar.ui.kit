@@ -1,4 +1,5 @@
 export * from './icon';
+export * from './card';
 export * from './badge';
 export * from './button';
 export * from './button-icon';
@@ -11,8 +12,6 @@ export * from './input-select';
 export * from './textarea';
 export * from './label-field';
 export * from './caption-field';
-export * from './link';
-export * from './typography';
 export * from './accordion';
 export * from './avatar';
 export * from './chip';
@@ -25,3 +24,6 @@ export * from './breadcrumb';
 export * from './notification';
 export * from './modal';
 export * from './select';
+
+export * from './typography';
+export * from './link-typography';

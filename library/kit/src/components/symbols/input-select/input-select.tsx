@@ -7,8 +7,8 @@ import { Dropdown } from '../../helpers/dropdown';
 
 export interface IProps<T extends Record<string, any>, K extends keyof T>
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'className' | 'children'> {
-  leadicon?: React.ReactNode;
-  tailicon?: React.ReactNode;
+  leadIcon?: React.ReactNode;
+  tailIcon?: React.ReactNode;
   badge?: string | number;
   size?: 'xs' | 'md';
   target?: 'destructive';
@@ -59,7 +59,7 @@ export const InputSelect = <T extends Record<string, any>, K extends keyof T>({
         )}
       />
       <Dropdown.Options
-        empty={<BaseOption leadicon={<Icon icon={'filter-off-line'} />} label={'Нет данных'} />}
+        empty={<BaseOption leadIcon={<Icon icon={'filter-off-line'} />} label={'Нет данных'} />}
         options={(dropdownOptions) => {
           return filteredOptions.map((option, index) => {
             return (
@@ -74,7 +74,7 @@ export const InputSelect = <T extends Record<string, any>, K extends keyof T>({
                   return (
                     <BaseOption
                       active={dropdown.activeIndex === index}
-                      leadicon={<Icon icon={'windy-fill'} />}
+                      leadIcon={<Icon icon={'windy-fill'} />}
                       label={option.name}
                       badge={option.role}
                     />

@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { Typography } from '../typography';
-import { Icon, type TIconName } from '../icon';
-
 import { Control } from './control';
+import { Typography } from '../typography';
 
 import cn from 'classnames';
 import s from './default.module.scss';
 
 interface IProps {
-  leadicon?: TIconName;
+  tabIndex?: number;
+  leadIcon?: React.ReactNode;
   header: string;
   size?: 'lg' | 'md';
   description?: string;
@@ -50,12 +49,10 @@ export const Accordion: React.FC<React.PropsWithChildren<IProps>> = ({ size = 'l
   };
 
   return (
-    <div className={className} onClick={handleExpand}>
-      {props.leadicon && (
+    <div className={className} tabIndex={props.tabIndex} onClick={handleExpand}>
+      {props.leadIcon && (
         <div className={s.aside}>
-          <div className={s['lead-icon']}>
-            <Icon icon={props.leadicon} />
-          </div>
+          <div className={s['lead-icon']}>{props.leadIcon}</div>
         </div>
       )}
       <div className={s.content}>

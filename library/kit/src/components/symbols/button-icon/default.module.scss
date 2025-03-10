@@ -17,6 +17,10 @@
     align-items: center;
     justify-content: center;
   }
+
+  &:focus {
+    box-shadow: 0 0 0 var(--numbers-2) rgba(200, 178, 255, 0.50);
+  }
 }
 
 .size {
@@ -100,6 +104,10 @@
       background: var(--background-button-secondary--hover);
     }
 
+    &:focus {
+      border: var(--numbers-1) solid var(--border-action-focus-light);
+    }
+
     &:disabled {
       color: var(--text-base-quaternary);
       border-color: var(--border-action-disabled);
@@ -116,6 +124,10 @@
       background: var(--background-button-tetriary--hover);
     }
 
+    &:focus {
+      border: var(--numbers-1) solid var(--border-action-focus-light);
+    }
+
     &:disabled {
       color: var(--text-base-quaternary);
       background: var(--background-button-tetriary--disabled);
@@ -129,6 +141,10 @@
 
     &:hover {
       background: var(--background-button-ghost--hover);
+    }
+
+    &:focus {
+      border: var(--numbers-1) solid var(--border-action-focus-light);
     }
 
     &:disabled {
@@ -150,6 +166,10 @@
           background: var(--background-button-destructive--hover);
         }
 
+        &:focus {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+        }
+
         &:disabled {
           color: var(--text-status-destructive-tertiary);
           background: var(--background-button-destructive--disabled);
@@ -167,6 +187,10 @@
           background: var(--background-button-destructive-secondary--hover);
         }
 
+        &:focus {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+        }
+
         &:disabled {
           color: var(--text-status-destructive-tertiary);
           border-color: var(--border-action-destructive-disabled);
@@ -181,6 +205,11 @@
 
         &:hover {
           background: var(--background-button-destructive-tetriary--hover);
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+          border: var(--numbers-1) solid var(--border-action-focus-destructive-light);
         }
 
         &:disabled {
@@ -200,6 +229,11 @@
           .lead-icon {
             color: var(--text-status-destructive);
           }
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+          border: var(--numbers-1) solid var(--border-action-focus-destructive-light);
         }
 
         &:disabled {

@@ -8,6 +8,7 @@
   border: none;
   box-sizing: border-box;
   cursor: pointer;
+  outline: none;
   box-shadow: 0 var(--numbers-1) var(--numbers-2) 0 rgba(20, 21, 26, 0.05);
   transition: background-color var(--measurements-transition),
               border           var(--measurements-transition),
@@ -56,6 +57,10 @@
     align-items: center;
     justify-content: center;
     margin: 0 0 0 var(--numbers-4);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 var(--numbers-2) rgba(200, 178, 255, 0.50);
   }
 }
 
@@ -256,6 +261,10 @@
       background: var(--background-button-secondary--hover);
     }
 
+    &:focus {
+      border: var(--numbers-1) solid var(--border-action-focus-light);
+    }
+
     &:disabled {
       color: var(--text-base-quaternary);
       border-color: var(--border-action-disabled);
@@ -292,6 +301,10 @@
 
     &:hover {
       background: var(--background-button-tetriary--hover);
+    }
+
+    &:focus {
+      border: var(--numbers-1) solid var(--border-action-focus-light);
     }
 
     &:disabled {
@@ -332,6 +345,10 @@
       background: var(--background-button-ghost--hover);
     }
 
+    &:focus {
+      border: var(--numbers-1) solid var(--border-action-focus-light);
+    }
+
     &:disabled {
       color: var(--text-base-quaternary);
       background: var(--background-button-ghost--disabled);
@@ -366,6 +383,10 @@
 
         &:hover {
           background: var(--background-button-destructive--hover);
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
         }
 
         &:disabled {
@@ -405,6 +426,10 @@
         &:hover {
           border-color: var(--border-action-destructive-hover);
           background: var(--background-button-destructive-secondary--hover);
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
         }
 
         &:disabled {
@@ -447,6 +472,11 @@
 
         &:hover {
           background: var(--background-button-destructive-tetriary--hover);
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+          border: var(--numbers-1) solid var(--border-action-focus-destructive-light);
         }
 
         &:disabled {
@@ -493,6 +523,11 @@
           .text {
             color: var(--text-status-destructive);
           }
+        }
+
+        &:focus {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+          border: var(--numbers-1) solid var(--border-action-focus-destructive-light);
         }
 
         &:disabled {

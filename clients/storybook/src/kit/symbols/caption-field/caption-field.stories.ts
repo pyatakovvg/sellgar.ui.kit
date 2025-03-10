@@ -10,7 +10,7 @@ const meta: Meta<typeof CaptionField> = {
   },
   tags: ['autodocs'],
   args: {
-    leadicon: 'information-line',
+    leadIcon: 'information-line',
     caption: 'Helper field',
     state: 'default',
   },

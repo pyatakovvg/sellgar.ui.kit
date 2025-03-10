@@ -6,7 +6,7 @@ import cn from 'classnames';
 import s from './default.module.scss';
 
 interface IProps {
-  leadicon?: TIconName;
+  leadIcon?: TIconName;
   caption: string;
   active?: boolean;
   badge?: React.ReactElement;
@@ -23,9 +23,9 @@ export const MenuItem: React.FC<IProps> = (props) => {
 
   return (
     <div className={className}>
-      {props.leadicon && (
+      {props.leadIcon && (
         <div className={s['lead-icon']}>
-          <Icon icon={props.leadicon} />
+          <Icon icon={props.leadIcon} />
         </div>
       )}
       <div className={s.content}>

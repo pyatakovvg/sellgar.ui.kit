@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Accordion, iconName } from '@sellgar/kit';
+import { Accordion, Icon, TIconName, iconName } from '@sellgar/kit';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Kit/Symbols/Accordion',
@@ -10,15 +10,15 @@ const meta: Meta<typeof Accordion> = {
   },
   tags: ['autodocs'],
   args: {
-    leadicon: 'typhoon-fill',
     header: 'Headline text',
     description: 'Description',
     defaultState: true,
   },
   argTypes: {
-    leadicon: {
+    leadIcon: {
       options: [undefined, ...iconName],
       control: 'select',
+      type: 'string',
     },
     size: {
       options: ['lg', 'md'],
@@ -38,7 +38,7 @@ export const Default: Story = {
   render: (args) => {
     return (
       <div style={{ width: '360px', height: '200px' }}>
-        <Accordion {...args}>
+        <Accordion {...args} leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'typhoon-fill'} />}>
           <div
             style={{
               display: 'flex',

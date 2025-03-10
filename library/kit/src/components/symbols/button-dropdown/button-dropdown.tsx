@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { type TIconName } from '../icon';
 import { Button } from '../button';
 import { Dropdown } from '../../helpers/dropdown';
 
@@ -10,8 +9,8 @@ interface IProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'st
   size?: 'lg' | 'md' | 'sm' | 'xs';
   target?: 'destructive';
   shape?: 'rounded' | 'pill';
-  leadicon?: TIconName;
-  tailicon?: TIconName;
+  leadIcon?: React.ReactNode;
+  tailIcon?: React.ReactNode;
   label?: string | number;
 }
 

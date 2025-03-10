@@ -11,7 +11,7 @@ export interface IProps {
   shape?: 'rounded' | 'pill';
   isActive?: boolean;
   disabled?: boolean;
-  leadicon?: TIconName;
+  leadIcon?: TIconName;
   label: string | number;
 }
 
@@ -21,7 +21,7 @@ export const WithIcon: React.FC<IProps> = ({
   disabled,
   isActive = false,
   label,
-  leadicon,
+  leadIcon,
 }) => {
   const classNameButton = React.useMemo(
     () =>
@@ -48,9 +48,9 @@ export const WithIcon: React.FC<IProps> = ({
 
   return (
     <div className={classNameButton}>
-      {leadicon && (
+      {leadIcon && (
         <div className={s['lead-icon']}>
-          <Icon icon={leadicon} />
+          <Icon icon={leadIcon} />
         </div>
       )}
       <span className={s.label}>{label}</span>
