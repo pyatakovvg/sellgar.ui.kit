@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { Badge } from '../../badge';
+import { Badge, Icon } from '../../symbols';
 
 import cn from 'classnames';
 import s from './default.module.scss';
-import { Icon } from '../../icon';
 
 export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'className'> {
   ref?: React.RefCallback<HTMLInputElement>;
@@ -18,7 +17,7 @@ export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
   onClear?(): void;
 }
 
-export const Input: React.FC<React.PropsWithChildren<IProps>> = ({
+export const SelectInput: React.FC<React.PropsWithChildren<IProps>> = ({
   children,
   size = 'md',
   target,

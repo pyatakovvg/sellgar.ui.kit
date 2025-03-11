@@ -1,5 +1,5 @@
 {
-  "name": "storybook",
+  "name": "@client/storybook",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,25 +13,25 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-docs": "8.5.8",
-    "@storybook/addon-essentials": "8.5.8",
-    "@storybook/addon-interactions": "8.5.8",
-    "@storybook/addon-links": "8.5.8",
-    "@storybook/addon-onboarding": "8.5.8",
-    "@storybook/blocks": "8.5.8",
-    "@storybook/react": "8.5.8",
-    "@storybook/react-vite": "8.5.8",
-    "@types/node": "22.13.5",
+    "@storybook/addon-docs": "8.6.4",
+    "@storybook/addon-essentials": "8.6.4",
+    "@storybook/addon-interactions": "8.6.4",
+    "@storybook/addon-links": "8.6.4",
+    "@storybook/addon-onboarding": "8.6.4",
+    "@storybook/blocks": "8.6.4",
+    "@storybook/react": "8.6.4",
+    "@storybook/react-vite": "8.6.4",
+    "@types/node": "22.13.10",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
     "@vitejs/plugin-react": "4.3.4",
-    "eslint": "9.21.0",
-    "eslint-plugin-storybook": "0.11.3",
+    "eslint": "9.22.0",
+    "eslint-plugin-storybook": "0.11.4",
     "globals": "16.0.0",
-    "sass": "1.85.0",
-    "storybook": "8.5.8",
-    "typescript": "5.7.3",
-    "vite": "6.1.1"
+    "sass": "1.85.1",
+    "storybook": "8.6.4",
+    "typescript": "5.8.2",
+    "vite": "6.2.1"
   },
   "eslintConfig": {
     "extends": [

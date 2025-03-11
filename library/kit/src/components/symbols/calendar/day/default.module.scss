@@ -27,15 +27,17 @@
 
 .is-active {
 
+  color: var(--text-base-primary);
   border: var(--numbers-1) solid var(--border-action-focus);
 }
 
 .is-today {
   color: var(--text-accent-purple-accent);
+  text-shadow: 0 0 var(--numbers-6) var(--text-accent-purple-accent);
 }
 
 .is-weekday {
-  color: var(--text-base-primary);
+  color: var(--text-base-secondary);
 }
 
 .is-prev-week-day,

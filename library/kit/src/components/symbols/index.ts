@@ -24,6 +24,7 @@ export * from './breadcrumb';
 export * from './notification';
 export * from './modal';
 export * from './select';
+export * from './datepicker';
 
 export * from './typography';
 export * from './link-typography';

@@ -24,15 +24,6 @@ export const ButtonDropdown: React.FC<IProps> = ({}) => {
           return <Button onClick={() => setOpen(true)}>Нажми меня</Button>;
         }}
       />
-      <Dropdown.Options
-        empty={null}
-        options={() => {
-          return [
-            <Dropdown.Option index={0} option={() => <p>Первая ссылка</p>} />,
-            <Dropdown.Option index={1} option={() => <p>Вторая ссылка</p>} />,
-          ];
-        }}
-      />
     </Dropdown>
   );
 };

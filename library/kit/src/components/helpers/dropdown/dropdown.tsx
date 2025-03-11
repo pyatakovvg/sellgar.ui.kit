@@ -2,17 +2,17 @@ import {
   autoUpdate,
   size,
   flip,
+  offset,
+  useClick,
   useDismiss,
   useFloating,
   useInteractions,
-  useListNavigation,
   useRole,
   FloatingFocusManager,
   FloatingPortal,
   useTransitionStyles,
-  useId,
-  FloatingList,
   type ReferenceType,
+  type Placement,
 } from '@floating-ui/react';
 import React from 'react';
 
@@ -23,14 +23,12 @@ import s from './default.module.scss';
 interface IOptions {
   initialOpen?: boolean;
   open?: boolean;
+  disabled?: boolean;
   setOpen?(open: boolean): void;
+  placement?: Placement;
 }
 
-const useDropdown = (options: IOptions) => {
-  const listRef = React.useRef<Array<HTMLElement | null>>([]);
-  const listContentRef = React.useRef<Array<string | null>>([]);
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
+const useDropdown = ({ placement = 'bottom', ...options }: IOptions) => {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(options.initialOpen);
 
   const open = options.open ?? uncontrolledOpen;
@@ -38,17 +36,23 @@ const useDropdown = (options: IOptions) => {
 
   const floating = useFloating<ReferenceType>({
     open,
-    onOpenChange: setOpen,
+    onOpenChange: (open: boolean) => {
+      if (options.disabled) {
+        return void 0;
+      }
+      setOpen(open);
+    },
     whileElementsMounted: autoUpdate,
     middleware: [
       flip({ padding: 10 }),
+      offset(8),
       size({
-        apply({ rects, elements }) {
+        apply({ rects, elements, placement }) {
+          console.log(placement);
           Object.assign(elements.floating.style, {
-            top: 'var(--numbers-8)',
             width: `${rects.reference.width}px`,
-            minWidth: '300px',
-            maxHeight: `var(--numbers-288)`,
+            minWidth: 'var(--numbers-320)',
+            maxWidth: 'var(--numbers-400)',
           });
         },
         padding: 10,
@@ -58,16 +62,10 @@ const useDropdown = (options: IOptions) => {
 
   const floatingContext = floating.context;
 
+  const click = useClick(floatingContext);
   const role = useRole(floatingContext, { role: 'listbox' });
   const dismiss = useDismiss(floatingContext);
-  const listNav = useListNavigation(floatingContext, {
-    listRef,
-    activeIndex,
-    onNavigate: setActiveIndex,
-    loop: true,
-    virtual: true,
-  });
-  const interactions = useInteractions([role, dismiss, listNav]);
+  const interactions = useInteractions([click, role, dismiss]);
 
   return React.useMemo(() => {
     return {
@@ -75,27 +73,11 @@ const useDropdown = (options: IOptions) => {
       setOpen,
       role,
       dismiss,
-      listRef,
-      listContentRef,
-      activeIndex,
-      setActiveIndex,
-      selectedIndex,
-      setSelectedIndex,
       floating,
       interactions,
+      disabled: options.disabled,
     };
-  }, [
-    open,
-    setOpen,
-    role,
-    dismiss,
-    activeIndex,
-    setActiveIndex,
-    selectedIndex,
-    setSelectedIndex,
-    floating,
-    interactions,
-  ]);
+  }, [open, setOpen, role, dismiss, floating, interactions, options.disabled]);
 };
 
 type TDropdownContext = ReturnType<typeof useDropdown>;
@@ -113,6 +95,7 @@ export const useDropdownContext = () => {
 interface IProps {
   initialOpen?: boolean;
   open?: boolean;
+  disabled?: boolean;
   setOpen?(open: boolean): void;
 }
 
@@ -136,36 +119,12 @@ const Reference = React.memo((props: IReferenceProps) => {
   );
 });
 
-interface IOptionsProps {
-  empty: React.ReactNode;
-  options(context: TDropdownContext): React.ReactNode[];
-}
-
-const Options = React.memo((props: IOptionsProps) => {
+const Target: React.FC<React.PropsWithChildren> = React.memo((props) => {
   const dropdown = useDropdownContext();
   const { isMounted, styles: transitionStyles } = useTransitionStyles(dropdown.floating.context);
 
-  const options = props.options(dropdown);
-
   if (!dropdown.open && !isMounted) {
     return null;
-  }
-
-  if (!options.length) {
-    return (
-      <FloatingPortal>
-        <DropDownWrapper
-          {...dropdown.interactions.getFloatingProps()}
-          ref={dropdown.floating.refs.setFloating}
-          style={{
-            ...transitionStyles,
-            ...dropdown.floating.floatingStyles,
-          }}
-        >
-          {props.empty}
-        </DropDownWrapper>
-      </FloatingPortal>
-    );
   }
 
   return (
@@ -179,51 +138,19 @@ const Options = React.memo((props: IOptionsProps) => {
             ...dropdown.floating.floatingStyles,
           }}
         >
-          <FloatingList elementsRef={dropdown.listRef} labelsRef={dropdown.listContentRef}>
-            {options}
-          </FloatingList>
+          {props.children}
         </DropDownWrapper>
       </FloatingFocusManager>
     </FloatingPortal>
   );
 });
 
-interface IOptionProps {
-  index: number;
-  onClick?(event: React.MouseEvent<HTMLElement>): void;
-  option(context: TDropdownContext): React.ReactNode;
-}
-
-const Option = React.memo((props: IOptionProps) => {
-  const id = useId();
-  const dropdown = useDropdownContext();
-
-  return (
-    <div
-      id={id}
-      role={'option'}
-      className={s.option}
-      {...dropdown.interactions.getItemProps()}
-      ref={(node) => {
-        dropdown.listRef.current[props.index] = node;
-      }}
-      onClick={(event) => {
-        props.onClick && props.onClick(event);
-      }}
-    >
-      {props.option(dropdown)}
-    </div>
-  );
-});
-
 type TDropdown = typeof DropdownWrapper & {
   Reference: typeof Reference;
-  Options: typeof Options;
-  Option: typeof Option;
+  Target: typeof Target;
 };
 
 export const Dropdown: TDropdown = Object.assign(DropdownWrapper, {
   Reference,
-  Options,
-  Option,
+  Target,
 });

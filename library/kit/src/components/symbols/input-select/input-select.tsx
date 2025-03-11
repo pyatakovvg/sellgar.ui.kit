@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon } from '../icon';
 import { Input } from '../input';
 import { BaseOption } from '../../misc';
-import { Dropdown } from '../../helpers/dropdown';
+import { Select } from '../../helpers/select';
 
 export interface IProps<T extends Record<string, any>, K extends keyof T>
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'className' | 'children'> {
@@ -31,8 +31,8 @@ export const InputSelect = <T extends Record<string, any>, K extends keyof T>({
     : [];
 
   return (
-    <Dropdown open={open} setOpen={setOpen}>
-      <Dropdown.Reference
+    <Select open={open} setOpen={setOpen}>
+      <Select.Reference
         reference={(dropdown) => (
           <Input
             {...props}
@@ -58,12 +58,12 @@ export const InputSelect = <T extends Record<string, any>, K extends keyof T>({
           />
         )}
       />
-      <Dropdown.Options
+      <Select.Options
         empty={<BaseOption leadIcon={<Icon icon={'filter-off-line'} />} label={'Нет данных'} />}
         options={(dropdownOptions) => {
           return filteredOptions.map((option, index) => {
             return (
-              <Dropdown.Option
+              <Select.Option
                 key={option[optionKey]}
                 index={index}
                 onClick={() => {
@@ -85,6 +85,6 @@ export const InputSelect = <T extends Record<string, any>, K extends keyof T>({
           });
         }}
       />
-    </Dropdown>
+    </Select>
   );
 };

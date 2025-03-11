@@ -1,8 +1,6 @@
-import { factoryDay, type IDay } from './factory-day.utils.ts';
+import moment from 'moment';
 
-// interface IOptions {
-//   weeks: string[];
-// }
+import { factoryDay, type IDay } from './factory-day.utils.ts';
 
 export const getCalendarDays = (year: number, month: number): IDay[] => {
   const firstDayOfMonth = new Date(year, month, 1);
@@ -17,27 +15,34 @@ export const getCalendarDays = (year: number, month: number): IDay[] => {
   const daysToAddFromPreviousMonth = (firstDayOfWeek + 6) % 7;
 
   for (let i = daysToAddFromPreviousMonth; i > 0; i--) {
-    const isWeekday =
-      new Date(year, month - 1, daysInPreviousMonth - i + 1).getDay() === 0 ||
-      new Date(year, month - 1, daysInPreviousMonth - i + 1).getDay() === 6;
+    const date = moment()
+      .year(year)
+      .month(month - 1)
+      .date(daysInPreviousMonth - i + 1)
+      .hour(0)
+      .minute(0)
+      .second(0)
+      .millisecond(0);
+    const isWeekday = date.day() === 0 || date.day() === 6;
     const day = factoryDay({
       type: 'prev-month' as const,
       isToday: false,
       isWeekday,
-      value: new Date(year, month - 1, daysInPreviousMonth - i + 1).toISOString(),
+      value: date.format(),
     });
     calendarDays.push(day);
   }
 
-  const today = new Date();
+  const today = moment();
   for (let day = 1; day <= daysInCurrentMonth; day++) {
-    const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
-    const isWeekday = new Date(year, month, day).getDay() === 0 || new Date(year, month, day).getDay() === 6;
+    const date = moment().year(year).month(month).date(day).hour(0).minute(0).second(0).millisecond(0);
+    const isToday = today.year() === year && today.month() === month && today.date() === day;
+    const isWeekday = date.day() === 0 || date.day() === 6;
     const dayEntry = factoryDay({
       type: 'current-month' as const,
       isToday: isToday,
-      isWeekday, // Воскресенье (0) или Суббота (6)
-      value: new Date(year, month, day).toISOString(),
+      isWeekday,
+      value: date.format(),
     });
     calendarDays.push(dayEntry);
   }
@@ -47,12 +52,20 @@ export const getCalendarDays = (year: number, month: number): IDay[] => {
   const daysToAddFromNextMonth = (totalDaysInRow - (totalDisplayedDays % totalDaysInRow)) % totalDaysInRow;
 
   for (let day = 1; day <= daysToAddFromNextMonth; day++) {
-    const isWeekday = new Date(year, month + 1, day).getDay() === 0 || new Date(year, month + 1, day).getDay() === 6;
+    const date = moment()
+      .year(year)
+      .month(month + 1)
+      .date(day)
+      .hour(0)
+      .minute(0)
+      .second(0)
+      .millisecond(0);
+    const isWeekday = date.day() === 0 || date.day() === 6;
     const dayEntry = factoryDay({
       type: 'next-month' as const,
       isToday: false,
       isWeekday,
-      value: new Date(year, month + 1, day).toISOString(),
+      value: date.format(),
     });
     calendarDays.push(dayEntry);
   }

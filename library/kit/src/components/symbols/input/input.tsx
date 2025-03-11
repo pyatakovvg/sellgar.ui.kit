@@ -6,7 +6,7 @@ import cn from 'classnames';
 import s from './default.module.scss';
 
 export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'className'> {
-  ref?: React.RefCallback<HTMLInputElement>;
+  ref?: React.RefObject<HTMLInputElement>;
   leadIcon?: React.ReactNode;
   tailIcon?: React.ReactNode;
   badge?: string | number;

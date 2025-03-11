@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { format, getYear, getMonth, getDate, getHours, getMinutes } from 'date-fns';
+import moment from 'moment';
 
 import { Day } from './day';
 import { DayDisabled } from './day-disabled';
@@ -29,78 +29,82 @@ const defaultMonths = [
 ];
 const defaultWeeks = ['П', 'В', 'С', 'Ч', 'П', 'Сб', 'Вс'];
 
-const getYearOrCurrent = (date?: string) => (date ? getYear(date) : getYear(new Date()));
-const getMonthOrCurrent = (date?: string) => (date ? getMonth(date) : getMonth(new Date()));
-const getDateOrCurrent = (date?: string) => (date ? getDate(date) : getDate(new Date()));
-const getHoursOrCurrent = (date?: string) => (date ? getHours(date) : getHours(new Date()));
-const getMinutesOrCurrent = (date?: string) => (date ? getMinutes(date) : getMinutes(new Date()));
+const getYearOrCurrent = (date: string) => moment(date).year();
+const getMonthOrCurrent = (date: string) => moment(date).month();
 
 interface IProps {
   defaultValue?: string;
   value?: string;
-  onChange?: (value: string) => void;
+  format?: string;
+  onChange: (value: string | undefined) => void;
 }
 
 export const Calendar: React.FC<IProps> = (props) => {
   const [initialized, setInitialized] = React.useState(false);
+  const [changed, setChanged] = React.useState(false);
 
-  const [selectedDate, setSelectedDate] = React.useState<string | undefined>(() => props.value || props.defaultValue);
-  const [selectedYear, setSelectedYear] = React.useState<number>(() => getYearOrCurrent(selectedDate));
-  const [selectedMonth, setSelectedMonth] = React.useState<number>(() => getMonthOrCurrent(selectedDate));
-  const [selectedDay, setSelectedDay] = React.useState<number>(() => getDateOrCurrent(selectedDate));
-  const [selectedHour, setSelectedHour] = React.useState<number>(() => getHoursOrCurrent(selectedDate));
-  const [selectedMinutes, setSelectedMinutes] = React.useState<number>(() => getMinutesOrCurrent(selectedDate));
+  const [selectedDate, setSelectedDate] = React.useState<string>(() =>
+    moment(props.value || props.defaultValue || new Date()).format(props.format),
+  );
+
+  React.useEffect(() => {
+    if (changed) {
+      props.onChange && props.onChange(selectedDate);
+      setChanged(false);
+    }
+  }, [changed]);
 
   React.useEffect(() => {
     if (initialized) {
-      setSelectedDate(props.value);
+      setSelectedDate(moment(props.value || new Date()).format(props.format));
     }
   }, [props.value]);
-
-  React.useEffect(() => {
-    if (initialized) {
-      setSelectedYear(selectedDate ? getYear(selectedDate) : getYear(new Date()));
-      setSelectedMonth(selectedDate ? getMonth(selectedDate) : getMonth(new Date()));
-      setSelectedDay(selectedDate ? getDate(selectedDate) : getDate(new Date()));
-      setSelectedHour(selectedDate ? getHours(selectedDate) : getHours(new Date()));
-      setSelectedMinutes(selectedDate ? getMinutes(selectedDate) : getMinutes(new Date()));
-    }
-  }, [selectedDate]);
 
   React.useEffect(() => {
     setInitialized(true);
   }, []);
 
-  const days = React.useMemo(() => getCalendarDays(selectedYear, selectedMonth), [selectedYear, selectedMonth]);
+  const days = React.useMemo(
+    () => getCalendarDays(getYearOrCurrent(selectedDate), getMonthOrCurrent(selectedDate)),
+    [selectedDate],
+  );
 
   const handlePrevMonth = (month: number) => {
     const newMonth = month - 1;
     if (newMonth < 0) {
-      setSelectedYear(selectedYear - 1);
-      setSelectedMonth(11);
+      setSelectedDate(moment(selectedDate).subtract(1, 'year').month(11).format(props.format));
     } else {
-      setSelectedMonth(newMonth);
+      setSelectedDate(moment(selectedDate).month(newMonth).format(props.format));
     }
   };
 
   const handleNextMonth = (month: number) => {
     const newMonth = month + 1;
     if (newMonth > 11) {
-      setSelectedYear(selectedYear + 1);
-      setSelectedMonth(0);
+      setSelectedDate(moment(selectedDate).add(1, 'year').month(0).format(props.format));
     } else {
-      setSelectedMonth(newMonth);
+      setSelectedDate(moment(selectedDate).month(newMonth).format(props.format));
     }
+  };
+
+  const handleChangeDate = (value: string) => {
+    setSelectedDate(moment(selectedDate).date(moment(value).date()).format(props.format));
+    setChanged(true);
+  };
+
+  const handleChange = (value: string) => {
+    setSelectedDate(value);
+    setChanged(true);
   };
 
   return (
     <div className={s.wrapper}>
       <div className={s.header}>
         <Header
-          year={selectedYear}
-          month={defaultMonths[selectedMonth]}
-          onPrevMonthClick={() => handlePrevMonth(selectedMonth)}
-          onNextMonthClick={() => handleNextMonth(selectedMonth)}
+          year={moment(selectedDate).year()}
+          month={defaultMonths[moment(selectedDate).month()]}
+          onPrevMonthClick={() => handlePrevMonth(moment(selectedDate).month())}
+          onNextMonthClick={() => handleNextMonth(moment(selectedDate).month())}
         />
       </div>
       <div className={s.weeks}>
@@ -115,23 +119,23 @@ export const Calendar: React.FC<IProps> = (props) => {
       <div className={s.days}>
         {days.map((day, index) => {
           if (day.type === 'prev-month' || day.type === 'next-month') {
-            return <DayDisabled key={index}>{format(day.value, 'dd')}</DayDisabled>;
+            return <DayDisabled key={index}>{moment(day.value).format('DD')}</DayDisabled>;
           }
           return (
             <Day
               key={index}
-              isActive={selectedDay === getDate(day.value)}
+              isActive={moment(selectedDate).date() === moment(day.value).date()}
               isToday={day.isToday}
               isWeekday={day.isWeekday}
-              onClick={() => {}}
+              onClick={() => handleChangeDate(day.value)}
             >
-              {format(day.value, 'd')}
+              {moment(day.value).format('DD')}
             </Day>
           );
         })}
       </div>
       <div className={s.control}>
-        <Inputs />
+        <Inputs value={selectedDate} onChange={handleChange} />
       </div>
     </div>
   );

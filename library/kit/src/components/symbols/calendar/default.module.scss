@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  width: var(--numbers-360);
+  min-width: var(--numbers-288);
+  max-width: var(--numbers-400);
 }
 
 .header {

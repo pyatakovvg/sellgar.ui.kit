@@ -8,6 +8,8 @@
   border: var(--numbers-1) solid var(--border-action-normal);
   background: var(--background-input-normal);
   box-shadow: var(--measurements-shadows-xs);
+  cursor: pointer;
+  transition: var(--measurements-transition);
 }
 
 .wrapper:hover {
@@ -25,7 +27,9 @@
 }
 
 .lead-icon,
-.tail-icon {
+.tail-icon,
+.clearable,
+.arrow {
 
   display: flex;
   flex-direction: column;
@@ -34,16 +38,31 @@
   justify-content: center;
   width: var(--numbers-20);
   height: var(--numbers-20);
-  color: var(--text-base-tertiary);
   font-size: var(--typography-size-body-l);
+  transition: var(--measurements-transition);
 }
 
 .lead-icon {
   margin: 0 var(--numbers-4) 0 0;
+  color: var(--icon-base-tertiary);
 }
 
 .tail-icon {
   margin: 0 0 0 var(--numbers-4);
+  color: var(--icon-base-tertiary);
+}
+
+.arrow {
+  margin: 0 0 0 var(--numbers-4);
+  color: var(--icon-base-quaternary);
+}
+
+.wrapper:hover .arrow {
+  color: var(--icon-base-tertiary);
+}
+
+.focused .arrow {
+  color: var(--icon-base-tertiary);
 }
 
 .content {
@@ -52,31 +71,7 @@
   flex-direction: row;
   flex: 1 0;
   padding: 0 var(--numbers-4);
-}
-
-.input {
-
-  display: block;
-  border: none;
-  outline: none;
-  width: 100%;
-  font-family: inherit;
-  background: transparent;
-  color: var(--text-base-primary);
-  font-size: var(--typography-size-caption-l);
-  font-weight: var(--typography-weight-regular);
-  line-height: var(--typography-line-height-caption-l);
-  letter-spacing: var(--typography-letter-spacing-caption-l);
-}
-
-.input::placeholder {
-  color: var(--text-base-tertiary);
-}
-
-.input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--background-input-normal) inset;
-  box-shadow: 0 0 0 1000px var(--background-input-normal) inset;
-  -webkit-text-fill-color: var(--text-base-primary);
+  overflow: auto;
 }
 
 .badge {
@@ -88,10 +83,17 @@
   padding: 0 var(--numbers-4);
 }
 
+.clearable {
+
+  font-size: var(--numbers-16);
+  color: var(--text-status-destructive);
+  margin: 0 0 0 var(--numbers-4);
+}
+
 .size {
   &--medium {
     max-height: var(--numbers-40);
-    padding: var(--numbers-10) var(--numbers-12);
+    padding: var(--numbers-10) var(--numbers-6) var(--numbers-10) var(--numbers-12);
   }
 
   &--extra-small {
@@ -125,11 +127,9 @@
   background: var(--background-input-disabled);
 
   .lead-icon,
-  .tail-icon {
-    color: var(--icon-base-quaternary);
-  }
-
-  .input {
+  .tail-icon,
+  .clearable,
+  .arrow {
     color: var(--icon-base-quaternary);
   }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Input } from './input';
 import { Option } from './option';
 import { Placeholder } from './placeholder';
+import { SelectInput } from '../../helpers/select-input';
 import { Select as SelectHelper } from '../../helpers/select';
 
 export interface IProps<T extends Record<string, any>, K extends keyof T> {
@@ -116,7 +116,7 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
     >
       <SelectHelper.Reference
         reference={(select) => (
-          <Input
+          <SelectInput
             {...props}
             disabled={disabled}
             isFocused={open}
@@ -138,7 +138,7 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
             ) : (
               <Placeholder title={placeholder ?? 'Select...'} />
             )}
-          </Input>
+          </SelectInput>
         )}
       />
       <SelectHelper.Options
