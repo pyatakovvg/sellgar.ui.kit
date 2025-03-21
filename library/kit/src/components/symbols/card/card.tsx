@@ -7,12 +7,14 @@ interface IProps {
   type?: 'custom' | 'elevated' | 'flat';
   image?: React.ReactNode;
   alignment?: 'image-first' | 'content-first';
+  target?: 'inverted';
 }
 
 export const Card: React.FC<React.PropsWithChildren<IProps>> = ({
   type = 'custom',
   alignment = 'image-first',
   image,
+  target,
   ...props
 }) => {
   const className = React.useMemo(
@@ -28,8 +30,11 @@ export const Card: React.FC<React.PropsWithChildren<IProps>> = ({
           [s['alignment--image-first']]: alignment === 'image-first',
           [s['alignment--content-first']]: alignment === 'content-first',
         },
+        {
+          [s['target--inverted']]: target === 'inverted',
+        },
       ),
-    [type, alignment],
+    [type, alignment, target],
   );
 
   return (

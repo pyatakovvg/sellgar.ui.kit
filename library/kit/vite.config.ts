@@ -5,11 +5,22 @@ import webfontDownload from 'vite-plugin-webfont-dl';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
   build: {
+    cssCodeSplit: true,
+    assetsInlineLimit: 0,
     lib: {
-      entry: ['src/index.ts', 'src/theme/index.css', 'src/theme/index.scss'],
-      name: 'index',
-      fileName: 'index',
+      entry: {
+        index: 'src/index.ts',
+        'theme.css': 'src/theme/index.css',
+        'theme-viewport.css': 'src/theme/index.scss',
+      },
       formats: ['es'],
     },
     rollupOptions: {
@@ -27,7 +38,7 @@ export default defineConfig({
     react(),
     webfontDownload(['https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap'], {
       injectAsStyleTag: false,
-      embedFonts: true,
+      embedFonts: false,
     }),
     libInjectCss(),
     dts({ outDir: 'types' }),

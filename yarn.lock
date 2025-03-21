@@ -327,6 +327,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@client/storybook@workspace:clients/storybook":
+  version: 0.0.0-use.local
+  resolution: "@client/storybook@workspace:clients/storybook"
+  dependencies:
+    "@sellgar/kit": "*"
+    "@storybook/addon-docs": 8.6.4
+    "@storybook/addon-essentials": 8.6.4
+    "@storybook/addon-interactions": 8.6.4
+    "@storybook/addon-links": 8.6.4
+    "@storybook/addon-onboarding": 8.6.4
+    "@storybook/blocks": 8.6.4
+    "@storybook/react": 8.6.4
+    "@storybook/react-vite": 8.6.4
+    "@types/node": 22.13.10
+    "@types/react": 19.0.10
+    "@types/react-dom": 19.0.4
+    "@vitejs/plugin-react": 4.3.4
+    eslint: 9.22.0
+    eslint-plugin-storybook: 0.11.4
+    globals: 16.0.0
+    react: 19.0.0
+    react-dom: 19.0.0
+    sass: 1.85.1
+    storybook: 8.6.4
+    typescript: 5.8.2
+    vite: 6.2.2
+  languageName: unknown
+  linkType: soft
+
 "@esbuild/aix-ppc64@npm:0.25.0":
   version: 0.25.0
   resolution: "@esbuild/aix-ppc64@npm:0.25.0"
@@ -1291,10 +1320,11 @@ __metadata:
     date-fns: 4.1.0
     moment: 2.30.1
     overlayscrollbars: 2.11.1
+    overlayscrollbars-react: 0.5.6
     react-baron: 3.0.0
     react-slider: 2.0.6
     typescript: 5.8.2
-    vite: 6.2.1
+    vite: 6.2.2
     vite-plugin-dts: 4.5.3
     vite-plugin-lib-inject-css: 2.2.1
     vite-plugin-webfont-dl: 3.10.4
@@ -4329,6 +4359,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"overlayscrollbars-react@npm:0.5.6":
+  version: 0.5.6
+  resolution: "overlayscrollbars-react@npm:0.5.6"
+  peerDependencies:
+    overlayscrollbars: ^2.0.0
+    react: ">=16.8.0"
+  checksum: 4a07dda99543522763c5182b1a1344b35a13534ea3213fb8638604e813ec92ff8f9e63d72e11ded596ab5dbe5829d4f50f6b2d0ffc76ce18e6e67a662c7bdb6a
+  languageName: node
+  linkType: hard
+
 "overlayscrollbars@npm:2.11.1":
   version: 2.11.1
   resolution: "overlayscrollbars@npm:2.11.1"
@@ -5062,35 +5102,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook@workspace:clients/storybook":
-  version: 0.0.0-use.local
-  resolution: "storybook@workspace:clients/storybook"
-  dependencies:
-    "@sellgar/kit": "*"
-    "@storybook/addon-docs": 8.6.4
-    "@storybook/addon-essentials": 8.6.4
-    "@storybook/addon-interactions": 8.6.4
-    "@storybook/addon-links": 8.6.4
-    "@storybook/addon-onboarding": 8.6.4
-    "@storybook/blocks": 8.6.4
-    "@storybook/react": 8.6.4
-    "@storybook/react-vite": 8.6.4
-    "@types/node": 22.13.10
-    "@types/react": 19.0.10
-    "@types/react-dom": 19.0.4
-    "@vitejs/plugin-react": 4.3.4
-    eslint: 9.22.0
-    eslint-plugin-storybook: 0.11.4
-    globals: 16.0.0
-    react: 19.0.0
-    react-dom: 19.0.0
-    sass: 1.85.1
-    storybook: 8.6.4
-    typescript: 5.8.2
-    vite: 6.2.1
-  languageName: unknown
-  linkType: soft
-
 "string-argv@npm:~0.3.1":
   version: 0.3.2
   resolution: "string-argv@npm:0.3.2"
@@ -5490,9 +5501,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:6.2.1":
-  version: 6.2.1
-  resolution: "vite@npm:6.2.1"
+"vite@npm:6.2.2":
+  version: 6.2.2
+  resolution: "vite@npm:6.2.2"
   dependencies:
     esbuild: ^0.25.0
     fsevents: ~2.3.3
@@ -5538,7 +5549,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: d7379a9870c888681f7e4a861095e7f568ecd4cb99a5eed2dec65dc205ce863783d45c66a1a275868e23732087009533eadec999061c1ddef96aa8aaa0dcf6d2
+  checksum: 5a8b2083ef2534fab8769f18807e1df055730f1cb7853bed9d2556b2bb6c566aad25b6f530440370798baa4bc6c63f0d1339b646ee06102bc4f9373e93fefb7e
   languageName: node
   linkType: hard
 

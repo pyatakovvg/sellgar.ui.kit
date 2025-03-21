@@ -31,18 +31,19 @@ const meta: Meta<typeof Select> = {
     badge: '⌘K',
     optionKey: 'uuid',
     optionValue: 'name',
+    value: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e1',
     options: [
       { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e1', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e2', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e3', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e4', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e5', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e6', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e7', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e8', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e9', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e0', name: 'Иванов Иван Иванович', role: 'Адм.' },
-      { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e11', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e2', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e3', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e4', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e5', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e6', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e7', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e8', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e9', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e0', name: 'Иванов Иван Иванович', role: 'Адм.' },
+      // { uuid: 'e7b8f1b4-6c9c-4c5e-9b3e-3e6d1b2e1f2e11', name: 'Иванов Иван Иванович', role: 'Адм.' },
       { uuid: 'a3c1f5d6-4e7b-4f1e-ae1b-7e5d4f3a2b1c', name: 'Петров Петр Петрович', role: 'Адм.' },
       { uuid: 'd2e5c9a2-3f1b-4e7c-8b3e-1c5d4e2b1a2d', name: 'Сидоров Сидор Сидорович', role: 'Адм.' },
       { uuid: 'f1a3b5d7-2c4e-4c1a-9e2b-6e5d4c3a1b1e', name: 'Кузнецов Алексей Николаевич', role: 'Польз.' },
@@ -76,8 +77,6 @@ export default meta;
 export const Default: Story = {
   args: {},
   render(args) {
-    const [value, setValue] = React.useState('b2d5c3f1-4e8e-4b1a-9c2e-7e5d3b1a2f5c');
-
     return (
       <div
         style={{
@@ -91,28 +90,7 @@ export const Default: Story = {
             width: '300px',
           }}
         >
-          <Select {...args} value={value} tabIndex={0} />
-        </div>
-        <div
-          style={{
-            display: 'block',
-            width: '300px',
-            marginTop: '24px',
-          }}
-        >
-          <Select
-            tabIndex={1}
-            optionKey={args.optionKey}
-            optionValue={args.optionValue}
-            options={args.options}
-            value={value}
-            onFocus={() => console.log('focus')}
-            onBlur={() => console.log('blur')}
-            onChange={(value) => {
-              setValue(value);
-              console.log('change', value);
-            }}
-          />
+          <Select {...args} />
         </div>
       </div>
     );

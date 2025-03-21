@@ -28,6 +28,10 @@
     color: var(--text-base-tertiary);
   }
 
+  &--info {
+    color: var(--text-status-info);
+  }
+
   &--success {
     color: var(--text-status-success);
   }

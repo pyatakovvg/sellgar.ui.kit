@@ -1,7 +1,7 @@
 {
   "name": "@sellgar/kit",
   "type": "module",
-  "version": "0.0.52",
+  "version": "0.0.92",
   "description": "Storybook",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -29,8 +29,8 @@
       }
     },
     "./font.css": "./dist/webfonts.css",
-    "./theme.css": "./dist/index2.css",
-    "./theme-viewport.css": "./dist/index3.css"
+    "./theme.css": "./dist/theme.css",
+    "./theme-viewport.css": "./dist/theme-viewport.css"
   },
   "dependencies": {
     "@floating-ui/dom": "1.6.13",
@@ -41,6 +41,7 @@
     "date-fns": "4.1.0",
     "moment": "2.30.1",
     "overlayscrollbars": "2.11.1",
+    "overlayscrollbars-react": "0.5.6",
     "react-baron": "3.0.0",
     "react-slider": "2.0.6"
   },
@@ -59,7 +60,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.4",
     "typescript": "5.8.2",
-    "vite": "6.2.1",
+    "vite": "6.2.2",
     "vite-plugin-dts": "4.5.3",
     "vite-plugin-lib-inject-css": "2.2.1",
     "vite-plugin-webfont-dl": "3.10.4"

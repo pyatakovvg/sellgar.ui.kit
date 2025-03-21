@@ -8,7 +8,7 @@ import s from './default.module.scss';
 export interface IProps {
   leadIcon?: React.ReactNode;
   caption: string;
-  state?: 'default' | 'success' | 'destructive';
+  state?: 'default' | 'info' | 'success' | 'destructive';
 }
 
 export const CaptionField: React.FC<IProps> = ({ state = 'default', ...props }) => {
@@ -16,6 +16,7 @@ export const CaptionField: React.FC<IProps> = ({ state = 'default', ...props }) 
     () =>
       cn(s.wrapper, {
         [s['state--default']]: state === 'default',
+        [s['state--info']]: state === 'info',
         [s['state--success']]: state === 'success',
         [s['state--destructive']]: state === 'destructive',
       }),

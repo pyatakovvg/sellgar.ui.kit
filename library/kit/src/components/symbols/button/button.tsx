@@ -7,7 +7,7 @@ interface IProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'st
   form?: 'icon-only';
   style?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
   size?: 'lg' | 'md' | 'sm' | 'xs';
-  target?: 'destructive';
+  target?: 'default' | 'destructive' | 'success' | 'info';
   shape?: 'rounded' | 'pill';
   leadIcon?: React.ReactNode;
   tailIcon?: React.ReactNode;
@@ -18,7 +18,7 @@ export const Button: React.FC<IProps> = ({
   size = 'md',
   style = 'primary',
   shape = 'rounded',
-  target,
+  target = 'default',
   leadIcon,
   tailIcon,
   label,
@@ -41,6 +41,8 @@ export const Button: React.FC<IProps> = ({
           [s['style--ghost']]: style === 'ghost',
         },
         {
+          [s['target--info']]: target === 'info',
+          [s['target--success']]: target === 'success',
           [s['target--destructive']]: target === 'destructive',
         },
         {

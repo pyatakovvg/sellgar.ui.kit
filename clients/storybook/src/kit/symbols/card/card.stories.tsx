@@ -13,6 +13,10 @@ const meta: Meta<typeof Card> = {
     type: 'custom',
   },
   argTypes: {
+    target: {
+      options: [undefined, 'inverted'],
+      control: 'select',
+    },
     type: {
       options: ['custom', 'elevated', 'flat'],
       control: 'select',

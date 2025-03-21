@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Typography } from '../../components/symbols';
 import { Divider as DividerComponent } from '../../components/misc';
 
 import s from './default.module.scss';
@@ -24,8 +25,22 @@ const Cell: React.FC<React.PropsWithChildren> = (props) => {
   return <div className={s.cell}>{props.children}</div>;
 };
 
+const SubCells: React.FC<React.PropsWithChildren> = (props) => {
+  return <div className={s['sub-cells']}>{props.children}</div>;
+};
+
 const Additional: React.FC<React.PropsWithChildren> = (props) => {
-  return <div className={s.additional}>{props.children}</div>;
+  return (
+    <div className={s.additional}>
+      <Typography size={'caption-m'} weight={'semi-bold'}>
+        <p>{props.children}</p>
+      </Typography>
+    </div>
+  );
+};
+
+const Block: React.FC<React.PropsWithChildren> = (props) => {
+  return <div className={s.block}>{props.children}</div>;
 };
 
 const Divider: React.FC = () => {
@@ -42,7 +57,9 @@ type TSidebar = typeof SidebarComponent & {
   Bottom: typeof Bottom;
   Divider: typeof Divider;
   Cell: typeof Cell;
+  SubCells: typeof SubCells;
   Additional: typeof Additional;
+  Block: typeof Block;
 };
 
 export const Sidebar: TSidebar = Object.assign(SidebarComponent, {
@@ -51,5 +68,7 @@ export const Sidebar: TSidebar = Object.assign(SidebarComponent, {
   Bottom,
   Divider,
   Cell,
+  SubCells,
   Additional,
+  Block,
 });

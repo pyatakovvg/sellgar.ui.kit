@@ -5,12 +5,13 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: var(--numbers-1) solid transparent;
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
   box-shadow: 0 var(--numbers-1) var(--numbers-2) 0 rgba(20, 21, 26, 0.05);
   transition: background-color var(--measurements-transition),
+              box-shadow       var(--measurements-transition),
               border           var(--measurements-transition),
               color            var(--measurements-transition);
 
@@ -22,6 +23,7 @@
     align-items: center;
     justify-content: center;
     margin: 0 var(--numbers-4) 0 0;
+    transition: color var(--measurements-transition);
   }
 
   .text {
@@ -29,6 +31,7 @@
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
+    transition: color var(--measurements-transition);
   }
 
   .badge {
@@ -46,6 +49,7 @@
     .label {
 
       font-weight: var(--typography-weight-semi-bold);
+      transition: color var(--measurements-transition);
     }
   }
 
@@ -57,9 +61,10 @@
     align-items: center;
     justify-content: center;
     margin: 0 0 0 var(--numbers-4);
+    transition: color var(--measurements-transition);
   }
 
-  &:focus {
+  &:focus, &:active {
     box-shadow: 0 0 0 var(--numbers-2) rgba(200, 178, 255, 0.50);
   }
 }
@@ -219,14 +224,17 @@
   &--primary {
 
     color: var(--text-base-inverted);
+    border-color: var(--background-button-primary);
     background: var(--background-button-primary);
 
     &:hover {
+      border-color: var(--background-button-primary--hover);
       background: var(--background-button-primary--hover);
     }
 
     &:disabled {
       color: var(--text-base-quaternary);
+      border-color: var(--background-button-primary--disabled);
       background: var(--background-button-primary--disabled);
 
       .badge {
@@ -244,7 +252,7 @@
 
     color: var(--text-base-secondary);
     background: var(--background-button-secondary);
-    border: var(--numbers-1) solid var(--border-action-normal);
+    border-color: var(--border-action-normal);
 
     .text {
       color: var(--text-base-primary);
@@ -253,7 +261,7 @@
     .badge {
 
       background: var(--background-badge-gray);
-      border: var(--numbers-1) solid var(--border-base-alpha);
+      border-color: var(--border-base-alpha);
     }
 
     &:hover {
@@ -261,8 +269,8 @@
       background: var(--background-button-secondary--hover);
     }
 
-    &:focus {
-      border: var(--numbers-1) solid var(--border-action-focus-light);
+    &:focus, &:active {
+      border-color: var(--border-action-focus-light);
     }
 
     &:disabled {
@@ -288,6 +296,7 @@
   &--tertiary {
 
     color: var(--text-base-secondary);
+    border-color: var(--background-button-tetriary);
     background: var(--background-button-tetriary);
 
     .text {
@@ -300,11 +309,13 @@
     }
 
     &:hover {
+
+      border-color: var(--background-button-tetriary--hover);
       background: var(--background-button-tetriary--hover);
     }
 
-    &:focus {
-      border: var(--numbers-1) solid var(--border-action-focus-light);
+    &:focus, &:active {
+      border-color: var(--border-action-focus-light);
     }
 
     &:disabled {
@@ -329,7 +340,9 @@
   &--ghost {
 
     color: var(--text-base-secondary);
+    border-color: var(--background-button-ghost);
     background: var(--background-button-ghost);
+    box-shadow: none;
 
     .text {
       color: var(--text-base-primary);
@@ -342,15 +355,17 @@
     }
 
     &:hover {
+      border-color: var(--background-button-ghost--hover);
       background: var(--background-button-ghost--hover);
     }
 
-    &:focus {
-      border: var(--numbers-1) solid var(--border-action-focus-light);
+    &:focus, &:active {
+      border-color: var(--border-action-focus-light);
     }
 
     &:disabled {
       color: var(--text-base-quaternary);
+      border-color: var(--background-button-ghost--disabled);
       background: var(--background-button-ghost--disabled);
 
       .text {
@@ -375,6 +390,7 @@
       &--primary {
 
         color: var(--text-base-static-wight);
+        border-color: var(--background-button-destructive);
         background: var(--background-button-destructive);
 
         .badge {
@@ -382,15 +398,17 @@
         }
 
         &:hover {
+          border-color: var(--background-button-destructive--hover);
           background: var(--background-button-destructive--hover);
         }
 
-        &:focus {
+        &:focus, &:active {
           box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
         }
 
         &:disabled {
           color: var(--text-status-destructive-tertiary);
+          border-color: var(--background-button-destructive--disabled);
           background: var(--background-button-destructive--disabled);
 
           .badge {
@@ -405,7 +423,7 @@
 
       &--secondary {
 
-        border: var(--numbers-1) solid var(--border-action-destructive);
+        border-color: var(--border-action-destructive);
         color: var(--text-status-destructive-secondary);
         background: var(--background-button-destructive-secondary);
 
@@ -428,7 +446,7 @@
           background: var(--background-button-destructive-secondary--hover);
         }
 
-        &:focus {
+        &:focus, &:active {
           box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
         }
 
@@ -455,6 +473,7 @@
       &--tertiary {
 
         color: var(--text-status-destructive);
+        border-color: var(--background-button-destructive-tetriary);
         background: var(--background-button-destructive-tetriary);
 
         .text {
@@ -471,16 +490,18 @@
         }
 
         &:hover {
+          border-color: var(--background-button-destructive-tetriary--hover);
           background: var(--background-button-destructive-tetriary--hover);
         }
 
-        &:focus {
+        &:focus, &:active {
           box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
-          border: var(--numbers-1) solid var(--border-action-focus-destructive-light);
+          border-color: var(--border-action-focus-destructive-light);
         }
 
         &:disabled {
           color: var(--text-status-destructive-tertiary);
+          border-color: var(--background-button-destructive-tetriary--disabled);
           background: var(--background-button-destructive-tetriary--disabled);
 
           .text {
@@ -501,6 +522,7 @@
       &--ghost {
 
         color: var(--text-status-destructive-secondary);
+        border-color: var(--background-button-destructive-ghost);
         background: var(--background-button-destructive-ghost);
 
         .text {
@@ -518,6 +540,7 @@
         }
 
         &:hover {
+          border-color: var(--background-button-destructive-ghost--hover);
           background: var(--background-button-destructive-ghost--hover);
 
           .text {
@@ -525,13 +548,14 @@
           }
         }
 
-        &:focus {
+        &:focus, &:active {
           box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
-          border: var(--numbers-1) solid var(--border-action-focus-destructive-light);
+          border-color: var(--border-action-focus-destructive-light);
         }
 
         &:disabled {
           color: var(--text-status-destructive-tertiary);
+          border-color: var(--background-button-destructive-ghost--disabled);
           background: var(--background-button-destructive-ghost--disabled);
 
           .text {
@@ -544,6 +568,117 @@
 
             .label {
               color: var(--text-status-destructive-tertiary);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--success {
+    &.style {
+      &--primary {
+
+        color: var(--text-base-static-wight);
+        border-color: var(--background-surface-success-accent);
+        background: var(--background-surface-success-accent);
+
+        .badge {
+          color: var(--text-status-success);
+        }
+
+        &:hover {
+          border-color: var(--background-surface-success-accent);
+          background: var(--background-surface-success-accent);
+        }
+
+        &:focus, &:active {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(130, 253, 125, 0.6);
+        }
+
+        &:disabled {
+          color: var(--text-status-success-tertiary);
+          border-color: var(--background-surface-success-subtle);
+          background: var(--background-surface-success-subtle);
+
+          .badge {
+            background: var(--background-badge-surface);
+
+            .label {
+              color: var(--text-status-success-tertiary);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--info {
+    &.style {
+      &--primary {
+
+        color: var(--text-base-static-wight);
+        border-color: var(--background-surface-info-accent);
+        background: var(--background-surface-info-accent);
+
+        .badge {
+          color: var(--text-status-info);
+        }
+
+        &:hover {
+          border-color: var(--background-surface-info-accent);
+          background: var(--background-surface-info-accent);
+        }
+
+        &:focus, &:active {
+          box-shadow: 0 0 0 var(--numbers-2) rgba(123, 171, 250, 0.6);
+        }
+
+        &:disabled {
+          color: var(--text-status-info-tertiary);
+          border-color: var(--background-surface-info-subtle);
+          background: var(--background-surface-info-subtle);
+
+          .badge {
+            background: var(--background-badge-surface);
+
+            .label {
+              color: var(--text-status-info-tertiary);
+            }
+          }
+        }
+      }
+
+      &--ghost {
+
+        color: var(--text-status-info-secondary);
+        border-color: var(--background-button-ghost);
+        background: var(--background-button-ghost);
+        box-shadow: none;
+
+        .text {
+          color: var(--text-status-info);
+        }
+
+        .badge {
+
+          border: var(--numbers-1) solid var(--border-base-alpha);
+          background: var(--background-badge-blue);
+        }
+
+        &:disabled {
+          color: var(--text-status-info-tertiary);
+
+          .text {
+            color: var(--text-status-info-tertiary);
+          }
+
+          .badge {
+            border-color: var(--border-base-alpha);
+            background: var(--background-badge-blue-disabled);
+
+            .label {
+              color: var(--text-status-info-tertiary);
             }
           }
         }

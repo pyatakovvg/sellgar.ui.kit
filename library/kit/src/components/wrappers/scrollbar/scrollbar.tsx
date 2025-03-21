@@ -1,39 +1,43 @@
 import React from 'react';
-import { OverlayScrollbars, SizeObserverPlugin } from 'overlayscrollbars';
+import {
+  useOverlayScrollbars,
+  OverlayScrollbarsComponentRef,
+  OverlayScrollbarsComponent,
+} from 'overlayscrollbars-react';
 
 import './default.css';
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  ref?: React.RefCallback<HTMLDivElement>;
+  ref?: React.RefObject<HTMLDivElement> | React.RefCallback<HTMLDivElement>;
 }
 
 export const Scrollbar: React.FC<React.PropsWithChildren<IProps>> = ({ ref, ...props }) => {
-  const divRef = React.useRef<HTMLDivElement>(null);
-  const [scrollbar, setScrollbar] = React.useState<OverlayScrollbars | null>(null);
+  const divRef = React.useRef<OverlayScrollbarsComponentRef>(null);
+  const [initBodyOverlayScrollbars] = useOverlayScrollbars({
+    defer: true,
+    events: {
+      initialized: () => {},
+      destroyed: () => {},
+    },
+    options: {
+      scrollbars: {
+        theme: 'os-theme-light',
+        clickScroll: true,
+      },
+    },
+  });
 
-  React.useImperativeHandle(ref, () => divRef.current!);
+  React.useImperativeHandle(ref, () => divRef.current?.getElement()!);
 
   React.useEffect(() => {
     if (divRef.current) {
-      OverlayScrollbars.plugin(SizeObserverPlugin);
-
-      const scrollbar = OverlayScrollbars(divRef.current, {});
-
-      setScrollbar(scrollbar!);
+      initBodyOverlayScrollbars(divRef.current.getElement()!);
     }
-  }, [divRef]);
-
-  React.useEffect(() => {
-    return () => {
-      if (scrollbar) {
-        scrollbar.destroy();
-      }
-    };
-  }, [scrollbar]);
+  }, [divRef.current, initBodyOverlayScrollbars]);
 
   return (
-    <div ref={divRef} {...props}>
+    <OverlayScrollbarsComponent ref={divRef} {...props}>
       {props.children}
-    </div>
+    </OverlayScrollbarsComponent>
   );
 };

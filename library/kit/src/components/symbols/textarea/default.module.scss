@@ -7,13 +7,21 @@
   border: var(--numbers-1) solid var(--border-action-normal);
   background: var(--background-input-normal);
   box-shadow: var(--measurements-shadows-xs);
+  transition: var(--measurements-transition);
 }
 
-.wrapper:hover,
-.focused {
+.wrapper:hover {
 
   border-color: var(--border-action-hover);
   background: var(--background-input-hover);
+}
+
+.focused,
+.focused:hover {
+
+  border: var(--numbers-1) solid var(--border-action-focus-light);
+  background: var(--background-input-focus);
+  box-shadow: 0 0 0 var(--numbers-2) rgba(200, 178, 255, 0.50);
 }
 
 .content {
@@ -80,6 +88,7 @@
 .focused.destructive {
   border-color: var(--border-action-destructive-hover);
   background: var(--background-input-normal);
+  box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
 }
 
 .disabled,

@@ -4,6 +4,7 @@
   flex-direction: row;
   flex: 0 0 auto;
   align-items: center;
+  justify-content: center;
   padding: 0;
   border: none;
   background: transparent;
@@ -19,10 +20,13 @@
     justify-content: center;
     margin: 0 var(--numbers-4) 0 0;
     color: var(--text-base-secondary);
+    transition: var(--measurements-transition);
   }
 
   .text {
+
     color: var(--text-base-primary);
+    transition: var(--measurements-transition);
   }
 
   .badge {
@@ -37,6 +41,7 @@
     background: var(--background-badge-gray);
     margin: 0 0 0 var(--numbers-4);
     box-sizing: border-box;
+    transition: var(--measurements-transition);
 
     .label {
 
@@ -53,6 +58,7 @@
     justify-content: center;
     margin: 0 0 0 var(--numbers-4);
     color: var(--text-base-secondary);
+    transition: var(--measurements-transition);
   }
 
   &:hover {

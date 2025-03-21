@@ -7,9 +7,9 @@
   --background-button-secondary--hover: var(--colors-gray-1);
   --background-button-secondary--disabled: var(--colors-base-white);
 
-  --background-button-tetriary: var(--colors-gray-1a);
-  --background-button-tetriary--hover: var(--colors-gray-2a);
-  --background-button-tetriary--disabled: var(--colors-gray-1a);
+  --background-button-tertiary: var(--colors-gray-1a);
+  --background-button-tertiary--hover: var(--colors-gray-2a);
+  --background-button-tertiary--disabled: var(--colors-gray-1a);
 
   --background-button-ghost: var(--colors-base-transparent);
   --background-button-ghost--hover: var(--colors-gray-1a);
@@ -42,9 +42,9 @@
   --background-button-secondary--hover: var(--colors-gray-12);
   --background-button-secondary--disabled: var(--colors-gray-13);
 
-  --background-button-tetriary: var(--colors-white-1);
-  --background-button-tetriary--hover: var(--colors-white-2);
-  --background-button-tetriary--disabled: var(--colors-white-1);
+  --background-button-tertiary: var(--colors-white-1);
+  --background-button-tertiary--hover: var(--colors-white-2);
+  --background-button-tertiary--disabled: var(--colors-white-1);
 
   --background-button-ghost: var(--colors-base-transparent);
   --background-button-ghost--hover: var(--colors-white-2);
@@ -58,9 +58,9 @@
   --background-button-destructive-secondary--hover: var(--colors-gray-13);
   --background-button-destructive-secondary--disabled: var(--colors-base-dark-1);
 
-  --background-button-destructive-tetriary: var(--colors-white-1a);
-  --background-button-destructive-tetriary--hover: var(--colors-white-2a);
-  --background-button-destructive-tetriary--disabled: var(--colors-white-1a);
+  --background-button-destructive-tetriary: var(--colors-white-1);
+  --background-button-destructive-tetriary--hover: var(--colors-white-2);
+  --background-button-destructive-tetriary--disabled: var(--colors-white-1);
 
   --background-button-destructive-ghost: var(--colors-base-transparent);
   --background-button-destructive-ghost--hover: var(--colors-white-1);

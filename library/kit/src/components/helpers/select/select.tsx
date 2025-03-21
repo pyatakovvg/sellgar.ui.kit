@@ -16,26 +16,29 @@ import {
 } from '@floating-ui/react';
 import React from 'react';
 
+import { Icon } from '../../symbols';
 import { DropDownWrapper } from '../../wrappers';
 
-import s from './default.module.scss';
-import { Icon } from '../../symbols';
 import cn from 'classnames';
+import s from './default.module.scss';
 
 interface IOptions {
   tabIndex?: number;
   initialOpen?: boolean;
   initialSelectedIndex?: number | null;
+  selectedIndex?: number | null;
   open?: boolean;
   disabled?: boolean;
   setOpen?(open: boolean): void;
+  onFocus?(): void;
+  onBlur?(): void;
   onSelect?(selectedIndex: number | null): void;
 }
 
 const useSelect = (options: IOptions) => {
   const listRef = React.useRef<Array<HTMLElement | null>>([]);
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState<number | null>(() => options.initialSelectedIndex ?? null);
+  const [selectedIndex, setSelectedIndex] = React.useState<number | null | undefined>(() => (options.selectedIndex || options.initialSelectedIndex) ?? null);
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(options.initialOpen);
 
   const open = options.open ?? uncontrolledOpen;
@@ -67,7 +70,7 @@ const useSelect = (options: IOptions) => {
 
   const floatingContext = floating.context;
 
-  const click = useClick(floatingContext, { event: 'click' });
+  const click = useClick(floatingContext, { event: 'click', enabled: !options.disabled });
   const role = useRole(floatingContext, { role: 'listbox' });
   const dismiss = useDismiss(floatingContext);
   const listNav = useListNavigation(floatingContext, {
@@ -98,6 +101,8 @@ const useSelect = (options: IOptions) => {
       tabIndex: options.tabIndex,
       disabled: options.disabled,
       onSelect: options.onSelect,
+      onBlur: options.onBlur,
+      onFocus: options.onFocus,
     };
   }, [
     open,
@@ -113,6 +118,8 @@ const useSelect = (options: IOptions) => {
     options.tabIndex,
     options.disabled,
     options.onSelect,
+    options.onBlur,
+    options.onFocus,
   ]);
 };
 
@@ -134,12 +141,19 @@ interface IProps {
   initialSelectedIndex?: number | null;
   open?: boolean;
   disabled?: boolean;
+  selectedIndex?: number | null;
   setOpen?(open: boolean): void;
   onSelect?(selectedIndex: number | null): void;
+  onFocus?(): void;
+  onBlur?(): void;
 }
 
 const SelectWrapper: React.FC<React.PropsWithChildren<IProps>> = ({ children, ...options }) => {
   const select = useSelect(options);
+
+  React.useEffect(() => {
+    select.setSelectedIndex(options.selectedIndex);
+  }, [options.selectedIndex]);
 
   return <SelectContext.Provider value={select}>{children}</SelectContext.Provider>;
 };
@@ -151,12 +165,20 @@ interface IReferenceProps {
 const Reference = React.memo((props: IReferenceProps) => {
   const select = useSelectContext();
 
+  const referenceProps = select.interactions.getReferenceProps();
+  console.log(referenceProps);
   return (
     <div
       className={s.wrapper}
       tabIndex={select.tabIndex}
-      {...select.interactions.getReferenceProps()}
       ref={select.floating.refs.setReference}
+      {...referenceProps}
+      onFocus={() => {
+        select.onFocus && select.onFocus();
+      }}
+      onBlur={() => {
+        select.onBlur && select.onBlur();
+      }}
     >
       {props.reference(select)}
     </div>
@@ -178,25 +200,6 @@ const Options = React.memo((props: IOptionsProps) => {
     return null;
   }
 
-  if (!options.length) {
-    return (
-      <FloatingPortal>
-        <DropDownWrapper
-          {...select.interactions.getFloatingProps()}
-          ref={select.floating.refs.setFloating}
-          style={{
-            ...transitionStyles,
-            ...select.floating.floatingStyles,
-            outline: 'none',
-            zIndex: 999,
-          }}
-        >
-          <div className={s.option}>{props.empty}</div>
-        </DropDownWrapper>
-      </FloatingPortal>
-    );
-  }
-
   return (
     <FloatingPortal>
       <FloatingFocusManager context={select.floating.context}>
@@ -210,7 +213,7 @@ const Options = React.memo((props: IOptionsProps) => {
             zIndex: 999,
           }}
         >
-          {options}
+          {!!options.length ? options : props.empty}
         </DropDownWrapper>
       </FloatingFocusManager>
     </FloatingPortal>
@@ -230,6 +233,10 @@ const Option = React.memo((props: IOptionProps) => {
 
   const isHover = React.useMemo(() => select.activeIndex === props.index, [select.activeIndex]);
   const isSelected = React.useMemo(() => select.selectedIndex === props.index, [select.selectedIndex]);
+
+  React.useEffect(() => {
+    select.setSelectedIndex(select.selectedIndex);
+  }, [select.selectedIndex]);
 
   const containerClassName = React.useMemo(
     () =>

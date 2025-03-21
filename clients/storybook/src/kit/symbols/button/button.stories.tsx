@@ -14,6 +14,7 @@ const meta: Meta<typeof Button> = {
     children: 'Button',
     size: 'lg',
     disabled: false,
+    target: 'default',
   },
   argTypes: {
     shape: {
@@ -21,7 +22,7 @@ const meta: Meta<typeof Button> = {
       control: 'select',
     },
     target: {
-      options: [undefined, 'destructive'],
+      options: ['default', 'destructive', 'success', 'info'],
       control: 'select',
       type: 'string',
     },
@@ -54,11 +55,22 @@ export const Default: Story = {
   args: {},
   render(args) {
     return (
-      <Button
-        {...args}
-        leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'scan-line'} />}
-        tailIcon={<Icon icon={(args.tailIcon as TIconName) ?? 'arrow-right-line'} />}
-      />
+      <div style={{ textAlign: 'center' }}>
+        <div>
+          <Button
+            {...args}
+            leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'scan-line'} />}
+            tailIcon={<Icon icon={(args.tailIcon as TIconName) ?? 'arrow-right-line'} />}
+          />
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', width: 300, marginTop: 16 }}>
+          <Button
+            {...args}
+            leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'scan-line'} />}
+            tailIcon={<Icon icon={(args.tailIcon as TIconName) ?? 'arrow-right-line'} />}
+          />
+        </div>
+      </div>
     );
   },
 };

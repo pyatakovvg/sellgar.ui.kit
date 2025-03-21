@@ -19,9 +19,6 @@ export const Element: React.FC<IProps> = ({ size = 'md', ...props }) => {
           [s['size--small']]: size === 'sm',
         },
         {
-          [s.checked]: props.checked,
-        },
-        {
           [s.disabled]: props.disabled,
         },
       ),
@@ -29,11 +26,13 @@ export const Element: React.FC<IProps> = ({ size = 'md', ...props }) => {
   );
 
   return (
-    <div className={classNameInput}>
+    <div className={s.container}>
       <input {...props} type={'checkbox'} className={s.input} />
-      <span className={s.icon}>
-        <Icon icon={'check-line'} />
-      </span>
+      <div className={classNameInput}>
+        <span className={s.icon}>
+          <Icon icon={'check-fill'} />
+        </span>
+      </div>
     </div>
   );
 };

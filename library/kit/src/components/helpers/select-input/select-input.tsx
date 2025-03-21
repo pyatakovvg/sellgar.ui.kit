@@ -12,6 +12,7 @@ export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
   badge?: string | number;
   size?: 'xs' | 'md';
   target?: 'destructive';
+  isOpen?: boolean;
   isFocused?: boolean;
   isClearable?: boolean;
   onClear?(): void;
@@ -24,6 +25,7 @@ export const SelectInput: React.FC<React.PropsWithChildren<IProps>> = ({
   leadIcon,
   tailIcon,
   badge,
+  isOpen,
   isFocused,
   isClearable,
   disabled,
@@ -73,7 +75,7 @@ export const SelectInput: React.FC<React.PropsWithChildren<IProps>> = ({
         </div>
       )}
       <div className={s.arrow}>
-        <Icon icon={isFocused ? 'arrow-drop-up-line' : 'arrow-drop-down-line'} />
+        <Icon icon={isOpen ? 'arrow-drop-up-line' : 'arrow-drop-down-line'} />
       </div>
     </div>
   );

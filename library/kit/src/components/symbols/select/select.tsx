@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Empty } from './empty';
 import { Option } from './option';
 import { Placeholder } from './placeholder';
 import { SelectInput } from '../../helpers/select-input';
@@ -52,10 +53,13 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
 }: IProps<T, K>) => {
   const [initialize, setInitialize] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [isFocused, setIsFocused] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState<number | null>(
     value ? (findOption(options, optionKey, value) ?? null) : null,
   );
-  const [optionSelected, setOption] = React.useState<T | undefined>(selectedIndex ? options[selectedIndex] : undefined);
+  const [optionSelected, setOption] = React.useState<T | undefined>(
+    selectedIndex !== undefined && selectedIndex !== null ? options[selectedIndex] : undefined,
+  );
 
   React.useEffect(() => {
     if (initialize) {
@@ -65,7 +69,7 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
 
   React.useEffect(() => {
     if (initialize) {
-      setOption(selectedIndex ? options[selectedIndex] : undefined);
+      setOption(selectedIndex !== undefined && selectedIndex !== null ? options[selectedIndex] : undefined);
     }
   }, [selectedIndex]);
 
@@ -103,23 +107,25 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
     setInitialize(true);
   }, []);
 
-  const filteredOptions = React.useMemo(() => options, [options]);
-
   return (
     <SelectHelper
       tabIndex={tabIndex}
       open={open}
       disabled={disabled}
       initialSelectedIndex={selectedIndex}
+      selectedIndex={selectedIndex}
       setOpen={setOpen}
       onSelect={setSelectedIndex}
+      onBlur={() => setIsFocused(false)}
+      onFocus={() => setIsFocused(true)}
     >
       <SelectHelper.Reference
         reference={(select) => (
           <SelectInput
             {...props}
             disabled={disabled}
-            isFocused={open}
+            isFocused={isFocused}
+            isOpen={open}
             isClearable={!!selectedIndex && isClearable}
             onClear={() => {
               if (disabled) {
@@ -142,9 +148,9 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
         )}
       />
       <SelectHelper.Options
-        empty={<Option title={'Нет данных'} />}
+        empty={<Empty title={'Нет данных'} />}
         options={(selectOptions) => {
-          return filteredOptions.map((option, optionIndex) => {
+          return options.map((option, optionIndex) => {
             return (
               <SelectHelper.Option
                 key={option[optionKey]}
@@ -156,7 +162,7 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
                   selectOptions.setOpen(false);
                 }}
                 option={() => {
-                  return templateOption ? templateOption(option) : <Option title={option.name} />;
+                  return templateOption ? templateOption(option) : <Option title={option[optionValue]} />;
                 }}
               />
             );

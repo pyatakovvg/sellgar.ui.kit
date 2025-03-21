@@ -8,6 +8,7 @@
   border: none;
   box-sizing: border-box;
   cursor: pointer;
+  transition: var(--measurements-transition);
 
   .lead-icon {
 

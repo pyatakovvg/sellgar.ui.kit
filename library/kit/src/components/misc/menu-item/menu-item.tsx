@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Animate } from '../../helpers/animate';
 import { IBadgeProps, Typography, Icon, TIconName } from '../../symbols';
 
 import cn from 'classnames';
@@ -8,7 +9,8 @@ import s from './default.module.scss';
 interface IProps {
   leadIcon?: TIconName;
   caption: string;
-  active?: boolean;
+  isActive?: boolean;
+  isPending?: boolean;
   badge?: React.ReactElement;
 }
 
@@ -16,9 +18,9 @@ export const MenuItem: React.FC<IProps> = (props) => {
   const className = React.useMemo(
     () =>
       cn(s.wrapper, {
-        [s.active]: props.active,
+        [s.active]: props.isActive,
       }),
-    [props.active],
+    [props.isActive],
   );
 
   return (
@@ -44,6 +46,13 @@ export const MenuItem: React.FC<IProps> = (props) => {
           </div>
         )}
       </div>
+      {props.isPending && (
+        <Animate.Spin>
+          <div className={s['lead-icon']}>
+            <Icon icon={'loader-2-line'} />
+          </div>
+        </Animate.Spin>
+      )}
     </div>
   );
 };
