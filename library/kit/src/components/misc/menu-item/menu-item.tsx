@@ -8,6 +8,7 @@ import s from './default.module.scss';
 
 interface IProps {
   leadIcon?: TIconName;
+  tailIcon?: TIconName;
   caption: string;
   isActive?: boolean;
   isPending?: boolean;
@@ -46,12 +47,14 @@ export const MenuItem: React.FC<IProps> = (props) => {
           </div>
         )}
       </div>
-      {props.isPending && (
+      {props.isPending ? (
         <Animate.Spin>
-          <div className={s['lead-icon']}>
-            <Icon icon={'loader-2-line'} />
+          <div className={cn(s['tail-icon'], s['spinner'])}>
+            <Icon icon={'loader-4-line'} />
           </div>
         </Animate.Spin>
+      ) : (
+        props.tailIcon && <div className={cn(s['tail-icon'], s['spinner'])}>{props.tailIcon}</div>
       )}
     </div>
   );

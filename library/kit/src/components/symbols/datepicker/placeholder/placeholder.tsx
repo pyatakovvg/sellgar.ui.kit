@@ -12,7 +12,7 @@ export const Placeholder: React.FC<IProps> = (props) => {
   return (
     <div className={s.wrapper}>
       <Typography size={'caption-l'} weight={'medium'}>
-        <p>{props.title}</p>
+        <p className={s.text}>{props.title}</p>
       </Typography>
     </div>
   );

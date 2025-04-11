@@ -26,6 +26,10 @@ export const Notification: React.FC<IProps> = ({ style = 'info', ...props }) => 
     [style],
   );
 
+  const handleClose = () => {
+    props.onClose && props.onClose();
+  };
+
   return (
     <div className={s.wrapper}>
       <div className={s.aside}>
@@ -40,7 +44,7 @@ export const Notification: React.FC<IProps> = ({ style = 'info', ...props }) => 
               <p className={s.text}>{props.title}</p>
             </Typography>
           </div>
-          <div className={s.close}>
+          <div className={s.close} onClick={handleClose}>
             <Icon icon={'close-line'} />
           </div>
         </div>

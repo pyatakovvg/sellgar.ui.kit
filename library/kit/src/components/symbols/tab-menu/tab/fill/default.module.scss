@@ -1,0 +1,116 @@
+.wrapper {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+  align-items: center;
+  border: var(--numbers-1) solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: var(--measurements-transition);
+
+}
+
+.lead-icon,
+.tail-icon {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--numbers-20);
+  color: var(--icon-base-secondary);
+}
+
+.title {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  padding: 0 var(--numbers-4);
+  border: var(--numbers-1) solid transparent;
+  color: var(--text-base-secondary);
+  transition: var(--measurements-transition);
+}
+
+.badge {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  padding: 0 var(--numbers-4);
+}
+
+.shape {
+  &--pill {
+    border-radius: var(--measurements-radius-full);
+  }
+
+  &--rounded {
+    border-radius: var(--measurements-radius-xl);
+  }
+}
+
+.size {
+  &--lg {
+
+    padding: var(--numbers-12) var(--numbers-16);
+  }
+
+  &--md {
+    padding: var(--numbers-8) var(--numbers-12);
+  }
+
+  &--sm {
+    padding: var(--numbers-6) var(--numbers-12);
+  }
+}
+
+.style {
+  &--primary {
+
+    &:hover {
+      border-color: var(--border-action-normal);
+      background: var(--background-button-tertiary);
+
+      .title {
+        color: var(--text-base-primary);
+      }
+    }
+
+    &.active,
+    &.active:hover {
+      border-color: var(--border-action-normal);
+      background: var(--background-button-secondary);
+      box-shadow: 0 var(--numbers-1) var(--numbers-2) 0 rgba(20, 21, 26, 0.05);
+
+      .title {
+        color: var(--text-base-primary);
+      }
+    }
+  }
+
+  &--secondary {
+
+    &:hover {
+      border-color: var(--background-button-tertiary);
+      background: var(--background-button-tertiary);
+
+      .title {
+        color: var(--text-base-primary);
+      }
+    }
+
+    &.active,
+    &.active:hover {
+      border-color: var(--background-button-tertiary);
+      background: var(--background-button-tertiary);
+      box-shadow: 0 var(--numbers-1) var(--numbers-2) 0 rgba(20, 21, 26, 0.05);
+
+      .title {
+        color: var(--text-base-primary);
+      }
+    }
+  }
+}

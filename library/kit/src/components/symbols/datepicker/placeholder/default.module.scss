@@ -6,3 +6,10 @@
   color: var(--text-base-tertiary);
   overflow: auto;
 }
+
+.text {
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

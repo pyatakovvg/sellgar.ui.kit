@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Select, Icon, ToolTip } from '@sellgar/kit';
 
-import React from 'react';
-
 const meta: Meta<typeof Select> = {
   title: 'Kit/Symbols/Select',
   component: Select,
@@ -74,25 +72,4 @@ const meta: Meta<typeof Select> = {
 type Story = StoryObj<typeof meta>;
 export default meta;
 
-export const Default: Story = {
-  args: {},
-  render(args) {
-    return (
-      <div
-        style={{
-          display: 'block',
-          width: '300px',
-        }}
-      >
-        <div
-          style={{
-            display: 'block',
-            width: '300px',
-          }}
-        >
-          <Select {...args} />
-        </div>
-      </div>
-    );
-  },
-};
+export const Default: Story = {};

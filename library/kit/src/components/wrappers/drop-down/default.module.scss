@@ -9,4 +9,5 @@
   background: var(--background-modal-default);
   box-shadow: var(--measurements-shadows-lg);
   overflow: auto;
+  z-index: 100;
 }

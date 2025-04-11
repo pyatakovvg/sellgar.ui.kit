@@ -38,7 +38,9 @@ interface IOptions {
 const useSelect = (options: IOptions) => {
   const listRef = React.useRef<Array<HTMLElement | null>>([]);
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState<number | null | undefined>(() => (options.selectedIndex || options.initialSelectedIndex) ?? null);
+  const [selectedIndex, setSelectedIndex] = React.useState<number | null | undefined>(
+    () => (options.selectedIndex || options.initialSelectedIndex) ?? null,
+  );
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(options.initialOpen);
 
   const open = options.open ?? uncontrolledOpen;
@@ -123,7 +125,7 @@ const useSelect = (options: IOptions) => {
   ]);
 };
 
-type TSelectContext = ReturnType<typeof useSelect>;
+export type TSelectContext = ReturnType<typeof useSelect>;
 const SelectContext = React.createContext({} as TSelectContext);
 
 export const useSelectContext = () => {
@@ -166,7 +168,7 @@ const Reference = React.memo((props: IReferenceProps) => {
   const select = useSelectContext();
 
   const referenceProps = select.interactions.getReferenceProps();
-  console.log(referenceProps);
+
   return (
     <div
       className={s.wrapper}
@@ -258,8 +260,9 @@ const Option = React.memo((props: IOptionProps) => {
           select.listRef.current[props.index] = node;
         },
         onClick(event: React.MouseEvent<HTMLElement>) {
-          select.setSelectedIndex(select.activeIndex);
-          select.onSelect && select.onSelect(select.activeIndex);
+          select.setSelectedIndex(props.index);
+
+          select.onSelect && select.onSelect(props.index);
 
           props.onClick && props.onClick(event);
         },

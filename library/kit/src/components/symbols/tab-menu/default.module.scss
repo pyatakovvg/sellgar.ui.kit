@@ -1,0 +1,50 @@
+.menu {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+}
+
+.tab {
+
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 auto;
+}
+
+.type {
+  &--fill {
+
+    .tab + .tab {
+      margin: 0 0 0 var(--numbers-8);
+    }
+  }
+
+  &--line {
+
+    .tab + .tab {
+      margin: 0 0 0 var(--numbers-24);
+    }
+  }
+
+  &--segmented {
+
+    padding: var(--numbers-2);
+    border-radius: var(--measurements-radius-xl);
+    background: var(--background-overlay-custom);
+
+    .tab + .tab {
+      margin: 0 0 0 var(--numbers-2);
+    }
+  }
+}
+
+.shape {
+  &--pill {
+    &.type{
+      &--segmented {
+        border-radius: var(--measurements-radius-full);
+      }
+    }
+  }
+}

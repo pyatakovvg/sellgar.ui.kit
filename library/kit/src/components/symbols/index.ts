@@ -8,6 +8,7 @@ export * from './radio';
 export * from './checkbox';
 export * from './input';
 export * from './input-mask';
+export * from './input-numeral';
 export * from './input-select';
 export * from './textarea';
 export * from './label-field';
@@ -24,7 +25,9 @@ export * from './breadcrumb';
 export * from './notification';
 export * from './modal';
 export * from './select';
+export * from './select-tree';
 export * from './datepicker';
+export * from './tab-menu';
 
 export * from './card';
 export * from './container';

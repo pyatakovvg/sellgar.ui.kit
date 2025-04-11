@@ -124,9 +124,9 @@ export const Select = <T extends Record<string, any>, K extends keyof T>({
           <SelectInput
             {...props}
             disabled={disabled}
-            isFocused={isFocused}
+            isFocused={isFocused || open}
             isOpen={open}
-            isClearable={!!selectedIndex && isClearable}
+            isClearable={selectedIndex !== null && isClearable}
             onClear={() => {
               if (disabled) {
                 return void 0;
