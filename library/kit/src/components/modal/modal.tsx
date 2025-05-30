@@ -11,7 +11,7 @@ import {
   FloatingOverlay,
 } from '@floating-ui/react';
 
-import { Icon } from '../icon';
+import { Icon } from '../symbols';
 
 import s from './default.module.scss';
 

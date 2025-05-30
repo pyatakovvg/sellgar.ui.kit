@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TIconName } from './icon.types.ts';
+import { type TIconName } from './icon.types.ts';
 
 interface IProps {
   icon: TIconName;

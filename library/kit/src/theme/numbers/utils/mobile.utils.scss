@@ -1,0 +1,18 @@
+@use 'sass:math';
+
+$viewport-mobile-width: 428px;
+$viewport-mobile-height: 1024px;
+
+/**
+*  Функция для перевода пикселей в viewport width
+*/
+@function pxToVW($px) {
+  @return math.div($px, $viewport-mobile-width) * 100 + vw;
+}
+
+/**
+*  Функция для перевода пикселей в vh
+*/
+@function pxToVH($px) {
+  @return math.div($px, $viewport-mobile-height) * 100 + vh;
+}

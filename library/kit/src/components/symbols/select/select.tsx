@@ -11,6 +11,7 @@ export interface IProps<T extends Record<string, any>, K extends keyof T> {
   tailIcon?: React.ReactNode;
   badge?: string | number;
   size?: 'xs' | 'md';
+  fixHeight?: boolean;
   target?: 'destructive';
   optionKey: K;
   optionValue: K;

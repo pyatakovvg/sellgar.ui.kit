@@ -8,6 +8,7 @@ import { Provider, type IColumn } from './column.context.ts';
 interface IProps<T> {
   accessor?: keyof T;
   width?: number;
+  align?: 'left' | 'center' | 'right';
 }
 
 interface IHiddenProps {
@@ -50,6 +51,7 @@ const ColumnComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
             dynamicWidth: width,
             width: props.width,
             accessor: props.accessor,
+            align: props.align,
           } as IColumn<T>
         }
       >

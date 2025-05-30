@@ -10,6 +10,7 @@
   background: var(--background-surface-default);
   box-shadow: 0 var(--numbers-10) var(--numbers-16) calc(var(--numbers-3) * -1) rgba(20, 21, 26, 0.05),
               0 var(--numbers-3)  var(--numbers-10) calc(var(--numbers-2) * -1) rgba(20, 21, 26, 0.02);
+  pointer-events: auto;
 }
 
 .aside {

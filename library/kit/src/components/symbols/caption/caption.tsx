@@ -11,7 +11,7 @@ export interface IProps {
   state?: 'default' | 'info' | 'success' | 'destructive';
 }
 
-export const CaptionField: React.FC<IProps> = ({ state = 'default', ...props }) => {
+export const Caption: React.FC<IProps> = ({ state = 'default', ...props }) => {
   const className = React.useMemo(
     () =>
       cn(s.wrapper, {

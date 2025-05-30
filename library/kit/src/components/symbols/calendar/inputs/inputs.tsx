@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 import { FieldWrapper } from '../../../wrappers';
-import { LabelField } from '../../label-field';
+import { Label } from '../../label';
 import { InputMask } from '../../input-mask';
 import { Controls } from './controls';
 
@@ -68,7 +68,7 @@ export const Inputs: React.FC<IProps> = (props) => {
         <div className={s.field}>
           <FieldWrapper>
             <FieldWrapper.Label>
-              <LabelField label={'Дата'} />
+              <Label label={'Дата'} />
             </FieldWrapper.Label>
             <FieldWrapper.Content>
               <InputMask
@@ -85,7 +85,7 @@ export const Inputs: React.FC<IProps> = (props) => {
         <div className={s.field}>
           <FieldWrapper>
             <FieldWrapper.Label>
-              <LabelField label={'Время'} />
+              <Label label={'Время'} />
             </FieldWrapper.Label>
             <FieldWrapper.Content>
               <InputMask

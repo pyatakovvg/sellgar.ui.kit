@@ -6,4 +6,5 @@ export * from './subcomponents';
 
 export * from './components/helpers/animate';
 
+export * from './components/modal';
 export * from './components/table';

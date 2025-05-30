@@ -92,15 +92,26 @@
 
 .size {
   &--medium {
-    max-height: var(--numbers-40);
     padding: var(--numbers-10) var(--numbers-6) var(--numbers-10) var(--numbers-12);
   }
 
   &--extra-small {
-    max-height: var(--numbers-32);
     padding: var(--numbers-6) var(--numbers-8);
   }
 }
+
+.fix-height {
+  &.size {
+    &--medium {
+      max-height: var(--numbers-40);
+    }
+
+    &--extra-small {
+      max-height: var(--numbers-32);
+    }
+  }
+}
+
 
 .destructive {
 

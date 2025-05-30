@@ -1,0 +1,10 @@
+@use "./utils/desktop.utils.scss" as utils;
+
+:root {
+
+  --numbers-1_5: #{utils.pxToVW(1.5px)};
+
+  @for $i from 0 through 1440 {
+    --numbers-#{$i}: #{utils.pxToVW($i + 0px)};
+  }
+}

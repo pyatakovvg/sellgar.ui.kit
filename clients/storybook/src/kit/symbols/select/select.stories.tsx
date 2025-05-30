@@ -10,6 +10,7 @@ const meta: Meta<typeof Select> = {
   },
   tags: ['autodocs'],
   args: {
+    fixHeight: true,
     isClearable: false,
     disabled: false,
     leadIcon: <Icon icon={'user-3-line'} />,
@@ -57,6 +58,9 @@ const meta: Meta<typeof Select> = {
       control: 'select',
     },
     disabled: {
+      control: 'boolean',
+    },
+    fixHeight: {
       control: 'boolean',
     },
     isClearable: {

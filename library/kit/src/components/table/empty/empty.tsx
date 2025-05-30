@@ -1,4 +1,4 @@
-import { Typography } from '@sellgar/kit';
+import { Typography } from '../../symbols';
 
 import React from 'react';
 

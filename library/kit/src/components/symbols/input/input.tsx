@@ -37,6 +37,12 @@ export const Input: React.FC<IProps> = ({ ref, size = 'md', target, leadIcon, ta
     [isFocused, size, target, props.disabled],
   );
 
+  React.useEffect(() => {
+    if (isFocused && props.disabled) {
+      setFocused(false);
+    }
+  }, [props.disabled]);
+
   const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     setFocused(true);
     props.onFocus && props.onFocus(event);

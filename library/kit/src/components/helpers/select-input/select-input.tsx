@@ -15,11 +15,13 @@ export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
   isOpen?: boolean;
   isFocused?: boolean;
   isClearable?: boolean;
+  fixHeight?: boolean;
   onClear?(): void;
 }
 
 export const SelectInput: React.FC<React.PropsWithChildren<IProps>> = ({
   children,
+  fixHeight = true,
   size = 'md',
   target,
   leadIcon,
@@ -48,8 +50,11 @@ export const SelectInput: React.FC<React.PropsWithChildren<IProps>> = ({
         {
           [s['destructive']]: target === 'destructive',
         },
+        {
+          [s['fix-height']]: fixHeight,
+        },
       ),
-    [isFocused, size, target, disabled],
+    [isFocused, size, target, disabled, fixHeight],
   );
 
   const handleClearable = (event: React.MouseEvent<HTMLDivElement>) => {

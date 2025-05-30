@@ -1,4 +1,4 @@
-import { Icon } from '@sellgar/kit';
+import { Icon } from '../../symbols';
 
 import React from 'react';
 

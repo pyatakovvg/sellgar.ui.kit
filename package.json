@@ -4,13 +4,13 @@
   "scripts": {
     "audit": "yarn npm audit --all --severity moderate",
     "update": "yarn upgrade-interactive",
-    "format": "prettier --write \"**/src/**/*.js\""
+    "format": "prettier --write \"**/src/**/*.{js|jsx|ts|tsx}\""
   },
   "devDependencies": {
-    "@eslint/js": "9.24.0",
-    "eslint": "9.24.0",
-    "eslint-config-prettier": "10.1.1",
-    "eslint-plugin-prettier": "5.2.6",
+    "@eslint/js": "9.27.0",
+    "eslint": "9.27.0",
+    "eslint-config-prettier": "10.1.5",
+    "eslint-plugin-prettier": "5.4.1",
     "prettier": "3.5.3"
   },
   "workspaces": [

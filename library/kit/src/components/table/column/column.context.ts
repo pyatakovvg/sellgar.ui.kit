@@ -3,6 +3,7 @@ import React from 'react';
 export interface IColumn<T> {
   accessor?: keyof T;
   width?: number;
+  align?: 'left' | 'center' | 'right';
   dynamicWidth: number;
   setWidth: React.Dispatch<React.SetStateAction<number>>;
 }

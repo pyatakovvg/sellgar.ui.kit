@@ -10,7 +10,7 @@ export interface IProps {
   required?: boolean;
 }
 
-export const LabelField: React.FC<IProps> = (props) => {
+export const Label: React.FC<IProps> = (props) => {
   return (
     <div className={s.wrapper}>
       <div className={s.label}>
