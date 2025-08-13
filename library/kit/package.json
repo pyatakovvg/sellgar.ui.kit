@@ -1,7 +1,7 @@
 {
   "name": "@sellgar/kit",
   "type": "module",
-  "version": "0.0.110",
+  "version": "0.0.114",
   "description": "Storybook",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -28,6 +28,7 @@
         "default": "./dist/index.js"
       }
     },
+    "./icons.css": "./dist/icons.css",
     "./font.css": "./dist/webfonts.css",
     "./theme.css": "./dist/theme.css",
     "./theme.mobile.css": "./dist/theme.mobile.css",

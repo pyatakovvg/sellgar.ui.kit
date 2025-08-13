@@ -1,7 +1,5 @@
 @import "./reset.css";
 
-@import "./fonts/icons/style.css";
-
 @import "./sizes/typography/typography-size.css";
 @import "./sizes/typography/typography-line-height.css";
 @import "./sizes/typography/typography-letter-spacing.css";

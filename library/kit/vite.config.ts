@@ -18,6 +18,7 @@ export default defineConfig({
     lib: {
       entry: {
         index: 'src/index.ts',
+        'icons.css': 'src/theme/fonts/icons/style.css',
         'theme.css': 'src/theme/theme.css',
         'theme.mobile.scss': 'src/theme/theme.mobile.scss',
         'theme.desktop.scss': 'src/theme/theme.desktop.scss',
