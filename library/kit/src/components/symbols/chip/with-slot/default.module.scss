@@ -10,7 +10,7 @@
   cursor: pointer;
 
   &:hover {
-    background: var(--background-chip-primary--hover);
+    background: var(--background-chip-primary-hover);
   }
 }
 
@@ -66,7 +66,7 @@
 .disabled:hover {
 
   border-color: var(--border-action-disabled);
-  background: var(--background-chip-primary--disabled);
+  background: var(--background-chip-primary-disabled);
   box-shadow: none;
 
   .lead-slot {

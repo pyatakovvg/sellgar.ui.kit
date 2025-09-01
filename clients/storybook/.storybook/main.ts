@@ -1,5 +1,4 @@
 import { mergeConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 import { join, dirname } from 'path';
@@ -21,7 +20,7 @@ const config: StorybookConfig = {
   ],
   docs: {
     docsMode: true,
-    defaultName: 'Документация',
+    defaultName: 'Документация'.toLowerCase(),
   },
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
@@ -60,7 +59,7 @@ const config: StorybookConfig = {
           },
         },
       },
-      plugins: [react()],
+      plugins: [],
     });
   },
 };

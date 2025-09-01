@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Slider } from '@sellgar/kit';
+import { Slider } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Slider> = {
   title: 'Kit/Symbols/Slider',

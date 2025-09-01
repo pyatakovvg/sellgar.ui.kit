@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import React from 'react';
-import { Modal, Button } from '@sellgar/kit';
+import { Modal, Button } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Modal> = {
   title: 'Kit/Symbols/Modal',

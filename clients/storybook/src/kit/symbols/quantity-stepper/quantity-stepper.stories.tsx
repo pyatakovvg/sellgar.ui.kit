@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { QuantityStepper } from '@sellgar/kit';
+import { QuantityStepper } from '@sellgar/kit/development';
 
 const meta: Meta<typeof QuantityStepper> = {
   title: 'Kit/Symbols/QuantityStepper',

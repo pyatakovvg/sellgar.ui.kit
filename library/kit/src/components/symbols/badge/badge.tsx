@@ -14,7 +14,11 @@ export interface IProps {
     | 'white'
     | 'surface'
     | 'white-destructive'
-    | 'surface-destructive';
+    | 'surface-destructive'
+    | 'white-info'
+    | 'surface-info'
+    | 'white-success'
+    | 'surface-success';
   state?: 'disabled';
   size?: 'lg' | 'md' | 'sm' | 'xs';
   shape?: 'rounded' | 'pill';
@@ -25,16 +29,7 @@ export interface IProps {
   label: string | number;
 }
 
-export const Badge: React.FC<IProps> = ({
-  color = 'gray',
-  size = 'md',
-  shape = 'rounded',
-  stroke,
-  disabled,
-  label,
-  leadIcon,
-  tailIcon,
-}) => {
+export const Badge: React.FC<IProps> = ({ color = 'gray', size = 'md', shape = 'rounded', stroke = false, disabled, label, leadIcon, tailIcon }) => {
   const classNameButton = React.useMemo(
     () =>
       cn(
@@ -50,6 +45,10 @@ export const Badge: React.FC<IProps> = ({
           [s['color--surface']]: color === 'surface',
           [s['color--white-destructive']]: color === 'white-destructive',
           [s['color--surface-destructive']]: color === 'surface-destructive',
+          [s['color--white-info']]: color === 'white-info',
+          [s['color--surface-info']]: color === 'surface-info',
+          [s['color--white-success']]: color === 'white-success',
+          [s['color--surface-success']]: color === 'surface-success',
         },
         {
           [s['size--large']]: size === 'lg',

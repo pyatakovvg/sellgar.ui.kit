@@ -6,6 +6,10 @@
   --border-action-focus-light: var(--colors-purple-6);
   --border-action-focus-destructive: var(--colors-red-8);
   --border-action-focus-destructive-light: var(--colors-red-6);
+  --border-action-focus-info: var(--colors-blue-8);
+  --border-action-focus-info-light: var(--colors-blue-6);
+  --border-action-focus-success: var(--colors-green-8);
+  --border-action-focus-success-light: var(--colors-green-6);
 
   --border-action-destructive: var(--colors-red-4);
   --border-action-destructive-light: var(--colors-red-5);

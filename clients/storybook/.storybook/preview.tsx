@@ -1,7 +1,8 @@
 import type { Preview } from '@storybook/react';
 
-import '@sellgar/kit/font.css';
-import '@sellgar/kit/theme.css';
+import '@sellgar/kit/development/icons.css';
+import '@sellgar/kit/development/geologica.css';
+import '@sellgar/kit/development/theme.css';
 
 const preview: Preview = {
   parameters: {

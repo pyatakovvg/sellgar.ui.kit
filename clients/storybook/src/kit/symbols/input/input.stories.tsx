@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Input, Icon, ToolTip } from '@sellgar/kit';
+import { Input, Icon, ToolTip } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Input> = {
   title: 'Kit/Symbols/Input',
@@ -18,9 +18,7 @@ const meta: Meta<typeof Input> = {
         </ToolTip.Trigger>
         <ToolTip.Content>
           <ToolTip.Content.Label>Tooltip headline</ToolTip.Content.Label>
-          <ToolTip.Content.Caption>
-            Tooltips display informative text when users hover over, focus on, or tap an element
-          </ToolTip.Content.Caption>
+          <ToolTip.Content.Caption>Tooltips display informative text when users hover over, focus on, or tap an element</ToolTip.Content.Caption>
         </ToolTip.Content>
       </ToolTip>
     ),

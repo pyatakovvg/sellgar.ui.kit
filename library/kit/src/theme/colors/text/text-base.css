@@ -14,10 +14,10 @@
   --text-base-static-dark-tertiary: var(--colors-gray-7a);
   --text-base-static-dark-quaternary: var(--colors-gray-5a);
 
-  --text-base-static-wight: var(--colors-base-white);
-  --text-base-static-wight-secondary: var(--colors-white-9);
-  --text-base-static-wight-tertiary: var(--colors-white-7);
-  --text-base-static-wight-quaternary: var(--colors-white-5);
+  --text-base-static-white: var(--colors-base-white);
+  --text-base-static-white-secondary: var(--colors-white-9);
+  --text-base-static-white-tertiary: var(--colors-white-7);
+  --text-base-static-white-quaternary: var(--colors-white-5);
 }
 
 :root[data-theme="dark"] {
@@ -37,8 +37,8 @@
   --text-base-static-dark-tertiary: var(--colors-gray-7a);
   --text-base-static-dark-quaternary: var(--colors-gray-5a);
 
-  --text-base-static-wight: var(--colors-base-white);
-  --text-base-static-wight-secondary: var(--colors-white-9);
-  --text-base-static-wight-tertiary: var(--colors-white-7);
-  --text-base-static-wight-quaternary: var(--colors-white-5);
+  --text-base-static-white: var(--colors-base-white);
+  --text-base-static-white-secondary: var(--colors-white-9);
+  --text-base-static-white-tertiary: var(--colors-white-7);
+  --text-base-static-white-quaternary: var(--colors-white-5);
 }

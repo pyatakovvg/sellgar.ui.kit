@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { FieldWrapper, LabelField, Input, CaptionField } from '@sellgar/kit';
+import { FieldWrapper, LabelField, Input, CaptionField } from '@sellgar/kit/development';
 
 const meta: Meta = {
   title: 'Kit/Wrappers/FieldWrapper',
@@ -37,11 +37,7 @@ export const Default: Story = {
         />
       </FieldWrapper.Content>
       <FieldWrapper.Caption>
-        <CaptionField
-          leadicon={'information-line'}
-          caption={'Helper text'}
-          state={args.destructive ? 'destructive' : 'default'}
-        />
+        <CaptionField leadicon={'information-line'} caption={'Helper text'} state={args.destructive ? 'destructive' : 'default'} />
       </FieldWrapper.Caption>
     </FieldWrapper>
   ),

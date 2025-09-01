@@ -85,12 +85,12 @@
     background: var(--background-button-primary);
 
     &:hover {
-      background: var(--background-button-primary--hover);
+      background: var(--background-button-primary-hover);
     }
 
     &:disabled {
       color: var(--text-base-quaternary);
-      background: var(--background-button-primary--disabled);
+      background: var(--background-button-primary-disabled);
     }
   }
 
@@ -102,7 +102,7 @@
 
     &:hover {
       border-color: var(--border-action-hover);
-      background: var(--background-button-secondary--hover);
+      background: var(--background-button-secondary-hover);
     }
 
     &:focus {
@@ -112,7 +112,7 @@
     &:disabled {
       color: var(--text-base-quaternary);
       border-color: var(--border-action-disabled);
-      background: var(--background-button-secondary--disabled);
+      background: var(--background-button-secondary-disabled);
     }
   }
 
@@ -122,7 +122,7 @@
     background: var(--background-button-tetriary);
 
     &:hover {
-      background: var(--background-button-tetriary--hover);
+      background: var(--background-button-tetriary-hover);
     }
 
     &:focus {
@@ -131,7 +131,7 @@
 
     &:disabled {
       color: var(--text-base-quaternary);
-      background: var(--background-button-tetriary--disabled);
+      background: var(--background-button-tetriary-disabled);
     }
   }
 
@@ -141,7 +141,7 @@
     background: var(--background-button-ghost);
 
     &:hover {
-      background: var(--background-button-ghost--hover);
+      background: var(--background-button-ghost-hover);
     }
 
     &:focus {
@@ -150,7 +150,7 @@
 
     &:disabled {
       color: var(--text-base-quaternary);
-      background: var(--background-button-ghost--disabled);
+      background: var(--background-button-ghost-disabled);
     }
   }
 }
@@ -160,11 +160,11 @@
     &.style {
       &--primary {
 
-        color: var(--text-base-static-wight);
+        color: var(--text-base-static-white);
         background: var(--background-button-destructive);
 
         &:hover {
-          background: var(--background-button-destructive--hover);
+          background: var(--background-button-destructive-hover);
         }
 
         &:focus {
@@ -173,7 +173,7 @@
 
         &:disabled {
           color: var(--text-status-destructive-tertiary);
-          background: var(--background-button-destructive--disabled);
+          background: var(--background-button-destructive-disabled);
         }
       }
 
@@ -185,7 +185,7 @@
 
         &:hover {
           border-color: var(--border-action-destructive-hover);
-          background: var(--background-button-destructive-secondary--hover);
+          background: var(--background-button-destructive-secondary-hover);
         }
 
         &:focus {
@@ -195,7 +195,7 @@
         &:disabled {
           color: var(--text-status-destructive-tertiary);
           border-color: var(--border-action-destructive-disabled);
-          background: var(--background-button-destructive-secondary--disabled);
+          background: var(--background-button-destructive-secondary-disabled);
         }
       }
 
@@ -205,7 +205,7 @@
         background: var(--background-button-destructive-tetriary);
 
         &:hover {
-          background: var(--background-button-destructive-tetriary--hover);
+          background: var(--background-button-destructive-tetriary-hover);
         }
 
         &:focus {
@@ -215,7 +215,7 @@
 
         &:disabled {
           color: var(--text-status-destructive-tertiary);
-          background: var(--background-button-destructive-tetriary--disabled);
+          background: var(--background-button-destructive-tetriary-disabled);
         }
       }
 
@@ -225,7 +225,7 @@
         background: var(--background-button-destructive-ghost);
 
         &:hover {
-          background: var(--background-button-destructive-ghost--hover);
+          background: var(--background-button-destructive-ghost-hover);
 
           .lead-icon {
             color: var(--text-status-destructive);
@@ -239,7 +239,7 @@
 
         &:disabled {
           color: var(--text-status-destructive-tertiary);
-          background: var(--background-button-destructive-ghost--disabled);
+          background: var(--background-button-destructive-ghost-disabled);
         }
       }
     }

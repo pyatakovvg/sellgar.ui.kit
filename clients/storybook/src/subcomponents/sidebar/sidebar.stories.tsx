@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { User, Badge, Sidebar, MenuItem } from '@sellgar/kit';
+import { User, Badge, Sidebar, MenuItem } from '@sellgar/kit/development';
 
 const meta: Meta = {
   title: 'Kit/SubComponents/Sidebar',

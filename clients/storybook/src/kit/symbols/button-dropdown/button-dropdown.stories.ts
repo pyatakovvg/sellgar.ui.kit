@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ButtonDropdown, iconName } from '@sellgar/kit';
+import { ButtonDropdown, iconName } from '@sellgar/kit/development';
 
 const meta: Meta<typeof ButtonDropdown> = {
   title: 'Kit/Symbols/ButtonDropdown',

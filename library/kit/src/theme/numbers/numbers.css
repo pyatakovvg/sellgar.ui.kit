@@ -1,7 +1,16 @@
 :root {
+  --numbers-0_1: 0.1px;
+  --numbers-0_2: 0.2px;
+  --numbers-0_3: 0.3px;
+  --numbers-0_5: 0.5px;
+  --numbers-0_6: 0.6px;
+  --numbers-1_5: 1.5px;
+  --numbers-1_6: 1.6px;
+  --numbers-1_7: 1.7px;
+  --numbers-2_2: 2.2px;
+
   --numbers-0: 0;
   --numbers-1: 1px;
-  --numbers-1_5: 1.5px;
   --numbers-2: 2px;
   --numbers-3: 3px;
   --numbers-4: 4px;

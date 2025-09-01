@@ -1,27 +1,24 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import react from '@vitejs/plugin-react';
-import webfontDownload from 'vite-plugin-webfont-dl';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 export default defineConfig({
   css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-      },
-    },
+    preprocessorOptions: {},
   },
   build: {
+    cssMinify: 'esbuild',
     cssCodeSplit: true,
-    assetsInlineLimit: 0,
+    assetsInlineLimit: 5,
     lib: {
       entry: {
         index: 'src/index.ts',
         'icons.css': 'src/theme/fonts/icons/style.css',
+        'inter.css': 'src/theme/fonts/inter/style.css',
+        'geologica.css': 'src/theme/fonts/geologica/style.css',
         'theme.css': 'src/theme/theme.css',
-        'theme.mobile.scss': 'src/theme/theme.mobile.scss',
-        'theme.desktop.scss': 'src/theme/theme.desktop.scss',
+        'theme.mobile.scss': 'src/theme/theme.mobile.css',
+        'theme.desktop.scss': 'src/theme/theme.desktop.css',
       },
       formats: ['es'],
     },
@@ -29,20 +26,12 @@ export default defineConfig({
       output: {
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM',
+          classnames: 'classnames',
           'react/jsx-runtime': 'react/jsx-runtime',
         },
       },
-      external: ['react', 'react/jsx-runtime'],
+      external: ['react', 'classnames', 'react/jsx-runtime'],
     },
   },
-  plugins: [
-    react(),
-    webfontDownload(['https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap'], {
-      injectAsStyleTag: false,
-      embedFonts: false,
-    }),
-    libInjectCss(),
-    dts({ outDir: 'types' }),
-  ],
+  plugins: [libInjectCss(), dts({ outDir: 'types' })],
 });

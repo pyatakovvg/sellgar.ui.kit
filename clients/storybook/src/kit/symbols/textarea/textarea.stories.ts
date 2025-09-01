@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Textarea } from '@sellgar/kit';
+import { Textarea } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Kit/Symbols/Textarea',

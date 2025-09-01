@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Breadcrumb } from '@sellgar/kit';
+import { Breadcrumb } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Breadcrumb> = {
   title: 'Kit/Symbols/Breadcrumb',

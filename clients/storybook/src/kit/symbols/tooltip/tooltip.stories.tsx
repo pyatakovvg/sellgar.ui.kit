@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ToolTip } from '@sellgar/kit';
+import { ToolTip } from '@sellgar/kit/development';
 
 const meta: Meta<typeof ToolTip> = {
   title: 'Kit/Symbols/ToolTip',
@@ -53,9 +53,7 @@ export const Default: Story = {
         <ToolTip.Trigger />
         <ToolTip.Content>
           <ToolTip.Content.Label>Tooltip headline</ToolTip.Content.Label>
-          <ToolTip.Content.Caption>
-            Tooltips display informative text when users hover over, focus on, or tap an element
-          </ToolTip.Content.Caption>
+          <ToolTip.Content.Caption>Tooltips display informative text when users hover over, focus on, or tap an element</ToolTip.Content.Caption>
         </ToolTip.Content>
       </ToolTip>
     );

@@ -4,7 +4,10 @@
   flex-direction: row;
   flex: 0 0 auto;
   align-items: center;
+  transition: background-color var(--measurements-transition),
+              border           var(--measurements-transition);
 
+  .label,
   .lead-icon,
   .tail-icon {
 
@@ -13,6 +16,7 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
+    transition: color var(--measurements-transition);
   }
 }
 
@@ -72,6 +76,42 @@
 
     .label {
       color: var(--text-status-destructive);
+    }
+  }
+
+  &--white-info {
+    color: var(--icon-status-info-secondary);
+    background: var(--background-badge-white);
+
+    .label {
+      color: var(--text-status-info);
+    }
+  }
+
+  &--surface-info {
+    color: var(--icon-status-info-secondary);
+    background: var(--background-badge-surface);
+
+    .label {
+      color: var(--text-status-info);
+    }
+  }
+
+  &--white-success {
+    color: var(--icon-status-success-secondary);
+    background: var(--background-badge-white);
+
+    .label {
+      color: var(--text-status-success);
+    }
+  }
+
+  &--surface-success {
+    color: var(--icon-status-success-secondary);
+    background: var(--background-badge-surface);
+
+    .label {
+      color: var(--text-status-success);
     }
   }
 }
@@ -235,6 +275,42 @@
 
       .label {
         color: var(--icon-status-destructive-tertiary);
+      }
+    }
+
+    &--white-info {
+      color: var(--icon-status-info-tertiary);
+      background: var(--background-badge-white-disabled);
+
+      .label {
+        color: var(--icon-status-info-tertiary);
+      }
+    }
+
+    &--surface-info {
+      color: var(--icon-status-info-tertiary);
+      background: var(--background-badge-surface);
+
+      .label {
+        color: var(--icon-status-info-tertiary);
+      }
+    }
+
+    &--white-success {
+      color: var(--icon-status-success-tertiary);
+      background: var(--background-badge-white-disabled);
+
+      .label {
+        color: var(--icon-status-success-tertiary);
+      }
+    }
+
+    &--surface-success {
+      color: var(--icon-status-success-tertiary);
+      background: var(--background-badge-surface);
+
+      .label {
+        color: var(--icon-status-success-tertiary);
       }
     }
   }

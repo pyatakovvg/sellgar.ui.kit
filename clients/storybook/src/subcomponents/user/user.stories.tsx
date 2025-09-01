@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { User } from '@sellgar/kit';
+import { User } from '@sellgar/kit/development';
 
 const meta: Meta = {
   title: 'Kit/SubComponents/User',

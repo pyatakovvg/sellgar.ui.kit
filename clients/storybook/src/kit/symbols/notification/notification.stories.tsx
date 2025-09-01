@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Notification, LinkTypography } from '@sellgar/kit';
+import { Notification, LinkTypography } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Notification> = {
   title: 'Kit/Symbols/Notification',
@@ -18,8 +18,7 @@ const meta: Meta<typeof Notification> = {
         <LinkTypography>
           <a href={'#'}>buttons</a>
         </LinkTypography>
-        , each with the name set to contact and each with a unique value that uniquely identifies that individual radio
-        button within the group.
+        , each with the name set to contact and each with a unique value that uniquely identifies that individual radio button within the group.
       </>
     ),
   },

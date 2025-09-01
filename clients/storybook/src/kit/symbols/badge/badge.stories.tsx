@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Badge, Icon, TIconName, iconName } from '@sellgar/kit';
+import { Badge, Icon, TIconName, iconName } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Badge> = {
   title: 'Kit/Symbols/Badge',
@@ -18,18 +18,7 @@ const meta: Meta<typeof Badge> = {
   },
   argTypes: {
     color: {
-      options: [
-        'gray',
-        'blue',
-        'green',
-        'red',
-        'orange',
-        'purple',
-        'white',
-        'surface',
-        'white-destructive',
-        'surface-destructive',
-      ],
+      options: ['gray', 'blue', 'green', 'red', 'orange', 'purple', 'white', 'surface', 'white-destructive', 'surface-destructive'],
       control: 'select',
     },
     shape: {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Chip, Avatar, iconName } from '@sellgar/kit';
+import { Chip, Avatar, iconName } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Chip> = {
   title: 'Kit/Symbols/Chip',

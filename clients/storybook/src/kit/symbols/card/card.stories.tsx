@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Card } from '@sellgar/kit';
+import { Card } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Card> = {
   title: 'Kit/Symbols/Card',

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button, Icon, TIconName, iconName } from '@sellgar/kit';
+import { Button, Icon, Badge, TIconName, iconName } from '@sellgar/kit/development';
 
 const meta: Meta<typeof Button> = {
   title: 'Kit/Symbols/Button',
@@ -42,9 +42,6 @@ const meta: Meta<typeof Button> = {
       options: ['lg', 'md', 'sm', 'xs'],
       control: 'select',
     },
-    label: {
-      control: 'text',
-    },
   },
 };
 
@@ -59,6 +56,7 @@ export const Default: Story = {
         <div>
           <Button
             {...args}
+            badge={<Badge leadIcon={<Icon icon={'money-dollar-circle-line'} />} label={'RU'} />}
             leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'scan-line'} />}
             tailIcon={<Icon icon={(args.tailIcon as TIconName) ?? 'arrow-right-line'} />}
           />
@@ -66,6 +64,7 @@ export const Default: Story = {
         <div style={{ display: 'flex', flexDirection: 'column', width: 300, marginTop: 16 }}>
           <Button
             {...args}
+            badge={<Badge label={'12'} />}
             leadIcon={<Icon icon={(args.leadIcon as TIconName) ?? 'scan-line'} />}
             tailIcon={<Icon icon={(args.tailIcon as TIconName) ?? 'arrow-right-line'} />}
           />

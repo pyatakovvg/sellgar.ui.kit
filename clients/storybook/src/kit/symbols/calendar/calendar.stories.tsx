@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Calendar, DropDownWrapper } from '@sellgar/kit';
+import { Calendar, DropDownWrapper } from '@sellgar/kit/development';
 import React from 'react';
 
 const meta: Meta<typeof Calendar> = {
