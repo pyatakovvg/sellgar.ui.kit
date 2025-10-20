@@ -4,23 +4,11 @@ import cn from 'classnames';
 import s from './default.module.scss';
 
 interface IProps {
-  size:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'body-l'
-    | 'body-m'
-    | 'body-s'
-    | 'caption-l'
-    | 'caption-m'
-    | 'caption-s';
-  weight: 'light' | 'regular' | 'medium' | 'semi-bold' | 'bold' | 'extra-bold' | 'black';
+  size: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body-l' | 'body-m' | 'body-s' | 'caption-l' | 'caption-m' | 'caption-s';
+  weight?: 'light' | 'regular' | 'medium' | 'semi-bold' | 'bold' | 'extra-bold' | 'black';
 }
 
-export const Typography: React.FC<React.PropsWithChildren<IProps>> = (props) => {
+export const Typography: React.FC<React.PropsWithChildren<IProps>> = ({ weight = 'medium', ...props }) => {
   const className = React.useMemo(
     () =>
       cn(
@@ -39,16 +27,16 @@ export const Typography: React.FC<React.PropsWithChildren<IProps>> = (props) => 
           [s['font-size__caption-s']]: props.size === 'caption-s',
         },
         {
-          [s['font-weight__light']]: props.weight === 'light',
-          [s['font-weight__regular']]: props.weight === 'regular',
-          [s['font-weight__medium']]: props.weight === 'medium',
-          [s['font-weight__semi-bold']]: props.weight === 'semi-bold',
-          [s['font-weight__bold']]: props.weight === 'bold',
-          [s['font-weight__extra-bold']]: props.weight === 'extra-bold',
-          [s['font-weight__black']]: props.weight === 'black',
+          [s['font-weight__light']]: weight === 'light',
+          [s['font-weight__regular']]: weight === 'regular',
+          [s['font-weight__medium']]: weight === 'medium',
+          [s['font-weight__semi-bold']]: weight === 'semi-bold',
+          [s['font-weight__bold']]: weight === 'bold',
+          [s['font-weight__extra-bold']]: weight === 'extra-bold',
+          [s['font-weight__black']]: weight === 'black',
         },
       ),
-    [props.size, props.weight],
+    [props.size, weight],
   );
 
   return React.Children.map(props.children, (child) => {

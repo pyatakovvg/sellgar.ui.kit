@@ -1,9 +1,9 @@
 {
   "name": "@sellgar/kit",
   "type": "module",
-  "version": "0.0.115",
-  "description": "Storybook",
-  "main": "./dist/index.cjs",
+  "version": "0.0.125",
+  "description": "Sellgar kit",
+  "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./types/index.d.ts",
   "repository": {
@@ -35,22 +35,22 @@
     "./development/inter.css": "./src/theme/fonts/inter/style.css",
     "./development/geologica.css": "./src/theme/fonts/geologica/style.css",
     "./icons.css": "./dist/icons.css",
-    "./font.css": "./dist/webfonts.css",
+    "./inter.css": "./dist/inter.css",
+    "./geologica.css": "./dist/geologica.css",
     "./theme.css": "./dist/theme.css",
     "./theme.mobile.css": "./dist/theme.mobile.css",
     "./theme.desktop.css": "./dist/theme.desktop.css",
     "./theme.terminal.css": "./dist/theme.terminal.css"
   },
   "dependencies": {
-    "@floating-ui/dom": "1.7.3",
-    "@floating-ui/react": "0.27.15",
+    "@floating-ui/dom": "1.7.4",
+    "@floating-ui/react": "0.27.16",
     "@react-input/mask": "2.0.4",
     "@react-input/number-format": "2.0.3",
-    "@types/react-slider": "1.3.6",
     "classnames": "2.5.1",
     "date-fns": "4.1.0",
     "moment": "2.30.1",
-    "overlayscrollbars": "2.11.5",
+    "overlayscrollbars": "2.12.0",
     "overlayscrollbars-react": "0.5.6",
     "react-baron": "3.0.0",
     "react-slider": "2.0.6"
@@ -68,9 +68,10 @@
     }
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "5.0.0",
-    "typescript": "5.9.2",
-    "vite": "7.1.2",
+    "@types/react-slider": "1.3.6",
+    "@vitejs/plugin-react": "5.0.4",
+    "typescript": "5.9.3",
+    "vite": "7.1.11",
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-lib-inject-css": "2.2.2",
     "vite-plugin-webfont-dl": "3.11.1"

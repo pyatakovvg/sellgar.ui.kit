@@ -1,13 +1,17 @@
 import React from 'react';
-import { useNumberFormat, format, unformat } from '@react-input/number-format';
+import { useNumberFormat, NumberFormatOptions, format, unformat } from '@react-input/number-format';
 
 import { Input } from '../input';
 import type { IProps as IInputProps } from '../input/input.tsx';
 
+const defaultFormatOptions: NumberFormatOptions = {
+  maximumFractionDigits: 2,
+};
+
 export interface IProps extends IInputProps {}
 
-const InputNumeralComponent: React.FC<IProps> = ({ ref, ...props }) => {
-  const inputRef = useNumberFormat({});
+export const InputNumeralComponent: React.FC<IProps> = ({ ref, ...props }) => {
+  const inputRef = useNumberFormat({ ...defaultFormatOptions, locales: 'ru-RU' });
 
   React.useImperativeHandle(ref, () => inputRef.current);
 

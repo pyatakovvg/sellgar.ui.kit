@@ -33,7 +33,7 @@ type TFieldWrapper = typeof FieldWrapperComponent & {
   Caption: typeof Caption;
 };
 
-export const FieldWrapper = Object.assign(FieldWrapperComponent, {
+export const Field = Object.assign(FieldWrapperComponent, {
   Label,
   Content,
   Caption,

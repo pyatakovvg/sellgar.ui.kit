@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import { FieldWrapper } from '../../../wrappers';
+import { Field } from '../../../wrappers';
 import { Label } from '../../label';
 import { InputMask } from '../../input-mask';
 import { Controls } from './controls';
@@ -66,11 +66,11 @@ export const Inputs: React.FC<IProps> = (props) => {
     <div className={s.wrapper}>
       <div className={s.fields}>
         <div className={s.field}>
-          <FieldWrapper>
-            <FieldWrapper.Label>
+          <Field>
+            <Field.Label>
               <Label label={'Дата'} />
-            </FieldWrapper.Label>
-            <FieldWrapper.Content>
+            </Field.Label>
+            <Field.Content>
               <InputMask
                 size={'xs'}
                 mask={'__.__.____'}
@@ -79,15 +79,15 @@ export const Inputs: React.FC<IProps> = (props) => {
                 target={errorDateValidate ? 'destructive' : undefined}
                 onChange={handleChangeDate}
               />
-            </FieldWrapper.Content>
-          </FieldWrapper>
+            </Field.Content>
+          </Field>
         </div>
         <div className={s.field}>
-          <FieldWrapper>
-            <FieldWrapper.Label>
+          <Field>
+            <Field.Label>
               <Label label={'Время'} />
-            </FieldWrapper.Label>
-            <FieldWrapper.Content>
+            </Field.Label>
+            <Field.Content>
               <InputMask
                 size={'xs'}
                 mask={'__:__'}
@@ -96,8 +96,8 @@ export const Inputs: React.FC<IProps> = (props) => {
                 target={errorTimeValidate ? 'destructive' : undefined}
                 onChange={handleChangeTime}
               />
-            </FieldWrapper.Content>
-          </FieldWrapper>
+            </Field.Content>
+          </Field>
         </div>
       </div>
       <div className={s.control}>

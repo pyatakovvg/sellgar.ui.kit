@@ -30,7 +30,7 @@ export default defineConfig({
           'react/jsx-runtime': 'react/jsx-runtime',
         },
       },
-      external: ['react', 'classnames', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'classnames', 'react/jsx-runtime'],
     },
   },
   plugins: [libInjectCss(), dts({ outDir: 'types' })],
