@@ -2,13 +2,13 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "audit": "yarn npm audit --all --severity moderate",
+    "audit": "yarn npm audit -A -R --environment production --severity moderate",
     "update": "yarn upgrade-interactive",
     "format": "prettier --write \"**/src/**/*.{js|jsx|ts|tsx}\""
   },
   "devDependencies": {
     "@eslint/js": "9.38.0",
-    "@types/node": "22.18.11",
+    "@types/node": "22.18.12",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@typescript-eslint/eslint-plugin": "8.46.2",
