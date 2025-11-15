@@ -11,6 +11,7 @@ import {
   FloatingFocusManager,
   FloatingPortal,
   useTransitionStyles,
+  autoPlacement,
   type ReferenceType,
   type Placement,
 } from '@floating-ui/react';
@@ -36,6 +37,7 @@ const useDropdown = ({ placement = 'bottom', ...options }: IOptions) => {
 
   const floating = useFloating<ReferenceType>({
     open,
+    placement,
     onOpenChange: (open: boolean) => {
       if (options.disabled) {
         return void 0;
@@ -46,6 +48,7 @@ const useDropdown = ({ placement = 'bottom', ...options }: IOptions) => {
     middleware: [
       flip({ padding: 10 }),
       offset(8),
+      autoPlacement(),
       size({
         apply({ rects, elements, placement }) {
           console.log(placement);

@@ -51,10 +51,10 @@ export const Badge: React.FC<IProps> = ({ color = 'gray', size = 'md', shape = '
           [s['color--surface-success']]: color === 'surface-success',
         },
         {
-          [s['size--large']]: size === 'lg',
-          [s['size--medium']]: size === 'md',
-          [s['size--small']]: size === 'sm',
-          [s['size--extra-small']]: size === 'xs',
+          [s['size--lg']]: size === 'lg',
+          [s['size--md']]: size === 'md',
+          [s['size--sm']]: size === 'sm',
+          [s['size--xs']]: size === 'xs',
         },
         {
           [s['shape--rounded']]: shape === 'rounded',

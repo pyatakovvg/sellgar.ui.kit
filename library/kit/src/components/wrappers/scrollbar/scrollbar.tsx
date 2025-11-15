@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  useOverlayScrollbars,
-  OverlayScrollbarsComponentRef,
-  OverlayScrollbarsComponent,
-} from 'overlayscrollbars-react';
+import { useOverlayScrollbars, OverlayScrollbarsComponentRef, OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import './default.css';
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  ref?: React.RefObject<HTMLDivElement> | React.RefCallback<HTMLDivElement>;
+  ref?: any;
 }
 
 export const Scrollbar: React.FC<React.PropsWithChildren<IProps>> = ({ ref, ...props }) => {

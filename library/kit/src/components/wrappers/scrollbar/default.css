@@ -195,7 +195,6 @@ html[data-overlayscrollbars-body] > body {
 [data-overlayscrollbars-padding] {
   display: flex;
   align-items: stretch !important;
-  flex-direction: row !important;
   flex-wrap: nowrap !important;
   scroll-behavior: auto !important;
 }
@@ -212,6 +211,8 @@ html[data-overlayscrollbars-body] > body {
   margin: 0;
   border: none;
   z-index: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 [data-overlayscrollbars-viewport]:not([data-overlayscrollbars]) {

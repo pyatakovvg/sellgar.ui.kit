@@ -1,0 +1,45 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  width: var(--numbers-580);
+  border-left: var(--numbers-1) solid var(--border-action-normal);
+  background: var(--background-surface-default);
+  box-shadow: calc(var(--numbers-6) * -1) 0 var(--numbers-10) 0 rgba(20, 21, 26, 0.08);
+  overflow: auto;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0;
+  align-items: flex-end;
+  backdrop-filter: blur(var(--numbers-1));
+  background: var(--colors-gray-6a);
+  overflow: hidden !important;
+}
+
+.close {
+  position: absolute;
+  top: var(--numbers-16);
+  right: var(--numbers-16);
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: var(--numbers-24);
+  height: var(--numbers-24);
+  font-size: var(--numbers-24);
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--measurements-radius-full);
+  background: var(--background-button-tetriary);
+  color: var(--icon-base-secondary);
+  cursor: pointer;
+  transition: var(--measurements-transition);
+
+  &:hover {
+    color: var(--icon-base-primary);
+    background: var(--background-button-tetriary-hover);
+  }
+}

@@ -30,8 +30,8 @@ export default defineConfig({
           'react/jsx-runtime': 'react/jsx-runtime',
         },
       },
-      external: ['react', 'react-dom', 'classnames', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'classnames', 'react/jsx-runtime', /\.stories\.tsx$/],
     },
   },
-  plugins: [libInjectCss(), dts({ outDir: 'types' })],
+  plugins: [libInjectCss(), dts({ outDir: 'types', exclude: ['**/*.stories.tsx'] })],
 });

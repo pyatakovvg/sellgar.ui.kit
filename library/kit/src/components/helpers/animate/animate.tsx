@@ -10,7 +10,7 @@ export const AnimateComponent = () => {
 const Spin: React.FC<React.PropsWithChildren> = (props) => {
   return React.Children.map(props.children, (child) => {
     if (React.isValidElement(child)) {
-      const childElement = child as React.ReactHTMLElement<never>;
+      const childElement = child as React.ReactHTMLElement<React.ComponentProps<any>>;
       return React.cloneElement(childElement, {
         className: cn(s.spin, childElement.props.className),
       });

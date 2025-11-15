@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import moment from 'moment';
 
@@ -13,20 +11,7 @@ import { getCalendarDays } from './utils/get-days.utils.ts';
 
 import s from './default.module.scss';
 
-const defaultMonths = [
-  'Январь',
-  'Февраль',
-  'Март',
-  'Апрель',
-  'Май',
-  'Июнь',
-  'Июль',
-  'Август',
-  'Сентябрь',
-  'Октябрь',
-  'Ноябрь',
-  'Декабрь',
-];
+const defaultMonths = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 const defaultWeeks = ['П', 'В', 'С', 'Ч', 'П', 'Сб', 'Вс'];
 
 const getYearOrCurrent = (date: string) => moment(date).year();
@@ -43,9 +28,7 @@ export const Calendar: React.FC<IProps> = (props) => {
   const [initialized, setInitialized] = React.useState(false);
   const [changed, setChanged] = React.useState(false);
 
-  const [selectedDate, setSelectedDate] = React.useState<string>(() =>
-    moment(props.value || props.defaultValue || new Date()).format(props.format),
-  );
+  const [selectedDate, setSelectedDate] = React.useState<string>(() => moment(props.value || props.defaultValue || new Date()).format(props.format));
 
   React.useEffect(() => {
     if (changed) {
@@ -64,10 +47,7 @@ export const Calendar: React.FC<IProps> = (props) => {
     setInitialized(true);
   }, []);
 
-  const days = React.useMemo(
-    () => getCalendarDays(getYearOrCurrent(selectedDate), getMonthOrCurrent(selectedDate)),
-    [selectedDate],
-  );
+  const days = React.useMemo(() => getCalendarDays(getYearOrCurrent(selectedDate), getMonthOrCurrent(selectedDate)), [selectedDate]);
 
   const handlePrevMonth = (month: number) => {
     const newMonth = month - 1;

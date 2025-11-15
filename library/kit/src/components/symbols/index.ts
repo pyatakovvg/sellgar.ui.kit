@@ -1,9 +1,7 @@
 export * from './icon';
 export * from './badge';
 export * from './button';
-export * from './button-icon';
 export * from './button-link';
-export * from './button-dropdown';
 export * from './radio';
 export * from './checkbox';
 export * from './input';
@@ -27,6 +25,7 @@ export * from './select';
 export * from './select-tree';
 export * from './datepicker';
 export * from './tab-menu';
+export * from './image';
 
 export * from './card';
 export * from './container';

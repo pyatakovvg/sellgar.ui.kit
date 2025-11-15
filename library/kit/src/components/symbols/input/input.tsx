@@ -9,7 +9,7 @@ export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
   ref?: React.RefObject<HTMLInputElement> | React.RefCallback<HTMLInputElement>;
   leadIcon?: React.ReactNode;
   tailIcon?: React.ReactNode;
-  badge?: string | number;
+  badge?: React.ReactNode;
   size?: 'xs' | 'md';
   target?: 'destructive';
 }
@@ -59,11 +59,7 @@ export const Input: React.FC<IProps> = ({ ref, size = 'md', target, leadIcon, ta
       <div className={s.content}>
         <input ref={ref} {...props} className={s.input} onFocus={handleFocus} onBlur={handleBlur} />
       </div>
-      {badge && (
-        <div className={s.badge}>
-          <Badge size={'sm'} color={'gray'} label={badge} disabled={props.disabled} />
-        </div>
-      )}
+      {badge && <div className={s.badge}>{badge}</div>}
       {tailIcon && <div className={s['tail-icon']}>{tailIcon}</div>}
     </div>
   );

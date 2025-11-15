@@ -11,9 +11,9 @@ import {
   FloatingOverlay,
 } from '@floating-ui/react';
 
-import { Icon } from '../symbols';
+import { Icon, Button } from '../symbols';
 
-import s from './default.module.scss';
+import s from './modal.module.scss';
 
 interface IProps {
   open?: boolean;
@@ -80,46 +80,42 @@ export const Dialog: React.FC<React.PropsWithChildren<IProps>> = ({ children, ..
   return <DialogContext.Provider value={dialog}>{children}</DialogContext.Provider>;
 };
 
-export const DialogContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(
-  function DialogContent(props, propRef) {
-    const { context: floatingContext, ...context } = useModalContext();
-    const ref = useMergeRefs([context.refs.setFloating, propRef]);
+export const DialogContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(function DialogContent(props, propRef) {
+  const { context: floatingContext, ...context } = useModalContext();
+  const ref = useMergeRefs([context.refs.setFloating, propRef]);
 
-    if (!floatingContext.open) return null;
+  if (!floatingContext.open) return null;
 
-    return (
-      <FloatingPortal>
-        <FloatingOverlay className={s.overlay} lockScroll>
-          <FloatingFocusManager context={floatingContext}>
-            <div ref={ref} {...context.getFloatingProps(props)}>
-              {props.children}
-            </div>
-          </FloatingFocusManager>
-        </FloatingOverlay>
-      </FloatingPortal>
-    );
-  },
-);
+  return (
+    <FloatingPortal>
+      <FloatingOverlay className={s.overlay} lockScroll>
+        <FloatingFocusManager context={floatingContext}>
+          <div ref={ref} {...context.getFloatingProps(props)}>
+            {props.children}
+          </div>
+        </FloatingFocusManager>
+      </FloatingOverlay>
+    </FloatingPortal>
+  );
+});
 
-export const DialogClose = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  function DialogClose(props, ref) {
-    const {
-      onClose,
-      context: { onOpenChange },
-    } = useModalContext();
+export const DialogClose = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(function DialogClose(props, ref) {
+  const {
+    onClose,
+    context: { onOpenChange },
+  } = useModalContext();
 
-    const handleClose = () => {
-      onOpenChange(false);
-      onClose && onClose();
-    };
+  const handleClose = () => {
+    onOpenChange(false);
+    onClose && onClose();
+  };
 
-    return (
-      <div className={s.close} {...props} ref={ref} onClick={handleClose}>
-        <Icon icon={'close-line'} />
-      </div>
-    );
-  },
-);
+  return (
+    <div className={s.close} {...props} ref={ref} onClick={handleClose}>
+      <Button form={'icon'} style={'ghost'} size={'xs'} shape={'pill'} leadIcon={<Icon icon={'close-line'} />} />
+    </div>
+  );
+});
 
 export const Modal: React.FC<React.PropsWithChildren<IProps>> = (props) => {
   return (

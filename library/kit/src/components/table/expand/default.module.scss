@@ -1,3 +1,4 @@
+@use '../../../utils/shadow/shadow-size.scss' as utils;
 
 .cell {
 
@@ -34,7 +35,7 @@
 
   border-color: var(--border-action-focus-light);
   background: var(--background-button-secondary);
-  box-shadow: 0 0 0 var(--numbers-2) rgba(200, 178, 255, 0.50);
+  @include utils.shadow-focus(rgba(200, 178, 255, 0.50));
 }
 
 .disabled,

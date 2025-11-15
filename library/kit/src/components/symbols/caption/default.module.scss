@@ -13,7 +13,9 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  font-size: var(--typography-size-body-m);
+  width: var(--numbers-16);
+  height: var(--numbers-16);
+  font-size: var(--numbers-14);
   padding: var(--numbers-2) 0;
 }
 

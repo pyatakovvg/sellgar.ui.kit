@@ -1,3 +1,4 @@
+@use '../../../../utils/shadow/shadow-size.scss' as utils;
 
 .wrapper {
 
@@ -8,7 +9,7 @@
   border-radius: var(--measurements-radius-sm);
   border: var(--numbers-1) solid var(--border-action-normal);
   background: var(--background-surface-default);
-  box-shadow: var(--measurements-shadows-lg);
+  @include utils.shadow-lg(rgba(20, 21, 26, 0.08));
 }
 
 .size {

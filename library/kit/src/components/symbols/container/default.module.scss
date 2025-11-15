@@ -1,3 +1,5 @@
+@use '../../../utils/shadow/shadow-size.scss' as utils;
+
 .wrapper {
 
   display: flex;
@@ -5,6 +7,6 @@
   flex: 1 0;
   border-radius: var(--measurements-radius-xxl);
   background: var(--background-surface-default);
-  box-shadow: 0 var(--numbers-1) var(--numbers-2) 0 rgba(20, 21, 26, 0.05);
+  @include utils.shadow-xs(rgba(20, 21, 26, 0.05));
   overflow: auto;
 }

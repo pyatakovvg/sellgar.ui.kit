@@ -117,7 +117,7 @@
 }
 
 .size {
-  &--large {
+  &--lg {
 
     height: var(--numbers-28);
     font-weight: var(--typography-weight-semi-bold);
@@ -134,10 +134,11 @@
     .tail-icon {
       width: var(--numbers-16);
       height: var(--numbers-16);
+      font-size: var(--numbers-14);
     }
   }
 
-  &--medium {
+  &--md {
 
     height: var(--numbers-24);
     font-weight: var(--typography-weight-semi-bold);
@@ -154,10 +155,11 @@
     .tail-icon {
       width: var(--numbers-16);
       height: var(--numbers-16);
+      font-size: var(--numbers-14);
     }
   }
 
-  &--small {
+  &--sm {
 
     height: var(--numbers-20);
     font-weight: var(--typography-weight-semi-bold);
@@ -174,10 +176,11 @@
     .tail-icon {
       width: var(--numbers-14);
       height: var(--numbers-14);
+      font-size: var(--numbers-12);
     }
   }
 
-  &--extra-small {
+  &--xs {
 
     height: var(--numbers-16);
     font-weight: var(--typography-weight-semi-bold);
@@ -190,6 +193,7 @@
     .tail-icon {
       width: var(--numbers-12);
       height: var(--numbers-12);
+      font-size: var(--numbers-10);
     }
   }
 }
@@ -197,19 +201,19 @@
 .shape {
   &--rounded {
     &.size {
-      &--large {
+      &--lg {
         border-radius: var(--measurements-radius-md);
       }
 
-      &--medium {
+      &--md {
         border-radius: var(--measurements-radius-md);
       }
 
-      &--small {
+      &--sm {
         border-radius: var(--measurements-radius-sm);
       }
 
-      &--extra-small {
+      &--xs {
         border-radius: var(--measurements-radius-xs);
       }
     }

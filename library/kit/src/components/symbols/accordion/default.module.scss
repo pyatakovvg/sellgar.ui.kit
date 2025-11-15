@@ -1,3 +1,5 @@
+@use '../../../utils/shadow/shadow-size.scss' as utils;
+
 .wrapper {
 
   display: flex;
@@ -16,7 +18,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 var(--numbers-2) rgba(200, 178, 255, 0.50);
+    @include utils.shadow-focus(rgba(200, 178, 255, 0.50));
     border: var(--numbers-1) solid var(--border-action-focus-light);
   }
 }
@@ -25,7 +27,7 @@
 
   border: var(--numbers-1) solid var(--border-base-alpha);
   background: var(--background-surface-neutral);
-  box-shadow: var(--measurements-shadows-xs);
+  @include utils.shadow-xs(rgba(20, 21, 26, 0.05));
 
   &:hover {
     background: var(--background-surface-neutral-subtle);

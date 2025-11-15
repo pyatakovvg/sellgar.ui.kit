@@ -1,3 +1,5 @@
+@use '../../../utils/shadow/shadow-size.scss' as utils;
+
 .wrapper {
 
   display: inline-flex;
@@ -5,15 +7,15 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  border: none;
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 var(--numbers-1) var(--numbers-2) 0 rgba(20, 21, 26, 0.05);
-  transition: background-color var(--measurements-transition),
-              box-shadow       var(--measurements-transition),
-              border           var(--measurements-transition),
-              color            var(--measurements-transition);
+  border: none;
+  @include utils.shadow-xs(rgba(20, 21, 26, 0.05));
+  transition: border var(--measurements-transition),
+              background var(--measurements-transition),
+              color var(--measurements-transition),
+              box-shadow var(--measurements-transition);
 
   .lead-icon {
 
@@ -22,7 +24,6 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    margin: 0 var(--numbers-4) 0 0;
     transition: color var(--measurements-transition);
   }
 
@@ -53,28 +54,36 @@
   }
 
   &:focus, &:active {
-    box-shadow: 0 0 0 var(--numbers-2) rgba(200, 178, 255, 0.50);
+    @include utils.shadow-focus(rgba(200, 178, 255, 0.50));
   }
 }
 
 .size {
-  &--large {
+  &--lg {
 
     height: var(--numbers-48);
     padding: var(--numbers-12) var(--numbers-16);
-    font-size: var(--typography-size-body-s);
-    line-height: var(--typography-line-height-body-s);
-    letter-spacing: var(--typography-letter-spacing-body-s);
+
+    &.icon-only {
+      width: var(--numbers-48);
+    }
 
     .lead-icon {
 
       width: var(--numbers-20);
       height: var(--numbers-20);
+      font-size: var(--numbers-16);
+
+      & + .text {
+        margin: 0 0 0 var(--numbers-4);
+      }
     }
 
     .text {
-
       padding: 0 var(--numbers-4);
+      font-size: var(--typography-size-body-s);
+      line-height: var(--typography-line-height-body-s);
+      letter-spacing: var(--typography-letter-spacing-body-s);
     }
 
     .badge {
@@ -85,26 +94,36 @@
 
       width: var(--numbers-20);
       height: var(--numbers-20);
+      font-size: var(--numbers-16);
     }
   }
 
-  &--medium {
+  &--md {
 
     height: var(--numbers-40);
     padding: var(--numbers-10) var(--numbers-12);
-    font-size: var(--typography-size-caption-l);
-    line-height: var(--typography-line-height-caption-l);
-    letter-spacing: var(--typography-letter-spacing-caption-l);
+
+    &.icon-only {
+      width: var(--numbers-40);
+    }
 
     .lead-icon {
 
       width: var(--numbers-20);
       height: var(--numbers-20);
+      font-size: var(--numbers-16);
+
+      & + .text {
+        margin: 0 0 0 var(--numbers-4);
+      }
     }
 
     .text {
 
       padding: 0 var(--numbers-4);
+      font-size: var(--typography-size-caption-l);
+      line-height: var(--typography-line-height-caption-l);
+      letter-spacing: var(--typography-letter-spacing-caption-l);
     }
 
     .badge {
@@ -116,61 +135,88 @@
 
       width: var(--numbers-20);
       height: var(--numbers-20);
+      font-size: var(--numbers-16);
     }
   }
 
-  &--small {
+  &--sm {
 
     height: var(--numbers-32);
     padding: var(--numbers-6) var(--numbers-10);
-    font-size: var(--typography-size-caption-l);
-    line-height: var(--typography-line-height-caption-l);
-    letter-spacing: var(--typography-letter-spacing-caption-l);
+
+    &.icon-only {
+      width: var(--numbers-32);
+    }
 
     .lead-icon {
 
       width: var(--numbers-16);
       height: var(--numbers-16);
+      font-size: var(--numbers-13);
+
+      & + .text {
+        margin: 0 0 0 var(--numbers-2);
+      }
     }
 
     .text {
 
       padding: 0 var(--numbers-4);
+      font-size: var(--typography-size-caption-l);
+      line-height: var(--typography-line-height-caption-l);
+      letter-spacing: var(--typography-letter-spacing-caption-l);
     }
 
     .badge {
-      padding: var(--numbers-2) var(--numbers-3);
+      margin: 0 0 0 var(--numbers-2);
     }
 
     .tail-icon {
 
       width: var(--numbers-16);
       height: var(--numbers-16);
+      font-size: var(--numbers-13);
+      margin: 0 0 0 var(--numbers-2);
     }
   }
 
-  &--extra-small {
+  &--xs {
 
     height: var(--numbers-24);
     padding: var(--numbers-4) var(--numbers-8);
-    font-size: var(--typography-size-caption-m);
-    line-height: var(--typography-line-height-caption-m);
-    letter-spacing: var(--typography-letter-spacing-caption-m);
+
+    &.icon-only {
+      width: var(--numbers-24);
+    }
 
     .lead-icon {
 
       width: var(--numbers-14);
       height: var(--numbers-14);
+      font-size: var(--numbers-11);
+
+      & + .text {
+        margin: 0 0 0 var(--numbers-4);
+      }
+    }
+
+    .text {
+
+      font-size: var(--typography-size-caption-m);
+      line-height: var(--typography-line-height-caption-m);
+      letter-spacing: var(--typography-letter-spacing-caption-m);
     }
 
     .badge {
-      padding: 0 var(--numbers-2);
+      margin: 0 0 0 var(--numbers-4);
     }
 
     .tail-icon {
 
       width: var(--numbers-14);
       height: var(--numbers-14);
+      font-size: var(--numbers-11);
+      margin: 0 0 0 var(--numbers-4);
     }
   }
 }
@@ -193,7 +239,9 @@
       background: var(--background-button-primary-hover);
     }
 
-    &:disabled {
+    &:disabled,
+    &:disabled:focus,
+    &:disabled:active {
       color: var(--text-base-quaternary);
       background: var(--background-button-primary-disabled);
     }
@@ -223,7 +271,9 @@
       border-color: var(--border-action-focus-light);
     }
 
-    &:disabled {
+    &:disabled,
+    &:disabled:focus,
+    &:disabled:active {
       color: var(--text-base-quaternary);
       border-color: var(--border-action-disabled);
       background: var(--background-button-secondary-disabled);
@@ -243,6 +293,7 @@
 
     color: var(--text-base-secondary);
     background: var(--background-button-tertiary);
+    border: var(--numbers-1) solid var(--background-button-tertiary);
 
     .text {
       color: var(--text-base-primary);
@@ -255,13 +306,16 @@
 
     &:hover {
       background: var(--background-button-tertiary-hover);
+      border-color: var(--background-button-tertiary-hover);
     }
 
     &:focus, &:active {
-      border: var(--numbers-1) solid var(--border-action-focus-light);
+      border-color: var(--border-action-focus-light);
     }
 
-    &:disabled {
+    &:disabled,
+    &:disabled:focus,
+    &:disabled:active {
       color: var(--text-base-quaternary);
       background: var(--background-button-tertiary-disabled);
 
@@ -280,6 +334,7 @@
 
     color: var(--text-base-secondary);
     background: var(--background-button-ghost);
+    border: var(--numbers-1) solid transparent;
     box-shadow: none;
 
     .text {
@@ -296,12 +351,15 @@
     }
 
     &:focus, &:active {
-      border: var(--numbers-1) solid var(--border-action-focus-light);
+      border-color: var(--border-action-focus-light);
     }
 
-    &:disabled {
+    &:disabled,
+    &:disabled:focus,
+    &:disabled:active {
       color: var(--text-base-quaternary);
       background: var(--background-button-ghost-disabled);
+      border-color: var(--background-button-ghost-hover);
 
       .text {
         color: var(--text-base-quaternary);
@@ -336,7 +394,7 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+          @include utils.shadow-focus(rgba(255, 178, 178, 0.60));
         }
 
         &:disabled {
@@ -347,7 +405,7 @@
 
       &--secondary {
 
-        border-color: var(--border-action-destructive);
+        border: var(--numbers-1) solid var(--border-action-destructive);
         background: var(--background-button-destructive-secondary);
 
         .text {
@@ -365,10 +423,12 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+          @include utils.shadow-focus(rgba(255, 178, 178, 0.60));
         }
 
-        &:disabled {
+        &:disabled,
+        &:disabled:focus,
+        &:disabled:active {
           color: var(--text-status-destructive-tertiary);
           border-color: var(--border-action-destructive-disabled);
           background: var(--background-button-destructive-secondary-disabled);
@@ -380,7 +440,7 @@
       }
 
       &--tertiary {
-
+        border: var(--numbers-1) solid transparent;
         background: var(--background-button-destructive-tetriary);
 
         .text {
@@ -397,13 +457,16 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
+          @include utils.shadow-focus(rgba(255, 178, 178, 0.60));
           border-color: var(--border-action-focus-destructive-light);
         }
 
-        &:disabled {
+        &:disabled,
+        &:disabled:focus,
+        &:disabled:active {
           color: var(--text-status-destructive-tertiary);
           background: var(--background-button-destructive-tetriary-disabled);
+          border-color: var(--background-button-destructive-tetriary-disabled);
 
           .text {
             color: var(--text-status-destructive-tertiary);
@@ -414,8 +477,8 @@
       &--ghost {
 
         color: var(--text-status-destructive-secondary);
-        border-color: var(--background-button-destructive-ghost);
         background: var(--background-button-destructive-ghost);
+        border: var(--numbers-1) solid transparent;
 
         .text {
           color: var(--text-status-destructive-secondary);
@@ -427,7 +490,6 @@
         }
 
         &:hover {
-          border-color: var(--background-button-destructive-ghost-hover);
           background: var(--background-button-destructive-ghost-hover);
 
           .text {
@@ -436,11 +498,12 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(255, 178, 178, 0.60);
-          border-color: var(--border-action-focus-destructive-light);
+          @include utils.shadow-focus(rgba(255, 178, 178, 0.60));
         }
 
-        &:disabled {
+        &:disabled,
+        &:disabled:focus,
+        &:disabled:active {
           color: var(--text-status-destructive-tertiary);
           border-color: var(--background-button-destructive-ghost-disabled);
           background: var(--background-button-destructive-ghost-disabled);
@@ -473,10 +536,12 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(#4778F5, 0.2);
+          @include utils.shadow-focus(var(--colors-blue-4a));
         }
 
-        &:disabled {
+        &:disabled,
+        &:disabled:focus,
+        &:disabled:active {
           color: var(--text-status-info-tertiary);
           background: var(--background-button-info-disabled);
         }
@@ -502,7 +567,7 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(#4778F5, 0.2);
+          @include utils.shadow-focus(var(--colors-blue-4a));
         }
 
         &:disabled {
@@ -523,6 +588,7 @@
 
       &--tertiary {
 
+        border: var(--numbers-1) solid transparent;
         background: var(--background-button-info-tetriary);
 
         .text {
@@ -539,7 +605,7 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(#4778F5, 0.2);
+          @include utils.shadow-focus(var(--colors-blue-4a));
           border-color: var(--border-action-focus-info-light);
         }
 
@@ -560,7 +626,6 @@
 
       &--ghost {
 
-        border-color: var(--background-button-info-ghost);
         background: var(--background-button-info-ghost);
 
         .text {
@@ -573,7 +638,6 @@
         }
 
         &:hover {
-          border-color: var(--background-button-info-ghost-hover);
           background: var(--background-button-info-ghost-hover);
 
           .text {
@@ -582,7 +646,7 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(#4778F5, 0.2);
+          @include utils.shadow-focus(var(--colors-blue-4a));
           border-color: var(--border-action-focus-info-light);
 
           .text {
@@ -628,7 +692,7 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(#26BD6C, 0.2);
+          @include utils.shadow-focus(var(--colors-green-4a));
         }
 
         &:disabled {
@@ -639,7 +703,7 @@
 
       &--secondary {
 
-        border-color: var(--border-action-success);
+        border: var(--numbers-1) solid var(--border-action-success);
         background: var(--background-button-success-secondary);
 
         .text {
@@ -657,7 +721,7 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(#26BD6C, 0.2);
+          @include utils.shadow-focus(var(--colors-green-4a));
         }
 
         &:disabled {
@@ -677,7 +741,7 @@
       }
 
       &--tertiary {
-
+        border: var(--numbers-1) solid transparent;
         background: var(--background-button-success-tetriary);
 
         .text {
@@ -694,7 +758,7 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(#26BD6C, 0.2);
+          @include utils.shadow-focus(var(--colors-green-4a));
           border-color: var(--border-action-focus-success-light);
         }
 
@@ -715,7 +779,6 @@
 
       &--ghost {
 
-        border-color: var(--background-button-success-ghost);
         background: var(--background-button-success-ghost);
 
         .text {
@@ -728,7 +791,6 @@
         }
 
         &:hover {
-          border-color: var(--background-button-success-ghost-hover);
           background: var(--background-button-success-ghost-hover);
 
           .text {
@@ -737,7 +799,7 @@
         }
 
         &:focus, &:active {
-          box-shadow: 0 0 0 var(--numbers-2) rgba(#26BD6C, 0.2);
+          @include utils.shadow-focus(var(--colors-green-4a));
           border-color: var(--border-action-focus-success-light);
 
           .text {
@@ -767,19 +829,19 @@
 .shape {
   &--rounded {
     &.size {
-      &--large {
+      &--lg {
         border-radius: var(--measurements-radius-xl);
       }
 
-      &--medium {
+      &--md {
         border-radius: var(--measurements-radius-xl);
       }
 
-      &--small {
+      &--sm {
         border-radius: var(--measurements-radius-lg);
       }
 
-      &--extra-small {
+      &--xs {
         border-radius: var(--measurements-radius-md);
       }
     }
@@ -789,3 +851,4 @@
     border-radius: var(--measurements-radius-full);
   }
 }
+

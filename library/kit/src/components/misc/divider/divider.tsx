@@ -18,7 +18,7 @@ interface IActionProps {
   actionLabel: string;
 }
 
-type IProps = IEmptyProps | ILabelProps | IActionProps;
+export type IProps = IEmptyProps | ILabelProps | IActionProps;
 
 export const Divider: React.FC<IProps> = (props) => {
   switch (props.type) {

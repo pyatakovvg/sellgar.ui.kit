@@ -1,3 +1,5 @@
+@use '../../../utils/shadow/shadow-size.scss' as utils;
+
 .wrapper {
 
   display: flex;
@@ -31,14 +33,14 @@
     padding: var(--numbers-24);
     border-radius: var(--measurements-radius-xxl);
     border: var(--numbers-1) solid var(--border-action-normal);
-    box-shadow: 0 var(--numbers-1) var(--numbers-2) 0 rgba(20, 21, 26, 0.05);
+    @include utils.shadow-xs(rgba(20, 21, 26, 0.05));
   }
 
   &--elevated {
 
     border-radius: var(--measurements-radius-xxl);
     border: var(--numbers-1) solid var(--border-action-normal);
-    box-shadow: 0 var(--numbers-1) var(--numbers-2) 0 rgba(20, 21, 26, 0.05);
+    @include utils.shadow-xs(rgba(20, 21, 26, 0.05));
 
     .content {
 

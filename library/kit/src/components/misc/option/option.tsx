@@ -5,15 +5,15 @@ import { Typography, Badge, Toggle } from '../../symbols';
 import cn from 'classnames';
 import s from './default.module.scss';
 
-interface IProps {
+export interface IProps {
   leadIcon?: React.ReactNode;
   active?: boolean;
   label: string;
-  badge?: string;
+  badge?: React.ReactNode;
   toggle?: boolean;
 }
 
-export const BaseOption: React.FC<IProps> = (props) => {
+export const Option: React.FC<IProps> = (props) => {
   const className = React.useMemo(
     () =>
       cn(s.wrapper, {
@@ -32,7 +32,13 @@ export const BaseOption: React.FC<IProps> = (props) => {
       </div>
       {props.badge && (
         <div className={s.badge}>
-          <Badge color={'gray'} label={props.badge} size={'xs'} />
+          {React.Children.map(props.badge, (child) => {
+            if (React.isValidElement(child)) {
+              const badge = child as React.ReactElement<React.ComponentProps<typeof Badge>>;
+              return React.cloneElement(badge, { size: 'sm' });
+            }
+            return child;
+          })}
         </div>
       )}
       {props.toggle !== undefined && (

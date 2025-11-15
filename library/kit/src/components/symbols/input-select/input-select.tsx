@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Icon } from '../icon';
 import { Input } from '../input';
-import { BaseOption } from '../../misc';
+import { Option } from '../../misc';
 import { Select } from '../../helpers/select';
 
 export interface IProps<T extends Record<string, any>, K extends keyof T>
@@ -17,18 +17,11 @@ export interface IProps<T extends Record<string, any>, K extends keyof T>
   options: T[];
 }
 
-export const InputSelect = <T extends Record<string, any>, K extends keyof T>({
-  options,
-  optionKey,
-  optionValue,
-  ...props
-}: IProps<T, K>) => {
+export const InputSelect = <T extends Record<string, any>, K extends keyof T>({ options, optionKey, optionValue, ...props }: IProps<T, K>) => {
   const [open, setOpen] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
 
-  const filteredOptions = inputValue
-    ? options.filter((option) => option[optionValue].toLowerCase().startsWith(inputValue.toLowerCase()))
-    : [];
+  const filteredOptions = inputValue ? options.filter((option) => option[optionValue].toLowerCase().startsWith(inputValue.toLowerCase())) : [];
 
   return (
     <Select open={open} setOpen={setOpen}>
@@ -59,7 +52,7 @@ export const InputSelect = <T extends Record<string, any>, K extends keyof T>({
         )}
       />
       <Select.Options
-        empty={<BaseOption leadIcon={<Icon icon={'filter-off-line'} />} label={'Нет данных'} />}
+        empty={<Option leadIcon={<Icon icon={'filter-off-line'} />} label={'Нет данных'} />}
         options={(dropdownOptions) => {
           return filteredOptions.map((option, index) => {
             return (
@@ -71,14 +64,7 @@ export const InputSelect = <T extends Record<string, any>, K extends keyof T>({
                   dropdownOptions.setOpen(false);
                 }}
                 option={(dropdown) => {
-                  return (
-                    <BaseOption
-                      active={dropdown.activeIndex === index}
-                      leadIcon={<Icon icon={'windy-fill'} />}
-                      label={option.name}
-                      badge={option.role}
-                    />
-                  );
+                  return <Option active={dropdown.activeIndex === index} leadIcon={<Icon icon={'windy-fill'} />} label={option.name} badge={option.role} />;
                 }}
               />
             );

@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { Badge } from '../badge';
+
 import cn from 'classnames';
 import s from './default.module.scss';
 
-interface IProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'style'> {
-  form?: 'icon-only';
+export interface IProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'style'> {
+  form?: 'icon';
   style?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
   size?: 'lg' | 'md' | 'sm' | 'xs';
   target?: 'default' | 'destructive' | 'success' | 'info';
@@ -88,16 +90,29 @@ const useBadgeStroke = (style: IProps['style']) => {
   }, [style]);
 };
 
-export const Button: React.FC<IProps> = ({ size = 'md', style = 'primary', shape = 'rounded', target = 'default', leadIcon, tailIcon, badge, ...props }) => {
+export const Button: React.FC<IProps> = ({
+  size = 'md',
+  style = 'primary',
+  shape = 'rounded',
+  target = 'default',
+  leadIcon,
+  tailIcon,
+  badge,
+  form,
+  ...props
+}) => {
   const classNameButton = React.useMemo(
     () =>
       cn(
         s.wrapper,
         {
-          [s['size--large']]: size === 'lg',
-          [s['size--medium']]: size === 'md',
-          [s['size--small']]: size === 'sm',
-          [s['size--extra-small']]: size === 'xs',
+          [s['icon-only']]: form === 'icon',
+        },
+        {
+          [s['size--lg']]: size === 'lg',
+          [s['size--md']]: size === 'md',
+          [s['size--sm']]: size === 'sm',
+          [s['size--xs']]: size === 'xs',
         },
         {
           [s['style--primary']]: style === 'primary',
@@ -115,7 +130,7 @@ export const Button: React.FC<IProps> = ({ size = 'md', style = 'primary', shape
           [s['shape--pill']]: shape === 'pill',
         },
       ),
-    [size, style, target, shape],
+    [size, style, target, shape, form],
   );
 
   const badgeSize = useBadgeSize(size);
@@ -125,24 +140,28 @@ export const Button: React.FC<IProps> = ({ size = 'md', style = 'primary', shape
   return (
     <button {...props} className={classNameButton}>
       {leadIcon && <div className={s['lead-icon']}>{leadIcon}</div>}
-      <div className={s.text}>{props.children}</div>
-      {badge && (
-        <div className={s.badge}>
-          {React.Children.map(badge, (child) => {
-            if (React.isValidElement(child)) {
-              const childElement = child as React.ReactElement<any>;
-              return React.cloneElement(childElement, {
-                size: badgeSize,
-                color: badgeColor,
-                stroke: badgeStroke,
-                disabled: props.disabled,
-              });
-            }
-            return child;
-          })}
-        </div>
+      {form !== 'icon' && (
+        <>
+          {props.children && <div className={s.text}>{props.children}</div>}
+          {badge && (
+            <div className={s.badge}>
+              {React.Children.map(badge, (child) => {
+                if (React.isValidElement(child)) {
+                  const childElement = child as React.ReactElement<React.ComponentProps<typeof Badge>>;
+                  return React.cloneElement(childElement, {
+                    size: badgeSize,
+                    color: badgeColor,
+                    stroke: badgeStroke,
+                    disabled: props.disabled,
+                  });
+                }
+                return child;
+              })}
+            </div>
+          )}
+          {tailIcon && <div className={s['tail-icon']}>{tailIcon}</div>}
+        </>
       )}
-      {tailIcon && <div className={s['tail-icon']}>{tailIcon}</div>}
     </button>
   );
 };

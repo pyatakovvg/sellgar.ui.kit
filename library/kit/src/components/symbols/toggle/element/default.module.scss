@@ -1,3 +1,5 @@
+@use '../../../../utils/shadow/shadow-size.scss' as utils;
+
 .wrapper {
 
   position: relative;
@@ -35,7 +37,7 @@
   content: '';
   border-radius: var(--measurements-radius-full);
   background: var(--background-toggle-handle);
-  box-shadow: var(--measurements-shadows-xs);
+  @include utils.shadow-xs(rgba(20, 21, 26, 0.05));
 }
 
 .input:checked + .icon:hover {
