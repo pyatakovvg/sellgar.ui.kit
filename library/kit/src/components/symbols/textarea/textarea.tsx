@@ -47,12 +47,14 @@ export const Textarea: React.FC<IProps> = ({ ref, size = 'md', target, ...props 
 
   useAutosizeTextArea(inputRef, value);
 
-  const handleFocus = () => {
+  const handleFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     setFocused(true);
+    props.onFocus && props.onFocus(event);
   };
 
-  const handleBlur = () => {
+  const handleBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
     setFocused(false);
+    props.onBlur && props.onBlur(event);
   };
 
   return (
