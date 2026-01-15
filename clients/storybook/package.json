@@ -4,31 +4,31 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "storybook-docs": "storybook dev --docs",
+    "dev": "storybook dev --docs",
     "start": "storybook dev -p 3010",
     "build": "storybook build --output-dir build"
   },
   "dependencies": {
     "@mdx-js/react": "3.1.1",
     "@sellgar/kit": "*",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@babel/runtime": "8.0.0-beta.3",
-    "@storybook/addon-docs": "10.0.7",
-    "@storybook/react": "10.0.7",
-    "@storybook/react-vite": "10.0.7",
-    "@types/node": "24.10.1",
-    "@types/react": "19.2.5",
+    "@babel/runtime": "8.0.0-beta.4",
+    "@storybook/addon-docs": "10.1.11",
+    "@storybook/react": "10.1.11",
+    "@storybook/react-vite": "10.1.11",
+    "@types/node": "24.10.9",
+    "@types/react": "19.2.8",
     "@types/react-dom": "19.2.3",
-    "eslint": "9.39.1",
-    "eslint-plugin-storybook": "10.0.7",
-    "globals": "16.5.0",
-    "sass": "1.94.0",
-    "storybook": "10.0.7",
+    "eslint": "9.39.2",
+    "eslint-plugin-storybook": "10.1.11",
+    "globals": "17.0.0",
+    "sass": "1.97.2",
+    "storybook": "10.1.11",
     "typescript": "5.9.3",
-    "vite": "7.2.2"
+    "vite": "7.3.1"
   },
   "eslintConfig": {
     "extends": [

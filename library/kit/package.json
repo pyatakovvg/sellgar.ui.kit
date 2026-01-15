@@ -6,10 +6,6 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./types/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pyatakovvg/sellgar.ui.kit.git"
-  },
   "scripts": {
     "build": "vite build",
     "login": "yarn npm login",
@@ -27,13 +23,6 @@
         "default": "./dist/index.js"
       }
     },
-    "./development": "./src/index.ts",
-    "./development/theme.css": "./src/theme/theme.css",
-    "./development/theme.mobile.css": "./src/theme/theme.mobile.css",
-    "./development/theme.desktop.css": "./src/theme/theme.desktop.css",
-    "./development/icons.css": "./src/theme/fonts/icons/style.css",
-    "./development/inter.css": "./src/theme/fonts/inter/style.css",
-    "./development/geologica.css": "./src/theme/fonts/geologica/style.css",
     "./icons.css": "./dist/icons.css",
     "./inter.css": "./dist/inter.css",
     "./geologica.css": "./dist/geologica.css",
@@ -50,7 +39,7 @@
     "classnames": "2.5.1",
     "date-fns": "4.1.0",
     "moment": "2.30.1",
-    "overlayscrollbars": "2.12.0",
+    "overlayscrollbars": "2.13.0",
     "overlayscrollbars-react": "0.5.6",
     "react-baron": "3.0.0",
     "react-slider": "2.0.6"
@@ -68,11 +57,11 @@
     }
   },
   "devDependencies": {
-    "@storybook/react-vite": "10.0.7",
+    "@storybook/react-vite": "10.1.11",
     "@types/react-slider": "1.3.6",
-    "@vitejs/plugin-react": "5.1.1",
+    "@vitejs/plugin-react": "5.1.2",
     "typescript": "5.9.3",
-    "vite": "7.2.2",
+    "vite": "7.3.1",
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-lib-inject-css": "2.2.2",
     "vite-plugin-webfont-dl": "3.11.1"

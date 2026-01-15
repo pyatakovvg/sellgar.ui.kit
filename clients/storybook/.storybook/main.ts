@@ -1,8 +1,8 @@
 import { mergeConfig } from 'vite';
 import type { StorybookConfig } from '@storybook/react-vite';
 
-import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { join, dirname, resolve } from 'node:path';
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -13,7 +13,7 @@ function getAbsolutePath(value: string): any {
 }
 
 const config: StorybookConfig = {
-  stories: ['../../../library/kit/src/**/*.stories.@(ts|tsx)'],
+  stories: ['../src/**/*.stories.@(ts|tsx)'],
   addons: ['@storybook/addon-docs'],
   docs: {
     docsMode: true,
@@ -32,7 +32,15 @@ const config: StorybookConfig = {
     },
   },
   async viteFinal(config) {
+    const kitPath = resolve(process.cwd(), '../../library/kit');
+
     return mergeConfig(config, {
+      resolve: {
+        alias: {
+          ...config.resolve?.alias ||{},
+          '@sellgar/kit': join(kitPath, 'src'),
+        },
+      },
       optimizeDeps: {
         exclude: ['node_modules'],
         include: ['@storybook/react', '@babel/runtime/helpers/extends', '@babel/runtime/helpers/inheritsLoose'],
