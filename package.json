@@ -4,7 +4,10 @@
   "scripts": {
     "audit": "yarn npm audit -A -R --environment production --severity moderate",
     "update": "yarn upgrade-interactive",
-    "format": "prettier --write \"**/src/**/*.{js|jsx|ts|tsx}\""
+    "kit:build": "yarn workspace @library/kit run build",
+    "kit:publish": "yarn workspace @library/kit run publish",
+    "storybook:start": "yarn workspace @client/storybook run start",
+    "storybook:build": "yarn workspaces foreach --all --exclude @client/storybook run build && yarn workspace @client/storybook run build"
   },
   "devDependencies": {
     "@eslint/js": "9.39.2",

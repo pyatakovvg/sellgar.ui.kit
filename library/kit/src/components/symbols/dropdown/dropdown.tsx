@@ -6,9 +6,6 @@ import { Placeholder } from '../select/placeholder';
 import { DropdownInput } from '../../helpers/dropdown-input';
 import { Select as SelectHelper } from '../../helpers/select';
 
-// import cn from 'classnames';
-// import s from './default.module.scss';
-
 export interface IProps<T extends Record<string, any>, K extends keyof T> {
   leadIcon?: React.ReactNode;
   tailIcon?: React.ReactNode;
@@ -43,13 +40,11 @@ export const Dropdown = <T extends Record<string, any>, K extends keyof T>({
   optionKey,
   optionValue,
   templateValue,
-  // templateOption,
   onBlur,
   onFocus,
   onChange,
   disabled,
   isClearable,
-  // ...props
 }: IProps<T, K>) => {
   const [initialize, setInitialize] = React.useState(false);
   const [open, setOpen] = React.useState(false);

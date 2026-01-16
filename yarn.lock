@@ -279,10 +279,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:8.0.0-beta.4":
-  version: 8.0.0-beta.4
-  resolution: "@babel/runtime@npm:8.0.0-beta.4"
-  checksum: 10/dde942e86572b8dd187dfdec614ccf183b89b1b6853845524b00c11a843633a1793160f75d81fe52940697b25fd275359843178a8c1b2838a597964b5fc49af8
+"@babel/runtime@npm:7.28.6":
+  version: 7.28.6
+  resolution: "@babel/runtime@npm:7.28.6"
+  checksum: 10/fbcd439cb74d4a681958eb064c509829e3f46d8a4bfaaf441baa81bb6733d1e680bccc676c813883d7741bcaada1d0d04b15aa320ef280b5734e2192b50decf9
   languageName: node
   linkType: hard
 
@@ -379,7 +379,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@client/storybook@workspace:clients/storybook"
   dependencies:
-    "@babel/runtime": "npm:8.0.0-beta.4"
+    "@babel/runtime": "npm:7.28.6"
     "@mdx-js/react": "npm:3.1.1"
     "@sellgar/kit": "npm:*"
     "@storybook/addon-docs": "npm:10.1.11"
