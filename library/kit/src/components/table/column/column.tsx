@@ -9,6 +9,8 @@ interface IProps<T> {
   accessor?: keyof T;
   width?: number;
   align?: 'left' | 'center' | 'right';
+  pinLeft?: boolean;
+  pinRight?: boolean;
 }
 
 interface IHiddenProps {
@@ -16,7 +18,7 @@ interface IHiddenProps {
 }
 
 const ColumnComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
-  const [width, setWidth] = React.useState(0);
+  const [width, setWidth] = React.useState<number | string>('auto');
 
   const titleChild = React.useMemo(
     () =>
@@ -52,6 +54,8 @@ const ColumnComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
             width: props.width,
             accessor: props.accessor,
             align: props.align,
+            pinLeft: props.pinLeft,
+            pinRight: props.pinRight,
           } as IColumn<T>
         }
       >
@@ -70,6 +74,8 @@ const ColumnComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
           width: props.width,
           dynamicWidth: width,
           accessor: props.accessor,
+          pinLeft: props.pinLeft,
+          pinRight: props.pinRight,
         } as IColumn<T>
       }
     >

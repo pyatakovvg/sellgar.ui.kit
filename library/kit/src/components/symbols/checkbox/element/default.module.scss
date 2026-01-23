@@ -25,6 +25,12 @@
   visibility: hidden;
 }
 
+.indeterminate {
+
+  border-color: var(--border-base-surface);
+  background: var(--background-checkbox-checked);
+}
+
 .disabled {
 
   background: var(--background-checkbox-disabled);
@@ -69,5 +75,9 @@
 }
 
 .input:checked + .wrapper .icon {
+  display: flex;
+}
+
+.input + .indeterminate .icon {
   display: flex;
 }

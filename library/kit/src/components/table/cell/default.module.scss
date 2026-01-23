@@ -1,6 +1,7 @@
 .wrapper {
 
   background: transparent;
+  z-index: 0;
 }
 
 .cell {
@@ -17,4 +18,9 @@
   flex-direction: column;
   flex: 1 0;
   justify-content: center;
+}
+
+.pined {
+  position: sticky;
+  z-index: 10;
 }

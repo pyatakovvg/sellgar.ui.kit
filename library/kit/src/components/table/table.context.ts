@@ -7,6 +7,7 @@ export interface ITree<T> {
 
 export interface IContext<T> {
   tree?: ITree<T>;
+  target?: HTMLTableElement;
 }
 
 const defaultValues: IContext<any> = {};

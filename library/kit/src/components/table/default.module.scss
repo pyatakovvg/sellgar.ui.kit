@@ -5,7 +5,7 @@
   flex: 1 0;
   border-radius: var(--measurements-radius-lg);
   border: var(--numbers-1) solid var(--border-action-normal);
-  overflow: hidden;
+  overflow: auto;
 }
 
 .table {
@@ -20,6 +20,7 @@
 
 .head {
 
+  position: relative;
   background: var(--background-surface-neutral);
 }
 

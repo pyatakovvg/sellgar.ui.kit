@@ -37,13 +37,7 @@ const Rows = <T,>(props: React.PropsWithChildren<IRowsProps<T>>) => {
   };
 
   rows.push(
-    <Row
-      key={'row_' + props.index + '_' + props.deps}
-      data={props.data as T}
-      deps={props.deps}
-      expanded={expanded}
-      setExpand={handleExpand}
-    >
+    <Row key={'row_' + props.index + '_' + props.deps} data={props.data as T} deps={props.deps} expanded={expanded} setExpand={handleExpand}>
       {React.Children.map(props.children, (child) => {
         if (React.isValidElement(child)) {
           const column = child as React.ReactElement<{
@@ -67,13 +61,7 @@ const Rows = <T,>(props: React.PropsWithChildren<IRowsProps<T>>) => {
     rows = [
       ...rows,
       ...(props.data[props.tree.accessor] as T[]).map((item: T, index: number) => (
-        <Rows
-          key={'row_' + (index + 1) * 10 + '_' + props.deps}
-          data={item as T}
-          deps={props.deps + 1}
-          tree={props.tree}
-          index={index * 10}
-        >
+        <Rows key={'row_' + (index + 1) * 10 + '_' + props.deps} data={item as T} deps={props.deps + 1} tree={props.tree} index={index * 10}>
           {props.children}
         </Rows>
       )),
@@ -84,16 +72,19 @@ const Rows = <T,>(props: React.PropsWithChildren<IRowsProps<T>>) => {
 };
 
 export const Table = <T extends Record<string, any>>(props: React.PropsWithChildren<IProps<T>>) => {
+  const tableRef = React.useRef<HTMLTableElement>(null);
+
   return (
     <TableProvider
       value={
         {
           tree: props.tree,
+          ref: tableRef?.current,
         } as IContext<T>
       }
     >
       <div className={s.wrapper}>
-        <table className={s.table}>
+        <table ref={tableRef} className={s.table}>
           <thead className={s.head}>
             <Head>
               {React.Children.map(props.children, (child, index) => {

@@ -2,6 +2,8 @@
 
   text-align: left;
   height: var(--numbers-36);
+  background: var(--background-surface-neutral);
+  z-index: 0;
 }
 
 .cell {
@@ -38,4 +40,9 @@
   &--right {
     text-align: right;
   }
+}
+
+.pined {
+  position: sticky;
+  z-index: 10;
 }

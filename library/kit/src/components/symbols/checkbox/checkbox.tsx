@@ -10,6 +10,7 @@ export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
   size?: 'sm' | 'md';
   label?: string;
   caption?: string;
+  isIndeterminate?: boolean;
 }
 
 export const Checkbox: React.FC<IProps> = ({ size = 'md', label, caption, ...props }) => {

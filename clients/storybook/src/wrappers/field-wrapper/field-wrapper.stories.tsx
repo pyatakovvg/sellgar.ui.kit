@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { FieldWrapper, LabelField, Input, CaptionField } from '@sellgar/kit';
+import { Field, Label, Input, Icon, Caption } from '@sellgar/kit';
 
 const meta: Meta = {
-  title: 'Kit/Wrappers/FieldWrapper',
-  component: FieldWrapper,
+  title: 'Kit/Wrappers/Field',
+  component: Field,
   parameters: {
     layout: 'centered',
   },
@@ -22,23 +22,23 @@ export default meta;
 export const Default: Story = {
   args: {},
   render: (args) => (
-    <FieldWrapper>
-      <FieldWrapper.Label>
-        <LabelField label={'Label'} caption={'(optional)'} required={true} />
-      </FieldWrapper.Label>
-      <FieldWrapper.Content>
+    <Field>
+      <Field.Label>
+        <Label label={'Label'} caption={'(optional)'} required={true} />
+      </Field.Label>
+      <Field.Content>
         <Input
           size={'md'}
-          leadicon={'earth-line'}
+          leadIcon={<Icon icon={Icon.earthLine} />}
           badge={'⌘K'}
-          tailicon={'information-line'}
+          tailIcon={<Icon icon={Icon.informationLine} />}
           disabled={args.disabled}
           target={args.destructive ? 'destructive' : undefined}
         />
-      </FieldWrapper.Content>
-      <FieldWrapper.Caption>
-        <CaptionField leadicon={'information-line'} caption={'Helper text'} state={args.destructive ? 'destructive' : 'default'} />
-      </FieldWrapper.Caption>
-    </FieldWrapper>
+      </Field.Content>
+      <Field.Caption>
+        <Caption leadIcon={<Icon icon={Icon.informationLine} />} caption={'Helper text'} state={args.destructive ? 'destructive' : 'default'} />
+      </Field.Caption>
+    </Field>
   ),
 };

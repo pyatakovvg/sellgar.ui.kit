@@ -4,6 +4,8 @@ export interface IColumn<T> {
   accessor?: keyof T;
   width?: number;
   align?: 'left' | 'center' | 'right';
+  pinLeft?: boolean,
+  pinRight?: boolean,
   dynamicWidth: number;
   setWidth: React.Dispatch<React.SetStateAction<number>>;
 }
