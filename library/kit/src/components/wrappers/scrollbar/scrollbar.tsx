@@ -17,7 +17,7 @@ const applyStyles = (element: HTMLElement, styles: React.CSSProperties) => {
   });
 };
 
-export const Scrollbar: React.FC<React.PropsWithChildren<IProps>> = ({ ref, ...props }) => {
+export const Scrollbar: React.FC<React.PropsWithChildren<IProps>> = ({ ref, contentStyle, ...props }) => {
   const divRef = React.useRef<OverlayScrollbarsComponentRef>(null);
   const [initBodyOverlayScrollbars] = useOverlayScrollbars({
     defer: true,
@@ -41,13 +41,13 @@ export const Scrollbar: React.FC<React.PropsWithChildren<IProps>> = ({ ref, ...p
     if (divRef.current) {
       const contentElement: HTMLDivElement = divRef.current.getElement()?.querySelector('[data-overlayscrollbars-contents]')!;
 
-      if (contentElement && props.contentStyle) {
-        applyStyles(contentElement, props.contentStyle);
+      if (contentElement && contentStyle) {
+        applyStyles(contentElement, contentStyle);
       }
 
       initBodyOverlayScrollbars(divRef.current.getElement()!);
     }
-  }, [divRef.current, props.contentStyle, initBodyOverlayScrollbars]);
+  }, [divRef.current, contentStyle, initBodyOverlayScrollbars]);
 
   return (
     <OverlayScrollbarsComponent ref={divRef} {...props}>

@@ -1,14 +1,11 @@
 import React from 'react';
 
+import { IConfigColumn } from './table.tsx';
+
 interface IContext {
-  isSelectedAll: boolean;
-  isIndeterminate: boolean;
-  selectedItems: any[];
-  hasSelected: (item: any) => boolean;
-  addItem: (item: any) => void;
-  deleteItem: (item: any) => void;
-  selectAll: () => void;
-  deleteAll: () => void;
+  data: any[];
+  config: IConfigColumn<any>[];
+  columnsWidth: number[];
 }
 
 export const context = React.createContext({} as IContext);

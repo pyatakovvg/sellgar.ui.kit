@@ -2,15 +2,25 @@ import React from 'react';
 
 import { Scrollbar } from '../wrappers';
 import { Typography } from '../symbols';
-import { Checkbox } from '../symbols';
 
-import { context } from './table.context.ts';
+import { TitleArrow, RowArrow, TreeProvider } from './tree';
+import { TitleCheckbox, RowCheckbox, SelectProvider } from './select';
+
+import { TableRows } from './table-rows';
+import { TableCell, type ITableCellProps } from './table-cell';
+
 import { TableProvider } from './table.provider.tsx';
 
+import { getColumnWidth } from './get-columns-width.hook.ts';
+
+import cn from 'classnames';
 import s from './default.module.scss';
+
+export type TTableDataItem = Record<string, any>;
 
 interface IColumnProps {
   width?: number;
+  align?: 'left' | 'center' | 'right';
   pinLeft?: boolean;
   pinRight?: boolean;
 }
@@ -44,25 +54,21 @@ interface ICaptionPropsWithDisplayName extends React.FC<ICaptionProps> {
 const Caption: ICaptionPropsWithDisplayName = () => null;
 Caption.displayName = 'Caption';
 
-interface ICellProps {
-  render?: (item: any) => React.ReactNode;
-}
-
-interface ICellPropsWithDisplayName extends React.FC<React.PropsWithChildren<ICellProps>> {
-  displayName: string;
-}
-
-const Cell: ICellPropsWithDisplayName = (props) => props.children;
-Cell.displayName = 'Cell';
-
-interface ITableSelectProps {
+interface ITableSelectProps<T> {
   isUse: boolean;
-  onChange: (items: any[]) => void;
+  onChange: (items: T[]) => void;
 }
 
-interface ITableProps {
-  data: any[];
-  select?: ITableSelectProps;
+export interface ITree<T> {
+  isUse: boolean;
+  accessor: keyof T;
+  defaultExpanded?: boolean;
+}
+
+interface ITableProps<T> {
+  data: T[];
+  tree?: ITree<T>;
+  select?: ITableSelectProps<T>;
 }
 
 const getValidElementType = <T extends React.FC<React.PropsWithChildren<{ displayName: string }>>>(child: React.ReactNode) => {
@@ -76,72 +82,50 @@ const getValidElementType = <T extends React.FC<React.PropsWithChildren<{ displa
   return null;
 };
 
-interface IConfigColumn {
+export interface IConfigColumn<T> {
+  type: 'control' | 'data';
   label: React.ReactNode;
+  align?: 'left' | 'center' | 'right';
   width?: number;
+  collapse?: boolean;
   pinLeft?: boolean;
   pinRight?: boolean;
-  renderCell: (items: any) => React.ReactNode;
+  renderCell: (items: T) => React.ReactNode;
 }
 
 interface IColumnConfigOptions {
   isSelect?: boolean;
+  isTree?: boolean;
 }
 
-const TitleCheckbox: React.FC = () => {
-  const { isSelectedAll, isIndeterminate, selectAll, deleteAll } = React.useContext(context);
-
-  return (
-    <Checkbox
-      size={'sm'}
-      checked={isSelectedAll}
-      isIndeterminate={isIndeterminate}
-      onChange={() => {
-        if (isIndeterminate) {
-          selectAll();
-        } else if (isSelectedAll) {
-          deleteAll();
-        } else {
-          selectAll();
-        }
-      }}
-    />
-  );
-};
-
-interface IRowCheckboxProps {
-  item: any;
-}
-
-const RowCheckbox: React.FC<IRowCheckboxProps> = (props) => {
-  const { addItem, deleteItem, hasSelected } = React.useContext(context);
-
-  return (
-    <Checkbox
-      size={'sm'}
-      checked={hasSelected(props.item)}
-      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.checked) {
-          addItem(props.item);
-        } else {
-          deleteItem(props.item);
-        }
-      }}
-    />
-  );
-};
-
-const getColumnConfig = (children: React.ReactNode, options: IColumnConfigOptions) => {
+const getColumnConfig = <T,>(children: React.ReactNode, options: IColumnConfigOptions) => {
   let startIndex = 0;
-  const config: IConfigColumn[] = [];
+  const config: IConfigColumn<T>[] = [];
 
   if (options.isSelect) {
     config[startIndex] = {
+      type: 'control',
       label: <TitleCheckbox />,
       width: 40,
+      align: 'center',
       pinLeft: true,
-      renderCell: (item: any) => {
+      renderCell: (item) => {
         return <RowCheckbox item={item} />;
+      },
+    };
+    startIndex++;
+  }
+
+  if (options.isTree) {
+    config[startIndex] = {
+      type: 'control',
+      label: <TitleArrow />,
+      width: 16,
+      align: 'center',
+      pinLeft: true,
+      collapse: true,
+      renderCell: (_) => {
+        return <RowArrow />;
       },
     };
     startIndex++;
@@ -156,11 +140,13 @@ const getColumnConfig = (children: React.ReactNode, options: IColumnConfigOption
     }
 
     const columnElement = child as React.ReactElement<React.PropsWithChildren<IColumnProps>>;
-    const { width, pinLeft, pinRight, children: columnChildren } = columnElement.props;
+    const { width, align, pinLeft, pinRight, children: columnChildren } = columnElement.props;
 
     config[currentIndex] = {
+      type: 'data',
       label: '',
       width,
+      align,
       pinLeft,
       pinRight,
       renderCell: () => null,
@@ -177,20 +163,16 @@ const getColumnConfig = (children: React.ReactNode, options: IColumnConfigOption
           label: headElement.props.label ?? '',
         };
       } else if (elementType === 'Cell') {
-        const cellElement = child as React.ReactElement<React.PropsWithChildren<ICellProps>>;
+        const cellElement = child as React.ReactElement<React.PropsWithChildren<ITableCellProps<T>>>;
 
         config[currentIndex] = {
           ...config[currentIndex],
-          renderCell: (item: any) => {
-            if (cellElement.props.render) {
-              return cellElement.props.render(item);
-            }
+          renderCell: () => {
             return React.Children.map(cellElement.props.children, (child) => {
               if (React.isValidElement(child)) {
-                const childElement = child as any;
-                return React.cloneElement(childElement, {
-                  ...(item as any),
-                });
+                const childElement = child as React.ReactElement<any>;
+
+                return React.cloneElement(childElement);
               }
               return child;
             });
@@ -201,7 +183,7 @@ const getColumnConfig = (children: React.ReactNode, options: IColumnConfigOption
   });
 
   return config.sort((left, right) => {
-    const getWeight = (item: IConfigColumn) => {
+    const getWeight = (item: IConfigColumn<T>) => {
       if (item.pinLeft) return 1;
       if (item.pinRight) return 3;
       return 2;
@@ -211,45 +193,59 @@ const getColumnConfig = (children: React.ReactNode, options: IColumnConfigOption
   });
 };
 
-export const TableComponent: React.FC<React.PropsWithChildren<ITableProps>> = (props) => {
+export const getPinColumnStyles = <T,>(columnIndex: number, config: IConfigColumn<T>[], columnWidths: number[]) => {
+  if (columnWidths.length === 0) return {};
+
+  const column = config[columnIndex];
+
+  if (!column) return {};
+
+  if (!column.pinLeft && !column.pinRight) return {};
+
+  let position = 0;
+
+  if (column.pinLeft) {
+    for (let i = 0; i < columnIndex; i++) {
+      if (config[i].pinLeft) {
+        position += columnWidths[i] || 0;
+      }
+    }
+    return {
+      left: `${position}px`,
+      zIndex: 10,
+    };
+  }
+
+  if (column.pinRight) {
+    for (let i = columnIndex + 1; i < config.length; i++) {
+      if (config[i].pinRight) {
+        position += columnWidths[i] || 0;
+      }
+    }
+    return {
+      right: `${position}px`,
+      zIndex: 10,
+    };
+  }
+
+  return {};
+};
+
+export const TableComponent = <TDataValue extends TTableDataItem>(props: React.PropsWithChildren<ITableProps<TDataValue>>) => {
   const config = React.useMemo(
     () =>
-      getColumnConfig(props.children, {
+      getColumnConfig<TDataValue>(props.children, {
+        isTree: props.tree?.isUse,
         isSelect: props.select?.isUse,
       }),
     [props],
   );
 
-  const [columnWidths, setColumnWidths] = React.useState<number[]>([]);
   const tableRef = React.useRef<HTMLTableElement>(null);
-  const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
-
-  React.useEffect(() => {
-    if (!tableRef.current) return;
-
-    const updateColumnWidths = () => {
-      const table = tableRef.current;
-
-      if (!table) return;
-
-      const headers = table.querySelectorAll('thead th');
-      const widths = Array.from(headers).map((header) => header.getBoundingClientRect().width);
-
-      setColumnWidths(widths);
-    };
-
-    resizeObserverRef.current = new ResizeObserver(updateColumnWidths);
-    resizeObserverRef.current.observe(tableRef.current);
-
-    updateColumnWidths();
-
-    return () => {
-      resizeObserverRef.current?.disconnect();
-    };
-  }, [config]);
+  const columnWidths = getColumnWidth<TDataValue>(tableRef, config);
 
   const createTableGridTemplate = React.useCallback(
-    (config: IConfigColumn[]) => {
+    (config: IConfigColumn<TDataValue>[]) => {
       return config
         .map((column) => {
           if (column.width) {
@@ -262,46 +258,7 @@ export const TableComponent: React.FC<React.PropsWithChildren<ITableProps>> = (p
     [config],
   );
 
-  const getPinStyles = React.useCallback(
-    (columnIndex: number) => {
-      if (columnWidths.length === 0) return {};
-
-      const column = config[columnIndex];
-
-      if (!column) return {};
-
-      if (!column.pinLeft && !column.pinRight) return {};
-
-      let position = 0;
-
-      if (column.pinLeft) {
-        for (let i = 0; i < columnIndex; i++) {
-          if (config[i].pinLeft) {
-            position += columnWidths[i] || 0;
-          }
-        }
-        return {
-          left: `${position}px`,
-          zIndex: 10,
-        };
-      }
-
-      if (column.pinRight) {
-        for (let i = columnIndex + 1; i < config.length; i++) {
-          if (config[i].pinRight) {
-            position += columnWidths[i] || 0;
-          }
-        }
-        return {
-          right: `${position}px`,
-          zIndex: 10,
-        };
-      }
-
-      return {};
-    },
-    [config, columnWidths],
-  );
+  const getPinStyles = React.useCallback(getPinColumnStyles, [config, columnWidths]);
 
   return (
     <Scrollbar
@@ -313,51 +270,70 @@ export const TableComponent: React.FC<React.PropsWithChildren<ITableProps>> = (p
         gridTemplateColumns: createTableGridTemplate(config),
       }}
     >
-      <TableProvider data={props.data} onSelect={(items) => props.select?.onChange(items)}>
-        <table ref={tableRef} className={s.table}>
-          <thead className={s.head}>
-            <tr className={s.header}>
-              {config.map((column, index) => {
-                const originalIndex = config.indexOf(column);
-                const styles = getPinStyles(originalIndex);
-
-                if (React.isValidElement(column.label)) {
-                  return (
-                    <th key={index} className={s.title} style={styles}>
-                      {column.label}
-                    </th>
-                  );
-                }
-
-                return (
-                  <th key={index} className={s.title} style={styles}>
-                    <Typography size={'caption-l'}>
-                      <p>{column.label}</p>
-                    </Typography>
-                  </th>
-                );
-              })}
-            </tr>
-          </thead>
-          <tbody className={s.body}>
-            {props.data.map((item, rowIndex) => {
-              return (
-                <tr key={'row_' + rowIndex} className={s.row}>
-                  {config.map((column, cellIndex) => {
+      <TableProvider columnsWidth={columnWidths} config={config} data={props.data}>
+        <TreeProvider>
+          <SelectProvider onSelect={(items) => props.select?.onChange(items)}>
+            <table ref={tableRef} className={s.table}>
+              <thead className={s.head}>
+                <tr className={s.header}>
+                  {config.map((column, index) => {
                     const originalIndex = config.indexOf(column);
-                    const styles = getPinStyles(originalIndex);
+                    const styles = getPinStyles<TDataValue>(originalIndex, config, columnWidths);
+
+                    if (React.isValidElement(column.label)) {
+                      return (
+                        <th
+                          key={index}
+                          className={cn(
+                            s.title,
+                            {
+                              [s.collapse]: column.collapse ?? false,
+                            },
+                            {
+                              [s['align--right']]: column.align === 'right',
+                              [s['align--center']]: column.align === 'center',
+                            },
+                          )}
+                          style={styles}
+                          align={column.align}
+                        >
+                          {column.label}
+                        </th>
+                      );
+                    }
 
                     return (
-                      <td key={'row_' + rowIndex + '_cell_' + cellIndex} className={s.cell} style={styles}>
-                        <div className={s.cellContent}>{column.renderCell(item)}</div>
-                      </td>
+                      <th
+                        key={index}
+                        className={cn(
+                          s.title,
+                          {
+                            [s.collapse]: column.collapse ?? false,
+                          },
+                          {
+                            [s['align--right']]: column.align === 'right',
+                            [s['align--center']]: column.align === 'center',
+                          },
+                        )}
+                        style={styles}
+                        align={column.align}
+                      >
+                        <Typography size={'caption-l'}>
+                          <p>{column.label}</p>
+                        </Typography>
+                      </th>
                     );
                   })}
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              </thead>
+              <tbody className={s.body}>
+                {props.data.map((item, rowIndex) => {
+                  return <TableRows key={'row_' + rowIndex} data={item} tree={props.tree} deps={0} index={rowIndex} />;
+                })}
+              </tbody>
+            </table>
+          </SelectProvider>
+        </TreeProvider>
       </TableProvider>
     </Scrollbar>
   );
@@ -366,12 +342,12 @@ export const TableComponent: React.FC<React.PropsWithChildren<ITableProps>> = (p
 type TTable = typeof TableComponent & {
   Column: typeof Column;
   Head: typeof Head;
-  Cell: typeof Cell;
+  Cell: typeof TableCell;
   Caption: typeof Caption;
 };
 export const Table: TTable = Object.assign(TableComponent, {
   Column,
   Head,
-  Cell,
+  Cell: TableCell,
   Caption,
 });

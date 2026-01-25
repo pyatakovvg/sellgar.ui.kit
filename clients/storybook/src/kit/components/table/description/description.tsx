@@ -1,17 +1,15 @@
 import React from 'react';
-import { Typography } from '@sellgar/kit';
+import { Typography, useCellData } from '@sellgar/kit';
 
 import s from './default.module.scss';
 
-interface IProps {
-  title: string;
-}
+export const Description: React.FC = () => {
+  const { data } = useCellData();
 
-export const Description: React.FC<IProps> = (props) => {
   return (
     <div className={s.wrapper}>
       <Typography size={'caption-l'}>
-        <p>{props.title}</p>
+        <p>{data.title}</p>
       </Typography>
     </div>
   );

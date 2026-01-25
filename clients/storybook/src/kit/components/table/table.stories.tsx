@@ -25,6 +25,7 @@ interface IMockItem {
   title: string;
   status: boolean;
   category: string;
+  children: IMockItem[];
 }
 
 const mock = [
@@ -34,6 +35,15 @@ const mock = [
     title: 'Свободное описание',
     status: true,
     category: 'Категория 1',
+    children: [
+      {
+        id: '11',
+        name: 'Сергей Сергеевич',
+        title: 'Свободное описание',
+        status: true,
+        category: 'Категория 11',
+      },
+    ],
   },
   {
     id: '2',
@@ -41,6 +51,24 @@ const mock = [
     title: 'Свободное описание для чего-то другого',
     status: false,
     category: 'Категория 2',
+    children: [
+      {
+        id: '21',
+        name: 'Сергей Сергеевич',
+        title: 'Свободное описание',
+        status: true,
+        category: 'Категория 21',
+        children: [
+          {
+            id: '211',
+            name: 'Сергей Сергеевич',
+            title: 'Свободное описание',
+            status: true,
+            category: 'Категория 211',
+          },
+        ],
+      },
+    ],
   },
   {
     id: '3',
@@ -48,6 +76,7 @@ const mock = [
     title: 'Свободное описание для чего-то другого',
     status: true,
     category: 'Категория 3',
+    children: [],
   },
 ] as IMockItem[];
 
@@ -219,30 +248,43 @@ export const Default: Story = {
             }}
           />
         </div>
-        <Table data={mock} select={{ isUse: select, onChange: (items) => console.log(123, items) }}>
+        <Table
+          data={mock}
+          tree={{
+            isUse: true,
+            accessor: 'children',
+          }}
+          select={{ isUse: select, onChange: (items) => console.log(123, items) }}
+        >
           {checked.includes(0) && (
             <Table.Column pinLeft={pinLefts.includes(0)} pinRight={pinRights.includes(0)}>
               <Table.Head label={'Title 1'} />
-              <Table.Cell render={(item) => <Name {...item} />} />
+              <Table.Cell>
+                <Name />
+              </Table.Cell>
             </Table.Column>
           )}
           {checked.includes(1) && (
             <Table.Column pinLeft={pinLefts.includes(1)} pinRight={pinRights.includes(1)}>
               <Table.Head label={'Title 2'} />
-              <Table.Cell render={(item) => <Category {...item} />} />
+              <Table.Cell>
+                <Category />
+              </Table.Cell>
             </Table.Column>
           )}
           {checked.includes(2) && (
             <Table.Column pinLeft={pinLefts.includes(2)} pinRight={pinRights.includes(2)}>
               <Table.Head label={'Title 3'} />
-              <Table.Cell render={(item) => <Description {...item} />} />
+              <Table.Cell>
+                <Description />
+              </Table.Cell>
             </Table.Column>
           )}
           {checked.includes(3) && (
             <Table.Column width={100} pinLeft={pinLefts.includes(3)} pinRight={pinRights.includes(3)}>
               <Table.Head label={'Actions'} />
               <Table.Cell>
-                <p>Col 3</p>
+                <p>1</p>
               </Table.Cell>
             </Table.Column>
           )}
