@@ -1,7 +1,7 @@
 {
   "name": "@sellgar/kit",
   "type": "module",
-  "version": "0.0.169",
+  "version": "0.0.170",
   "description": "Sellgar kit",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

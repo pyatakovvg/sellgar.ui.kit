@@ -6,16 +6,6 @@
   align-items: center;
   justify-content: center;
 
-  .icon {
-
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 auto;
-    font-size: var(--numbers-13);
-    color: var(--icon-text-secondary);
-    border-radius: var(--measurements-radius-xs);
-  }
-
   &:hover {
 
     cursor: pointer;
@@ -24,4 +14,18 @@
       background-color: var(--background-accent-blue);
     }
   }
+}
+
+.icon {
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  font-size: var(--numbers-13);
+  color: var(--text-base-quaternary);
+  border-radius: var(--measurements-radius-xs);
+}
+
+.expanded {
+  color: var(--text-base-secondary);
 }

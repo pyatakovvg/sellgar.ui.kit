@@ -7,7 +7,8 @@ import s from './default.module.scss';
 export const TitleArrow: React.FC = () => {
   return (
     <span className={s.wrapper}>
-      <Icon icon={'stack-line'} />
+      {/*<Icon icon={'add-fill'} />*/}
+      <Icon icon={'subtract-fill'} />
     </span>
   );
 };
