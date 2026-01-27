@@ -16,12 +16,18 @@ interface IProps<T> {
 
 export const Row = <T,>(props: IProps<T>) => {
   const { config, columnsWidth } = React.useContext(tableContext);
-  const { expanded, setExpanded } = React.useContext(rowContext);
+  const { expanded, selected, setExpanded, setSelected } = React.useContext(rowContext);
 
   const getPinStyles = React.useCallback(getPinColumnStyles, [config, columnsWidth]);
 
   return (
-    <tr className={s.row} onDoubleClick={() => setExpanded(!expanded)}>
+    <tr
+      className={cn(s.row, {
+        [s.selected]: selected,
+      })}
+      onClick={() => setSelected(!selected)}
+      onDoubleClick={() => setExpanded(!expanded)}
+    >
       {config.map((column, cellIndex) => {
         const originalIndex = config.indexOf(column);
         const styles = getPinStyles<TTableDataItem[]>(originalIndex, config, columnsWidth);

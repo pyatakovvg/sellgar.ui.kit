@@ -294,7 +294,7 @@ export const TableComponent = <TDataValue extends TTableDataItem>(props: React.P
                               [s['align--center']]: column.align === 'center',
                             },
                           )}
-                          style={styles}
+                          style={{ ...styles, zIndex: (styles?.zIndex ?? 0) + 10 }}
                           align={column.align}
                         >
                           {column.label}
@@ -315,7 +315,7 @@ export const TableComponent = <TDataValue extends TTableDataItem>(props: React.P
                             [s['align--center']]: column.align === 'center',
                           },
                         )}
-                        style={styles}
+                        style={{ ...styles, zIndex: (styles?.zIndex ?? 0) + 10 }}
                         align={column.align}
                       >
                         <Typography size={'caption-l'}>

@@ -10,6 +10,7 @@ interface IProps<T> {
 
 export const TableRowProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
   const [expanded, setExpanded] = React.useState<boolean>(false);
+  const [selected, setSelected] = React.useState<boolean>(false);
 
   const handleExpand = () => {
     const newExpanded = !expanded;
@@ -18,5 +19,13 @@ export const TableRowProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) 
     props.onCallback(newExpanded);
   };
 
-  return <Provider value={{ data: props.data as T, deps: props.deps, expanded, setExpanded: handleExpand }}>{props.children}</Provider>;
+  const handleSelect = () => {
+    setSelected(!selected);
+  };
+
+  return (
+    <Provider value={{ data: props.data as T, deps: props.deps, expanded, setExpanded: handleExpand, selected, setSelected: handleSelect }}>
+      {props.children}
+    </Provider>
+  );
 };
