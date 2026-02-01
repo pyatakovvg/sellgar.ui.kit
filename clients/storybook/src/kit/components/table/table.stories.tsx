@@ -87,6 +87,8 @@ export const Default: Story = {
     const [pinRights, setPinRights] = React.useState<any[]>([]);
     const [select, setSelect] = React.useState(false);
 
+    const [sort, setSort] = React.useState<'asc' | 'desc' | undefined>('asc');
+
     return (
       <div style={{ width: 600 }}>
         <div>
@@ -248,17 +250,28 @@ export const Default: Story = {
             }}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 auto', height: 300 }}>
-          <Table
-            data={mock}
+        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 auto', height: 150 }}>
+          <Table<IMockItem>
+            data={{ nodes: mock }}
             tree={{
               isUse: true,
               accessor: 'children',
             }}
-            select={{ isUse: select, onChange: (items) => console.log(123, items) }}
+            select={{ isUse: select, onSelect: (items) => console.log(123, items) }}
           >
             {checked.includes(0) && (
-              <Table.Column pinLeft={pinLefts.includes(0)} pinRight={pinRights.includes(0)}>
+              <Table.Column
+                width={400}
+                pinLeft={pinLefts.includes(0)}
+                pinRight={pinRights.includes(0)}
+                sort={{
+                  directionDefault: sort,
+                  onToggle: (direction) => {
+                    setSort(direction);
+                    console.log(123, 'sort Title 1', direction);
+                  },
+                }}
+              >
                 <Table.Head label={'Title 1'} />
                 <Table.Cell>
                   <Name />
