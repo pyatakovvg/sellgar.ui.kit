@@ -1,20 +1,18 @@
 import React from 'react';
 
-interface IContext {
+export interface SortContextValue {
   direction?: 'asc' | 'desc';
   onToggle(): void;
 }
 
-let context: any = null;
+const SortContext = React.createContext<SortContextValue | null>(null);
 
-export const createContext = (): React.Context<IContext> => {
-  if (context) return context;
+export const SortProvider = SortContext.Provider;
 
-  context = React.createContext<IContext>({} as IContext);
-
+export const useSortContext = (): SortContextValue => {
+  const context = React.useContext(SortContext);
+  if (!context) {
+    throw new Error('useSortContext must be used within <SortProvider>.');
+  }
   return context;
-};
-
-export const useContext = (): IContext => {
-  return React.useContext(context);
 };

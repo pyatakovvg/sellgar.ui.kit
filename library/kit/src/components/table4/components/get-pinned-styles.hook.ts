@@ -1,7 +1,7 @@
-import { useContext } from '../table.context.ts';
+import { useTableContext } from '../table.context.ts';
 
 export const useGetPinnedStyles = <T>(columnIndex: number) => {
-  const { columns, columnsWidth } = useContext();
+  const { columns, columnsWidth } = useTableContext<T>();
 
   if (columnsWidth.length === 0) return {};
 

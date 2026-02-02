@@ -1,16 +1,14 @@
 import React from 'react';
 
-import { useContext } from '../../table.context.ts';
-import { createContext } from './select.context.ts';
+import { useTableContext } from '../../table.context.ts';
+import { SelectProvider as Provider } from './select.context.ts';
 
 interface IProps<T> {
   onSelect: (items: T[]) => void;
 }
 
 export const SelectProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
-  const { data } = useContext<T>();
-  const context = createContext<T>();
-
+  const { data } = useTableContext<T>();
   const [isSelectedAll, setSelectedAll] = React.useState(false);
   const [isIndeterminate, setIndeterminate] = React.useState(false);
   const [selectedItems, setSelectedItems] = React.useState<any[]>([]);
@@ -69,7 +67,7 @@ export const SelectProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
   }, [data, selectedItems]);
 
   return (
-    <context.Provider
+    <Provider
       value={{
         isSelectedAll,
         isIndeterminate,
@@ -82,6 +80,6 @@ export const SelectProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
       }}
     >
       {props.children}
-    </context.Provider>
+    </Provider>
   );
 };

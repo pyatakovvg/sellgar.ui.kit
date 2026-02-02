@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface IContext<T> {
+export interface SelectContextValue<T> {
   isSelectedAll: boolean;
   isIndeterminate: boolean;
   selectedItems: T[];
@@ -11,16 +11,14 @@ interface IContext<T> {
   deleteAll: () => void;
 }
 
-let context: any = null;
+const SelectContext = React.createContext<SelectContextValue<any> | null>(null);
 
-export const createContext = <T>(): React.Context<IContext<T>> => {
-  if (context) return context;
+export const SelectProvider = SelectContext.Provider;
 
-  context = React.createContext<IContext<T>>({} as IContext<T>);
-
-  return context;
-};
-
-export const useContext = <T>(): IContext<T> => {
-  return React.useContext(context);
+export const useSelectContext = <T,>(): SelectContextValue<T> => {
+  const context = React.useContext(SelectContext);
+  if (!context) {
+    throw new Error('useSelectContext must be used within <SelectProvider>.');
+  }
+  return context as SelectContextValue<T>;
 };

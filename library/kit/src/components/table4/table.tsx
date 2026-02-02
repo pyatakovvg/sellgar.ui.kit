@@ -9,7 +9,7 @@ import { Column } from './configuration/column';
 import { THead } from './components/thead';
 import { TBody } from './components/tbody';
 
-import { createContext as createTableContext } from './table.context.ts';
+import { TableProvider } from './table.context.ts';
 import { TreeProvider, compareColumnsConfig as compareTreeColumnsConfig } from './feature/tree';
 import { SelectProvider, compareColumnsConfig as compareSelectColumnsConfig } from './feature/select';
 
@@ -69,8 +69,6 @@ export const TableComponent = <T extends INode>(props: React.PropsWithChildren<I
   const columnsWidth = useGetColumnsWidth<T>(tableRef, columns);
   const gridTemplateColumns = useCreateTableGridTemplate<T>(columns);
 
-  const tableContext = createTableContext<T>();
-
   return (
     <Scrollbar
       className={s.wrapper}
@@ -81,7 +79,7 @@ export const TableComponent = <T extends INode>(props: React.PropsWithChildren<I
         overflow: 'auto',
       }}
     >
-      <tableContext.Provider value={{ data, columns, columnsWidth }}>
+      <TableProvider value={{ data, columns, columnsWidth }}>
         <TreeProvider>
           <SelectProvider<T> onSelect={(nodes) => props.select?.onSelect(nodes)}>
             <table ref={tableRef} className={s.table}>
@@ -90,7 +88,7 @@ export const TableComponent = <T extends INode>(props: React.PropsWithChildren<I
             </table>
           </SelectProvider>
         </TreeProvider>
-      </tableContext.Provider>
+      </TableProvider>
     </Scrollbar>
   );
 };

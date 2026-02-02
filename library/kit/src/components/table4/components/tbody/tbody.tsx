@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { useContext } from '../../table.context.ts';
+import { useTableContext } from '../../table.context.ts';
 
 import { Cell } from './cell';
 
 import s from './default.module.scss';
 
 export const TBody = <T,>() => {
-  const { data, columns } = useContext<T>();
+  const { data, columns } = useTableContext<T>();
 
   return (
     <tbody className={s.body}>

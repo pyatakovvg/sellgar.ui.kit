@@ -39,12 +39,12 @@
 
 .align {
   &--right {
-    justify-content: right;
+    align-items: flex-end;
 
   }
 
   &--center {
-    justify-content: center;
+    align-items: center;
   }
 }
 

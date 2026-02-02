@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useGetPinnedStyles } from '../../get-pinned-styles.hook.ts';
-import { createContext } from './cell.context.ts';
+import { CellProvider } from './cell.context.ts';
 
 import cn from 'classnames';
 import s from '../default.module.scss';
@@ -15,8 +15,6 @@ interface IProps<T> {
 
 export const Cell = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
   const styles = useGetPinnedStyles(props.originIndex);
-
-  const context = createContext<T>();
 
   const cellClassName = React.useMemo(
     () =>
@@ -34,10 +32,10 @@ export const Cell = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
   );
 
   return (
-    <context.Provider value={{ data: props.data, deps: 0 }}>
+    <CellProvider value={{ data: props.data, deps: 0 }}>
       <td className={s.cell} align={props.align} style={styles}>
         <div className={cellClassName}>{props.children}</div>
       </td>
-    </context.Provider>
+    </CellProvider>
   );
 };

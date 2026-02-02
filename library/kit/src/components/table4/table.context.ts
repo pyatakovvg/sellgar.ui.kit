@@ -3,22 +3,20 @@ import React from 'react';
 import type { IData } from './table.tsx';
 import type { IConfigColumn } from './configuration/create-columns-config.ts';
 
-interface IContext<T> {
+export interface TableContextValue<T> {
   data: IData<T>;
   columns: IConfigColumn<T>[];
   columnsWidth: number[];
 }
 
-let context: any = null;
+const TableContext = React.createContext<TableContextValue<any>>({} as TableContextValue<any>);
 
-export const createContext = <T>(): React.Context<IContext<T>> => {
-  if (context) return context;
+export const TableProvider = TableContext.Provider;
 
-  context = React.createContext<IContext<T>>({} as IContext<T>);
-
-  return context;
-};
-
-export const useContext = <T>(): IContext<T> => {
-  return React.useContext(context);
+export const useTableContext = <T>(): TableContextValue<T> => {
+  const context = React.useContext(TableContext);
+  if (!context) {
+    throw new Error('useTableContext must be used within <TableProvider>.');
+  }
+  return context as TableContextValue<T>;
 };

@@ -2,14 +2,14 @@ import React from 'react';
 
 import { Checkbox } from '../../../../symbols';
 
-import { useContext } from '../select.context.ts';
+import { useSelectContext } from '../select.context.ts';
 
 interface IRowCheckboxProps {
   item: any;
 }
 
 export const Cell = <T,>(props: IRowCheckboxProps) => {
-  const { addItem, deleteItem, hasSelected } = useContext<T>();
+  const { addItem, deleteItem, hasSelected } = useSelectContext<T>();
 
   return (
     <Checkbox

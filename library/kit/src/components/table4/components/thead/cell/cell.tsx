@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Typography } from '../../../../symbols';
-import { useContext as useSortContext, Arrow } from '../../../feature/sort';
+import { useSortContext, Arrow } from '../../../feature/sort';
 
 import { useGetPinnedStyles } from '../../get-pinned-styles.hook.ts';
 

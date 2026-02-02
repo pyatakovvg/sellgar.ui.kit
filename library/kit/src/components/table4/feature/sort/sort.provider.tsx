@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createContext } from './sort.context.ts';
+import { SortProvider as Provider } from './sort.context.ts';
 
 interface IProps {
   directionDefault?: 'asc' | 'desc';
@@ -8,8 +8,6 @@ interface IProps {
 }
 
 export const SortProvider = (props: React.PropsWithChildren<IProps>) => {
-  const context = createContext();
-
   const [init, setInit] = React.useState(false);
   const [direction, setDirection] = React.useState<'asc' | 'desc' | undefined>(() => props.directionDefault);
 
@@ -33,13 +31,13 @@ export const SortProvider = (props: React.PropsWithChildren<IProps>) => {
   }, [direction]);
 
   return (
-    <context.Provider
+    <Provider
       value={{
         direction,
         onToggle: handleDirection,
       }}
     >
       {props.children}
-    </context.Provider>
+    </Provider>
   );
 };

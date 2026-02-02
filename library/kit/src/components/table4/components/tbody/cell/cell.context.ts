@@ -2,21 +2,19 @@ import React from 'react';
 
 import type { INode } from '../../../table.tsx';
 
-interface IContext<T> {
+export interface CellContextValue<T> {
   data: T;
   deps: number;
 }
 
-let context: any = null;
+const CellContext = React.createContext<CellContextValue<any> | null>(null);
 
-export const createContext = <T>(): React.Context<IContext<T>> => {
-  if (context) return context;
+export const CellProvider = CellContext.Provider;
 
-  context = React.createContext<IContext<T>>({} as IContext<T>);
-
-  return context;
-};
-
-export const useCellData = <T extends INode>(): IContext<T> => {
-  return React.useContext<IContext<T>>(context);
+export const useCellData = <T extends INode>(): CellContextValue<T> => {
+  const context = React.useContext(CellContext);
+  if (!context) {
+    throw new Error('useCellData must be used within <CellProvider>.');
+  }
+  return context as CellContextValue<T>;
 };

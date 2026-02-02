@@ -1,17 +1,15 @@
 import React from 'react';
 
-interface IContext<T> {}
+export interface TreeContextValue<T> {}
 
-let context: any = null;
+const TreeContext = React.createContext<TreeContextValue<any> | null>(null);
 
-export const createContext = <T>(): React.Context<IContext<T>> => {
-  if (context) return context;
+export const TreeProvider = TreeContext.Provider;
 
-  context = React.createContext<IContext<T>>({} as IContext<T>);
-
-  return context;
-};
-
-export const useContext = <T>(): IContext<T> => {
-  return React.useContext(context);
+export const useTreeContext = <T,>(): TreeContextValue<T> => {
+  const context = React.useContext(TreeContext);
+  if (!context) {
+    throw new Error('useTreeContext must be used within <TreeProvider>.');
+  }
+  return context as TreeContextValue<T>;
 };

@@ -2,13 +2,13 @@ import React from 'react';
 
 import { Cell } from './cell';
 
-import { useContext } from '../../table.context.ts';
+import { useTableContext } from '../../table.context.ts';
 import { SortProvider } from '../../feature/sort';
 
 import s from './default.module.scss';
 
 export const THead = <T,>() => {
-  const { columns } = useContext<T>();
+  const { columns } = useTableContext<T>();
 
   return (
     <thead className={s.head}>
