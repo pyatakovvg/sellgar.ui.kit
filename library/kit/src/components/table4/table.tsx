@@ -21,10 +21,12 @@ import { createColumnConfig } from './configuration/create-columns-config.ts';
 
 import s from './default.module.scss';
 
-export interface INode {
+export interface INode<T> {
   id: string | number;
-  nodes?: INode[];
-  [prop: string]: any;
+  data: T;
+  deps: number;
+  meta: any;
+  nodes?: INode<T>[];
 }
 
 export interface IData<T> {
@@ -38,20 +40,20 @@ interface ITreeProps<T> {
 
 interface ISelectProps<T> {
   isUse: boolean;
-  onSelect(nodes: T[]): void;
+  onSelect(nodes: INode<T>[]): void;
 }
 
-interface IProps<T extends INode> {
+interface IProps<T extends { id: string | number }> {
   data: IData<T>;
   tree?: ITreeProps<T>;
   select?: ISelectProps<T>;
 }
 
-export const TableComponent = <T extends INode>(props: React.PropsWithChildren<IProps<T>>) => {
+export const TableComponent = <T extends { id: string | number }>(props: React.PropsWithChildren<IProps<T>>) => {
   const tableRef = React.useRef<HTMLTableElement>(null);
 
   const columns = React.useMemo(() => {
-    let columns = createColumnConfig<T>(props.children);
+    let columns = createColumnConfig<INode<T>>(props.children);
 
     if (props.tree?.isUse) {
       columns = compareTreeColumnsConfig(columns);
@@ -64,10 +66,10 @@ export const TableComponent = <T extends INode>(props: React.PropsWithChildren<I
     return columns;
   }, [props.children, props.select]);
 
-  const data = React.useMemo(() => createDataNodes<T>(props.data), [props.data]);
+  const data = React.useMemo(() => createDataNodes<T>(props.data, props.tree?.accessor), [props.data, props.tree?.accessor]);
 
-  const columnsWidth = useGetColumnsWidth<T>(tableRef, columns);
-  const gridTemplateColumns = useCreateTableGridTemplate<T>(columns);
+  const columnsWidth = useGetColumnsWidth<INode<T>>(tableRef, columns);
+  const gridTemplateColumns = useCreateTableGridTemplate<INode<T>>(columns);
 
   return (
     <Scrollbar
@@ -83,7 +85,7 @@ export const TableComponent = <T extends INode>(props: React.PropsWithChildren<I
         <TreeProvider>
           <SelectProvider<T> onSelect={(nodes) => props.select?.onSelect(nodes)}>
             <table ref={tableRef} className={s.table}>
-              <THead<T> />
+              <THead<INode<T>> />
               <TBody<T> />
             </table>
           </SelectProvider>

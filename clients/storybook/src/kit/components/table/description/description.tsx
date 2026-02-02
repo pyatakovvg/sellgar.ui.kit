@@ -9,7 +9,7 @@ export const Description: React.FC = () => {
   return (
     <div className={s.wrapper}>
       <Typography size={'caption-l'}>
-        <p>{data.title}</p>
+        <p>{data.data.title}</p>
       </Typography>
     </div>
   );

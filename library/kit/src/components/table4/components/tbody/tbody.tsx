@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { useTableContext } from '../../table.context.ts';
+import type { INode } from '../../table.tsx';
 
 import { Cell } from './cell';
 
 import s from './default.module.scss';
 
 export const TBody = <T,>() => {
-  const { data, columns } = useTableContext<T>();
+  const { data, columns } = useTableContext<INode<T>>();
 
   return (
     <tbody className={s.body}>
@@ -18,7 +19,13 @@ export const TBody = <T,>() => {
               const originalIndex = columns.indexOf(column);
 
               return (
-                <Cell<T> key={cellIndex} originIndex={originalIndex} align={column.align} data={node} collapse={column.collapse}>
+                <Cell<T>
+                  key={cellIndex}
+                  originIndex={originalIndex}
+                  align={column.align}
+                  node={node}
+                  collapse={column.collapse}
+                >
                   {column.renderCell(node)}
                 </Cell>
               );

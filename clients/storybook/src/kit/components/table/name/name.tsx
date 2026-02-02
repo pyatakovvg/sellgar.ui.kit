@@ -13,9 +13,9 @@ export const Name: React.FC = () => {
         padding: `0 0 0 var(--numbers-${deps * 24})`,
       }}
     >
-      <Avatar size={'md'} isStatus={data.status} />
+      <Avatar size={'md'} isStatus={data.data.status} />
       <Typography size={'caption-l'}>
-        <p>{data.name}</p>
+        <p>{data.data.name}</p>
       </Typography>
     </div>
   );

@@ -3,13 +3,14 @@ import React from 'react';
 import { Checkbox } from '../../../../symbols';
 
 import { useSelectContext } from '../select.context.ts';
+import type { INode } from '../../../table.tsx';
 
-interface IRowCheckboxProps {
-  item: any;
+interface IRowCheckboxProps<T> {
+  item: INode<T>;
 }
 
-export const Cell = <T,>(props: IRowCheckboxProps) => {
-  const { addItem, deleteItem, hasSelected } = useSelectContext<T>();
+export const Cell = <T,>(props: IRowCheckboxProps<T>) => {
+  const { addItem, deleteItem, hasSelected } = useSelectContext<INode<T>>();
 
   return (
     <Checkbox

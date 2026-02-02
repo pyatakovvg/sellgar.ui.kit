@@ -1,19 +1,20 @@
 import React from 'react';
 
 import { useTableContext } from '../../table.context.ts';
+import type { INode } from '../../table.tsx';
 import { SelectProvider as Provider } from './select.context.ts';
 
 interface IProps<T> {
-  onSelect: (items: T[]) => void;
+  onSelect: (items: INode<T>[]) => void;
 }
 
 export const SelectProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
-  const { data } = useTableContext<T>();
+  const { data } = useTableContext<INode<T>>();
   const [isSelectedAll, setSelectedAll] = React.useState(false);
   const [isIndeterminate, setIndeterminate] = React.useState(false);
-  const [selectedItems, setSelectedItems] = React.useState<any[]>([]);
+  const [selectedItems, setSelectedItems] = React.useState<INode<T>[]>([]);
 
-  const setRef = React.useRef<Set<any>>(new Set());
+  const setRef = React.useRef<Set<INode<T>>>(new Set());
 
   const update = () => {
     const selectedItems = Array.from(setRef.current);
@@ -22,12 +23,12 @@ export const SelectProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
     props.onSelect(selectedItems);
   };
 
-  const handleAddItem = React.useEffectEvent((item: any) => {
+  const handleAddItem = React.useEffectEvent((item: INode<T>) => {
     setRef.current.add(item);
     update();
   });
 
-  const handleDeleteItem = React.useEffectEvent((item: any) => {
+  const handleDeleteItem = React.useEffectEvent((item: INode<T>) => {
     setRef.current.delete(item);
     update();
   });
@@ -47,7 +48,7 @@ export const SelectProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
   });
 
   const handleIsSelected = React.useCallback(
-    (item: any) => {
+    (item: INode<T>) => {
       return setRef.current.has(item);
     },
     [selectedItems],

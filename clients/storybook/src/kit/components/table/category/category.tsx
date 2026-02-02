@@ -9,7 +9,7 @@ export const Category: React.FC = () => {
   return (
     <div className={s.wrapper}>
       <Typography size={'caption-l'}>
-        <p>{data.category}</p>
+        <p>{data.data.category}</p>
       </Typography>
     </div>
   );

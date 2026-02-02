@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useGetPinnedStyles } from '../../get-pinned-styles.hook.ts';
 import { CellProvider } from './cell.context.ts';
+import type { INode } from '../../../table.tsx';
 
 import cn from 'classnames';
 import s from '../default.module.scss';
@@ -10,7 +11,7 @@ interface IProps<T> {
   originIndex: number;
   align?: 'left' | 'center' | 'right';
   collapse?: boolean;
-  data: T;
+  node: INode<T>;
 }
 
 export const Cell = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
@@ -32,7 +33,7 @@ export const Cell = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
   );
 
   return (
-    <CellProvider value={{ data: props.data, deps: 0 }}>
+    <CellProvider value={{ data: props.node, deps: props.node.deps }}>
       <td className={s.cell} align={props.align} style={styles}>
         <div className={cellClassName}>{props.children}</div>
       </td>
