@@ -66,7 +66,7 @@ export const Textarea: React.FC<IProps> = ({ ref, size = 'md', target, ...props 
           className={s.input}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onInput={(event: React.FocusEvent<HTMLTextAreaElement>) => {
+          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
             return setValue(event.target.value);
           }}
         />
