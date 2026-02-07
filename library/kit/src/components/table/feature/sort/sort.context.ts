@@ -5,16 +5,19 @@ interface IContext {
   onToggle(): void;
 }
 
-let context: any = null;
+export const SortContext = React.createContext<IContext | null>(null);
 
-export const createContext = (): React.Context<IContext> => {
-  if (context) return context;
+const getSortContextFallback = (): IContext => ({
+  direction: undefined,
+  onToggle: () => undefined,
+});
 
-  context = React.createContext<IContext>({} as IContext);
-
+export const useSortContext = (source?: string): IContext => {
+  const context = React.useContext(SortContext);
+  if (!context) {
+    const label = source ? ` (${source})` : '';
+    console.warn(`SortContext is not available${label}. Ensure SortContext.Provider is rendered.`);
+    return getSortContextFallback();
+  }
   return context;
-};
-
-export const useContext = (): IContext => {
-  return React.useContext(context);
 };

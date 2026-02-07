@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Typography } from '../../../../symbols';
-import { useContext as useSortContext, Arrow } from '../../../feature/sort';
+import { useSortContext, Arrow } from '../../../feature/sort';
 
 import { useGetPinnedStyles } from '../../get-pinned-styles.hook.ts';
 
@@ -20,7 +20,7 @@ interface IProps {
 export const Cell = (props: React.PropsWithChildren<IProps>) => {
   const styles = useGetPinnedStyles(props.originIndex);
 
-  const { onToggle } = useSortContext();
+  const { onToggle } = useSortContext('HeadCell');
 
   const titleClassName = React.useMemo(
     () =>

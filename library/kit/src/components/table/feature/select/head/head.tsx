@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Checkbox } from '../../../../symbols';
 
-import { useContext } from '../select.context.ts';
+import { useSelectContext } from '../select.context.ts';
 
 export const Head = <T,>() => {
-  const { isSelectedAll, isIndeterminate, selectAll, deleteAll } = useContext<T>();
+  const { isSelectedAll, isIndeterminate, selectAll, deleteAll } = useSelectContext<T>('SelectHead');
 
   return (
     <Checkbox

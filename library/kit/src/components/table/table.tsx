@@ -10,7 +10,7 @@ import { Expand } from './configuration/expand/expand';
 import { THead } from './components/thead';
 import { TBody } from './components/tbody';
 
-import { createContext as createTableContext } from './table.context.ts';
+import { TableContext } from './table.context.ts';
 import { TreeProvider, compareColumnsConfig as compareTreeColumnsConfig } from './feature/tree';
 import { SelectProvider, compareColumnsConfig as compareSelectColumnsConfig } from './feature/select';
 
@@ -26,11 +26,7 @@ import { ExpandTrigger } from './feature/expand';
 import cn from 'classnames';
 import s from './default.module.scss';
 
-export interface INode {
-  id: string | number;
-  nodes?: INode[];
-  [prop: string]: any;
-}
+import type { ITableNode, TNodeId } from './table.types.ts';
 
 export interface IData<T> {
   nodes: T[];
@@ -39,6 +35,7 @@ export interface IData<T> {
 interface ITreeProps<T> {
   isUse: boolean;
   accessor: keyof T;
+  defaultExpanded?: boolean;
 }
 
 interface ISelectProps<T> {
@@ -46,14 +43,15 @@ interface ISelectProps<T> {
   onSelect(nodes: T[]): void;
 }
 
-interface IProps<T extends INode> {
+interface IProps<T> {
   data: IData<T>;
   tree?: ITreeProps<T>;
   select?: ISelectProps<T>;
   isBordered?: boolean;
+  getRowId?(node: T): TNodeId;
 }
 
-export const TableComponent = <T extends INode>(props: React.PropsWithChildren<IProps<T>>) => {
+export const TableComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
   const tableRef = React.useRef<HTMLTableElement>(null);
 
   const columns = React.useMemo(() => {
@@ -70,33 +68,94 @@ export const TableComponent = <T extends INode>(props: React.PropsWithChildren<I
     return columns;
   }, [props.children, props.select]);
 
-  const data = React.useMemo(() => createDataNodes<T>(props.data), [props.data]);
+  const { data, nodeIdByData, tree } = React.useMemo(
+    () => createDataNodes<T>(props.data, { tree: props.tree, getRowId: props.getRowId }),
+    [props.data, props.tree, props.getRowId],
+  );
   const expandConfig = React.useMemo(() => createExpandConfig<T>(props.children), [props.children]);
-  const [expandedIds, setExpandedIds] = React.useState<Set<string | number>>(new Set());
+  const [expandedIds, setExpandedIds] = React.useState<Set<TNodeId>>(new Set());
+  const [expandedTreeIds, setExpandedTreeIds] = React.useState<Set<TNodeId>>(new Set());
 
-  const handleToggleExpand = React.useCallback((node: T) => {
+  const handleToggleExpand = React.useCallback((id: TNodeId) => {
     setExpandedIds((prev) => {
       const next = new Set(prev);
-      if (next.has(node.id)) {
-        next.delete(node.id);
+      if (next.has(id)) {
+        next.delete(id);
       } else {
-        next.add(node.id);
+        next.add(id);
       }
       return next;
     });
   }, []);
 
   const isExpanded = React.useCallback(
-    (id: string | number) => {
+    (id: TNodeId) => {
       return expandedIds.has(id);
     },
     [expandedIds],
   );
 
+  React.useEffect(() => {
+    if (!props.tree?.isUse || !tree) return;
+    if (!props.tree.defaultExpanded) {
+      setExpandedTreeIds(new Set());
+      return;
+    }
+    const next = new Set<TNodeId>();
+    tree.childrenById.forEach((childIds, id) => {
+      if (childIds.length > 0) next.add(id);
+    });
+    setExpandedTreeIds(next);
+  }, [props.tree?.isUse, props.tree?.defaultExpanded, tree]);
+
   const columnsWidth = useGetColumnsWidth<T>(tableRef, columns);
   const gridTemplateColumns = useCreateTableGridTemplate<T>(columns);
 
-  const tableContext = createTableContext<T>();
+  const resolveNodeId = React.useCallback(
+    (node: T) => {
+      return nodeIdByData.get(node) ?? props.getRowId?.(node);
+    },
+    [nodeIdByData, props.getRowId],
+  );
+
+  const visibleNodes = React.useMemo(() => {
+    if (!props.tree?.isUse || !tree) return data.nodes;
+
+    return data.nodes.filter((node) => {
+      let parentId = tree.parentById.get(node.id) ?? null;
+      while (parentId) {
+        if (!expandedTreeIds.has(parentId)) return false;
+        parentId = tree.parentById.get(parentId) ?? null;
+      }
+      return true;
+    });
+  }, [data.nodes, expandedTreeIds, props.tree?.isUse, tree]);
+
+  const tableData = React.useMemo<IData<ITableNode<T>>>(() => {
+    return { nodes: visibleNodes };
+  }, [visibleNodes]);
+
+  const treeContextValue = React.useMemo(
+    () => ({
+      isExpanded: (id: TNodeId) => expandedTreeIds.has(id),
+      toggle: (id: TNodeId) => {
+        setExpandedTreeIds((prev) => {
+          const next = new Set(prev);
+          if (next.has(id)) {
+            next.delete(id);
+          } else {
+            next.add(id);
+          }
+          return next;
+        });
+      },
+      hasChildren: (id: TNodeId) => {
+        const children = tree?.childrenById.get(id);
+        return !!children && children.length > 0;
+      },
+    }),
+    [expandedTreeIds, tree],
+  );
 
   return (
     <Scrollbar
@@ -108,21 +167,22 @@ export const TableComponent = <T extends INode>(props: React.PropsWithChildren<I
         overflow: 'auto',
       }}
     >
-      <tableContext.Provider
+      <TableContext.Provider
         value={{
-          data,
+          data: tableData,
           columns,
           columnsWidth,
+          resolveNodeId,
           expand: expandConfig
             ? {
                 isExpanded,
-                toggle: handleToggleExpand,
+                toggleById: handleToggleExpand,
                 renderExpanded: expandConfig.renderExpanded,
               }
             : undefined,
         }}
       >
-        <TreeProvider>
+        <TreeProvider value={treeContextValue}>
           <SelectProvider<T> onSelect={(nodes) => props.select?.onSelect(nodes)}>
             <table ref={tableRef} className={s.table}>
               <THead<T> />
@@ -130,7 +190,7 @@ export const TableComponent = <T extends INode>(props: React.PropsWithChildren<I
             </table>
           </SelectProvider>
         </TreeProvider>
-      </tableContext.Provider>
+      </TableContext.Provider>
     </Scrollbar>
   );
 };

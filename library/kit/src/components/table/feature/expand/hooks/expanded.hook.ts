@@ -1,28 +1,25 @@
 import React from 'react';
 
-import { useContext as useTableContext } from '../../../table.context.ts';
+import { useTableContext } from '../../../table.context.ts';
 import { useCellData } from '../../../components/tbody/cell';
 
-import type { INode } from '../../../table.tsx';
+export const useRowExpanded = <T,>(node?: T) => {
+  const { expand, resolveNodeId } = useTableContext<T>('useRowExpanded');
+  const cell = useCellData<T>('useRowExpanded');
 
-export const useRowExpanded = <T extends INode>(node?: T) => {
-  const { expand } = useTableContext<T>();
-  const cell = useCellData<T>();
-
-  const resolvedNode = node ?? cell.data;
-  const resolvedId = resolvedNode?.id;
+  const resolvedId = node ? resolveNodeId(node) : cell?.id;
 
   const isExpanded = expand && resolvedId !== undefined ? expand.isExpanded(resolvedId) : false;
 
   const onToggle = React.useCallback(
     (nextNode?: T) => {
-      const target = nextNode ?? resolvedNode;
+      const targetId = nextNode ? resolveNodeId(nextNode) : resolvedId;
 
-      if (!expand || !target || target.id === undefined) return;
+      if (!expand || targetId === undefined) return;
 
-      expand.toggle(target);
+      expand.toggleById(targetId);
     },
-    [expand, resolvedNode],
+    [expand, resolveNodeId, resolvedId],
   );
 
   return {

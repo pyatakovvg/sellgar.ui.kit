@@ -1,27 +1,25 @@
 import React from 'react';
 
-import { useContext as useTableContext } from '../../table.context.ts';
+import { useTableContext } from '../../table.context.ts';
 import { useCellData } from '../../components/tbody/cell';
-
-import type { INode } from '../../table.tsx';
 
 interface IProps {
   children: React.ReactNode;
 }
 
 export const ExpandTrigger = (props: IProps) => {
-  const { expand } = useTableContext<INode>();
-  const { data } = useCellData<INode>();
+  const { expand } = useTableContext<unknown>('ExpandTrigger');
+  const node = useCellData<unknown>('ExpandTrigger');
 
-  if (!expand || !data || data.id === undefined) {
+  if (!expand || !node || node.id === undefined) {
     return <>{props.children}</>;
   }
 
-  const isExpanded = expand.isExpanded(data.id);
+  const isExpanded = expand.isExpanded(node.id);
 
   const handleClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-    expand.toggle(data);
+    expand.toggleById(node.id);
   };
 
   return (

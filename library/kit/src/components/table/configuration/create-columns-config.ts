@@ -4,8 +4,6 @@ import type { IProps as ICellProps } from './cell';
 import type { IProps as IHeadProps } from './head';
 import type { IProps as IColumnProps, ISort } from './column';
 
-import type { INode } from '../table.tsx';
-
 export interface IConfigColumn<T> {
   label: React.ReactNode;
   align?: 'left' | 'center' | 'right';
@@ -30,7 +28,7 @@ const getValidElementType = <T extends React.FC<React.PropsWithChildren<{ displa
   return null;
 };
 
-export const createColumnConfig = <T extends INode>(children: React.ReactNode) => {
+export const createColumnConfig = <T,>(children: React.ReactNode) => {
   let startIndex = 0;
   const config: IConfigColumn<T>[] = [];
 

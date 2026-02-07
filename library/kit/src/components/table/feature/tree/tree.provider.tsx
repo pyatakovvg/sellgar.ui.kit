@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { createContext } from './tree.context.ts';
+import type { ITreeContext } from './tree.context.ts';
+import { TreeContext } from './tree.context.ts';
 
-interface IProps<T> {}
+interface IProps {
+  value: ITreeContext;
+}
 
-export const TreeProvider = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
-  const context = createContext<T>();
-
-  return <context.Provider value={{}}>{props.children}</context.Provider>;
+export const TreeProvider = (props: React.PropsWithChildren<IProps>) => {
+  return <TreeContext.Provider value={props.value}>{props.children}</TreeContext.Provider>;
 };

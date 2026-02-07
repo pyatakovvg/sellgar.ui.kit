@@ -1,6 +1,5 @@
 import React from 'react';
 
-import type { INode } from '../table.tsx';
 import type { IExpandProps } from './expand/expand.tsx';
 
 export interface IConfigExpand<T> {
@@ -18,7 +17,7 @@ const getValidElementType = <T extends React.FC<React.PropsWithChildren<{ displa
   return null;
 };
 
-export const createExpandConfig = <T extends INode>(children: React.ReactNode): IConfigExpand<T> | null => {
+export const createExpandConfig = <T,>(children: React.ReactNode): IConfigExpand<T> | null => {
   let config: IConfigExpand<T> | null = null;
 
   React.Children.forEach(children, (child) => {

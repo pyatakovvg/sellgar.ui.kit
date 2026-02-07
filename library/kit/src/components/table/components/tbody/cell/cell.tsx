@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { useGetPinnedStyles } from '../../get-pinned-styles.hook.ts';
-import { createContext } from './cell.context.ts';
+import { CellContext } from './cell.context.ts';
+
+import type { ITableNode } from '../../../table.types.ts';
 
 import cn from 'classnames';
 import s from '../default.module.scss';
@@ -10,14 +12,12 @@ interface IProps<T> {
   originIndex: number;
   align?: 'left' | 'center' | 'right';
   collapse?: boolean;
-  data: T;
+  data: ITableNode<T>;
   className?: string;
 }
 
 export const Cell = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
   const styles = useGetPinnedStyles(props.originIndex);
-
-  const context = createContext<T>();
 
   const cellClassName = React.useMemo(
     () =>
@@ -36,10 +36,10 @@ export const Cell = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
   );
 
   return (
-    <context.Provider value={{ data: props.data, deps: 0 }}>
+    <CellContext.Provider value={props.data}>
       <td className={s.cell} align={props.align} style={styles}>
         <div className={cellClassName}>{props.children}</div>
       </td>
-    </context.Provider>
+    </CellContext.Provider>
   );
 };

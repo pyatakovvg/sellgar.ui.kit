@@ -2,34 +2,35 @@ import React from 'react';
 
 import { Icon } from '../../../../symbols';
 
-// import { context } from '../../table-rows/table-row.context.ts';
+import { useCellData } from '../../../components/tbody/cell';
+import { useTreeContext } from '../tree.context.ts';
 
 import cn from 'classnames';
 import s from './default.module.scss';
 
-interface IRowCheckboxProps {}
-
-export const Cell: React.FC<IRowCheckboxProps> = () => {
-  // const { data, expanded, setExpanded } = React.useContext(context);
+export const Cell: React.FC = () => {
+  const node = useCellData<unknown>('TreeCell');
+  const tree = useTreeContext('TreeCell');
 
   const iconClassName = React.useMemo(() => {
     return cn(s.icon, {
-      [s.expanded]: false,
+      [s.expanded]: tree.isExpanded(node.id),
     });
-  }, []);
+  }, [node.id, tree]);
 
-  // if (!data.children || !data.children.length) {
-  //   return null;
-  // }
+  const hasChildren = tree.hasChildren(node.id);
+  if (!hasChildren) return null;
 
   return (
     <div
       className={s.wrapper}
-      // onClick={() => setExpanded(!expanded)}
+      onClick={(event) => {
+        event.stopPropagation();
+        tree.toggle(node.id);
+      }}
     >
       <div className={iconClassName}>
-        {/*<Icon icon={expanded ? 'arrow-down-s-fill' : 'arrow-right-s-fill'} />*/}
-        <Icon icon={'arrow-right-s-fill'} />
+        <Icon icon={tree.isExpanded(node.id) ? 'arrow-down-s-fill' : 'arrow-right-s-fill'} />
       </div>
     </div>
   );

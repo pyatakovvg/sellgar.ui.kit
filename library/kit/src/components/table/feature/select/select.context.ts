@@ -11,16 +11,25 @@ interface IContext<T> {
   deleteAll: () => void;
 }
 
-let context: any = null;
+export const SelectContext = React.createContext<IContext<unknown> | null>(null);
 
-export const createContext = <T>(): React.Context<IContext<T>> => {
-  if (context) return context;
+const getSelectContextFallback = <T,>(): IContext<T> => ({
+  isSelectedAll: false,
+  isIndeterminate: false,
+  selectedItems: [],
+  hasSelected: () => false,
+  addItem: () => undefined,
+  deleteItem: () => undefined,
+  selectAll: () => undefined,
+  deleteAll: () => undefined,
+});
 
-  context = React.createContext<IContext<T>>({} as IContext<T>);
-
-  return context;
-};
-
-export const useContext = <T>(): IContext<T> => {
-  return React.useContext(context);
+export const useSelectContext = <T,>(source?: string): IContext<T> => {
+  const context = React.useContext(SelectContext);
+  if (!context) {
+    const label = source ? ` (${source})` : '';
+    console.warn(`SelectContext is not available${label}. Ensure SelectContext.Provider is rendered.`);
+    return getSelectContextFallback<T>();
+  }
+  return context as IContext<T>;
 };

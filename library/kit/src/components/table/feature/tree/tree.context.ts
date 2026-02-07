@@ -1,17 +1,27 @@
 import React from 'react';
 
-interface IContext<T> {}
+import type { TNodeId } from '../../table.types.ts';
 
-let context: any = null;
+export interface ITreeContext {
+  isExpanded(id: TNodeId): boolean;
+  toggle(id: TNodeId): void;
+  hasChildren(id: TNodeId): boolean;
+}
 
-export const createContext = <T>(): React.Context<IContext<T>> => {
-  if (context) return context;
+export const TreeContext = React.createContext<ITreeContext | null>(null);
 
-  context = React.createContext<IContext<T>>({} as IContext<T>);
+const getTreeContextFallback = (): ITreeContext => ({
+  isExpanded: () => true,
+  toggle: () => undefined,
+  hasChildren: () => false,
+});
 
+export const useTreeContext = (source?: string): ITreeContext => {
+  const context = React.useContext(TreeContext);
+  if (!context) {
+    const label = source ? ` (${source})` : '';
+    console.warn(`TreeContext is not available${label}. Ensure TreeContext.Provider is rendered.`);
+    return getTreeContextFallback();
+  }
   return context;
-};
-
-export const useContext = <T>(): IContext<T> => {
-  return React.useContext(context);
 };

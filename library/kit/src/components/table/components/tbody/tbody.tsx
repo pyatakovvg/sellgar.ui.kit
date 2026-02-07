@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { useContext } from '../../table.context.ts';
+import { useTableContext } from '../../table.context.ts';
 
 import { Cell } from './cell';
-import { createContext as createCellContext } from './cell/cell.context.ts';
+import { CellContext } from './cell/cell.context.ts';
 
 import s from './default.module.scss';
 
-export const TBody = <T extends { id: string | number },>() => {
-  const { data, columns, expand } = useContext<T>();
-  const cellContext = createCellContext<T>();
+export const TBody = <T,>() => {
+  const { data, columns, expand } = useTableContext<T>('TBody');
 
   return (
     <tbody className={s.body}>
@@ -31,7 +30,7 @@ export const TBody = <T extends { id: string | number },>() => {
                     collapse={column.collapse}
                     className={column.cellClassName}
                   >
-                    {column.renderCell(node)}
+                    {column.renderCell(node.data)}
                   </Cell>
                 );
               })}
@@ -39,7 +38,7 @@ export const TBody = <T extends { id: string | number },>() => {
             {expand && isExpanded && (
               <tr className={s.expandRow}>
                 <td className={s.expandCell} colSpan={columns.length}>
-                  <cellContext.Provider value={{ data: node, deps: 0 }}>{expand.renderExpanded(node)}</cellContext.Provider>
+                  <CellContext.Provider value={node}>{expand.renderExpanded(node.data)}</CellContext.Provider>
                 </td>
               </tr>
             )}

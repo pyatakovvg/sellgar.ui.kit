@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Icon } from '../../../../symbols';
 
-import { useContext } from '../sort.context.ts';
+import { useSortContext } from '../sort.context.ts';
 
 import s from './default.module.scss';
 
 export const Arrow = () => {
-  const { direction } = useContext();
+  const { direction } = useSortContext('SortArrow');
 
   return (
     <div className={s.wrapper}>
