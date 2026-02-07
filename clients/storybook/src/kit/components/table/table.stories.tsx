@@ -250,7 +250,7 @@ export const Default: Story = {
             }}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 auto', height: 150 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 auto' }}>
           <Table<IMockItem>
             data={{ nodes: mock }}
             tree={{

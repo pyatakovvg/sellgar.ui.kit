@@ -11,13 +11,14 @@ import {
   FloatingOverlay,
 } from '@floating-ui/react';
 
-import { Icon, Button } from '../symbols';
+import { Close } from './close';
 import { Scrollbar } from '../wrappers';
 
 import s from './default.module.scss';
 
 interface IProps {
   isClosable?: boolean;
+  isEscapeClosable?: boolean;
   isOverlayClosable?: boolean;
   open?: boolean;
   initialOpen?: boolean;
@@ -25,15 +26,21 @@ interface IProps {
   onClose?(): void;
 }
 
-export function useDrawer({ initialOpen = false, isClosable = true, isOverlayClosable = false, open: controlledOpen, onOpen, onClose }: IProps = {}) {
+export function useDrawer({
+  initialOpen,
+  isClosable,
+  isEscapeClosable,
+  isOverlayClosable,
+  open: controlledOpen,
+  onOpen,
+  onClose,
+}: IProps = {}) {
   const open = controlledOpen ?? initialOpen;
 
   const data = useFloating({
     open,
     onOpenChange: () => {
-      if (isOverlayClosable) {
-        onClose && onClose();
-      }
+      onClose && onClose();
     },
   });
 
@@ -42,7 +49,11 @@ export function useDrawer({ initialOpen = false, isClosable = true, isOverlayClo
   const click = useClick(context, {
     enabled: controlledOpen === null,
   });
-  const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown' });
+  const dismiss = useDismiss(context, {
+    outsidePressEvent: 'click',
+    escapeKey: isEscapeClosable ?? false,
+    outsidePress: isOverlayClosable ?? false,
+  });
   const role = useRole(context);
 
   const interactions = useInteractions([click, dismiss, role]);
@@ -86,54 +97,57 @@ export const Dialog: React.FC<React.PropsWithChildren<IProps>> = ({ children, ..
   return <DrawerContext.Provider value={dialog}>{children}</DrawerContext.Provider>;
 };
 
-export const DialogContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(function DialogContent(props, propRef) {
-  const { context: floatingContext, ...context } = useDrawerContext();
-  const ref = useMergeRefs([context.refs.setFloating, propRef]);
+export const DialogContent = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(
+  function DialogContent(props, propRef) {
+    const { context: floatingContext, ...context } = useDrawerContext();
+    const ref = useMergeRefs([context.refs.setFloating, propRef]);
 
-  if (!floatingContext.open) return null;
+    if (!floatingContext.open) return null;
 
+    return (
+      <FloatingPortal>
+        <FloatingOverlay className={s.overlay} lockScroll>
+          <FloatingFocusManager context={floatingContext}>
+            <Scrollbar ref={ref} {...context.getFloatingProps(props)}>
+              {props.children}
+            </Scrollbar>
+          </FloatingFocusManager>
+        </FloatingOverlay>
+      </FloatingPortal>
+    );
+  },
+);
+
+export const DrawerComponent: React.FC<React.PropsWithChildren<IProps>> = ({
+  isClosable,
+  isOverlayClosable,
+  isEscapeClosable,
+  ...props
+}) => {
   return (
-    <FloatingPortal>
-      <FloatingOverlay className={s.overlay} lockScroll>
-        <FloatingFocusManager context={floatingContext}>
-          <Scrollbar ref={ref} {...context.getFloatingProps(props)}>
-            {props.children}
-          </Scrollbar>
-        </FloatingFocusManager>
-      </FloatingOverlay>
-    </FloatingPortal>
-  );
-});
-
-export const DialogClose = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(function DialogClose(props, ref) {
-  const {
-    isClosable,
-    onClose,
-    context: { onOpenChange },
-  } = useDrawerContext();
-
-  const handleClose = () => {
-    if (!isClosable) {
-      return void 0;
-    }
-    onOpenChange(false);
-    onClose && onClose();
-  };
-
-  return (
-    <div className={s.close} {...props} ref={ref} onClick={handleClose}>
-      <Button form={'icon'} style={'ghost'} size={'xs'} shape={'pill'} leadIcon={<Icon icon={'close-line'} />} />
-    </div>
-  );
-});
-
-export const Drawer: React.FC<React.PropsWithChildren<IProps>> = ({ isClosable = true, ...props }) => {
-  return (
-    <Dialog open={props.open} onOpen={props.onOpen} onClose={props.onClose}>
+    <Dialog
+      open={props.open}
+      onOpen={props.onOpen}
+      onClose={props.onClose}
+      isEscapeClosable={isEscapeClosable}
+      isOverlayClosable={isOverlayClosable}
+    >
       <DialogContent className={s.wrapper}>
-        {isClosable && <DialogClose />}
+        {isClosable && (
+          <div className={s.close}>
+            <Close />
+          </div>
+        )}
         {props.children}
       </DialogContent>
     </Dialog>
   );
 };
+
+type TDrawer = typeof DrawerComponent & {
+  Close: typeof Close;
+};
+
+export const Drawer: TDrawer = Object.assign(DrawerComponent, {
+  Close,
+});

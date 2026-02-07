@@ -1,0 +1,17 @@
+.close {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: var(--numbers-24);
+  height: var(--numbers-24);
+  font-size: var(--numbers-24);
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-base-secondary);
+  cursor: pointer;
+  transition: var(--measurements-transition);
+
+  &:hover {
+    color: var(--icon-base-primary);
+  }
+}

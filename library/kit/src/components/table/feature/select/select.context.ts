@@ -11,7 +11,7 @@ interface IContext<T> {
   deleteAll: () => void;
 }
 
-export const SelectContext = React.createContext<IContext<unknown> | null>(null);
+export const SelectContext = React.createContext<IContext<any> | null>(null);
 
 const getSelectContextFallback = <T,>(): IContext<T> => ({
   isSelectedAll: false,

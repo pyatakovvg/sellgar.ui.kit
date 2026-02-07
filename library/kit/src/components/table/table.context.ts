@@ -16,7 +16,7 @@ interface IContext<T> {
   };
 }
 
-export const TableContext = React.createContext<IContext<unknown> | null>(null);
+export const TableContext = React.createContext<IContext<any> | null>(null);
 
 const getTableContextFallback = <T,>(): IContext<T> => ({
   data: { nodes: [] },
