@@ -1,0 +1,12 @@
+.wrapper {
+}
+
+.wrapperBordered {
+  border-radius: var(--measurements-radius-lg);
+  border: var(--numbers-1) solid var(--border-base-divider);
+}
+
+.table {
+  display: contents;
+  border-collapse: collapse;
+}
