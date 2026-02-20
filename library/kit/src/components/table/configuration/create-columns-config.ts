@@ -3,25 +3,26 @@ import React from 'react';
 import type { IProps as ICellProps } from './cell';
 import type { IProps as IHeadProps } from './head';
 import type { IProps as IColumnProps, ISort } from './column';
+import type { ITableNode } from '../table.types.ts';
 
 export interface IConfigColumn<T> {
   label: React.ReactNode;
   align?: 'left' | 'center' | 'right';
   sort?: ISort;
-  width?: number;
+  width?: number | string;
   collapse?: boolean;
   pinLeft?: boolean;
   pinRight?: boolean;
   pinSource?: 'user' | 'system';
   cellClassName?: string;
-  renderCell: (nodes: T) => React.ReactNode;
+  renderCell: (node: ITableNode<T>) => React.ReactNode;
 }
 
-const getValidElementType = <T extends React.FC<React.PropsWithChildren<{ displayName: string }>>>(child: React.ReactNode) => {
-  if (React.isValidElement<T>(child)) {
+const getValidElementType = (child: React.ReactNode) => {
+  if (React.isValidElement(child)) {
     if (child.type) {
-      if ('displayName' in (child.type as T)) {
-        return (child.type as T).displayName;
+      if (typeof child.type !== 'string' && 'displayName' in child.type) {
+        return child.type.displayName;
       }
     }
   }
@@ -70,11 +71,16 @@ export const createColumnConfig = <T,>(children: React.ReactNode) => {
         };
       } else if (elementType === 'Cell') {
         const cellElement = child as React.ReactElement<React.PropsWithChildren<ICellProps>>;
+        const { render, className } = cellElement.props;
 
         config[currentIndex] = {
           ...config[currentIndex],
-          cellClassName: cellElement.props.className,
-          renderCell: () => {
+          cellClassName: className,
+          renderCell: (node) => {
+            if (render) {
+              return render(node);
+            }
+
             return React.Children.map(cellElement.props.children, (child) => {
               if (React.isValidElement(child)) {
                 const childElement = child as React.ReactElement<any>;

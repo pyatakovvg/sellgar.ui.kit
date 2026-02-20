@@ -14,6 +14,10 @@ interface IProps<T> {
   collapse?: boolean;
   data: ITableNode<T>;
   className?: string;
+  cellRef?: React.Ref<HTMLTableCellElement>;
+  onClick?: React.MouseEventHandler<HTMLTableCellElement>;
+  onDoubleClick?: React.MouseEventHandler<HTMLTableCellElement>;
+  onContextMenu?: React.MouseEventHandler<HTMLTableCellElement>;
 }
 
 export const Cell = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
@@ -37,7 +41,15 @@ export const Cell = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
 
   return (
     <CellContext.Provider value={props.data}>
-      <td className={s.cell} align={props.align} style={styles}>
+      <td
+        ref={props.cellRef}
+        className={s.cell}
+        align={props.align}
+        style={styles}
+        onClick={props.onClick}
+        onDoubleClick={props.onDoubleClick}
+        onContextMenu={props.onContextMenu}
+      >
         <div className={cellClassName}>{props.children}</div>
       </td>
     </CellContext.Provider>

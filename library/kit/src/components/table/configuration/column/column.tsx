@@ -7,7 +7,7 @@ export interface ISort {
 }
 
 export interface IProps {
-  width?: number;
+  width?: number | string;
   align?: 'left' | 'center' | 'right';
   pinLeft?: boolean;
   pinRight?: boolean;

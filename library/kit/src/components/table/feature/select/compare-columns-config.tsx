@@ -13,8 +13,8 @@ export const compareColumnsConfig = <T,>(columns: IConfigColumn<T>[]): IConfigCo
       align: 'center',
       pinLeft: true,
       pinSource: 'system',
-      renderCell: (item) => {
-        return <Cell item={item} />;
+      renderCell: (node) => {
+        return <Cell item={node.data} />;
       },
     },
     ...columns,

@@ -7,9 +7,10 @@ export const useCreateTableGridTemplate = <T>(columns: IConfigColumn<T>[]) => {
     () =>
       columns
         .map((column) => {
-          if (column.width) {
+          if (typeof column.width === 'number') {
             return `var(--numbers-${column.width})`;
           }
+          if (typeof column.width === 'string') return column.width;
           return 'minmax(max-content, auto)';
         })
         .join(' '),

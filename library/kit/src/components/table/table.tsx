@@ -6,6 +6,7 @@ import { Cell } from './configuration/cell';
 import { Head } from './configuration/head';
 import { Column } from './configuration/column';
 import { Expand } from './configuration/expand/expand';
+import { Empty } from './configuration/empty/empty';
 
 import { THead } from './components/thead';
 import { TBody } from './components/tbody';
@@ -13,6 +14,7 @@ import { TBody } from './components/tbody';
 import { TableContext } from './table.context.ts';
 import { TreeProvider, compareColumnsConfig as compareTreeColumnsConfig } from './feature/tree';
 import { SelectProvider, compareColumnsConfig as compareSelectColumnsConfig } from './feature/select';
+import { RowEventsProvider } from './feature/row-events';
 
 import { useGetColumnsWidth } from './configuration/get-columns-width.hook.ts';
 import { useCreateTableGridTemplate } from './configuration/create-grid-template.hook.ts';
@@ -20,6 +22,7 @@ import { useCreateTableGridTemplate } from './configuration/create-grid-template
 import { createDataNodes } from './configuration/create-data-nodes.ts';
 import { createColumnConfig } from './configuration/create-columns-config.ts';
 import { createExpandConfig } from './configuration/create-expand-config.ts';
+import { createEmptyConfig } from './configuration/create-empty-config.ts';
 
 import { ExpandTrigger } from './feature/expand';
 
@@ -27,6 +30,7 @@ import cn from 'classnames';
 import s from './default.module.scss';
 
 import type { ITableNode, TNodeId } from './table.types.ts';
+import type { IRowConfig, IRowEventPayload, IRowHandlers, TRowTrigger } from './feature/row-events';
 
 export interface IData<T> {
   nodes: T[];
@@ -47,6 +51,12 @@ interface IProps<T> {
   data: IData<T>;
   tree?: ITreeProps<T>;
   select?: ISelectProps<T>;
+  row?: IRowConfig<T>;
+  lastRowTrigger?: {
+    onLastRowVisible(node: T): void;
+    rootMargin?: number;
+    threshold?: number;
+  };
   isBordered?: boolean;
   getRowId?(node: T): TNodeId;
 }
@@ -73,6 +83,7 @@ export const TableComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
     [props.data, props.tree, props.getRowId],
   );
   const expandConfig = React.useMemo(() => createExpandConfig<T>(props.children), [props.children]);
+  const emptyConfig = React.useMemo(() => createEmptyConfig(props.children), [props.children]);
   const [expandedIds, setExpandedIds] = React.useState<Set<TNodeId>>(new Set());
   const [expandedTreeIds, setExpandedTreeIds] = React.useState<Set<TNodeId>>(new Set());
 
@@ -173,6 +184,8 @@ export const TableComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
           columns,
           columnsWidth,
           resolveNodeId,
+          row: props.row,
+          lastRowTrigger: props.lastRowTrigger,
           expand: expandConfig
             ? {
                 isExpanded,
@@ -180,26 +193,36 @@ export const TableComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
                 renderExpanded: expandConfig.renderExpanded,
               }
             : undefined,
+          empty: emptyConfig
+            ? {
+                renderEmpty: emptyConfig.renderEmpty,
+              }
+            : undefined,
         }}
       >
         <TreeProvider value={treeContextValue}>
-          <SelectProvider<T> onSelect={(nodes) => props.select?.onSelect(nodes)}>
-            <table ref={tableRef} className={s.table}>
-              <THead<T> />
-              <TBody<T> />
-            </table>
-          </SelectProvider>
+          <RowEventsProvider<T> config={props.row}>
+            <SelectProvider<T> onSelect={(nodes) => props.select?.onSelect(nodes)}>
+              <table ref={tableRef} className={s.table}>
+                <THead<T> />
+                <TBody<T> />
+              </table>
+            </SelectProvider>
+          </RowEventsProvider>
         </TreeProvider>
       </TableContext.Provider>
     </Scrollbar>
   );
 };
 
+export type { IRowConfig, IRowEventPayload, IRowHandlers, TRowTrigger };
+
 type TTable = typeof TableComponent & {
   Column: typeof Column;
   Head: typeof Head;
   Cell: typeof Cell;
   Expand: typeof Expand;
+  Empty: typeof Empty;
   ExpandTrigger: typeof ExpandTrigger;
 };
 export const Table: TTable = Object.assign(TableComponent, {
@@ -207,5 +230,6 @@ export const Table: TTable = Object.assign(TableComponent, {
   Head,
   Cell,
   Expand,
+  Empty,
   ExpandTrigger,
 });

@@ -12,6 +12,15 @@
   }
 }
 
+.rowHoverable {
+  &:hover {
+    .cell {
+      background: var(--background-surface-neutral);
+      cursor: pointer;
+    }
+  }
+}
+
 .expandRow {
   display: contents;
 }
@@ -20,6 +29,20 @@
   grid-column: 1 / -1;
   border-top: var(--numbers-1) solid var(--border-base-divider);
   border-bottom: var(--numbers-1) solid var(--border-base-divider);
+}
+
+.emptyRow {
+  display: contents;
+}
+
+.emptyCell {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--numbers-64);
+  padding: 0 var(--numbers-12);
+  background: var(--background-surface-default);
 }
 
 .cell {

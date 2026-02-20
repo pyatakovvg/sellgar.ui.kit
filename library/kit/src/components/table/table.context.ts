@@ -3,29 +3,39 @@ import React from 'react';
 import type { IData } from './table.tsx';
 import type { ITableNode, TNodeId } from './table.types.ts';
 import type { IConfigColumn } from './configuration/create-columns-config.ts';
+import type { IRowConfig } from './feature/row-events';
 
 interface IContext<T> {
   data: IData<ITableNode<T>>;
   columns: IConfigColumn<T>[];
   columnsWidth: number[];
   resolveNodeId(node: T): TNodeId | undefined;
+  row?: IRowConfig<T>;
+  lastRowTrigger?: {
+    onLastRowVisible(node: T): void;
+    rootMargin?: number;
+    threshold?: number;
+  };
   expand?: {
     isExpanded(id: TNodeId): boolean;
     toggleById(id: TNodeId): void;
     renderExpanded(node: T): React.ReactNode;
   };
+  empty?: {
+    renderEmpty(): React.ReactNode;
+  };
 }
 
 export const TableContext = React.createContext<IContext<any> | null>(null);
 
-const getTableContextFallback = <T,>(): IContext<T> => ({
+const getTableContextFallback = <T>(): IContext<T> => ({
   data: { nodes: [] },
   columns: [],
   columnsWidth: [],
   resolveNodeId: () => undefined,
 });
 
-export const useTableContext = <T,>(source?: string): IContext<T> => {
+export const useTableContext = <T>(source?: string): IContext<T> => {
   const context = React.useContext(TableContext);
   if (!context) {
     const label = source ? ` (${source})` : '';
