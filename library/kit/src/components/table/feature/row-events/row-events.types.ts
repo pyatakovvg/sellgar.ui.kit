@@ -22,4 +22,9 @@ export interface IRowConfig<T> {
   handlers?: IRowHandlers<T>;
   isInteractiveTarget?(target: EventTarget | null): boolean;
   disableDefaultInteractiveGuard?: boolean;
+  getRowId?(node: T): TNodeId;
+  lastRowTrigger?: {
+    onLastRowVisible(node: T): void;
+    rootMargin?: number;
+  };
 }

@@ -1,6 +1,6 @@
 .title {
   position: sticky;
-  top: 0;
+  top: var(--table-head-sticky-top, 0);
   display: flex;
   flex-direction: row;
   flex: 1 0;

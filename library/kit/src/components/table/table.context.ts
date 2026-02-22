@@ -11,11 +11,6 @@ interface IContext<T> {
   columnsWidth: number[];
   resolveNodeId(node: T): TNodeId | undefined;
   row?: IRowConfig<T>;
-  lastRowTrigger?: {
-    onLastRowVisible(node: T): void;
-    rootMargin?: number;
-    threshold?: number;
-  };
   expand?: {
     isExpanded(id: TNodeId): boolean;
     toggleById(id: TNodeId): void;

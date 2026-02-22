@@ -10,10 +10,11 @@ import cn from 'classnames';
 import s from './default.module.scss';
 
 export const TBody = <T,>() => {
-  const { data, columns, expand, empty, lastRowTrigger, row } = useTableContext<T>('TBody');
+  const { data, columns, expand, empty, row } = useTableContext<T>('TBody');
   const { onRowClick, onRowDoubleClick, onRowContextMenu } = useRowEventsContext<T>('TBody');
   const lastCellRef = React.useRef<HTMLTableCellElement | null>(null);
   const lastTriggeredKeyRef = React.useRef<string | null>(null);
+  const lastRowTrigger = row?.lastRowTrigger;
   const hasRowHandlers = React.useMemo(() => {
     const handlers = row?.handlers;
     if (!handlers) return false;
@@ -42,7 +43,7 @@ export const TBody = <T,>() => {
       {
         root: null,
         rootMargin: lastRowTrigger.rootMargin != null ? `0px 0px ${lastRowTrigger.rootMargin}px 0px` : autoRootMargin,
-        threshold: lastRowTrigger.threshold ?? 0,
+        threshold: 0,
       },
     );
 

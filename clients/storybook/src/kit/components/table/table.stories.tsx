@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import React from 'react';
-import { Table, Checkbox } from '@sellgar/kit';
+import { Table, Checkbox, StickyLayout } from '@sellgar/kit';
 
 import { Name } from './name';
 import { Category } from './category';
@@ -79,6 +79,15 @@ const mock = [
     children: [],
   },
 ] as IMockItem[];
+
+const mockLarge = Array.from({ length: 40 }).map((_, index) => ({
+  id: `row-${index + 1}`,
+  name: `Пользователь ${index + 1}`,
+  title: `Описание строки ${index + 1}`,
+  status: index % 2 === 0,
+  category: `Категория ${((index % 5) + 1).toString()}`,
+  children: [],
+})) as IMockItem[];
 
 export const Default: Story = {
   render: () => {
@@ -304,6 +313,73 @@ export const Default: Story = {
             )}
           </Table>
         </div>
+      </div>
+    );
+  },
+};
+
+export const StickyHeaderInStickyLayout: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: () => {
+    const [open, setOpen] = React.useState(false);
+
+    return (
+      <div style={{ padding: 24, background: '#f7f8fc' }}>
+        <StickyLayout
+          style={{ flexDirection: 'column' }}
+          gap={16}
+          stickyAutoOffsetPadding={12}
+          stickyAutoOffsetGap={8}
+          scrollbarStyle={{ height: 620, border: '1px solid #dadce5', borderRadius: 12 }}
+        >
+          <StickyLayout.Sticky autoOffset style={{ width: '100%' }} direction={['top', 'left']} zIndex={20}>
+            <div style={{ background: '#fff', border: '1px solid #dadce5', borderRadius: 12, padding: 16 }}>
+              <strong onClick={() => setOpen(!open)}>Верхняя sticky-панель</strong>
+              <p style={{ margin: '8px 0 0' }}>При скролле остается наверху, таблица прокручивается под ней.</p>
+              {open && (
+                <>
+                  <p>jhgjghjg</p>
+                  <p>jhgjghjg</p>
+                  <p>jhgjghjg</p>
+                  <p>jhgjghjg</p>
+                </>
+              )}
+            </div>
+          </StickyLayout.Sticky>
+
+          <StickyLayout.Static style={{ width: '100%' }}>
+            <Table<IMockItem>
+              data={{ nodes: mockLarge }}
+              isBordered={false}
+              useInternalScroll={false}
+              tree={{
+                isUse: true,
+                accessor: 'children',
+              }}
+            >
+              <Table.Column width={320}>
+                <Table.Head label={'Имя'} />
+                <Table.Cell>
+                  <Name />
+                </Table.Cell>
+              </Table.Column>
+              <Table.Column width={260}>
+                <Table.Head label={'Категория'} />
+                <Table.Cell>
+                  <Category />
+                </Table.Cell>
+              </Table.Column>
+              <Table.Column>
+                <Table.Head label={'Описание'} />
+                <Table.Cell>
+                  <Description />
+                </Table.Cell>
+              </Table.Column>
+            </Table>
+          </StickyLayout.Static>
+        </StickyLayout>
       </div>
     );
   },

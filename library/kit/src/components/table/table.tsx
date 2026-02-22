@@ -52,13 +52,8 @@ interface IProps<T> {
   tree?: ITreeProps<T>;
   select?: ISelectProps<T>;
   row?: IRowConfig<T>;
-  lastRowTrigger?: {
-    onLastRowVisible(node: T): void;
-    rootMargin?: number;
-    threshold?: number;
-  };
   isBordered?: boolean;
-  getRowId?(node: T): TNodeId;
+  useInternalScroll?: boolean;
 }
 
 export const TableComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) => {
@@ -79,8 +74,8 @@ export const TableComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
   }, [props.children, props.select]);
 
   const { data, nodeIdByData, tree } = React.useMemo(
-    () => createDataNodes<T>(props.data, { tree: props.tree, getRowId: props.getRowId }),
-    [props.data, props.tree, props.getRowId],
+    () => createDataNodes<T>(props.data, { tree: props.tree, getRowId: props.row?.getRowId }),
+    [props.data, props.tree, props.row?.getRowId],
   );
   const expandConfig = React.useMemo(() => createExpandConfig<T>(props.children), [props.children]);
   const emptyConfig = React.useMemo(() => createEmptyConfig(props.children), [props.children]);
@@ -124,9 +119,9 @@ export const TableComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
 
   const resolveNodeId = React.useCallback(
     (node: T) => {
-      return nodeIdByData.get(node) ?? props.getRowId?.(node);
+      return nodeIdByData.get(node) ?? props.row?.getRowId?.(node);
     },
-    [nodeIdByData, props.getRowId],
+    [nodeIdByData, props.row?.getRowId],
   );
 
   const visibleNodes = React.useMemo(() => {
@@ -168,49 +163,59 @@ export const TableComponent = <T,>(props: React.PropsWithChildren<IProps<T>>) =>
     [expandedTreeIds, tree],
   );
 
-  return (
-    <Scrollbar
-      className={cn(s.wrapper, { [s.wrapperBordered]: props.isBordered ?? true })}
-      contentStyle={{
-        position: 'relative',
-        display: 'grid',
-        gridTemplateColumns,
-        overflow: 'auto',
+  const tableContent = (
+    <TableContext.Provider
+      value={{
+        data: tableData,
+        columns,
+        columnsWidth,
+        resolveNodeId,
+        row: props.row,
+        expand: expandConfig
+          ? {
+              isExpanded,
+              toggleById: handleToggleExpand,
+              renderExpanded: expandConfig.renderExpanded,
+            }
+          : undefined,
+        empty: emptyConfig
+          ? {
+              renderEmpty: emptyConfig.renderEmpty,
+            }
+          : undefined,
       }}
     >
-      <TableContext.Provider
-        value={{
-          data: tableData,
-          columns,
-          columnsWidth,
-          resolveNodeId,
-          row: props.row,
-          lastRowTrigger: props.lastRowTrigger,
-          expand: expandConfig
-            ? {
-                isExpanded,
-                toggleById: handleToggleExpand,
-                renderExpanded: expandConfig.renderExpanded,
-              }
-            : undefined,
-          empty: emptyConfig
-            ? {
-                renderEmpty: emptyConfig.renderEmpty,
-              }
-            : undefined,
-        }}
-      >
-        <TreeProvider value={treeContextValue}>
-          <RowEventsProvider<T> config={props.row}>
-            <SelectProvider<T> onSelect={(nodes) => props.select?.onSelect(nodes)}>
-              <table ref={tableRef} className={s.table}>
-                <THead<T> />
-                <TBody<T> />
-              </table>
-            </SelectProvider>
-          </RowEventsProvider>
-        </TreeProvider>
-      </TableContext.Provider>
+      <TreeProvider value={treeContextValue}>
+        <RowEventsProvider<T> config={props.row}>
+          <SelectProvider<T> onSelect={(nodes) => props.select?.onSelect(nodes)}>
+            <table ref={tableRef} className={s.table}>
+              <THead<T> />
+              <TBody<T> />
+            </table>
+          </SelectProvider>
+        </RowEventsProvider>
+      </TreeProvider>
+    </TableContext.Provider>
+  );
+
+  const tableContentStyle: React.CSSProperties = {
+    position: 'relative',
+    display: 'grid',
+    gridTemplateColumns,
+    ['--table-head-sticky-top' as string]: 'var(--sticky-layout-before-offset, 0px)',
+  };
+
+  if (props.useInternalScroll === false) {
+    return (
+      <div className={cn(s.wrapper, { [s.wrapperBordered]: props.isBordered ?? true })}>
+        <div style={tableContentStyle}>{tableContent}</div>
+      </div>
+    );
+  }
+
+  return (
+    <Scrollbar className={cn(s.wrapper, { [s.wrapperBordered]: props.isBordered ?? true })} contentStyle={tableContentStyle}>
+      {tableContent}
     </Scrollbar>
   );
 };
