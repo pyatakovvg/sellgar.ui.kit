@@ -23,10 +23,13 @@
   --background-accent-purple: var(--colors-purple-1);
   --background-accent-purple-subtle: var(--colors-purple-2);
   --background-accent-purple-accent: var(--colors-purple-8);
+
+  --background-accent-primary: var(--additional-tiyn-2);
+  --background-accent-primary-subtle: var(--additional-tiyn-2);
+  --background-accent-primary-accent: var(--additional-tiyn-8);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --background-accent-gray: var(--colors-gray-13);
   --background-accent-gray-subtle: var(--colors-gray-12);
   --background-accent-gray-accent: var(--colors-gray-9);
@@ -51,4 +54,8 @@
   --background-accent-purple: var(--colors-purple-13);
   --background-accent-purple-subtle: var(--colors-purple-12);
   --background-accent-purple-accent: var(--colors-purple-9);
+
+  --background-accent-primary: var(--additional-tiyn-4);
+  --background-accent-primary-subtle: var(--colors-white-2);
+  --background-accent-primary-accent: var(--additional-tiyn-9);
 }

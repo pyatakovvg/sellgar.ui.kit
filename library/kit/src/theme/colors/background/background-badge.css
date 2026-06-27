@@ -28,10 +28,13 @@
   --background-badge-white-accent: var(--colors-base-white);
 
   --background-badge-surface: var(--colors-base-white);
+
+  --background-badge-primary: var(--additional-tiyn-2);
+  --background-badge-primary-desabled: var(--additional-tiyn-1);
+  --background-badge-primary-accent: var(--additional-tiyn-8);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --background-badge-gray: var(--colors-white-3);
   --background-badge-gray-disabled: var(--colors-gray-1);
   --background-badge-gray-accent: var(--colors-gray-7);
@@ -61,4 +64,8 @@
   --background-badge-white-accent: var(--colors-gray-12);
 
   --background-badge-surface: var(--colors-gray-12);
+
+  --background-badge-primary: var(--additional-tiyn-5a);
+  --background-badge-primary-desabled: var(--additional-tiyn-3a);
+  --background-badge-primary-accent: var(--additional-tiyn-8);
 }

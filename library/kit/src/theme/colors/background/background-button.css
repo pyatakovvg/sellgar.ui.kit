@@ -1,7 +1,7 @@
 :root {
-  --background-button-primary: var(--colors-gray-13);
-  --background-button-primary-hover: var(--colors-gray-12);
-  --background-button-primary-disabled: var(--colors-gray-2);
+  --background-button-primary: var(--colors-blue-8);
+  --background-button-primary-hover: var(--colors-blue-9);
+  --background-button-primary-disabled: var(--colors-blue-2);
 
   --background-button-secondary: var(--colors-base-white);
   --background-button-secondary-hover: var(--colors-gray-1);
@@ -64,11 +64,10 @@
   --background-button-success-ghost-disabled: var(--colors-base-transparent);
 }
 
-:root[data-theme="dark"] {
-
-  --background-button-primary: var(--colors-base-white);
-  --background-button-primary-hover: var(--colors-gray-2);
-  --background-button-primary-disabled: var(--colors-white-2);
+:root[data-theme='dark'] {
+  --background-button-primary: var(--colors-blue-8);
+  --background-button-primary-hover: var(--colors-blue-9);
+  --background-button-primary-disabled: var(--colors-base-transparent-14);
 
   --background-button-secondary: var(--colors-gray-13);
   --background-button-secondary-hover: var(--colors-gray-12);

@@ -19,8 +19,7 @@
   --border-base-inverted: var(--colors-base-dark-1);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --border-base-neutral: var(--colors-white-3);
   --border-base-neutral-subtle: var(--colors-white-4);
 

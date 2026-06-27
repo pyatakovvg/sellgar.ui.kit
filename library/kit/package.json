@@ -1,14 +1,19 @@
 {
   "name": "@sellgar/kit",
   "type": "module",
-  "version": "0.0.178",
+  "version": "0.0.181",
   "description": "Sellgar kit",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./types/index.d.ts",
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build",
+    "fix": "eslint \"src/**/*.{ts,tsx}\" \"*.{ts,mjs}\" --fix && stylelint \"src/**/*.{css,scss}\" --custom-syntax postcss-scss --fix && prettier --write \"src/**/*.{md,ts,tsx,css,scss}\" \"*.{md,ts,mjs}\"",
     "login": "yarn npm login",
     "publish": "yarn npm publish"
   },
@@ -19,33 +24,31 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "import": {
-        "types": "./types/index.d.ts",
-        "default": "./dist/index.js"
-      }
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./icons": {
+      "types": "./types/icons/index.d.ts",
+      "import": "./dist/icons.js"
     },
     "./icons.css": "./dist/icons.css",
     "./inter.css": "./dist/inter.css",
     "./geologica.css": "./dist/geologica.css",
     "./theme.css": "./dist/theme.css",
     "./theme.mobile.css": "./dist/theme.mobile.css",
-    "./theme.desktop.css": "./dist/theme.desktop.css",
-    "./theme.terminal.css": "./dist/theme.terminal.css"
+    "./theme.4k.desktop.css": "./dist/theme.4k.desktop.css",
+    "./theme.full-hd.desktop.css": "./dist/theme.full-hd.desktop.css"
   },
   "dependencies": {
-    "@emotion/react": "11.14.0",
-    "@floating-ui/dom": "1.7.5",
-    "@floating-ui/react": "0.27.17",
+    "@floating-ui/dom": "1.7.6",
+    "@floating-ui/react": "0.27.19",
     "@react-input/mask": "2.0.4",
     "@react-input/number-format": "2.0.3",
     "classnames": "2.5.1",
-    "date-fns": "4.1.0",
+    "date-fns": "4.4.0",
     "moment": "2.30.1",
-    "overlayscrollbars": "2.14.0",
-    "overlayscrollbars-react": "0.5.6",
-    "react-baron": "3.0.0",
-    "react-slider": "2.0.6",
-    "stickybits": "3.7.11"
+    "moment-timezone": "0.6.2",
+    "react-slider": "2.0.6"
   },
   "peerDependencies": {
     "react": "^19",
@@ -60,19 +63,15 @@
     }
   },
   "devDependencies": {
-    "@storybook/react-vite": "10.2.7",
+    "@storybook/react-vite": "10.4.6",
     "@types/react-slider": "1.3.6",
-    "@vitejs/plugin-react": "5.1.3",
-    "typescript": "5.9.3",
-    "vite": "7.3.1",
-    "vite-plugin-dts": "4.5.4",
+    "@vitejs/plugin-react": "6.0.2",
+    "typescript": "6.0.3",
+    "vite": "8.0.16",
+    "vite-plugin-dts": "5.0.2",
     "vite-plugin-lib-inject-css": "2.2.2",
-    "vite-plugin-webfont-dl": "3.11.1"
+    "vite-plugin-webfont-dl": "3.12.0"
   },
-  "bugs": {
-    "url": "https://github.com/pyatakovvg/sellgar.ui.kit/issues"
-  },
-  "homepage": "https://github.com/pyatakovvg/sellgar.ui.kit#readme",
   "author": "",
   "license": "ISC",
   "publishConfig": {

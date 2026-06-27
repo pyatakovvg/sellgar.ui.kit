@@ -3,7 +3,7 @@
 $viewport-mobile-width: 420px;
 
 :root {
-  @media (max-width: 726px) {
+  @media (max-width: 767px) {
     --numbers-0_1: #{utils.pxToVW(0.1px, $viewport-mobile-width)};
     --numbers-0_2: #{utils.pxToVW(0.2px, $viewport-mobile-width)};
     --numbers-0_3: #{utils.pxToVW(0.3px, $viewport-mobile-width)};
@@ -14,7 +14,7 @@ $viewport-mobile-width: 420px;
     --numbers-1_7: #{utils.pxToVW(1.7px, $viewport-mobile-width)};
     --numbers-2_2: #{utils.pxToVW(2.2px, $viewport-mobile-width)};
 
-    @for $i from 0 through 1440 {
+    @for $i from 0 through 3000 {
       --numbers-#{$i}: #{utils.pxToVW($i * 1px, $viewport-mobile-width)};
     }
   }

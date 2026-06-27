@@ -4,8 +4,7 @@
   --background-modal-neutral: var(--colors-gray-1);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --background-modal-default: var(--colors-gray-12);
 
   --background-modal-neutral: var(--colors-gray-11);

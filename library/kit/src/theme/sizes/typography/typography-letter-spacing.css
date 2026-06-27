@@ -1,5 +1,4 @@
 :root {
-
   --typography-letter-spacing-h1: calc(var(--numbers-2_2) * -1);
   --typography-letter-spacing-h2: calc(var(--numbers-1_7) * -1);
   --typography-letter-spacing-h3: calc(var(--numbers-1) * -1);

@@ -11,8 +11,7 @@
   --background-toggle-handle-disabled: var(--colors-gray-4);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --background-toggle-default: var(--colors-gray-9);
   --background-toggle-hover: var(--colors-gray-6);
   --background-toggle-disabled: var(--colors-gray-12);

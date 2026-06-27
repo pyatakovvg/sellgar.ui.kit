@@ -1,11 +1,9 @@
 .scroll-content {
-
   display: flow-root;
   transform: translate3d(0, 0, 0);
 }
 
 .scrollbar-track {
-
   position: absolute;
   background: transparent;
   user-select: none;
@@ -16,13 +14,11 @@
 
 .scrollbar-track.show,
 .scrollbar-track:hover {
-
   opacity: 1;
   transition-delay: 0s;
 }
 
 .scrollbar-track-x {
-
   bottom: 0;
   left: 0;
   width: 100%;
@@ -30,7 +26,6 @@
 }
 
 .scrollbar-track-y {
-
   top: 0;
   right: 0;
   width: var(--numbers-16);
@@ -38,14 +33,13 @@
 }
 
 .scrollbar-thumb {
-
   position: absolute;
   top: 0;
   left: 0;
   border-radius: var(--measurements-radius-full);
   background: var(--background-surface-neutral-subtle);
   backdrop-filter: blur(var(--numbers-5));
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .scrollbar-thumb-y {

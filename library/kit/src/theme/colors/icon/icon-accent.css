@@ -28,10 +28,14 @@
   --icon-accent-purple-accent: var(--colors-purple-8);
   --icon-accent-purple-secondary: var(--colors-purple-7a);
   --icon-accent-purple-tertiary: var(--colors-purple-5a);
+
+  --icon-accent-primary: var(--additional-tiyn-8);
+  --icon-accent-primary-accent: var(--additional-tiyn-11);
+  --icon-accent-primary-secondary: var(--additional-tiyn-7a);
+  --icon-accent-primary-tertiary: var(--additional-tiyn-5a);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --icon-accent-blue: var(--colors-blue-9);
   --icon-accent-blue-inverted: var(--colors-base-white);
   --icon-accent-blue-accent: var(--colors-blue-8);
@@ -61,4 +65,9 @@
   --icon-accent-purple-accent: var(--colors-purple-8);
   --icon-accent-purple-secondary: var(--colors-white-8);
   --icon-accent-purple-tertiary: var(--colors-white-5);
+
+  --icon-accent-primary: var(--additional-tiyn-8);
+  --icon-accent-primary-accent: var(--additional-tiyn-9);
+  --icon-accent-primary-secondary: var(--additional-tiyn-1);
+  --icon-accent-primary-tertiary: var(--additional-tiyn-1);
 }

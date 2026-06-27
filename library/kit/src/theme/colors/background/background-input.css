@@ -5,8 +5,7 @@
   --background-input-disabled: var(--colors-base-white);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --background-input-normal: var(--colors-base-dark-1);
   --background-input-hover: var(--colors-base-dark-1);
   --background-input-focus: var(--colors-base-dark-1);

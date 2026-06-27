@@ -14,10 +14,13 @@
   --icon-status-info: var(--colors-blue-8);
   --icon-status-info-secondary: var(--colors-blue-8a);
   --icon-status-info-tertiary: var(--colors-blue-5a);
+
+  --icon-status-primary: var(--additional-tiyn-8);
+  --icon-status-primary-secondary: var(--additional-tiyn-8a);
+  --icon-status-primary-tertiary: var(--additional-tiyn-5a);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --icon-status-destructive: var(--colors-red-8);
   --icon-status-destructive-secondary: var(--colors-red-9a);
   --icon-status-destructive-tertiary: var(--colors-red-6a);
@@ -33,4 +36,8 @@
   --icon-status-info: var(--colors-blue-8);
   --icon-status-info-secondary: var(--colors-blue-8a);
   --icon-status-info-tertiary: var(--colors-blue-5a);
+
+  --icon-status-primary: var(--additional-tiyn-8);
+  --icon-status-primary-secondary: var(--additional-tiyn-1);
+  --icon-status-primary-tertiary: var(--additional-tiyn-1);
 }

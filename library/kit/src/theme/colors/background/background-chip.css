@@ -10,8 +10,7 @@
   --background-chip-secondary-disabled: var(--colors-gray-1a);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --background-chip-primary: var(--colors-base-dark-1);
   --background-chip-primary-hover: var(--colors-gray-13);
   --background-chip-primary--active: var(--colors-base-dark-1);

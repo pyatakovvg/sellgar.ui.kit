@@ -3,7 +3,7 @@
   --border-action-hover: var(--colors-gray-4);
   --border-action-disabled: var(--colors-gray-2);
   --border-action-focus: var(--colors-purple-8);
-  --border-action-focus-light: var(--colors-purple-6);
+  --border-action-focus-light: var(--colors-blue-8);
   --border-action-focus-destructive: var(--colors-red-8);
   --border-action-focus-destructive-light: var(--colors-red-6);
   --border-action-focus-info: var(--colors-blue-8);
@@ -26,13 +26,12 @@
   --border-action-info-hover: var(--colors-blue-5);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --border-action-normal: var(--colors-white-3);
   --border-action-hover: var(--colors-white-4);
   --border-action-disabled: var(--colors-white-2);
   --border-action-focus: var(--colors-purple-8);
-  --border-action-focus-light: var(--colors-purple-6);
+  --border-action-focus-light: var(--colors-blue-8);
   --border-action-focus-destructive: var(--colors-red-8);
   --border-action-focus-destructive-light: var(--colors-red-6);
 

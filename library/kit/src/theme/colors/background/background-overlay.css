@@ -10,8 +10,7 @@
   --background-overlay-custom: var(--colors-gray-2a);
 }
 
-:root[data-theme="dark"] {
-
+:root[data-theme='dark'] {
   --background-overlay-normal: var(--colors-base-transparent);
 
   --background-overlay-hover: var(--colors-white-1);
