@@ -21,7 +21,7 @@
 - Отображает divider только по приватному флагу родителя.
 - Не вычисляет текущий item и не владеет порядком trail.
 - Не является самостоятельным public component и не экспортируется из
-  `@tiyn/kit`.
+  `@sellgar/kit`.
 - Не должен брать на себя navigation lifecycle, routing, focus management или
   keyboard interaction.
 
@@ -37,7 +37,7 @@
 
 - `export { BreadcrumbItem } from './breadcrumb-item.tsx';`
 - Export доступен только ближайшему parent-компоненту `Breadcrumb`.
-- Consumer import из `@tiyn/kit` запрещён и не поддерживается.
+- Consumer import из `@sellgar/kit` запрещён и не поддерживается.
 - Props из локального `IProps`: `divider`, `hasDivider`, `href`, `isCurrent`,
   `label`, `leadIcon`, `size`, `tailIcon`, `variant`.
 - Props являются внутренним контрактом между `Breadcrumb` и `BreadcrumbItem`.

@@ -34,7 +34,7 @@ Interaction AGENTS.
 ## Public API и локальные файлы
 
 - `export { Accordion } from './accordion.tsx';`
-- Consumer import: `import { Accordion } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Accordion } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Accordion`.
 - Props из `IProps`: `label`, `leadSlot1`, `leadSlot2`, `size`, `radius`, `description`, `tabIndex`, `defaultState`, `expanded`, `onState`.
 - Локальные parts: `control`.
@@ -42,7 +42,7 @@ Interaction AGENTS.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Accordion } from './accordion.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `label`, `leadSlot1`, `leadSlot2`, `size`, `radius`, `description`, `tabIndex`, `defaultState`, `expanded`, `onState`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

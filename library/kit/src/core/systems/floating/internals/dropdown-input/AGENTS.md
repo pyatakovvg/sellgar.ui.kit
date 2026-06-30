@@ -32,7 +32,7 @@
 ## Public API и локальные файлы
 
 - `export { DropdownInput } from './dropdown-input.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `DropdownInput`, `IProps`.
 - Props из `IProps`: `ref`, `target`, `isOpen`, `isClearable`, `fixHeight`, `onClear`.
 - Локальных parts нет.
@@ -63,7 +63,7 @@
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

@@ -37,7 +37,7 @@ Adapter связывает React props, ref и lifecycle с browser runtime `For
 - `FormattedInput`
 - `IFormattedInputProps`
 - `IFormattedInputChangeMeta`
-- Consumer import должен идти через `@tiyn/kit`, не через `adapters/react`.
+- Consumer import должен идти через `@sellgar/kit`, не через `adapters/react`.
 
 ## Контракт изменения
 

@@ -2,19 +2,19 @@
 
 ## Что это
 
-Локальная входная точка production-пакета `@tiyn/kit`.
+Локальная входная точка production-пакета `@sellgar/kit`.
 
 Этот документ дополняет корневой `../../AGENTS.md` и не отменяет его правила. Если есть сомнение между корневым документом, skill-документом и этим файлом, действует более строгое правило.
 
 ## Назначение пакета
 
-`library/kit` содержит публикуемую React/Vite UI-kit библиотеку `@tiyn/kit`.
+`library/kit` содержит публикуемую React/Vite UI-kit библиотеку `@sellgar/kit`.
 
 Пакет отвечает за:
 
-- core UI import `@tiyn/kit`;
-- отдельный icon API `@tiyn/kit/icons`;
-- будущие runtime feature entrypoints `@tiyn/kit/features/<feature>`;
+- core UI import `@sellgar/kit`;
+- отдельный icon API `@sellgar/kit/icons`;
+- будущие runtime feature entrypoints `@sellgar/kit/features/<feature>`;
 - shared internal styles/assets/utilities;
 - theme CSS entrypoints и шрифты.
 
@@ -37,8 +37,8 @@
 
 ```text
 src/
-  core/       // основной UI для @tiyn/kit
-  icons/      // отдельный icon API для @tiyn/kit/icons
+  core/       // основной UI для @sellgar/kit
+  icons/      // отдельный icon API для @sellgar/kit/icons
   features/   // будущие runtime-фичи с точечными entrypoints
   shared/     // внутренние общие стили/assets/utilities
   theme/      // CSS theme entrypoints и шрифты
@@ -48,7 +48,7 @@ src/
 
 - `core` может импортировать `shared` и отдельные иконки из `icons`.
 - `icons` не должен импортировать `core`.
-- `features` может импортировать `core`, `icons` и `shared`, но не должен попадать в основной `@tiyn/kit`.
+- `features` может импортировать `core`, `icons` и `shared`, но не должен попадать в основной `@sellgar/kit`.
 - `shared` не должен импортировать `core`, `icons` или `features`.
 - `theme` сейчас не входит в реструктуризацию core/components/interactions и рассматривается отдельно.
 
@@ -57,18 +57,18 @@ src/
 Актуальные основные imports:
 
 ```ts
-import { Button } from '@tiyn/kit';
-import { AddLineIcon } from '@tiyn/kit/icons';
+import { Button } from '@sellgar/kit';
+import { AddLineIcon } from '@sellgar/kit/icons';
 ```
 
 Целевые feature imports:
 
 ```ts
-import { AlertProvider } from '@tiyn/kit/features/alert';
-import { MessageProvider } from '@tiyn/kit/features/message';
+import { AlertProvider } from '@sellgar/kit/features/alert';
+import { MessageProvider } from '@sellgar/kit/features/message';
 ```
 
-Общий import `@tiyn/kit/features` не вводится.
+Общий import `@sellgar/kit/features` не вводится.
 
 ## Правила изменений
 

@@ -15,7 +15,7 @@ import type { TableColumnActionProps, TableColumnActionsProps } from './actions.
 import type { TableCellProps } from './cell.tsx';
 import type { TableColumnProps } from './column.tsx';
 import type { TableEmptyProps } from './empty.tsx';
-import type { TableExpandProps } from './expand.tsx';
+import type { TableExpandDefaultExpanded, TableExpandProps } from './expand.tsx';
 import type { TableHeadProps } from './head.tsx';
 import type {
   TableCellRenderContext,
@@ -49,6 +49,7 @@ export class TableRenderRegistry<T> {
   private readonly cellRenderers = new Map<TableRendererId, TableCellRenderer<T>>();
   private emptyRenderer: (() => React.ReactNode) | null = null;
   private expandRenderer: ((context: TableExpandedRenderContext<T>) => React.ReactNode) | null = null;
+  private expandDefaultExpanded: TableExpandDefaultExpanded<T> | undefined;
 
   registerCell(columnId: TableColumnId, renderer: TableCellRenderer<T>): void {
     const rendererId = createTableCellRendererId(columnId);
@@ -83,10 +84,14 @@ export class TableRenderRegistry<T> {
     return this.emptyRenderer?.() ?? null;
   }
 
-  registerExpand(renderer: (context: TableExpandedRenderContext<T>) => React.ReactNode): void {
+  registerExpand(
+    renderer: (context: TableExpandedRenderContext<T>) => React.ReactNode,
+    defaultExpanded?: TableExpandDefaultExpanded<T>,
+  ): void {
     assertTableInvariant(!this.expandRenderer, 'Table must contain only one Table.Expand.');
 
     this.expandRenderer = renderer;
+    this.expandDefaultExpanded = defaultExpanded;
   }
 
   hasExpand(): boolean {
@@ -95,6 +100,10 @@ export class TableRenderRegistry<T> {
 
   renderExpanded(context: TableExpandedRenderContext<T>): React.ReactNode {
     return this.expandRenderer?.(context) ?? null;
+  }
+
+  getExpandDefaultExpanded(): TableExpandDefaultExpanded<T> | undefined {
+    return this.expandDefaultExpanded;
   }
 }
 
@@ -193,6 +202,7 @@ export class TableSchemaCompiler<T> {
 
         renderRegistry.registerExpand(
           expandElement.props.render ?? createStaticChildrenRenderer(expandElement.props.children),
+          expandElement.props.defaultExpanded,
         );
         return;
       }

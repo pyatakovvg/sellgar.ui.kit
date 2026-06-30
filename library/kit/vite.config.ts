@@ -72,7 +72,7 @@ const createRelativeBundlePath = (fromFileName: string, toFileName: string) => {
 };
 
 const normalizeCssModuleOutput = (): Plugin => ({
-  name: 'tiyn-kit:normalize-css-module-output',
+  name: 'sellgar-kit:normalize-css-module-output',
   apply: 'build',
   enforce: 'post',
   generateBundle(_, bundle) {
@@ -117,7 +117,7 @@ const normalizeCssModuleOutput = (): Plugin => ({
 });
 
 const preserveStaticFontCssAssets = (): Plugin => ({
-  name: 'tiyn-kit:preserve-static-font-css-assets',
+  name: 'sellgar-kit:preserve-static-font-css-assets',
   apply: 'build',
   enforce: 'post',
   generateBundle(_, bundle) {

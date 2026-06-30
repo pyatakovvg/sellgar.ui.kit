@@ -32,7 +32,7 @@ Boolean control primitive с label/caption и indeterminate visual state.
 ## Public API и локальные файлы
 
 - `export { Checkbox } from './checkbox.tsx';`
-- Consumer import: `import { Checkbox } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Checkbox } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Checkbox`, `IProps`.
 - Props из `IProps`: `size`, `label`, `caption`, `isIndeterminate`.
 - Локальные parts: `element`.
@@ -40,7 +40,7 @@ Boolean control primitive с label/caption и indeterminate visual state.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Checkbox } from './checkbox.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `size`, `label`, `caption`, `isIndeterminate`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

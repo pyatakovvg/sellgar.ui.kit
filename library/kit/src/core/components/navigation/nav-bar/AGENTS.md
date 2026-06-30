@@ -31,7 +31,7 @@ Navigation interaction для верхней панели приложения.
 ## Public API и локальные файлы
 
 - `export { NavBar } from './nav-bar.tsx';`
-- Consumer import: `import { NavBar } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { NavBar } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `NavBar`.
 - Props описаны внешним типом `TItem`; перед изменением открыть файл с типом и обновить этот документ.
 - Локальных parts нет.
@@ -39,7 +39,7 @@ Navigation interaction для верхней панели приложения.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { NavBar } from './nav-bar.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 
 ## Фактическое поведение
@@ -61,7 +61,7 @@ Navigation interaction для верхней панели приложения.
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

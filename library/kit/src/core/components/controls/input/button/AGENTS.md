@@ -35,7 +35,7 @@
 ## Public API и локальные файлы
 
 - `export { Button } from './button.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `ButtonComponent`, `Button`, `IProps`.
 - Props из `IProps`: `buttonType`, `size`, `tailIcon`, `inProcess`.
 - Локальные parts: `button-icon`.

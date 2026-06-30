@@ -31,7 +31,7 @@ Typography primitive для ссылочного текста с visual states.
 ## Public API и локальные файлы
 
 - `export { LinkTypography } from './link-typography.tsx';`
-- Consumer import: `import { LinkTypography } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { LinkTypography } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `LinkTypography`.
 - Собственный interface `IProps` в локальном source не объявлен; props contract задаётся imported/React props или ближайшим parent component.
 - Локальных parts нет.
@@ -39,7 +39,7 @@ Typography primitive для ссылочного текста с visual states.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { LinkTypography } from './link-typography.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - При `cloneElement` явно сохранять порядок приоритета props родителя и ребёнка.
 
 ## Фактическое поведение
@@ -61,7 +61,7 @@ Typography primitive для ссылочного текста с visual states.
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

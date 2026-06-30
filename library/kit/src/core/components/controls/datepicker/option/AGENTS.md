@@ -32,7 +32,7 @@ Reusable option composition для строк выбора, меню и dropdown
 ## Public API и локальные файлы
 
 - `export { Option } from './option.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `Option`, `IProps`.
 - Props из `IProps`: `title`, `disabled`.
 - Локальных parts нет.
@@ -63,7 +63,7 @@ Reusable option composition для строк выбора, меню и dropdown
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

@@ -33,7 +33,7 @@ Icon-only action primitive для компактных кнопок инстру
 ## Public API и локальные файлы
 
 - `export { ButtonIcon } from './button-icon.tsx';`
-- Consumer import: `import { ButtonIcon } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { ButtonIcon } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `ButtonIcon`, `IProps`.
 - Props из `IProps`: `size`, `shape`, `leadIcon`.
 - Локальных parts нет.
@@ -41,7 +41,7 @@ Icon-only action primitive для компактных кнопок инстру
 ## Контракт изменения
 
 - Не менять локальные exports (`export { ButtonIcon } from './button-icon.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `size`, `shape`, `leadIcon`. Новые/изменённые props нужно отражать в story и документации.
 - Native `<button>` нельзя заменять на другой element без пересмотра disabled, click и form behavior.
 

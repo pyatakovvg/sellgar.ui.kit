@@ -31,7 +31,7 @@ Single-choice control primitive с label/caption.
 ## Public API и локальные файлы
 
 - `export { Radio } from './radio.tsx';`
-- Consumer import: `import { Radio } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Radio } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Radio`, `IProps`.
 - Props из `IProps`: `size`, `label`, `caption`.
 - Локальные parts: `element`.
@@ -39,7 +39,7 @@ Single-choice control primitive с label/caption.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Radio } from './radio.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `size`, `label`, `caption`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

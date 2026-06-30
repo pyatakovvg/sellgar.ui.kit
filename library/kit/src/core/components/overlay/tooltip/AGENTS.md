@@ -39,7 +39,7 @@ Floating interaction для подсказок с hover/focus trigger, arrow и 
 
 - `export { ToolTip } from './tooltip.tsx';`
 - `export { useTooltip, useTooltipContext } from './tooltip.tsx';`
-- Consumer import: `import { ToolTip } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { ToolTip } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `useTooltip`, `useTooltipContext`, `Content`, `ToolTip`, `IProps`.
 - Props из `IProps`: `initialOpen`, `placement`, `open`, `onOpenChange`, `size`.
 - Локальные parts: `balloon`.
@@ -47,7 +47,7 @@ Floating interaction для подсказок с hover/focus trigger, arrow и 
 ## Контракт изменения
 
 - Не менять локальные exports (`export { ToolTip } from './tooltip.tsx';`, `export { useTooltip, useTooltipContext } from './tooltip.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `initialOpen`, `placement`, `open`, `onOpenChange`, `size`. Новые/изменённые props нужно отражать в story и документации.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 - При `cloneElement` явно сохранять порядок приоритета props родителя и ребёнка.

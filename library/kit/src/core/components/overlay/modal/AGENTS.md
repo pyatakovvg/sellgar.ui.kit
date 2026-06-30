@@ -35,7 +35,7 @@ Overlay interaction для диалогового слоя на базе Overlay
 ## Public API и локальные файлы
 
 - `export { Modal, useModalContext } from './modal.tsx';`
-- Consumer import: `import { Modal } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Modal } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `useModalContext`, `Close`, `ModalComponent`, `Modal`.
 - Props из `IProps`: `closeOnEscape`, `closeOnOverlay`, `open`, `onRequestClose`, `onClose`.
 - Локальных parts нет.
@@ -43,7 +43,7 @@ Overlay interaction для диалогового слоя на базе Overlay
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Modal, useModalContext } from './modal.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `closeOnEscape`, `closeOnOverlay`, `open`, `onRequestClose`, `onClose`. Новые/изменённые props нужно отражать в story и документации.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 - `onRequestClose` может отменить закрытие через `false` или Promise; нельзя менять порядок `onRequestClose` -> `onClose` без отдельного решения.

@@ -33,7 +33,7 @@
 ## Public API и локальные файлы
 
 - `export { LineTab } from './line.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `LineTab`.
 - Props из `IProps`: `size`, `isActive`, `title`, `name`, `id`, `ariaControls`, `leadIcon`, `tailIcon`, `badge`, `disabled`, `onClick`.
 - Локальных parts нет.

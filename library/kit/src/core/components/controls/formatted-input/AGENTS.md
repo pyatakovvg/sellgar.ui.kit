@@ -46,7 +46,7 @@
 - `IFormattedInputReactProps`
 - `FormattedInputMaskPlugin`
 - `FormattedInputAmountPlugin`
-- Consumer import: `import { FormattedInput } from '@tiyn/kit'`.
+- Consumer import: `import { FormattedInput } from '@sellgar/kit'`.
 - Internal core/editor/projection types не экспортируются через public barrel компонента.
 
 ## Контракт изменения

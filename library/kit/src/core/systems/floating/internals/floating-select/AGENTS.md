@@ -43,7 +43,7 @@ Interaction AGENTS.
 
 - `export { Select } from './select.tsx';`
 - `export type { TSelectContext } from './select.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `useSelectContext`, `Select`, `useIsMobile`, `TSelectContext`.
 - Props из `IProps`: `tabIndex`, `initialOpen`, `initialSelectedIndex`, `open`, `disabled`, `selectedIndex`, `setOpen`, `onSelect`, `onFocus`, `onBlur`.
 - Локальных parts нет.
@@ -54,7 +54,7 @@ Interaction AGENTS.
 - Узел является scoped/internal для ближайшего родителя; не выводить его в public barrels без отдельного решения.
 - Props contract: `tabIndex`, `initialOpen`, `initialSelectedIndex`, `open`, `disabled`, `selectedIndex`, `setOpen`, `onSelect`, `onFocus`, `onBlur`. Новые/изменённые props нужно отражать в story и документации.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
-- Это internal API для `Select`, `MultiSelect` и похожих controls; нельзя выводить его в public `@tiyn/kit` без отдельного решения.
+- Это internal API для `Select`, `MultiSelect` и похожих controls; нельзя выводить его в public `@sellgar/kit` без отдельного решения.
 - Controlled `open`/`selectedIndex` должны оставаться синхронизированы с context и option callbacks.
 
 ## Фактическое поведение

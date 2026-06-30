@@ -36,7 +36,7 @@
 
 - `index.ts` экспортирует core model, editor services и projection types, которые нужны React adapter, stories и будущим tests/plugins.
 - Файлы внутри `core` являются implementation modules за ближайшим `index.ts`.
-- Consumer import через общий `@tiyn/kit` допустим только для типов и helpers, которые явно экспортированы из parent `formatted-input/index.ts`.
+- Consumer import через общий `@sellgar/kit` допустим только для типов и helpers, которые явно экспортированы из parent `formatted-input/index.ts`.
 
 ## Контракт изменения
 

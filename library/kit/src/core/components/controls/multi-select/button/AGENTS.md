@@ -32,7 +32,7 @@ Action-trigger для `MultiSelect` с тем же options layer, select-all и 
 ## Public API и локальные файлы
 
 - Нет явных локальных exports.
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `ButtonComponent`.
 - Props описаны внешним типом `IMultiSelectButtonProps`; перед изменением открыть файл с типом и обновить этот документ.
 - Локальных parts нет.

@@ -33,7 +33,7 @@
 
 - `export { Badge } from './badge.tsx';`
 - `export type { IProps as IBadgeProps } from './badge.tsx';`
-- Consumer import: `import { Badge } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Badge } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Badge`, `IProps`.
 - Props из `IProps`: `color`, `state`, `size`, `shape`, `stroke`, `outlined`, `disabled`, `leadIcon`, `tailIcon`, `label`.
 - Compound API: `Badge.Dot`.
@@ -42,7 +42,7 @@
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Badge } from './badge.tsx';`, `export type { IProps as IBadgeProps } from './badge.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `color`, `state`, `size`, `shape`, `stroke`, `outlined`, `disabled`, `leadIcon`, `tailIcon`, `label`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение
@@ -65,7 +65,7 @@
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

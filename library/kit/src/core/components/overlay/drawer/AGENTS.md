@@ -36,7 +36,7 @@ Overlay interaction для боковой панели поверх страни
 
 - `export { Drawer } from './drawer.tsx';`
 - `export { useDrawerContext } from './drawer.tsx';`
-- Consumer import: `import { Drawer } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Drawer } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `useDrawerContext`, `DrawerComponent`, `Drawer`.
 - Props из `IProps`: `closeOnEscape`, `closeOnOverlay`, `open`, `onRequestClose`, `onClose`.
 - Локальных parts нет.
@@ -44,7 +44,7 @@ Overlay interaction для боковой панели поверх страни
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Drawer } from './drawer.tsx';`, `export { useDrawerContext } from './drawer.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `closeOnEscape`, `closeOnOverlay`, `open`, `onRequestClose`, `onClose`. Новые/изменённые props нужно отражать в story и документации.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 - `onRequestClose` может отменить закрытие через `false` или Promise; нельзя менять порядок `onRequestClose` -> `onClose` без отдельного решения.

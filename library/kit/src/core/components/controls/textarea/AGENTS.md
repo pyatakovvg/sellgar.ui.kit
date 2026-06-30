@@ -35,7 +35,7 @@ Multiline text control primitive.
 ## Public API и локальные файлы
 
 - `export { Textarea } from './textarea.tsx';`
-- Consumer import: `import { Textarea } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Textarea } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Textarea`, `IProps`.
 - Props из `IProps`: `ref`, `size`, `target`.
 - Локальных parts нет.
@@ -43,7 +43,7 @@ Multiline text control primitive.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Textarea } from './textarea.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `ref`, `size`, `target`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

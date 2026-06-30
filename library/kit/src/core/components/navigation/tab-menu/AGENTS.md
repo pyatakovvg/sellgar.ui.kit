@@ -39,7 +39,7 @@ Navigation component с compound-вариантами `Fill`, `Line`, `Segmented
 ## Public API и локальные файлы
 
 - `export { TabMenu } from './tab-menu.tsx';`
-- Consumer import: `import { TabMenu } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { TabMenu } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `TabMenu`.
 - Compound API: `TabMenu.Fill`, `TabMenu.Line`, `TabMenu.Segmented`, `TabMenu.Tab`, `TabMenu.Content`.
 - Props из `IProps`: `defaultTabName`.
@@ -48,7 +48,7 @@ Navigation component с compound-вариантами `Fill`, `Line`, `Segmented
 ## Контракт изменения
 
 - Не менять локальные exports (`export { TabMenu } from './tab-menu.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `defaultTabName`. Новые/изменённые props нужно отражать в story и документации.
 - Static/compound members `Fill`, `Line`, `Segmented`, `Tab`, `Content` являются public contract.
 - Визуальный variant выбирается сабкомпонентом, а не prop `type`.
@@ -77,7 +77,7 @@ Navigation component с compound-вариантами `Fill`, `Line`, `Segmented
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или compound contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или compound contract через основной import `@sellgar/kit`.
 - Компонент реализует tablist/tab/tabpanel semantics; keyboard и focus behavior нужно проверять вручную.
 
 ## Технический долг

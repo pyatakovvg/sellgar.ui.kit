@@ -35,7 +35,7 @@ Floating selection/menu interaction с options list и dropdown input reference.
 ## Public API и локальные файлы
 
 - `export { Dropdown } from './dropdown.tsx';`
-- Consumer import: `import { Dropdown } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Dropdown } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Dropdown`, `IProps`.
 - Props из `IProps`: `leadIcon`, `tailIcon`, `badge`, `size`, `fixHeight`, `target`, `optionKey`, `optionValue`, `options`, `value`, `tabIndex`, `placeholder`, `disabled`, `isClearable`, `onChange`, `onFocus`, `onBlur`, `templateValue`, `templateOption`.
 - Локальные parts: `empty`, `option`.
@@ -43,7 +43,7 @@ Floating selection/menu interaction с options list и dropdown input reference.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Dropdown } from './dropdown.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `leadIcon`, `tailIcon`, `badge`, `size`, `fixHeight`, `target`, `optionKey`, `optionValue`, `options`, `value`, `tabIndex`, `placeholder`, `disabled`, `isClearable`, `onChange`, `onFocus`, `onBlur`, `templateValue`, `templateOption`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

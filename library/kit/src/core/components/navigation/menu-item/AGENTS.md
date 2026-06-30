@@ -33,7 +33,7 @@
 ## Public API и локальные файлы
 
 - `export { MenuItem } from './menu-item.tsx';`
-- Consumer import: `import { MenuItem } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { MenuItem } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `MenuItem`.
 - Props из `IProps`: `leadIcon`, `tailIcon`, `caption`, `isActive`, `isPending`, `badge`.
 - Локальных parts нет.
@@ -41,7 +41,7 @@
 ## Контракт изменения
 
 - Не менять локальные exports (`export { MenuItem } from './menu-item.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `leadIcon`, `tailIcon`, `caption`, `isActive`, `isPending`, `badge`. Новые/изменённые props нужно отражать в story и документации.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 - При `cloneElement` явно сохранять порядок приоритета props родителя и ребёнка.
@@ -67,7 +67,7 @@
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

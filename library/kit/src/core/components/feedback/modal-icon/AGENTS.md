@@ -31,7 +31,7 @@ Feedback composition для иконки внутри modal/empty/error сцен
 ## Public API и локальные файлы
 
 - `export { ModalIcon } from './modal-icon.tsx';`
-- Consumer import: `import { ModalIcon } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { ModalIcon } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `ModalIcon`.
 - Props описаны внешним типом `Props`; перед изменением открыть файл с типом и обновить этот документ.
 - Локальных parts нет.
@@ -39,7 +39,7 @@ Feedback composition для иконки внутри modal/empty/error сцен
 ## Контракт изменения
 
 - Не менять локальные exports (`export { ModalIcon } from './modal-icon.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 
 ## Фактическое поведение
 
@@ -60,7 +60,7 @@ Feedback composition для иконки внутри modal/empty/error сцен
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

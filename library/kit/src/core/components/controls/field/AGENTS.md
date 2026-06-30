@@ -31,7 +31,7 @@ Form layout composition с compound slots Label, Content и Caption.
 ## Public API и локальные файлы
 
 - `export { Field } from './field.wrapper.tsx';`
-- Consumer import: `import { Field } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Field } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Field`.
 - Собственный interface `IProps` в локальном source не объявлен; props contract задаётся imported/React props или ближайшим parent component.
 - Локальных parts нет.
@@ -39,7 +39,7 @@ Form layout composition с compound slots Label, Content и Caption.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Field } from './field.wrapper.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 
 ## Фактическое поведение
@@ -61,7 +61,7 @@ Form layout composition с compound slots Label, Content и Caption.
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

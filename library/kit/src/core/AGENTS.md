@@ -2,17 +2,17 @@
 
 ## Что это
 
-Основной UI-срез пакета `@tiyn/kit`.
+Основной UI-срез пакета `@sellgar/kit`.
 
 `src/core` формирует публичную React-поверхность основного импорта:
 
 ```ts
-import { Button, Select, Table } from '@tiyn/kit';
+import { Button, Select, Table } from '@sellgar/kit';
 ```
 
 ## Назначение
 
-`core` содержит UI-компоненты и общие runtime-системы, которые должны быть доступны через основной entrypoint `@tiyn/kit`.
+`core` содержит UI-компоненты и общие runtime-системы, которые должны быть доступны через основной entrypoint `@sellgar/kit`.
 
 Этот срез не должен включать runtime-фичи, feature providers/services или полный generated icon set.
 
@@ -47,7 +47,7 @@ src/core/
 ## Public API и локальные файлы
 
 - `src/core/index.ts` экспортирует `components` и `systems`.
-- Public API попадает в consumer import через `@tiyn/kit`.
+- Public API попадает в consumer import через `@sellgar/kit`.
 - Любое изменение export name, props, exported type или compound API может быть breaking change.
 - Внутренние файлы компонента не являются public API, если они не экспортируются через локальный `index.ts` и родительские barrels.
 

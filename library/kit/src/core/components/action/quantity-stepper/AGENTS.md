@@ -33,7 +33,7 @@ Action/control composition для изменения числового знач
 ## Public API и локальные файлы
 
 - `export { QuantityStepper } from './quantity-stepper.tsx';`
-- Consumer import: `import { QuantityStepper } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { QuantityStepper } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `QuantityStepper`.
 - Props из `IProps`: `shape`, `size`, `outline`, `leftActionSize`, `rightActionSize`, `leftActionDisabled`, `rightActionDisabled`, `leftActionType`, `rightActionType`, `value`, `onLeftActionClick`, `onRightActionClick`.
 - Локальных parts нет.
@@ -41,7 +41,7 @@ Action/control composition для изменения числового знач
 ## Контракт изменения
 
 - Не менять локальные exports (`export { QuantityStepper } from './quantity-stepper.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `shape`, `size`, `outline`, `leftActionSize`, `rightActionSize`, `leftActionDisabled`, `rightActionDisabled`, `leftActionType`, `rightActionType`, `value`, `onLeftActionClick`, `onRightActionClick`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение
@@ -65,7 +65,7 @@ Action/control composition для изменения числового знач
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

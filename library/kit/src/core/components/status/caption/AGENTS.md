@@ -32,7 +32,7 @@
 
 - `export { Caption } from './caption.tsx';`
 - `export type { IProps as ICaptionProps } from './caption.tsx';`
-- Consumer import: `import { Caption } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Caption } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Caption`, `IProps`.
 - Props из `IProps`: `leadIcon`, `caption`, `state`.
 - Локальных parts нет.
@@ -40,7 +40,7 @@
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Caption } from './caption.tsx';`, `export type { IProps as ICaptionProps } from './caption.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `leadIcon`, `caption`, `state`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

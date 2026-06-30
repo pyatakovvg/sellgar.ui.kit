@@ -30,7 +30,7 @@
 ## Public API и локальные файлы
 
 - `export { TabList } from './tab-list.tsx';`
-- Не является public API `@tiyn/kit`.
+- Не является public API `@sellgar/kit`.
 - Props: `variant`, `size`, `shape`, `className`, `children`.
 
 ## Контракт изменения

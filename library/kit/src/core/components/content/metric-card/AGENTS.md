@@ -33,7 +33,7 @@ Content composition для отображения метрики, подписи
 ## Public API и локальные файлы
 
 - `export { MetricCard } from './metric-card.tsx';`
-- Consumer import: `import { MetricCard } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { MetricCard } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `MetricCardContext`, `MetricCard`.
 - Props описаны внешним типом `ValueProps`; перед изменением открыть файл с типом и обновить этот документ.
 - Локальных parts нет.
@@ -41,7 +41,7 @@ Content composition для отображения метрики, подписи
 ## Контракт изменения
 
 - Не менять локальные exports (`export { MetricCard } from './metric-card.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 
 ## Фактическое поведение
@@ -65,7 +65,7 @@ Content composition для отображения метрики, подписи
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

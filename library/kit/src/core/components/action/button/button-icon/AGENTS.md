@@ -34,7 +34,7 @@ Icon-only action primitive для компактных кнопок инстру
 ## Public API и локальные файлы
 
 - `export { ButtonIcon } from './button-icon.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `ButtonIcon`, `IProps`.
 - Props из `IProps`: `style`, `size`, `target`, `shape`, `leadIcon`, `inProcess`.
 - Локальных parts нет.

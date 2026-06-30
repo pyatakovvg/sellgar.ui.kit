@@ -75,6 +75,11 @@ export const Textarea: React.FC<IProps> = ({ ref, size = 'md', target, ...props 
     props.onPointerDown && props.onPointerDown(event);
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(event.target.value);
+    props.onChange && props.onChange(event);
+  };
+
   return (
     <div className={classNameButton}>
       <div className={s.content}>
@@ -85,9 +90,7 @@ export const Textarea: React.FC<IProps> = ({ ref, size = 'md', target, ...props 
           onFocus={handleFocus}
           onBlur={handleBlur}
           onPointerDown={handlePointerDown}
-          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-            return setValue(event.target.value);
-          }}
+          onChange={handleChange}
         />
       </div>
     </div>

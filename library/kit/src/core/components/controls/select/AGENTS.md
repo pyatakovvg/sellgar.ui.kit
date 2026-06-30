@@ -37,7 +37,7 @@ headless `Floating.Select`.
 ## Public API и локальные файлы
 
 - `export { Select } from './select.tsx';`
-- Consumer import: `import { Select } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Select } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Select`, `IProps`.
 - Props из `IProps`: `leadIcon`, `tailIcon`, `badge`, `size`, `fixHeight`, `target`, `optionKey`, `optionValue`, `options`, `value`, `tabIndex`, `placeholder`, `disabled`, `isClearable`, `onChange`, `onFocus`, `onBlur`, `templateValue`, `templateOption`.
 - Локальные parts: `empty`, `option`, `placeholder`.
@@ -45,7 +45,7 @@ headless `Floating.Select`.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Select } from './select.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `leadIcon`, `tailIcon`, `badge`, `size`, `fixHeight`, `target`, `optionKey`, `optionValue`, `options`, `value`, `tabIndex`, `placeholder`, `disabled`, `isClearable`, `onChange`, `onFocus`, `onBlur`, `templateValue`, `templateOption`. Новые/изменённые props нужно отражать в story и документации.
 - `optionKey` должен указывать на стабильное и уникальное значение; он используется для React key и поиска selected option.
 - `onFocus`/`onBlur` вызываются от open state после initialize-фазы; менять порядок вызовов нельзя без проверки форм.

@@ -44,7 +44,7 @@ Selection interaction, объединяющий SelectInput, Popover и Calendar
 ## Public API и локальные файлы
 
 - `export { Datepicker } from './datepicker.tsx';`
-- Consumer import: `import { Datepicker } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Datepicker } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Datepicker`, `IProps`.
 - Props из `IProps`: `tailIcon`, `badge`, `size`, `target`, `value`, `tabIndex`, `placeholder`, `disabled`, `isClearable`, `format`, `displayFormat`, `displayTimeZone`, `timeSelection`, `templateValue`, `onChange`, `onFocus`, `onBlur`.
 - `templateValue` кастомизирует только отображение выбранного значения в trigger-е.
@@ -54,7 +54,7 @@ Selection interaction, объединяющий SelectInput, Popover и Calendar
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Datepicker } from './datepicker.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `tailIcon`, `badge`, `size`, `target`, `value`, `tabIndex`, `placeholder`, `disabled`, `isClearable`, `format`, `displayFormat`, `displayTimeZone`, `timeSelection`, `templateValue`, `onChange`, `onFocus`, `onBlur`. Новые/изменённые props нужно отражать в story и документации.
 - Не переносить Select API механически: если новый prop требует option-list, item renderer или keyboard list navigation, сначала нужно определить календарную доменную сущность и проверить, что она реализуется внутри `Calendar`.
 

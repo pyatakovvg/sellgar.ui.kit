@@ -32,7 +32,7 @@ Status/text primitive для коротких label-плашек с цветом
 
 - `export { Label } from './label.tsx';`
 - `export type { IProps as ILabelProps } from './label.tsx';`
-- Consumer import: `import { Label } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Label } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Label`, `IProps`.
 - Props из `IProps`: `label`, `caption`, `required`.
 - Локальных parts нет.
@@ -40,7 +40,7 @@ Status/text primitive для коротких label-плашек с цветом
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Label } from './label.tsx';`, `export type { IProps as ILabelProps } from './label.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `label`, `caption`, `required`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение
@@ -62,7 +62,7 @@ Status/text primitive для коротких label-плашек с цветом
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

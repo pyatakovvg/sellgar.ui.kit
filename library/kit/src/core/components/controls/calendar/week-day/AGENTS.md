@@ -31,7 +31,7 @@
 ## Public API и локальные файлы
 
 - `export { WeekDay } from './week-day.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `WeekDay`.
 - Props из `IProps`: `isWeekday`.
 - Локальных parts нет.
@@ -61,7 +61,7 @@
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

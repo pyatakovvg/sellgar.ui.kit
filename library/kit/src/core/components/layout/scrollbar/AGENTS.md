@@ -34,7 +34,7 @@ Interaction AGENTS.
 ## Public API и локальные файлы
 
 - `export { Scrollbar } from './scrollbar.tsx';`
-- Consumer import: `import { Scrollbar } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Scrollbar } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Scrollbar`.
 - Props из `IProps`: `className`, `children`, `ref`, стандартные `data-*`, `aria-*` и DOM-события root host.
 - Локальных parts нет.
@@ -42,7 +42,7 @@ Interaction AGENTS.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Scrollbar } from './scrollbar.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `className`, `children`, `ref`, стандартные `data-*`, `aria-*` и DOM-события root host. Новые/изменённые props нужно отражать в story и документации.
 - `Scrollbar` должен восприниматься потребителем как один `div`-like host: `className` применяется к root, `ref` указывает на root, а внутренние viewport/content/track/thumb являются private implementation.
 - Не добавлять внешние props для настройки внутренних слоёв, track/thumb, content wrapper, options/events/defer или inline style contract без отдельного решения.

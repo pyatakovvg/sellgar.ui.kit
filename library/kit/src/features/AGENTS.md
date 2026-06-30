@@ -9,11 +9,11 @@
 `features` предназначен для самостоятельных runtime-срезов, которые не входят в core UI и импортируются только точечно:
 
 ```ts
-import { AlertProvider, useOpenAlert } from '@tiyn/kit/features/alert';
-import { MessageProvider, useShowMessage } from '@tiyn/kit/features/message';
+import { AlertProvider, useOpenAlert } from '@sellgar/kit/features/alert';
+import { MessageProvider, useShowMessage } from '@sellgar/kit/features/message';
 ```
 
-Общий import `@tiyn/kit/features` не вводится.
+Общий import `@sellgar/kit/features` не вводится.
 
 ## Как реализован
 
@@ -54,8 +54,8 @@ src/features/<feature>/
 
 ## Правила изменений
 
-- Не добавлять feature-код в основной `@tiyn/kit`.
-- Не создавать `@tiyn/kit/features`.
+- Не добавлять feature-код в основной `@sellgar/kit`.
+- Не создавать `@sellgar/kit/features`.
 - Не смешивать runtime service/model слой с render-only core components.
 - Provider, hooks, model/service и UI части держать внутри конкретной feature.
 
@@ -74,4 +74,4 @@ src/features/<feature>/
 
 - После появления feature-кода запускать `../../node_modules/.bin/tsc -p tsconfig.json --noEmit --incremental false`.
 - После подключения feature entrypoint запускать `yarn build` в `library/kit`.
-- Проверять, что feature import не добавляет runtime-код в основной `@tiyn/kit`.
+- Проверять, что feature import не добавляет runtime-код в основной `@sellgar/kit`.

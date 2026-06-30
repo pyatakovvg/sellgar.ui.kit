@@ -37,7 +37,7 @@ Number-format composition с controlled formatted value, decimal/negative rules 
 ## Public API и локальные файлы
 
 - `export { InputNumeral } from './input-numeral.tsx';`
-- Consumer import: `import { InputNumeral } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { InputNumeral } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `InputNumeralComponent`, `InputNumeral`, `IProps`.
 - Props из `IProps`: `value`, `defaultValue`, `maxValue`, `allowDecimal`, `allowNegative`, `onChange`.
 - Локальных parts нет.
@@ -45,7 +45,7 @@ Number-format composition с controlled formatted value, decimal/negative rules 
 ## Контракт изменения
 
 - Не менять локальные exports (`export { InputNumeral } from './input-numeral.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `value`, `defaultValue`, `maxValue`, `allowDecimal`, `allowNegative`, `onChange`. Новые/изменённые props нужно отражать в story и документации.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 
@@ -74,7 +74,7 @@ Number-format composition с controlled formatted value, decimal/negative rules 
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

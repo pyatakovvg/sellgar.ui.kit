@@ -31,7 +31,7 @@ Layout primitive для ограничения ширины и отступов 
 ## Public API и локальные файлы
 
 - `export { Container } from './container.tsx';`
-- Consumer import: `import { Container } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Container } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Container`.
 - Собственный interface `IProps` в локальном source не объявлен; props contract задаётся imported/React props или ближайшим parent component.
 - Локальных parts нет.
@@ -39,7 +39,7 @@ Layout primitive для ограничения ширины и отступов 
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Container } from './container.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 
 ## Фактическое поведение
 
@@ -60,7 +60,7 @@ Layout primitive для ограничения ширины и отступов 
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

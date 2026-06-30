@@ -31,7 +31,7 @@ Numeric/range control primitive на базе react-slider.
 ## Public API и локальные файлы
 
 - `export { Slider } from './slider.tsx';`
-- Consumer import: `import { Slider } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Slider } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Slider`.
 - Props описаны внешним типом `IProps`; перед изменением открыть файл с типом и обновить этот документ.
 - Локальных parts нет.
@@ -39,7 +39,7 @@ Numeric/range control primitive на базе react-slider.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Slider } from './slider.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 
 ## Фактическое поведение
 

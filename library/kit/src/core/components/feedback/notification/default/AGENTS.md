@@ -33,7 +33,7 @@ Default visual variant parent-компонента; не является сам
 ## Public API и локальные файлы
 
 - `export { Default } from './default.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `Default`.
 - Props из `IProps`: `status`, `title`, `description`, `slot`, `onClose`.
 - Локальных parts нет.

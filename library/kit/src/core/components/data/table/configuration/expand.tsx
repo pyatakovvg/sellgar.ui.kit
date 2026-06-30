@@ -1,8 +1,10 @@
 import React from 'react';
 
-import type { TableExpandedRenderContext } from '../runtime/types.ts';
+import type { TableExpandDefaultExpanded, TableExpandedRenderContext } from '../runtime/types.ts';
+export type { TableExpandDefaultExpanded, TableExpandDefaultExpandedContext } from '../runtime/types.ts';
 
 export interface TableExpandProps<T = unknown> {
+  defaultExpanded?: TableExpandDefaultExpanded<T>;
   render?(context: TableExpandedRenderContext<T>): React.ReactNode;
 }
 

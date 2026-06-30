@@ -44,7 +44,7 @@ Interaction-компонент календаря с выбором даты, м
 ## Public API и локальные файлы
 
 - `export { Calendar } from './calendar.tsx';`
-- Consumer import: `import { Calendar } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Calendar } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Calendar`.
 - Props из `IProps`: `autoFocus`, `defaultValue`, `value`, `format`, `timeSelection`, `onChange`, `onCancel`, `displayTimeZone`.
 - Локальные parts: `day`, `day-disabled`, `header`, `inputs`, `utils`, `week-day`.
@@ -52,7 +52,7 @@ Interaction-компонент календаря с выбором даты, м
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Calendar } from './calendar.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `autoFocus`, `defaultValue`, `value`, `format`, `timeSelection`, `onChange`, `onCancel`, `displayTimeZone`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

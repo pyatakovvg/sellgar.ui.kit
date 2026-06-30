@@ -31,7 +31,7 @@ Layout primitive для контейнера с режимами custom/elevated
 ## Public API и локальные файлы
 
 - `export { Card } from './card.tsx';`
-- Consumer import: `import { Card } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Card } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Card`.
 - Props из `IProps`: `type`, `image`, `alignment`, `target`.
 - Локальных parts нет.
@@ -39,7 +39,7 @@ Layout primitive для контейнера с режимами custom/elevated
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Card } from './card.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `type`, `image`, `alignment`, `target`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

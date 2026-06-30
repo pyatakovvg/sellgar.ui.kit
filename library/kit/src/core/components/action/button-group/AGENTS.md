@@ -10,7 +10,7 @@
 
 `ButtonGroup` — composition-компонент для визуально связанной группы action-кнопок.
 
-Компонент доступен из основного core entrypoint через `@tiyn/kit` и предоставляет compound API:
+Компонент доступен из основного core entrypoint через `@sellgar/kit` и предоставляет compound API:
 
 ```tsx
 <ButtonGroup>
@@ -48,7 +48,7 @@
 ## Public API и локальные файлы
 
 - Локальный export: `export { ButtonGroup } from './button-group.tsx'`.
-- Consumer import: `import { ButtonGroup } from '@tiyn/kit'`.
+- Consumer import: `import { ButtonGroup } from '@sellgar/kit'`.
 - Public component props:
   - `size?: 'sm' | 'md' | 'lg'`;
   - `fill?: 'contain' | 'auto'`;

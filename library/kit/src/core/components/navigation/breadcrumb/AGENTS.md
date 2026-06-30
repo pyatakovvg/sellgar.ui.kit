@@ -35,7 +35,7 @@
 ## Public API и локальные файлы
 
 - `export { Breadcrumb } from './breadcrumb.tsx';`
-- Consumer import: `import { Breadcrumb } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Breadcrumb } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Breadcrumb`.
 - Props из `IProps`: `size`, `divider`, `items`.
 - `items[number]`: `label`, `href`, `leadIcon`, `tailIcon`, `variant`.
@@ -44,7 +44,7 @@
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Breadcrumb } from './breadcrumb.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `size`, `divider`, `items`.
 - Активный item и наличие разделителя являются внутренней производной от позиции
   элемента в `items` и не должны выноситься в публичные props.

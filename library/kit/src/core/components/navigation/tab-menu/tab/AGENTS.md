@@ -35,7 +35,7 @@
 
 - `export { Tab } from './tab.tsx';`
 - `export type { IProps } from './tab.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `Tab`, `IProps`.
 - Props из `IProps`: `name`, `title`, `leadIcon`, `tailIcon`, `badge`, `disabled`, `onClick`.
 - Локальные parts: `fill`, `line`, `segmented`.
@@ -68,7 +68,7 @@
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

@@ -32,7 +32,7 @@
 ## Public API и локальные файлы
 
 - `export { Chip } from './chip.tsx';`
-- Consumer import: `import { Chip } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Chip } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Chip`.
 - Props из `IProps`: button HTML attributes кроме `children`, `className`,
   `disabled` и `type`, а также `size`, `shape`, `isSelected`, `isStatic`,
@@ -42,7 +42,7 @@
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Chip } from './chip.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: button HTML attributes кроме `children`, `className`,
   `disabled` и `type`, а также `size`, `shape`, `isSelected`, `isStatic`,
   `disabled`, `leadIcon`, `tailIcon`, `label`. Новые/изменённые props нужно
@@ -69,7 +69,7 @@
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

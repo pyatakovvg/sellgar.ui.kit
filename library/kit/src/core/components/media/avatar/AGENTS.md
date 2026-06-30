@@ -31,7 +31,7 @@
 ## Public API и локальные файлы
 
 - `export { Avatar } from './avatar.tsx';`
-- Consumer import: `import { Avatar } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Avatar } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `Avatar`.
 - Props из `IProps`: `size`, `color`, `isStatus`, `isNotification`, `type`, `initials`, `theme`, `icon`.
 - Локальных parts нет.
@@ -39,7 +39,7 @@
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Avatar } from './avatar.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `size`, `color`, `isStatus`, `isNotification`, `type`, `initials`, `theme`, `icon`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

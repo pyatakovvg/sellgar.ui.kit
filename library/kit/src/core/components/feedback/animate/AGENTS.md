@@ -32,7 +32,7 @@
 ## Public API и локальные файлы
 
 - `export { Animate } from './animate.tsx';`
-- Consumer import: `import { Animate } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { Animate } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `AnimateComponent`, `Animate`.
 - Собственный interface `IProps` в локальном source не объявлен; props contract задаётся imported/React props или ближайшим parent component.
 - Локальных parts нет.
@@ -40,7 +40,7 @@
 ## Контракт изменения
 
 - Не менять локальные exports (`export { Animate } from './animate.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 - При `cloneElement` явно сохранять порядок приоритета props родителя и ребёнка.
 

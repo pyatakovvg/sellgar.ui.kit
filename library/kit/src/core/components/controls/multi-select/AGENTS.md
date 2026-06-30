@@ -39,7 +39,7 @@ Selection interaction для множественного выбора с badges
 ## Public API и локальные файлы
 
 - `export { MultiSelect } from './multi-select.tsx';`
-- Consumer import: `import { MultiSelect } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { MultiSelect } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `MultiSelect`.
 - Props описаны внешним типом `IMultiSelectInputProps`; перед изменением открыть файл с типом и обновить этот документ.
 - Локальные parts: `button`, `empty`, `option`, `option-list`, `placeholder`, `surface`.
@@ -47,7 +47,7 @@ Selection interaction для множественного выбора с badges
 ## Контракт изменения
 
 - Не менять локальные exports (`export { MultiSelect } from './multi-select.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Static/compound members являются частью API; их имена и типы нельзя менять незаметно.
 - `MultiSelect.Button` является public compound member и не должен исчезать или менять назначение без breaking-change решения.
 - `value`, `options`, `optionKey`, `optionValue`, `onChange`, `selectAllEnabled`, `maxDisplayBadges` описаны в `IMultiSelectInputProps` и являются частью consumer contract.

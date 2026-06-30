@@ -33,7 +33,7 @@
 ## Public API и локальные файлы
 
 - `export { Element } from './element.tsx';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `Element`, `IProps`.
 - Props из `IProps`: `size`, `isIndeterminate`.
 - Локальных parts нет.

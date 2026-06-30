@@ -20,7 +20,7 @@
 ## Public API и локальные файлы
 
 - Public API отсутствует.
-- `shared` не должен экспортироваться из `@tiyn/kit`, `@tiyn/kit/icons` или feature entrypoints.
+- `shared` не должен экспортироваться из `@sellgar/kit`, `@sellgar/kit/icons` или feature entrypoints.
 - Если здесь появятся утилиты, они должны оставаться внутренними до отдельного решения о public API.
 
 ## Фактическое поведение

@@ -31,7 +31,7 @@ User composition для отображения пользователя, avatar/
 ## Public API и локальные файлы
 
 - `export { User } from './user.tsx';`
-- Consumer import: `import { User } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { User } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `User`.
 - Props из `IProps`: `name`, `caption`, `badge`, `avatarColor`, `avatarTheme`, `hideUser`, `onClick`.
 - Локальные parts: `name`.
@@ -39,7 +39,7 @@ User composition для отображения пользователя, avatar/
 ## Контракт изменения
 
 - Не менять локальные exports (`export { User } from './user.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `name`, `caption`, `badge`, `avatarColor`, `avatarTheme`, `hideUser`, `onClick`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение
@@ -61,7 +61,7 @@ User composition для отображения пользователя, avatar/
 
 ## Риски и точки внимания
 
-- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@tiyn/kit`.
+- Главный риск — незаметно изменить props, DOM structure или визуальный contract через основной import `@sellgar/kit`.
 
 ## Технический долг
 

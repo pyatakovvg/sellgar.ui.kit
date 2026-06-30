@@ -31,6 +31,7 @@ import type {
 
 export type {
   TableRowConfig,
+  TableRowEventContext,
   TableRowEventPayload,
   TableRowEventTrigger,
   TableRowHandlers,
@@ -164,12 +165,15 @@ export const TableComponent = <T extends object>(props: TableComponentProps<T>) 
   const isTreeEnabled = Boolean(props.tree?.isUse);
   const treeAccessor = props.tree?.accessor;
   const treeDefaultExpanded = props.tree?.defaultExpanded;
-  const rowEvents = useTableRowEvents(props.row);
   const layout = React.useMemo(() => resolveTableLayout(props.layout), [props.layout]);
   const { columnWidths, setColumnElement } = useTableColumnWidths();
   const { selectedNodeIds, setSelectedNodeIds, retainSelectedNodeIds } = useTableSelection();
   const sort = useTableSort(schema.columns);
-  const { expandedNodeIds, isNodeExpanded, toggleNodeExpanded, retainExpandedNodeIds } = useTableExpansion();
+  const {
+    toggledNodeIds: expandedToggledNodeIds,
+    toggleNodeExpanded,
+    retainToggledNodeIds: retainExpandedToggledNodeIds,
+  } = useTableExpansion();
   const { toggledNodeIds, toggleNode, retainToggledNodeIds } = useTableTree();
 
   const runtimeInput = React.useMemo(
@@ -180,7 +184,8 @@ export const TableComponent = <T extends object>(props: TableComponentProps<T>) 
       selectedNodeIds,
       emptyLineEnabled: schema.hasEmpty,
       expandedLineEnabled: schema.hasExpand,
-      expandedNodeIds,
+      expandedDefaultExpanded: schema.renderRegistry.getExpandDefaultExpanded(),
+      expandedToggledNodeIds,
       columnWidths,
       tree:
         isTreeEnabled && treeAccessor !== undefined
@@ -194,7 +199,7 @@ export const TableComponent = <T extends object>(props: TableComponentProps<T>) 
       sort: sort.snapshot,
     }),
     [
-      expandedNodeIds,
+      expandedToggledNodeIds,
       columnWidths,
       isSelectionEnabled,
       isTreeEnabled,
@@ -202,6 +207,7 @@ export const TableComponent = <T extends object>(props: TableComponentProps<T>) 
       schema.columns,
       schema.hasEmpty,
       schema.hasExpand,
+      schema.renderRegistry,
       selectedNodeIds,
       sort.snapshot,
       treeAccessor,
@@ -224,6 +230,9 @@ export const TableComponent = <T extends object>(props: TableComponentProps<T>) 
           indeterminate: false,
           selectedNodeIds: [],
         },
+        expansion: {
+          expandedNodeIds: [],
+        },
         lines: [],
       };
     }
@@ -233,15 +242,25 @@ export const TableComponent = <T extends object>(props: TableComponentProps<T>) 
 
   React.useEffect(() => {
     retainSelectedNodeIds(snapshot.selection.selectedNodeIds);
-    retainExpandedNodeIds(snapshot.nodeIds);
+    retainExpandedToggledNodeIds(snapshot.nodeIds);
     retainToggledNodeIds(snapshot.nodeIds);
   }, [
-    retainExpandedNodeIds,
+    retainExpandedToggledNodeIds,
     retainSelectedNodeIds,
     retainToggledNodeIds,
     snapshot.nodeIds,
     snapshot.selection.selectedNodeIds,
   ]);
+
+  const expandedNodeIdSet = React.useMemo(
+    () => new Set(snapshot.expansion.expandedNodeIds),
+    [snapshot.expansion.expandedNodeIds],
+  );
+
+  const isNodeExpanded = React.useCallback(
+    (nodeId: TableNodeId): boolean => expandedNodeIdSet.has(nodeId),
+    [expandedNodeIdSet],
+  );
 
   const handleRowToggle = React.useCallback(
     (nodeId: TableNodeId) => {
@@ -305,6 +324,48 @@ export const TableComponent = <T extends object>(props: TableComponentProps<T>) 
       toggleNode,
     ],
   );
+
+  const rowEventContext = React.useMemo(
+    () => ({
+      getContext: (line: TableDataLineSnapshot<T>) => ({
+        expansion: schema.hasExpand
+          ? {
+              expanded: isNodeExpanded(line.node.nodeId),
+              toggle: () => toggleNodeExpanded(line.node.nodeId),
+            }
+          : undefined,
+        tree:
+          isTreeEnabled && line.node.hasChildren
+            ? {
+                expanded: isTreeNodeExpanded(line.node.nodeId, treeDefaultExpanded, toggledNodeIds),
+                hasChildren: line.node.hasChildren,
+                depth: line.node.depth,
+                parentNodeId: line.node.parentNodeId,
+                toggle: () => handleTreeNodeToggle(line.node.nodeId),
+              }
+            : undefined,
+        selection: isSelectionEnabled
+          ? {
+              selected: line.selected,
+              indeterminate: line.selectionIndeterminate,
+              toggle: () => handleRowToggle(line.node.nodeId),
+            }
+          : undefined,
+      }),
+    }),
+    [
+      handleRowToggle,
+      handleTreeNodeToggle,
+      isNodeExpanded,
+      isSelectionEnabled,
+      isTreeEnabled,
+      schema.hasExpand,
+      toggleNodeExpanded,
+      toggledNodeIds,
+      treeDefaultExpanded,
+    ],
+  );
+  const rowEvents = useTableRowEvents(props.row, rowEventContext);
 
   const renderCell = React.useCallback(
     (cell: TableCellSnapshot<T>): React.ReactNode => {

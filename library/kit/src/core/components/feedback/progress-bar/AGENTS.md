@@ -31,7 +31,7 @@ Feedback primitive для линейного progress state.
 ## Public API и локальные файлы
 
 - `export { ProgressBar } from './progress-bar.tsx';`
-- Consumer import: `import { ProgressBar } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { ProgressBar } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `ProgressBar`.
 - Props из `IProps`: `color`, `size`.
 - Локальных parts нет.
@@ -39,7 +39,7 @@ Feedback primitive для линейного progress state.
 ## Контракт изменения
 
 - Не менять локальные exports (`export { ProgressBar } from './progress-bar.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `color`, `size`. Новые/изменённые props нужно отражать в story и документации.
 
 ## Фактическое поведение

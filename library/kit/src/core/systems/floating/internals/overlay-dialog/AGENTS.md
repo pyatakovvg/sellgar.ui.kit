@@ -39,7 +39,7 @@ Interaction AGENTS.
 - `export { OverlayDialog, useOverlayDialogContext } from './overlay-dialog.tsx';`
 - `export { useOverlayDialog } from './use-overlay-dialog.ts';`
 - `export type { TOverlayCloseReason, TOverlayDialogOptions } from './use-overlay-dialog.ts';`
-- Consumer import: прямой public import из `@tiyn/kit` не подтверждён; использовать через ближайший parent/component API.
+- Consumer import: прямой public import из `@sellgar/kit` не подтверждён; использовать через ближайший parent/component API.
 - Exported/source names: `useOverlayDialogContext`, `OverlayDialog`.
 - Props описаны внешним типом `IOverlayDialogContentProps`; перед изменением открыть файл с типом и обновить этот документ.
 - Локальных parts нет.

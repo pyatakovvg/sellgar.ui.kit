@@ -37,7 +37,7 @@ OTP interaction для ввода кода, включая Web OTP API и авт
 ## Public API и локальные файлы
 
 - `export { InputOtp } from './input-otp.tsx';`
-- Consumer import: `import { InputOtp } from '@tiyn/kit'` или compound API ближайшего public-компонента.
+- Consumer import: `import { InputOtp } from '@sellgar/kit'` или compound API ближайшего public-компонента.
 - Exported/source names: `InputOtp`.
 - Props из `IProps`: `value`, `onChange`, `length`, `disabled`, `autoFocus`, `target`, `name`.
 - Локальных parts нет.
@@ -45,7 +45,7 @@ OTP interaction для ввода кода, включая Web OTP API и авт
 ## Контракт изменения
 
 - Не менять локальные exports (`export { InputOtp } from './input-otp.tsx';`) без оценки public API.
-- Так как узел достижим через barrel chain `@tiyn/kit`, изменение имени компонента, props или exported types может быть breaking change.
+- Так как узел достижим через barrel chain `@sellgar/kit`, изменение имени компонента, props или exported types может быть breaking change.
 - Props contract: `value`, `onChange`, `length`, `disabled`, `autoFocus`, `target`, `name`. Новые/изменённые props нужно отражать в story и документации.
 - Native `<input>` нельзя менять без пересмотра value/onChange/focus/accessibility contract.
 
